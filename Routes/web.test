@@ -1,0 +1,84 @@
+<?php
+/*
+dd((new \ReflectionClass($this))->getShortName()); //RouteFileRegistrar
+dd(__NAMESPACE__);
+dd(Module::getClassNamespace());
+dd(Module::getPath());
+$a=strlen(base_path('Modules'));
+$b=strlen('Routes')+1;
+dd('Modules'.substr(__DIR__,$a,-$b));
+$rc = new \ReflectionClass(\get_class($this));
+dd($rc->getNamespaceName()); //Illuminate\Routing
+*/
+
+
+/*
+$namespace= $rc->getNamespaceName();
+dd(__DIR__);
+*/
+//dd(Module::getUsed()); //Nwidart\Modules\Laravel\LaravelFileRepository
+//dd(get_class($this)); //Illuminate\Routing\RouteFileRegistrar
+//dd(self::$moduleNamespace);
+use Modules\Extend\Services\RouteService;
+$namespace = '\Modules\Blog';//$this->getNamespace();
+$pack = class_basename($namespace);
+$namespace .= '\Http\Controllers';
+$middleware = ['web', 'guest']; //guest ti riindirizza se non sei loggato
+$middleware = ['web'];
+
+$item2=include(__DIR__.'/common.php');
+
+$areas_prgs = [
+    $item2,
+];
+
+$seg01=\Request::segment(1);
+/*
+$langs=config('laravellocalization.supportedLocales');
+if(!is_array($langs)){
+    ddd('set config laravellocalization.supportedLocales');
+}
+$langs=array_keys($langs);
+if (\in_array($seg01, $langs, true)) {
+    App::setLocale($seg01);
+}
+*/
+
+if ('adm3333in' != $seg01) { //dal backend si creano i link per il frontend ..
+    $prefix=\Request::segment(1);
+    $prefix= LaravelLocalization::setLocale();  //da valutare
+    $prefix = App::getLocale();
+
+    //$middleware= [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ];
+    //$prefix='{lang}';
+   
+    Route::group(
+        [
+        'prefix' => $prefix,
+        //'where' => ['lang' => '[a-zA-Z]{2}','container0'=>'^(?!login).*$'],
+        'middleware' => $middleware,
+        'namespace' => $namespace,
+        ],
+        function () use ($areas_prgs,$namespace) {
+            Route::get('/', 'HomeController@index'); // different from below because this is for lang
+            Route::get('/home', 'HomeController@index'); //togliere o tenere ?
+            //RouteService::dynamic_route($areas_prgs, null, $namespace);
+        }
+    );
+}
+
+
+
+Route::group(['prefix' => null, 'middleware' => $middleware, 'namespace' => $namespace], function () {
+    Route::get('/', 'HomeController@index');
+    Route::get('/home', 'HomeController@index'); //togliere o tenere ?
+    Route::get('/redirect', 'HomeController@redirect');
+    Route::get('/test01', 'HomeController@test01');
+});
+
+
+if(\Request::segment(1)=='admin'  && \Request::segment(2)=='blog'){
+    //require_once(__DIR__.'/web_admin_blog.php'); //diventato generico
+}
+
+//$this->routes();
