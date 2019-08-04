@@ -14,19 +14,16 @@ use Modules\Extend\Services\StubService;
 
 //------ traits ---
 
-trait LinkedTrait
-{
+trait LinkedTrait{
 
-    public function getRouteKeyName()
-    {
+    public function getRouteKeyName(){
         //return 'guid';
         //return \Request::segment(1) === 'admin' ? 'post_id' : 'guid';
         return \inAdmin() ? 'post_id' : 'guid';
         //return  'post.guid';
     }
     //------- relationships ------------
-    public function post()
-    {
+    public function post(){
         //update blog_posts set linkable_type=type
         return $this->morphOne(Post::class,'post',null,'post_id')->where('lang',$this->lang);
         //return $this->hasOne(Post::class,'post_id','post_id')->where('type',$this->post_type)->where('lang',$this->lang); 
@@ -419,10 +416,18 @@ public function morphRelatedRev($related/*,$inverse=false*/){
     }
 
     public function scopeWithPost($query,$guid){
-        return $query->join('blog_posts','blog_posts.post_id','=',$this->getTable().'.post_id')
+        /*
+        return $query->join('blog_posts as post','post.post_id','=',$this->getTable().'.post_id')
                                 ->where('lang',$this->lang)
-                                ->where('blog_posts.post_type',$this->post_type)
+                                ->where('post.post_type',$this->post_type)
                                 ;
+        */
+        return $query->join('blog_posts as post',function ($join) {
+                $join->on('post.post_id','=',$this->getTable().'.post_id')
+                        ->where('lang',$this->lang)
+                        ->where('post.post_type',$this->post_type)
+                        ;
+        });
     }
 
     /*
