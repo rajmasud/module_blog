@@ -49,11 +49,15 @@ class PagePolicy
 
         return false;
     }
-
-    public function show(User $user, Post $post)
-    {
-        return false;
+    
+    public function index(?User $user, Post $post){
+        return true;
     }
+
+    public function show(?User $user, Post $post){
+        return true;
+    }
+
 
     public function indexEdit(User $user, Post $post){
         return true;

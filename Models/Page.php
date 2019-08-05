@@ -17,8 +17,7 @@ use Modules\Theme\Services\ThemeService;
  *
  * @mixin \Eloquent
  */
-class Page extends BaseModel
-{
+class Page extends BaseModel{
     //use Searchable; //se non si crea prima indice da un sacco di errori
     /*
     use Updater;
@@ -38,14 +37,14 @@ class Page extends BaseModel
     protected $dates = ['published_at'/* 'created_at', 'updated_at'*/];
     protected $primaryKey = 'post_id';
     public $incrementing = true;
-
+    /*
     public function filter($params)
     {
         $row = new self();
 
         return $row;
     }
-
+    */
     //end filter
 
     //--------- relationship ---------------
@@ -55,6 +54,7 @@ class Page extends BaseModel
         return $this->belongsTo(Post::class, 'post_id', 'post_id');
     }
     */
+    /*
     public function relatedType($type)
     {
         $post = $this->post;
@@ -65,7 +65,7 @@ class Page extends BaseModel
 
         return $post->related()->wherePivot('type', $type); //->where('lang',\App::getLocale());
     }
-
+    */
     //---------- mututars -----------
     /*
     public function getPublishedAtAttribute($value){
@@ -73,6 +73,7 @@ class Page extends BaseModel
         //return $value->formatLocalized('%d/%m/%Y %H:%M');
     }
     //*/
+    /*
     public function setPublishedAtAttribute($value)
     {
         //-- with datetimelocal
@@ -81,21 +82,21 @@ class Page extends BaseModel
         }
         $this->attributes['published_at'] = $value; //->toDateString();
     }
-
+    */
     /*
     public function getArticleTypeAttribute($value){
         dd(\Request::input('category_id'));
     }
     */
-
+    /*
     public function setArticleTypeAttribute($value)
     {
         //dd();
         $this->setCategoryIdAttribute(\Request::input('category_id'));
         $this->attributes['article_type'] = $value;
     }
-
-    //*
+    */
+    /*
     public function getCategoryIdAttribute($value)
     {
         if (null == $this->relatedType('category')) {
@@ -114,7 +115,7 @@ class Page extends BaseModel
    
 
     //--------- functions -----------
-
+    /*
     public function formFields()
     {
         //$view=ThemeService::getView(); //non posso usarla perche' restituisce la view del chiamante
@@ -123,7 +124,7 @@ class Page extends BaseModel
 
         return view($view)->with('row', $this->post)->with($roots);
     }
-
+    */
     /*
      * Convert a DateTime to a storable string.
      *
