@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Blog extends BaseModel
 {
+    protected $fillable=[''];
+
     //use LinkedTrait;
     protected $table = 'blog_posts';
     /*
