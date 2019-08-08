@@ -173,13 +173,24 @@ class Post extends Model //NO BaseModel
         }
     }
 
+    public function getTitleAttribute($value){
+    	if($value!='') return $value;
+    	$value=$this->attributes['post_type'].' '.$this->attributes['post_id'];
+    	$this->title=$value;
+    	$this->save();
+    	return $value;
+    }
+
     public function getGuidAttribute($value){
     	if($value!='') return $value;
-    	if($this->attributes['title']!=''){
-    		$value=Str::slug($this->attributes['title'].' ');
-    	}else{
-    		$value=$this->attributes['post_id'];
+    	if($this->attributes['title']==''){
+    		$title=$this->attributes['post_type'].' '.$this->attributes['post_id'];
+    		$this->attributes['title']=$title;
+    		$this->title=$title;
+    		$this->save();
     	}
+    	$value=Str::slug($this->attributes['title'].' ');
+    	
     	$this->guid=$value;
     	$this->save();
     	return $value;
@@ -191,6 +202,7 @@ class Post extends Model //NO BaseModel
     }
 
     public function getUrlAttribute($value){
+    	//ddd($value);
 		if (isset($this->pivot)) {
 			return $this->pivot->url;//.'#PIVOT';
 		}

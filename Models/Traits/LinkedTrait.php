@@ -145,13 +145,40 @@ trait LinkedTrait{
         }
         return $value;
     }
+    //*
+    public function getUrlAttribute_fix($value){
+        
+        if($this->getKey()!=''){
+            $post=$this->post;
+            if($post->title==''){
+                $post->title=$post->post_type.' '.$this->post_id;
+                $post->save();
+            }
+            if($post->guid==''){
+                $post->guid=Str::slug($post->title);
+                $post->save();    
+            }
+            if($post->post_type == $post->guid){
+                $post->guid=$post->guid.'_'.$this->post_id;
+                $post->save();
+            }
+            if($post->post_type == $post->title){
+                $post->title=$post->title.' '.$this->post_id;
+                $post->save();    
+            }
+        }
+        return '###########';        
+    }
+    //*/
     //---- da mettere i mancanti --- 
     public function getTitleAttribute($value)       {return $this->getPostAttr(__FUNCTION__,$value);}
     public function getSubtitleAttribute($value)    {return $this->getPostAttr(__FUNCTION__,$value);}
     public function getGuidAttribute($value)        {return $this->getPostAttr(__FUNCTION__,$value);}
     public function getImageSrcAttribute($value)    {return $this->getPostAttr(__FUNCTION__,$value);}
     public function getTxtAttribute($value)         {return $this->getPostAttr(__FUNCTION__,$value);}
-    public function getUrlAttribute($value)         {return $this->getPostAttr(__FUNCTION__,$value);}
+    //*
+    public function getUrlAttribute($value)         {return $this->getPostAttr(__FUNCTION__,$value);} 
+    //*/
     public function getRoutenameAttribute($value)   {return $this->getPostAttr(__FUNCTION__,$value);}
 
     //public function setTitleAttribute($value)       {return $this->setPostAttr(__FUNCTION__,$value);}

@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Modules\Extend\Services\StubService;
 use Modules\Extend\Services\RouteService;
 
+//----- actions ---
+//use Modules\Blog\Models\Panels\Actions\RateItAction;
+
 
 use Modules\Xot\Models\Panels\XotBasePanel;
 
@@ -32,16 +35,14 @@ class RatingMorphPanel extends XotBasePanel {
 	 *
 	 * @var array
 	 */
-	public static $search = array (
-) ;
+	public static $search = [];
 
 	/**
 	* The relationships that should be eager loaded on index queries.
 	*
 	* @var array
 	*/
-	public static function with()
-	{
+	public static function with(){
 	  return [];
 	}
 
@@ -113,52 +114,53 @@ class RatingMorphPanel extends XotBasePanel {
 
 
 
-	public static function fields()
-	{
-		return array (
-  0 => 
-  (object) array(
-     'type' => 'Text',
-     'name' => 'id',
-     'comment' => 'not in Doctrine',
-  ),
-  1 => 
-  (object) array(
-     'type' => 'Text',
-     'name' => 'post_id',
-     'comment' => 'not in Doctrine',
-  ),
-  2 => 
-  (object) array(
-     'type' => 'Text',
-     'name' => 'post_type',
-     'comment' => 'not in Doctrine',
-  ),
-  3 => 
-  (object) array(
-     'type' => 'Text',
-     'name' => 'related_id',
-     'comment' => 'not in Doctrine',
-  ),
-  4 => 
-  (object) array(
-     'type' => 'Text',
-     'name' => 'related_type',
-     'comment' => 'not in Doctrine',
-  ),
-  5 => 
-  (object) array(
-     'type' => 'Text',
-     'name' => 'rating',
-     'comment' => 'not in Doctrine',
-  ),
-  6 => 
-  (object) array(
-     'type' => 'Text',
-     'name' => 'auth_user_id',
-     'comment' => 'not in Doctrine',
-  ),
-);
+	public static function fields(){
+		return [
+			(object) [
+				'type' => 'Id',
+				'name' => 'id',
+				'comment' => 'not in Doctrine',
+			],
+			(object) [
+				'type' => 'Integer',
+				'name' => 'post_id',
+				'comment' => 'not in Doctrine',
+			],
+			(object) [
+				'type' => 'Text',
+				'name' => 'post_type',
+				'comment' => 'not in Doctrine',
+			],
+			(object) [
+				'type' => 'Text',
+				'name' => 'related_id',
+				'comment' => 'not in Doctrine',
+			],
+			(object) [
+				'type' => 'Text',
+				'name' => 'related_type',
+				'comment' => 'not in Doctrine',
+			],
+			/*
+			(object) [
+				'type' => 'Text',
+				'name' => 'title', 
+				'comment' => 'not in Doctrine',
+			],
+			*/
+			(object) [
+				'type' => 'Rating',
+				'name' => 'rating',
+				'comment' => 'not in Doctrine',
+			],
+			/*
+			(object) [
+				'type' => 'Hidden',
+				'name' => 'auth_user_id',
+				'comment' => 'not in Doctrine',
+			],
+			*/
+		];
 	}
 	 
 	/**
@@ -213,9 +215,10 @@ class RatingMorphPanel extends XotBasePanel {
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return array
 	 */
-	public function actions(Request $request=null)
-	{
-		return [];
+	public function actions(){
+		return [
+				new Actions\RateIt(),
+			];
 	}
 
 }

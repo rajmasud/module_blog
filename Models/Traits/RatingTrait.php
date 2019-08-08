@@ -15,7 +15,7 @@ use Modules\Theme\Services\ThemeService;
 trait RatingTrait{
 
 	//----- relationship -----
-
+    /*
 	 public function ratings(){
         $related=Rating::class;
         if(is_string($related)){
@@ -34,13 +34,18 @@ trait RatingTrait{
         $inverse=false;
         //$related_table=with(new $related)->getTable();
         //return $this->morphRelated($related);
-        ///*
+        
         return $this->morphToMany($related, $name,$pivot_table, $foreignPivotKey,
                                 $relatedPivotKey, $parentKey,
                                 $relatedKey, $inverse)
                     ->withPivot($pivot_fields)
                     //->wherePivot('auth_user_id',\Auth::user()->auth_user_id)
         ;
+    }
+    */
+    public function ratings(){
+        $related=Rating::class;
+        return $this->morphRelated($related);
     }
 
     public function ratingObjectives(){
