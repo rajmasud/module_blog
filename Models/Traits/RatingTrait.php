@@ -59,7 +59,7 @@ trait RatingTrait{
         return $rows;
     }
 	//----- mutators -----
-
+    /*
     public function getMyRatingAttribute($value){
         $my=$this->myRatings;
         return $my->pluck('pivot.rating','post_id');
@@ -68,6 +68,6 @@ trait RatingTrait{
     public function setMyRatingAttribute($value){
         ddd($value);
     }
-
+    */
 
 }

@@ -134,8 +134,7 @@ class RatingPanel extends XotBasePanel
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function lenses(Request $request)
-    {
+    public function lenses(Request $request){
         return [];
     }
 
@@ -145,11 +144,10 @@ class RatingPanel extends XotBasePanel
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function actions()
-    {
+    public function actions(){
         return [];
     }
-
+    /*
     public function indexEdit(){
         $params = \Route::current()->parameters();
         list($containers,$items)=params2ContainerItem($params);
@@ -161,5 +159,5 @@ class RatingPanel extends XotBasePanel
         //return $_layout->view_extend.'.body.multi_select';
         return $_layout->view_extend.'.body.rating';
     }
-
+    */
 }
