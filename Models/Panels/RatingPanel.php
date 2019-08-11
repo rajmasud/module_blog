@@ -12,31 +12,12 @@ use Modules\Extend\Services\RouteService;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
 
-class RatingPanel extends XotBasePanel
-{
-    /**
-     * The model the resource corresponds to.
-     *
-     * @var string
-     */
+class RatingPanel extends XotBasePanel{
     public static $model = 'Modules\Blog\Models\Rating';
-
-    /**
-     * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
-     */
     public static $title = "title"; 
-
-    /**
-     * The columns that should be searched.
-     *
-     * @var array
-     */
     public static $search = [];
     
-    public function search()
-    {
+    public function search(){
       return [];
     }
 
@@ -45,8 +26,7 @@ class RatingPanel extends XotBasePanel
     *
     * @var array
     */
-    public static function with()
-    {
+    public static function with(){
       return [];
     }
 
@@ -75,8 +55,7 @@ class RatingPanel extends XotBasePanel
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public static function fields()
-    {
+    public static function fields(){
         return array (
               (object) array(
                  'type' => 'BigInt',
@@ -112,8 +91,7 @@ class RatingPanel extends XotBasePanel
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function cards(Request $request)
-    {
+    public function cards(Request $request){
         return [];
     }
 
@@ -123,8 +101,7 @@ class RatingPanel extends XotBasePanel
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function filters(Request $request=null)
-    {
+    public function filters(Request $request=null){
         return [];
     }
 
