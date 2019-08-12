@@ -99,9 +99,11 @@ class PrivacyCheckRule implements Rule,ImplicitRule{
         $data=(\Request::all());
         $value_required=Arr::get($data, $key_required);
         $value=(integer)$value;
-        if($key_required!='privacies.111.pivot.privacy.obligatory'){
+        //ddd($data);
+        //ddd($key_required.' '.$value_required);
+        //if($key_required!='privacies.111.pivot.privacy.obligatory'){
             //ddd('<h3>['.$key_required.']['.$value_required.']['.$value.']</h3>');
-        }
+        //}
         if($value_required==1 && $value==0 ){
             return false;
         }
