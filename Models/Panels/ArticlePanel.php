@@ -10,8 +10,7 @@ use Modules\Extend\Services\RouteService;
 //---- bases --
 use Modules\Xot\Models\Panels\XotBasePanel;
 
-class ArticlePanel extends XotBasePanel
-{
+class ArticlePanel extends XotBasePanel{
     /**
      * The model the resource corresponds to.
      *
@@ -53,32 +52,36 @@ class ArticlePanel extends XotBasePanel
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public static function fields()
-    {
+    public static function fields(){
         return array (
           (object) array(
              'type' => 'Id',
              'name' => 'post_id',
+             'col_bs_size'=>6,
           ),
           (object) array(
              'type' => 'Integer',
              //'name' => 'post[subtitle]'
              'name' => 'parent_id',
+             'col_bs_size'=>6,
           ),
           (object) array(
              'type' => 'String',
              'name' => 'article_type',
+             'col_bs_size'=>6,
           ),
           (object) array(
              'type' => 'DateTime',
              'name' => 'published_at',
              'rules'=> 'nullable|date', // https://laravel.com/docs/5.8/validation
           //'publish_at' => 'nullable|date',
+             'col_bs_size'=>6,
           ),
           (object) array(
              'type' => 'Text',
              //'name' => 'post[title]', 
              'name' => 'post.title',
+             'col_bs_size'=>6,
 
           ),
           (object) array(
@@ -86,8 +89,15 @@ class ArticlePanel extends XotBasePanel
              //'name' => 'post[subtitle]'
              'name' => 'post.subtitle',
              'except' => ['index'],
+             'col_bs_size'=>6,
           ),
-          
+          (object) array(
+             'type' => 'Tinymce',
+             //'name' => 'post[subtitle]'
+             'name' => 'post.txt',
+             'except' => ['index'],
+             'col_bs_size'=>12,
+          ),
 
         );
     }

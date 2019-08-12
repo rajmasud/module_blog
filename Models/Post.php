@@ -16,78 +16,27 @@ use Modules\Theme\Services\ThemeService;
 //--- models ---
 use Modules\LU\Models\User;
 
-class Post extends Model //NO BaseModel
-{
-	//use FilterTrait;
+//NO BaseModel
+class Post extends Model {
 	//use Searchable; //ne update quando aggiungo un array mi da errore
 	use Updater;
-	//use ImportTrait;
-	//use PostTrait;
 
-	protected $dates = [
-		'created_at',
-		'updated_at',
-		'deleted_at',
-		'published_at',
-	];
-
-	protected $casts = [
-		//'is_admin' => 'boolean',
-		//'content' => 'array',
-		//'content_type' => 'array',
-		'image_resize_src' => 'array',
-		//'url' => 'array',
-		'url_lang' => 'array',
-		//'linked_count' => 'array',
-		//'related_count' => 'array',
-		//'relatedrev_count' => 'array',
-		//'tags' => 'string',
-		//'parent_id' => 'integer',
-	];
-
-	//protected $primaryKey = ['post_id','lang'];  //problemi ovunque nel crud
-	//protected $primaryKey = 'post_id';  //aggiorna sempre tutti anche quelli delle lingue diverse, fino a bug risolto usiamo PostRev
-
-	/**
-	 * The table associated with the model.
-	 *
-	 * @var string
-	 */
-	protected $connection = 'mysql'; // this will use the specified database conneciton
+	//protected $connection = 'mysql'; // this will use the specified database conneciton
 	protected $table = 'blog_posts';
-
-	/**
-	 * The attributes that are mass assignable.
-	 *
-	 * @var array
-	 */
+	
 	protected $fillable = [
-		'post_id', //importante per le tabelle collegate
-		'lang',
+		'id','post_id','lang','guid',
 		'title',
 		'subtitle',
-		'guid',
-		//'type',
-		'post_type', //da type a post_type per il morph
+		'post_type', 
 		'txt',
-		'image_src', 'image_alt', 'image_title',
-		'meta_description',
-		'meta_keyword',
+		'image_src', 'image_alt', 'image_title', //image
+		
+		'meta_description','meta_keyword', // seo
 		'author_id',
-		'created_at',
-		'updated_at',
-		'published',
-		//'tags',
-		'title',
-		'description',
-		'content',
-		'parent_id',  //nella prox versione forse va a prendere il setAttributeId
-		'url',
-		'url_lang', //buffer
+		'url','url_lang', //buffer
 		'image_resize_src', // buffer
-		'linked_count', // buffer
-		'related_count', // buffer
-		'relatedrev_count', //buffer
+		//'published_at',
 	];
 
 	protected $appends = [/*'linked',*//*'category_id',*//*'tags',*//*'parent_id'*//*,'pivot'*/]; // category_id dipende dalla tabella linked
@@ -95,9 +44,18 @@ class Post extends Model //NO BaseModel
 	protected $primaryKey = 'id';  //no give error because the key is post_id + lang
 	public $incrementing = true;
 
+	protected $dates = [
+		'created_at','updated_at','deleted_at',
+		'published_at',
+	];
 
-	public function getRouteKeyName()
-	{
+	protected $casts = [
+		'image_resize_src' => 'array',
+		'url_lang' => 'array',
+	];
+
+
+	public function getRouteKeyName(){
 		return 'guid';
 		//return \Request::segment(1) === 'admin' ? 'post_id' : 'guid';
 	}
