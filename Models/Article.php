@@ -19,8 +19,7 @@ use Modules\Theme\Services\ThemeService;
  *
  * @mixin \Eloquent
  */
-class Article extends BaseModel
-{
+class Article extends BaseModel {
     //use Searchable; //se non si crea prima indice da un sacco di errori
     /*
     use Updater;
@@ -32,15 +31,15 @@ class Article extends BaseModel
      *
      * @var array
      */
-    protected $fillable = ['post_id', 'article_type', 'published_at','guid'];
+    protected $fillable = ['post_id', 'article_type', 'published_at','parent_id','parent_type'];
     //protected $appends=['category_id'];
     protected $casts = [
         //'category_id' => 'integer',
     ];
-    protected $dates = ['published_at'/* 'created_at', 'updated_at'*/];
+    protected $dates = ['published_at', 'created_at', 'updated_at' ];
     protected $primaryKey = 'post_id';
     public $incrementing = true;
-
+    /*
     public function filter($params)
     {
         $row = new self();
@@ -48,10 +47,16 @@ class Article extends BaseModel
 
         return $row;
     }
-
+    */
     //end filter
 
     //--------- relationship ---------------
+    public function sons(){
+        //return $this->morphMany('App\Comment', 'commentable');
+        return $this->hasMany(Article::class,'post_id','parent_id');
+    }
+
+
     /*
     public function post()
     {
@@ -86,9 +91,15 @@ class Article extends BaseModel
         //return $value->formatLocalized('%d/%m/%Y %H:%M');
     }
     //*/
+    public function getParentIdAttribute($value){
+        if($value!='') return $value;
+        $value=0;
+        $this->parent_id=$value;
+        $this->save();
+        return $value;
+    }
 
-    public function setPublishedAtAttribute($value)
-    {
+    public function setPublishedAtAttribute($value){
         if (\is_string($value)) {
             //ddd($value);
             /*

@@ -31,15 +31,13 @@ class ArticlePanel extends XotBasePanel
      *
      * @var array
      */
-    public static $search = array (
-) ;
+    public static $search = [];
     /**
     * The relationships that should be eager loaded on index queries.
     *
     * @var array
     */
-    public static function with()
-    {
+    public static function with(){
       return ['post'];
     }
 
@@ -63,6 +61,11 @@ class ArticlePanel extends XotBasePanel
              'name' => 'post_id',
           ),
           (object) array(
+             'type' => 'Integer',
+             //'name' => 'post[subtitle]'
+             'name' => 'parent_id',
+          ),
+          (object) array(
              'type' => 'String',
              'name' => 'article_type',
           ),
@@ -74,16 +77,17 @@ class ArticlePanel extends XotBasePanel
           ),
           (object) array(
              'type' => 'Text',
-             //'name' => 'post[title]',
+             //'name' => 'post[title]', 
              'name' => 'post.title',
 
           ),
           (object) array(
              'type' => 'Text',
              //'name' => 'post[subtitle]'
-             'name' => 'post.subtitle'
+             'name' => 'post.subtitle',
+             'except' => ['index'],
           ),
-
+          
 
         );
     }
