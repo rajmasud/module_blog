@@ -1,10 +1,13 @@
 <?php
 namespace Modules\Blog\Models;
 
+<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 use Illuminate\Database\Eloquent\Relations\MorphPivot;
 
+=======
+>>>>>>> the first commit
 use Carbon\Carbon;
 
 //use Illuminate\Database\Eloquent\Model;
@@ -20,10 +23,15 @@ use Carbon\Carbon;
  *
  * @mixin \Eloquent
  */
+<<<<<<< HEAD
 class RatingMorph 
     //extends BaseModel 
     extends MorphPivot
     {
+=======
+class RatingMorph extends BaseModel
+{
+>>>>>>> the first commit
     //use Searchable; //se non si crea prima indice da un sacco di errori
     //use Updater;
     //use LinkedTrait;
@@ -34,6 +42,7 @@ class RatingMorph
     protected $dates = ['created_at', 'updated_at'];
     protected $primaryKey = 'id';
     public $incrementing = true;
+<<<<<<< HEAD
 
     public function rating(){
         return $this->hasOne(Rating::class,'post_id','related_id');
@@ -43,5 +52,7 @@ class RatingMorph
         return 'ooo';
     }
 
+=======
+>>>>>>> the first commit
     
 }

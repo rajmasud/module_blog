@@ -19,7 +19,12 @@ use Modules\Theme\Services\ThemeService;
  *
  * @mixin \Eloquent
  */
+<<<<<<< HEAD
 class Article extends BaseModel {
+=======
+class Article extends BaseModel
+{
+>>>>>>> the first commit
     //use Searchable; //se non si crea prima indice da un sacco di errori
     /*
     use Updater;
@@ -31,15 +36,26 @@ class Article extends BaseModel {
      *
      * @var array
      */
+<<<<<<< HEAD
     protected $fillable = ['post_id', 'article_type', 'published_at','parent_id','parent_type'];
+=======
+    protected $fillable = ['post_id', 'article_type', 'published_at','guid'];
+>>>>>>> the first commit
     //protected $appends=['category_id'];
     protected $casts = [
         //'category_id' => 'integer',
     ];
+<<<<<<< HEAD
     protected $dates = ['published_at', 'created_at', 'updated_at' ];
     protected $primaryKey = 'post_id';
     public $incrementing = true;
     /*
+=======
+    protected $dates = ['published_at'/* 'created_at', 'updated_at'*/];
+    protected $primaryKey = 'post_id';
+    public $incrementing = true;
+
+>>>>>>> the first commit
     public function filter($params)
     {
         $row = new self();
@@ -47,6 +63,7 @@ class Article extends BaseModel {
 
         return $row;
     }
+<<<<<<< HEAD
     */
     //end filter
 
@@ -57,6 +74,12 @@ class Article extends BaseModel {
     }
 
 
+=======
+
+    //end filter
+
+    //--------- relationship ---------------
+>>>>>>> the first commit
     /*
     public function post()
     {
@@ -91,6 +114,7 @@ class Article extends BaseModel {
         //return $value->formatLocalized('%d/%m/%Y %H:%M');
     }
     //*/
+<<<<<<< HEAD
     public function getParentIdAttribute($value){
         if($value!='') return $value;
         $value=0;
@@ -100,6 +124,11 @@ class Article extends BaseModel {
     }
 
     public function setPublishedAtAttribute($value){
+=======
+
+    public function setPublishedAtAttribute($value)
+    {
+>>>>>>> the first commit
         if (\is_string($value)) {
             //ddd($value);
             /*

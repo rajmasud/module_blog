@@ -6,9 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 //use Modules\Blog\Models\Traits\LinkedTrait;
 
 class Blog extends BaseModel
+<<<<<<< HEAD
 {
     protected $fillable=[''];
 
+=======
+{
+>>>>>>> the first commit
     //use LinkedTrait;
     protected $table = 'blog_posts';
     /*

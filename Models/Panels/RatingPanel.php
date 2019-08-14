@@ -12,12 +12,40 @@ use Modules\Extend\Services\RouteService;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
 
+<<<<<<< HEAD
 class RatingPanel extends XotBasePanel{
     public static $model = 'Modules\Blog\Models\Rating';
     public static $title = "title"; 
     public static $search = [];
     
     public function search(){
+=======
+class RatingPanel extends XotBasePanel
+{
+    /**
+     * The model the resource corresponds to.
+     *
+     * @var string
+     */
+    public static $model = 'Modules\Blog\Models\Rating';
+
+    /**
+     * The single value that should be used to represent the resource when being displayed.
+     *
+     * @var string
+     */
+    public static $title = "title"; 
+
+    /**
+     * The columns that should be searched.
+     *
+     * @var array
+     */
+    public static $search = [];
+    
+    public function search()
+    {
+>>>>>>> the first commit
       return [];
     }
 
@@ -26,7 +54,12 @@ class RatingPanel extends XotBasePanel{
     *
     * @var array
     */
+<<<<<<< HEAD
     public static function with(){
+=======
+    public static function with()
+    {
+>>>>>>> the first commit
       return [];
     }
 
@@ -55,7 +88,12 @@ class RatingPanel extends XotBasePanel{
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
+<<<<<<< HEAD
     public static function fields(){
+=======
+    public static function fields()
+    {
+>>>>>>> the first commit
         return array (
               (object) array(
                  'type' => 'BigInt',
@@ -91,7 +129,12 @@ class RatingPanel extends XotBasePanel{
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
+<<<<<<< HEAD
     public function cards(Request $request){
+=======
+    public function cards(Request $request)
+    {
+>>>>>>> the first commit
         return [];
     }
 
@@ -101,7 +144,12 @@ class RatingPanel extends XotBasePanel{
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
+<<<<<<< HEAD
     public function filters(Request $request=null){
+=======
+    public function filters(Request $request=null)
+    {
+>>>>>>> the first commit
         return [];
     }
 
@@ -111,7 +159,12 @@ class RatingPanel extends XotBasePanel{
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
+<<<<<<< HEAD
     public function lenses(Request $request){
+=======
+    public function lenses(Request $request)
+    {
+>>>>>>> the first commit
         return [];
     }
 
@@ -121,10 +174,18 @@ class RatingPanel extends XotBasePanel{
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
+<<<<<<< HEAD
     public function actions(){
         return [];
     }
     /*
+=======
+    public function actions()
+    {
+        return [];
+    }
+
+>>>>>>> the first commit
     public function indexEdit(){
         $params = \Route::current()->parameters();
         list($containers,$items)=params2ContainerItem($params);
@@ -136,5 +197,9 @@ class RatingPanel extends XotBasePanel{
         //return $_layout->view_extend.'.body.multi_select';
         return $_layout->view_extend.'.body.rating';
     }
+<<<<<<< HEAD
     */
+=======
+
+>>>>>>> the first commit
 }

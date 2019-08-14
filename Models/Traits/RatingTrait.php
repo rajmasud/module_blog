@@ -15,7 +15,11 @@ use Modules\Theme\Services\ThemeService;
 trait RatingTrait{
 
 	//----- relationship -----
+<<<<<<< HEAD
     /*
+=======
+
+>>>>>>> the first commit
 	 public function ratings(){
         $related=Rating::class;
         if(is_string($related)){
@@ -34,7 +38,11 @@ trait RatingTrait{
         $inverse=false;
         //$related_table=with(new $related)->getTable();
         //return $this->morphRelated($related);
+<<<<<<< HEAD
         
+=======
+        ///*
+>>>>>>> the first commit
         return $this->morphToMany($related, $name,$pivot_table, $foreignPivotKey,
                                 $relatedPivotKey, $parentKey,
                                 $relatedKey, $inverse)
@@ -42,11 +50,14 @@ trait RatingTrait{
                     //->wherePivot('auth_user_id',\Auth::user()->auth_user_id)
         ;
     }
+<<<<<<< HEAD
     */
     public function ratings(){
         $related=Rating::class;
         return $this->morphRelated($related);
     }
+=======
+>>>>>>> the first commit
 
     public function ratingObjectives(){
         $related=Rating::class;
@@ -59,7 +70,11 @@ trait RatingTrait{
         return $rows;
     }
 	//----- mutators -----
+<<<<<<< HEAD
     /*
+=======
+
+>>>>>>> the first commit
     public function getMyRatingAttribute($value){
         $my=$this->myRatings;
         return $my->pluck('pivot.rating','post_id');
@@ -68,6 +83,10 @@ trait RatingTrait{
     public function setMyRatingAttribute($value){
         ddd($value);
     }
+<<<<<<< HEAD
     */
+=======
+
+>>>>>>> the first commit
 
 }

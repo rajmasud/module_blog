@@ -49,6 +49,7 @@ class PagePolicy
 
         return false;
     }
+<<<<<<< HEAD
     
     public function index(?User $user, Post $post){
         return true;
@@ -59,6 +60,14 @@ class PagePolicy
     }
 
 
+=======
+
+    public function show(User $user, Post $post)
+    {
+        return false;
+    }
+
+>>>>>>> the first commit
     public function indexEdit(User $user, Post $post){
         return true;
     }

@@ -11,7 +11,12 @@ use Modules\Extend\Services\RouteService;
 
 use Modules\Xot\Models\Panels\XotBasePanel;
 
+<<<<<<< HEAD
 class PrivacyPanel extends XotBasePanel{
+=======
+class PrivacyPanel extends XotBasePanel
+{
+>>>>>>> the first commit
     /**
      * The model the resource corresponds to.
      *

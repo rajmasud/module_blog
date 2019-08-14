@@ -14,16 +14,29 @@ use Modules\Extend\Services\StubService;
 
 //------ traits ---
 
+<<<<<<< HEAD
 trait LinkedTrait{
 
     public function getRouteKeyName(){
+=======
+trait LinkedTrait
+{
+
+    public function getRouteKeyName()
+    {
+>>>>>>> the first commit
         //return 'guid';
         //return \Request::segment(1) === 'admin' ? 'post_id' : 'guid';
         return \inAdmin() ? 'post_id' : 'guid';
         //return  'post.guid';
     }
     //------- relationships ------------
+<<<<<<< HEAD
     public function post(){
+=======
+    public function post()
+    {
+>>>>>>> the first commit
         //update blog_posts set linkable_type=type
         return $this->morphOne(Post::class,'post',null,'post_id')->where('lang',$this->lang);
         //return $this->hasOne(Post::class,'post_id','post_id')->where('type',$this->post_type)->where('lang',$this->lang); 
@@ -86,6 +99,7 @@ trait LinkedTrait{
         ;
     }
 
+<<<<<<< HEAD
     //------- mutators -------------
     /*
     public function getTypeAttribute($value){
@@ -93,6 +107,136 @@ trait LinkedTrait{
     }
     */
     public function getPostTypeAttribute($value){
+=======
+
+
+
+    public function morphRelatedOLD($related,$inverse=false){
+        //-- name post perche' dopo va a cercare il proprio oggetto dentro $name .'_type';
+        // percio' post_type=restaurant
+        $related_table=with(new $related)->getTable();
+        $related_class=$related;
+        if(is_object($related_class)){
+            $related_class=get_class($related_class);
+            //ddd($related_class);
+        }
+        $related_type=collect(config('xra.model'))->search($related_class);
+        //ddd(is_object($related));
+        if($related_type==''){
+            //var_dump(debug_backtrace());
+            echo '<h3>Line:['.__LINE__.']<br/>File:['.__FILE__.']['.$related_class.'] da mettere in xra.model</h3>';
+            echo '<pre>';print_r(var_dump(config('xra.model')));echo '</pre>';
+            //var_dump(debug_backtrace());
+            ddd('fix');
+
+        }
+        //ddd($related);
+        //if(!isset($alias[$related])){
+        //    ddd($related);
+        //}
+        //$related_type=($alias[$related]); 
+        $name='post';//'related';//'relatable'; 
+        $pivot_table ='blog_post_related';
+        /*
+        $pivot_class=$related_class.'Pivot';
+        $pivot_obj=new $pivot_class;
+        */
+        //ddd($pivot_obj->getFillable()); //peril withpivot
+        //ddd($pivot_obj->getTable()); //per passare al morph il nome tabella
+        
+        //ddd($related_class.'Pivot');// con questo avrei i fillable, e il getTable
+        //$pivot_table=$related_table.'_pivot';  
+        $foreignPivotKey = 'post_id'; 
+        $relatedPivotKey = 'related_id'; 
+        $parentKey = 'post_id';
+        $relatedKey = 'post_id'; 
+        //$inverse = false; //passato da parametro
+        $pivot_fields = [ 'pos', 'price', 'price_currency', 'id','post_type','related_type']; //'type', tolto
+        return $this->morphToMany($related, $name,$pivot_table, $foreignPivotKey,
+                                $relatedPivotKey, $parentKey,
+                                $relatedKey, $inverse)
+                    ->withPivot($pivot_fields)
+                    ->wherePivot('related_type', $related_type)
+                    ->using(PostRelatedMorphPivot::class)
+                    //------------------------------ 
+                    ->join('blog_posts','blog_posts.post_id','=',$related_table.'.post_id')
+                    ->where('blog_posts.post_type',$related_type)
+                    ->where('blog_posts.lang',$this->lang)
+                    //--------------------------------
+                    ->orderBy($pivot_table.'.pos', 'asc')
+                    ->with(['post'])
+                    ->distinct()
+                    ; 
+    }
+public function morphRelatedRev($related/*,$inverse=false*/){
+        //-- name post perche' dopo va a cercare il proprio oggetto dentro $name .'_type';
+        // percio' post_type=restaurant
+        $related_table=with(new $related)->getTable();
+        $related_class=$related;
+        if(is_object($related_class)){
+            $related_class=get_class($related_class);
+            //ddd($related_class);
+        }
+        $related_type=collect(config('xra.model'))->search($related_class);
+
+        $name='post';//'related';//'relatable'; 
+        $table ='blog_post_related'; 
+        $foreignPivotKey = 'related_id';         //where `blog_post_related`.`post_id_1` = 220792
+        $relatedPivotKey = 'post_id';      //chiave `blog_post_related`.`related_id_2`
+        $parentKey = 'post_id';                 //chiave che gli passo
+        $relatedKey = 'post_id';              //chiave di blog_post_restaurants`.`post_id_4`
+        $inverse = true; //passato da parametro
+        $pivot_fields = ['pos', 'price', 'price_currency', 'id','post_type','related_type'];
+        return $this->morphToMany($related, $name,$table, $foreignPivotKey,
+                                $relatedPivotKey, $parentKey,
+                                $relatedKey, $inverse)
+                    ->withPivot($pivot_fields)
+                    ->using(PostRelatedMorphPivot::class) /// Call to undefined method  setMorphType() ??
+                    //----------------------------------------------------------------------
+                    ->join('blog_posts','blog_posts.post_id','=',$related_table.'.post_id')
+                    ->where('blog_posts.post_type',$related_type) // da testare, verificare 
+                    ->where('blog_posts.lang',$this->lang)
+                    //----------------------------------------------------------------------
+                    ->orderBy('blog_post_related.pos', 'asc')
+                    ->with(['post'])
+                    ->distinct()
+                    ; 
+    }
+
+
+    public function related_solo_per_toglirtr()
+    {
+        //belongsToMany($related, $table, $foreignPivotKey, $relatedPivotKey,$parentKey, $relatedKey, $relation)
+        $pivot_fields = ['type', 'pos', 'price', 'price_currency', 'id'];
+        $rows = $this->belongsToMany(Post::class, 'blog_post_related', 'post_id', 'related_id', 'post_id', 'post_id')
+                ->withPivot($pivot_fields)
+                ->using(PostRelatedPivot::class)
+                ->where('lang', \App::getLocale())
+                ->orderBy('blog_post_related.pos', 'asc');
+        //->with(['related'])
+
+        return $rows;
+    }
+
+    public function relatedType($type)
+    {
+        if (false === \mb_strpos($type, '_x_')) {
+            $type = $this->post_type.'_x_'.$type;
+        }
+
+        return $this->related()->wherePivot('type', $type);
+    }
+
+    //------- mutators -------------
+
+    public function getTypeAttribute($value)
+    {
+        return camel_case(class_basename($this));
+    }
+
+    public function getPostTypeAttribute($value)
+    {
+>>>>>>> the first commit
         //if($value!='') return $value; ??????????????????????????????????????????
         //return 'aa';
         //ddd(snake_case(class_basename($this)));
@@ -145,6 +289,7 @@ trait LinkedTrait{
         }
         return $value;
     }
+<<<<<<< HEAD
     //*
     public function getUrlAttribute_fix($value){
         
@@ -170,15 +315,21 @@ trait LinkedTrait{
         return '###########';        
     }
     //*/
+=======
+>>>>>>> the first commit
     //---- da mettere i mancanti --- 
     public function getTitleAttribute($value)       {return $this->getPostAttr(__FUNCTION__,$value);}
     public function getSubtitleAttribute($value)    {return $this->getPostAttr(__FUNCTION__,$value);}
     public function getGuidAttribute($value)        {return $this->getPostAttr(__FUNCTION__,$value);}
     public function getImageSrcAttribute($value)    {return $this->getPostAttr(__FUNCTION__,$value);}
     public function getTxtAttribute($value)         {return $this->getPostAttr(__FUNCTION__,$value);}
+<<<<<<< HEAD
     //*
     public function getUrlAttribute($value)         {return $this->getPostAttr(__FUNCTION__,$value);} 
     //*/
+=======
+    public function getUrlAttribute($value)         {return $this->getPostAttr(__FUNCTION__,$value);}
+>>>>>>> the first commit
     public function getRoutenameAttribute($value)   {return $this->getPostAttr(__FUNCTION__,$value);}
 
     //public function setTitleAttribute($value)       {return $this->setPostAttr(__FUNCTION__,$value);}
@@ -322,6 +473,7 @@ trait LinkedTrait{
     }
 
     public function scopeWithPost($query,$guid){
+<<<<<<< HEAD
         /*
         return $query->join('blog_posts as post','post.post_id','=',$this->getTable().'.post_id')
                                 ->where('lang',$this->lang)
@@ -334,6 +486,12 @@ trait LinkedTrait{
                         ->where('post.post_type',$this->post_type)
                         ;
         });
+=======
+        return $query->join('blog_posts','blog_posts.post_id','=',$this->getTable().'.post_id')
+                                ->where('lang',$this->lang)
+                                ->where('blog_posts.post_type',$this->post_type)
+                                ;
+>>>>>>> the first commit
     }
 
     /*
