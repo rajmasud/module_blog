@@ -16,12 +16,7 @@ use Carbon\Carbon;
  *
  * @mixin \Eloquent
  */
-<<<<<<< HEAD
 class Rating extends BaseModel{
-=======
-class Rating extends BaseModel
-{
->>>>>>> the first commit
     //use Searchable; //se non si crea prima indice da un sacco di errori
     //use Updater;
     //use LinkedTrait;

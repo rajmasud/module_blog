@@ -17,12 +17,7 @@ use Modules\Theme\Services\ThemeService;
  *
  * @mixin \Eloquent
  */
-<<<<<<< HEAD
 class Page extends BaseModel{
-=======
-class Page extends BaseModel
-{
->>>>>>> the first commit
     //use Searchable; //se non si crea prima indice da un sacco di errori
     /*
     use Updater;
@@ -42,22 +37,14 @@ class Page extends BaseModel
     protected $dates = ['published_at'/* 'created_at', 'updated_at'*/];
     protected $primaryKey = 'post_id';
     public $incrementing = true;
-<<<<<<< HEAD
     /*
-=======
-
->>>>>>> the first commit
     public function filter($params)
     {
         $row = new self();
 
         return $row;
     }
-<<<<<<< HEAD
     */
-=======
-
->>>>>>> the first commit
     //end filter
 
     //--------- relationship ---------------
@@ -67,10 +54,7 @@ class Page extends BaseModel
         return $this->belongsTo(Post::class, 'post_id', 'post_id');
     }
     */
-<<<<<<< HEAD
     /*
-=======
->>>>>>> the first commit
     public function relatedType($type)
     {
         $post = $this->post;
@@ -81,11 +65,8 @@ class Page extends BaseModel
 
         return $post->related()->wherePivot('type', $type); //->where('lang',\App::getLocale());
     }
-<<<<<<< HEAD
     */
-=======
 
->>>>>>> the first commit
     //---------- mututars -----------
     /*
     public function getPublishedAtAttribute($value){
@@ -93,10 +74,7 @@ class Page extends BaseModel
         //return $value->formatLocalized('%d/%m/%Y %H:%M');
     }
     //*/
-<<<<<<< HEAD
     /*
-=======
->>>>>>> the first commit
     public function setPublishedAtAttribute($value)
     {
         //-- with datetimelocal
@@ -105,34 +83,22 @@ class Page extends BaseModel
         }
         $this->attributes['published_at'] = $value; //->toDateString();
     }
-<<<<<<< HEAD
     */
-=======
-
->>>>>>> the first commit
     /*
     public function getArticleTypeAttribute($value){
         dd(\Request::input('category_id'));
     }
     */
-<<<<<<< HEAD
     /*
-=======
 
->>>>>>> the first commit
     public function setArticleTypeAttribute($value)
     {
         //dd();
         $this->setCategoryIdAttribute(\Request::input('category_id'));
         $this->attributes['article_type'] = $value;
     }
-<<<<<<< HEAD
     */
     /*
-=======
-
-    //*
->>>>>>> the first commit
     public function getCategoryIdAttribute($value)
     {
         if (null == $this->relatedType('category')) {
@@ -151,11 +117,7 @@ class Page extends BaseModel
    
 
     //--------- functions -----------
-<<<<<<< HEAD
     /*
-=======
-
->>>>>>> the first commit
     public function formFields()
     {
         //$view=ThemeService::getView(); //non posso usarla perche' restituisce la view del chiamante
@@ -164,11 +126,7 @@ class Page extends BaseModel
 
         return view($view)->with('row', $this->post)->with($roots);
     }
-<<<<<<< HEAD
     */
-=======
-
->>>>>>> the first commit
     /*
      * Convert a DateTime to a storable string.
      *

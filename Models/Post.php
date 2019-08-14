@@ -16,7 +16,6 @@ use Modules\Theme\Services\ThemeService;
 //--- models ---
 use Modules\LU\Models\User;
 
-<<<<<<< HEAD
 //NO BaseModel
 class Post extends Model {
 	//use Searchable; //ne update quando aggiungo un array mi da errore
@@ -24,7 +23,7 @@ class Post extends Model {
 
 	//protected $connection = 'mysql'; // this will use the specified database conneciton
 	protected $table = 'blog_posts';
-	
+
 	protected $fillable = [
 		'id','post_id','lang','guid',
 		'title',
@@ -38,80 +37,7 @@ class Post extends Model {
 		'url','url_lang', //buffer
 		'image_resize_src', // buffer
 		//'published_at',
-=======
-class Post extends Model //NO BaseModel
-{
-	//use FilterTrait;
-	//use Searchable; //ne update quando aggiungo un array mi da errore
-	use Updater;
-	//use ImportTrait;
-	//use PostTrait;
 
-	protected $dates = [
-		'created_at',
-		'updated_at',
-		'deleted_at',
-		'published_at',
-	];
-
-	protected $casts = [
-		//'is_admin' => 'boolean',
-		//'content' => 'array',
-		//'content_type' => 'array',
-		'image_resize_src' => 'array',
-		//'url' => 'array',
-		'url_lang' => 'array',
-		//'linked_count' => 'array',
-		//'related_count' => 'array',
-		//'relatedrev_count' => 'array',
-		//'tags' => 'string',
-		//'parent_id' => 'integer',
-	];
-
-	//protected $primaryKey = ['post_id','lang'];  //problemi ovunque nel crud
-	//protected $primaryKey = 'post_id';  //aggiorna sempre tutti anche quelli delle lingue diverse, fino a bug risolto usiamo PostRev
-
-	/**
-	 * The table associated with the model.
-	 *
-	 * @var string
-	 */
-	protected $connection = 'mysql'; // this will use the specified database conneciton
-	protected $table = 'blog_posts';
-
-	/**
-	 * The attributes that are mass assignable.
-	 *
-	 * @var array
-	 */
-	protected $fillable = [
-		'post_id', //importante per le tabelle collegate
-		'lang',
-		'title',
-		'subtitle',
-		'guid',
-		//'type',
-		'post_type', //da type a post_type per il morph
-		'txt',
-		'image_src', 'image_alt', 'image_title',
-		'meta_description',
-		'meta_keyword',
-		'author_id',
-		'created_at',
-		'updated_at',
-		'published',
-		//'tags',
-		'title',
-		'description',
-		'content',
-		'parent_id',  //nella prox versione forse va a prendere il setAttributeId
-		'url',
-		'url_lang', //buffer
-		'image_resize_src', // buffer
-		'linked_count', // buffer
-		'related_count', // buffer
-		'relatedrev_count', //buffer
->>>>>>> the first commit
 	];
 
 	protected $appends = [/*'linked',*//*'category_id',*//*'tags',*//*'parent_id'*//*,'pivot'*/]; // category_id dipende dalla tabella linked
@@ -119,11 +45,11 @@ class Post extends Model //NO BaseModel
 	protected $primaryKey = 'id';  //no give error because the key is post_id + lang
 	public $incrementing = true;
 
-<<<<<<< HEAD
 	protected $dates = [
 		'created_at','updated_at','deleted_at',
 		'published_at',
 	];
+
 
 	protected $casts = [
 		'image_resize_src' => 'array',
@@ -132,11 +58,6 @@ class Post extends Model //NO BaseModel
 
 
 	public function getRouteKeyName(){
-=======
-
-	public function getRouteKeyName()
-	{
->>>>>>> the first commit
 		return 'guid';
 		//return \Request::segment(1) === 'admin' ? 'post_id' : 'guid';
 	}
@@ -212,7 +133,6 @@ class Post extends Model //NO BaseModel
         }
     }
 
-<<<<<<< HEAD
     public function getTitleAttribute($value){
     	if($value!='') return $value;
     	$value=$this->attributes['post_type'].' '.$this->attributes['post_id'];
@@ -230,16 +150,6 @@ class Post extends Model //NO BaseModel
     		$this->save();
     	}
     	$value=Str::slug($this->attributes['title'].' ');
-    	
-=======
-    public function getGuidAttribute($value){
-    	if($value!='') return $value;
-    	if($this->attributes['title']!=''){
-    		$value=Str::slug($this->attributes['title'].' ');
-    	}else{
-    		$value=$this->attributes['post_id'];
-    	}
->>>>>>> the first commit
     	$this->guid=$value;
     	$this->save();
     	return $value;
@@ -251,10 +161,6 @@ class Post extends Model //NO BaseModel
     }
 
     public function getUrlAttribute($value){
-<<<<<<< HEAD
-    	//ddd($value);
-=======
->>>>>>> the first commit
 		if (isset($this->pivot)) {
 			return $this->pivot->url;//.'#PIVOT';
 		}
