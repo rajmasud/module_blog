@@ -21,8 +21,7 @@ use Modules\Blog\Models\Privacy;
  *
  * @mixin \Eloquent
  */
-class Profile extends BaseModel
-{
+class Profile extends BaseModel {
     //use Searchable; //se non si crea prima indice da un sacco di errori
     //use Updater;
     //use LinkedTrait;
