@@ -184,6 +184,20 @@ class MyRatingPanel extends XotBasePanel {
 		return [];
 	}
 
-	
+	public function bodyContentView($params=[]){
+        //ddd($params);
+        extract($params);
+        //$route_params = \Route::current()->parameters();
+        //list($containers,$items)=params2ContainerItem($route_params);
+        if($_layout->act=='index_edit'){
+            //return $_layout->view_extend.'.body.multi_select';
+            return $_layout->view_extend.'.body.pivot_fields';
+        }else{
+            return $_layout->view_extend.'.body_content'; //.'.index';
+        }
+        //return $_layout->view_extend.'.body.rating';
+    }
+
+
 
 }

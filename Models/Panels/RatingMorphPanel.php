@@ -15,32 +15,9 @@ use Modules\Extend\Services\RouteService;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
 class RatingMorphPanel extends XotBasePanel {
-	/**
-	 * The model the resource corresponds to.
-	 *
-	 * @var string
-	 */
 	public static $model = 'Modules\Blog\Models\RatingMorph';
-
-	/**
-	 * The single value that should be used to represent the resource when being displayed.
-	 *
-	 * @var string
-	 */
 	public static $title = "title"; 
-
-	/**
-	 * The columns that should be searched.
-	 *
-	 * @var array
-	 */
 	public static $search = [];
-
-	/**
-	* The relationships that should be eager loaded on index queries.
-	*
-	* @var array
-	*/
 	public static function with(){
 	  return [];
 	}
@@ -48,21 +25,9 @@ class RatingMorphPanel extends XotBasePanel {
 	public function search(){
 		return [];
 	}
-
-	/**
-	 * on select the option id
-	 *
-	 */
-
 	public function optionId($row){
 		return $row->area_id;
 	}
-
-	/**
-	 * on select the option label 
-	 *
-	 */
-
 	public function optionLabel($row){
 		return $row->area_define_name;
 	}
@@ -136,7 +101,7 @@ class RatingMorphPanel extends XotBasePanel {
 				'comment' => 'not in Doctrine',
 			],
 			(object) [
-				'type' => 'Text',
+				'type' => 'Hidden',
 				'name' => 'related_type',
 				'comment' => 'not in Doctrine',
 			],
@@ -148,7 +113,7 @@ class RatingMorphPanel extends XotBasePanel {
 			],
 			*/
 			(object) [
-				'type' => 'Rating',
+				'type' => 'RatingStar',
 				'name' => 'rating',
 				'comment' => 'not in Doctrine',
 			],
@@ -181,8 +146,7 @@ class RatingMorphPanel extends XotBasePanel {
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return array
 	 */
-	public function cards(Request $request)
-	{
+	public function cards(Request $request){
 		return [];
 	}
 
@@ -192,8 +156,7 @@ class RatingMorphPanel extends XotBasePanel {
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return array
 	 */
-	public function filters(Request $request=null)
-	{
+	public function filters(Request $request=null){
 		return [];
 	}
 
@@ -203,8 +166,7 @@ class RatingMorphPanel extends XotBasePanel {
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return array
 	 */
-	public function lenses(Request $request)
-	{
+	public function lenses(Request $request){
 		return [];
 	}
 
