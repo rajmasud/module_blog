@@ -9,18 +9,16 @@ use Illuminate\Database\Eloquent\Builder;
 use Modules\Extend\Services\StubService;
 use Modules\Extend\Services\RouteService;
 
-//----- actions ---
-//use Modules\Blog\Models\Panels\Actions\RateItAction;
 
 use Modules\Xot\Models\Panels\XotBasePanel;
 
-class RatingMorphPanel extends XotBasePanel {
+class MyRatingPanel extends XotBasePanel {
 	/**
 	 * The model the resource corresponds to.
 	 *
 	 * @var string
 	 */
-	public static $model = 'Modules\Blog\Models\RatingMorph';
+	public static $model = 'Modules\Blog\Models\MyRating';
 
 	/**
 	 * The single value that should be used to represent the resource when being displayed.
@@ -117,48 +115,19 @@ class RatingMorphPanel extends XotBasePanel {
 		return [
 			(object) [
 				'type' => 'Id',
-				'name' => 'id',
-				'comment' => 'not in Doctrine',
-			],
-			(object) [
-				'type' => 'Integer',
 				'name' => 'post_id',
-				'comment' => 'not in Doctrine',
+				'comment' => NULL,
 			],
 			(object) [
 				'type' => 'Text',
-				'name' => 'post_type',
+				'name' => 'my_rating',
 				'comment' => 'not in Doctrine',
 			],
 			(object) [
-				'type' => 'Text',
-				'name' => 'related_id',
-				'comment' => 'not in Doctrine',
-			],
-			(object) [
-				'type' => 'Text',
+				'type' => 'String',
 				'name' => 'related_type',
-				'comment' => 'not in Doctrine',
+				'comment' => NULL,
 			],
-			/*
-			(object) [
-				'type' => 'Text',
-				'name' => 'title', 
-				'comment' => 'not in Doctrine',
-			],
-			*/
-			(object) [
-				'type' => 'Rating',
-				'name' => 'rating',
-				'comment' => 'not in Doctrine',
-			],
-			/*
-			(object) [
-				'type' => 'Hidden',
-				'name' => 'auth_user_id',
-				'comment' => 'not in Doctrine',
-			],
-			*/
 		];
 	}
 	 
@@ -181,8 +150,7 @@ class RatingMorphPanel extends XotBasePanel {
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return array
 	 */
-	public function cards(Request $request)
-	{
+	public function cards(Request $request){
 		return [];
 	}
 
@@ -192,8 +160,7 @@ class RatingMorphPanel extends XotBasePanel {
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return array
 	 */
-	public function filters(Request $request=null)
-	{
+	public function filters(Request $request=null){
 		return [];
 	}
 
@@ -203,8 +170,7 @@ class RatingMorphPanel extends XotBasePanel {
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return array
 	 */
-	public function lenses(Request $request)
-	{
+	public function lenses(Request $request){
 		return [];
 	}
 
@@ -214,10 +180,10 @@ class RatingMorphPanel extends XotBasePanel {
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return array
 	 */
-	public function actions(){
-		return [
-				new Actions\RateIt(),
-			];
+	public function actions(Request $request=null){
+		return [];
 	}
+
+	
 
 }
