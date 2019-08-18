@@ -20,6 +20,7 @@ class CreateBlogPostProfilesTable extends Migration
         if (!Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
                 $table->increments('post_id');//->primary();//->primary();
+                $table->string('post_type')->nullable()->index();
                 //$table->string('article_type',50)->nullable();
                 //$table->datetime('published_at')->nullable();
                 $table->text('bio')->nullable();
@@ -67,11 +68,11 @@ class CreateBlogPostProfilesTable extends Migration
                     $table->string($el.'_short')->nullable();
                 }
             }
-            $sql='ALTER TABLE '.$this->getTable().' CHANGE COLUMN post_id post_id INT(16) NOT NULL AUTO_INCREMENT FIRST;';
-            \DB::unprepared($sql);
+            //$sql='ALTER TABLE '.$this->getTable().' CHANGE COLUMN post_id post_id INT(16) NOT NULL AUTO_INCREMENT FIRST;';
+            //\DB::unprepared($sql);
 
 
-            $table->string('post_type')->nullable()->index();
+            
 
         });
     }
