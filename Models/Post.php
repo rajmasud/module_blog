@@ -16,6 +16,7 @@ use Modules\Theme\Services\ThemeService;
 //--- models ---
 use Modules\LU\Models\User;
 
+<<<<<<< HEAD
 class Post extends Model //NO BaseModel
 {
 	//use FilterTrait;
@@ -88,6 +89,30 @@ class Post extends Model //NO BaseModel
 		'linked_count', // buffer
 		'related_count', // buffer
 		'relatedrev_count', //buffer
+=======
+//NO BaseModel
+class Post extends Model {
+	//use Searchable; //ne update quando aggiungo un array mi da errore
+	use Updater;
+
+	//protected $connection = 'mysql'; // this will use the specified database conneciton
+	protected $table = 'blog_posts';
+
+	protected $fillable = [
+		'id','post_id','lang','guid',
+		'title',
+		'subtitle',
+		'post_type', 
+		'txt',
+		'image_src', 'image_alt', 'image_title', //image
+		
+		'meta_description','meta_keyword', // seo
+		'author_id',
+		'url','url_lang', //buffer
+		'image_resize_src', // buffer
+		//'published_at',
+
+>>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
 	];
 
 	protected $appends = [/*'linked',*//*'category_id',*//*'tags',*//*'parent_id'*//*,'pivot'*/]; // category_id dipende dalla tabella linked
@@ -95,9 +120,25 @@ class Post extends Model //NO BaseModel
 	protected $primaryKey = 'id';  //no give error because the key is post_id + lang
 	public $incrementing = true;
 
+<<<<<<< HEAD
 
 	public function getRouteKeyName()
 	{
+=======
+	protected $dates = [
+		'created_at','updated_at','deleted_at',
+		'published_at',
+	];
+
+
+	protected $casts = [
+		'image_resize_src' => 'array',
+		'url_lang' => 'array',
+	];
+
+
+	public function getRouteKeyName(){
+>>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
 		return 'guid';
 		//return \Request::segment(1) === 'admin' ? 'post_id' : 'guid';
 	}
@@ -173,6 +214,7 @@ class Post extends Model //NO BaseModel
         }
     }
 
+<<<<<<< HEAD
     public function getGuidAttribute($value){
     	if($value!='') return $value;
     	if($this->attributes['title']!=''){
@@ -180,6 +222,25 @@ class Post extends Model //NO BaseModel
     	}else{
     		$value=$this->attributes['post_id'];
     	}
+=======
+    public function getTitleAttribute($value){
+    	if($value!='') return $value;
+    	$value=$this->attributes['post_type'].' '.$this->attributes['post_id'];
+    	$this->title=$value;
+    	$this->save();
+    	return $value;
+    }
+
+    public function getGuidAttribute($value){
+    	if($value!='') return $value;
+    	if($this->attributes['title']==''){
+    		$title=$this->attributes['post_type'].' '.$this->attributes['post_id'];
+    		$this->attributes['title']=$title;
+    		$this->title=$title;
+    		$this->save();
+    	}
+    	$value=Str::slug($this->attributes['title'].' ');
+>>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
     	$this->guid=$value;
     	$this->save();
     	return $value;

@@ -16,8 +16,12 @@ use Carbon\Carbon;
  *
  * @mixin \Eloquent
  */
+<<<<<<< HEAD
 class Rating extends BaseModel
 {
+=======
+class Rating extends BaseModel{
+>>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
     //use Searchable; //se non si crea prima indice da un sacco di errori
     //use Updater;
     //use LinkedTrait;

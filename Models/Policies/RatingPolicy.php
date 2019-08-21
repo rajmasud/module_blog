@@ -1,11 +1,15 @@
 <?php
+<<<<<<< HEAD
 
+=======
+>>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
 namespace Modules\Blog\Models\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\LU\Models\User as User;
 use Modules\Blog\Models\Rating as Post; 
 
+<<<<<<< HEAD
 class RatingPolicy
 {
     use HandlesAuthorization;
@@ -152,4 +156,10 @@ class RatingPolicy
     {
         //
     }
+=======
+use Modules\Xot\Models\Policies\XotBasePolicy;
+
+class RatingPolicy extends XotBasePolicy{
+    
+>>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
 }

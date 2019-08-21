@@ -10,6 +10,7 @@ use Modules\Blog\Models\Page as Post;
 //use Modules\Food\Models\Post;
 use Modules\LU\Models\User;
 
+<<<<<<< HEAD
 class PagePolicy
 {
     use HandlesAuthorization;
@@ -62,4 +63,9 @@ class PagePolicy
     public function indexEdit(User $user, Post $post){
         return true;
     }
+=======
+use Modules\Xot\Models\Policies\XotBasePolicy;
+
+class PagePolicy  extends XotBasePolicy{
+>>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
 }

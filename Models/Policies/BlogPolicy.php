@@ -1,18 +1,17 @@
 <?php
-<<<<<<< HEAD
 
-=======
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
 namespace Modules\Blog\Models\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\LU\Models\User as User;
-use Modules\Blog\Models\Privacy as Post; 
+use Modules\Blog\Models\Blog as Post; 
 
-<<<<<<< HEAD
-class PrivacyPolicy
+use Modules\Xot\Traits\XotBasePolicyTrait;
+
+class BlogPolicy
 {
-    use HandlesAuthorization;
+    //use HandlesAuthorization; e' dentro XotBasePolicyTrait
+    use XotBasePolicyTrait; 
     
     public function before($user, $ability)
     {
@@ -47,7 +46,7 @@ class PrivacyPolicy
      * Determine whether the user can show the DocDummyModel.
      *
      * @param  \Modules\LU\Models\User  $user
-     * @param  \Modules\Blog\Models\Privacy  $dummyModel
+     * @param  \Modules\Blog\Models\Blog  $dummyModel
      * @return mixed
      */
     public function show(User $user, Post $post)
@@ -59,7 +58,7 @@ class PrivacyPolicy
      * Determine whether the user can view the DocDummyModel.
      *
      * @param  \Modules\LU\Models\User  $user
-     * @param  \Modules\Blog\Models\Privacy  $dummyModel
+     * @param  \Modules\Blog\Models\Blog  $dummyModel
      * @return mixed
      */
     public function view(User $user, Post $post)
@@ -81,7 +80,7 @@ class PrivacyPolicy
      * Determine whether the user can edit the DocDummyModel.
      *
      * @param  \Modules\LU\Models\User  $user
-     * @param  \Modules\Blog\Models\Privacy  $dummyModel
+     * @param  \Modules\Blog\Models\Blog  $dummyModel
      * @return mixed
      */
     public function edit(User $user, Post $post)
@@ -107,7 +106,7 @@ class PrivacyPolicy
      * Determine whether the user can update the DocDummyModel.
      *
      * @param  \Modules\LU\Models\User  $user
-     * @param  \Modules\Blog\Models\Privacy  $dummyModel
+     * @param  \Modules\Blog\Models\Blog  $dummyModel
      * @return mixed
      */
     public function update(User $user, Post $post)
@@ -132,7 +131,7 @@ class PrivacyPolicy
      * Determine whether the user can delete the DocDummyModel.
      *
      * @param  \Modules\LU\Models\User  $user
-     * @param  \Modules\Blog\Models\Privacy  $dummyModel
+     * @param  \Modules\Blog\Models\Blog  $dummyModel
      * @return mixed
      */
     public function delete(User $user, Post $post)
@@ -148,7 +147,7 @@ class PrivacyPolicy
      * Determine whether the user can restore the DocDummyModel.
      *
      * @param  \Modules\LU\Models\User  $user
-     * @param  \Modules\Blog\Models\Privacy  $dummyModel
+     * @param  \Modules\Blog\Models\Blog  $dummyModel
      * @return mixed
      */
     public function restore(User $user, Post $post)
@@ -164,17 +163,11 @@ class PrivacyPolicy
      * Determine whether the user can permanently delete the DocDummyModel.
      *
      * @param  \Modules\LU\Models\User  $user
-     * @param  \Modules\Blog\Models\Privacy  $dummyModel
+     * @param  \Modules\Blog\Models\Blog  $dummyModel
      * @return mixed
      */
     public function forceDelete(User $user, Post $post)
     {
         //
     }
-=======
-use Modules\Xot\Models\Policies\XotBasePolicy;
-
-class PrivacyPolicy extends XotBasePolicy{
-    
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
 }

@@ -5,6 +5,7 @@ use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\Blog\Models\Article as Post;
 use Modules\LU\Models\User;
 
+<<<<<<< HEAD
 class ArticlePolicy
 {
     use HandlesAuthorization;
@@ -87,4 +88,10 @@ class ArticlePolicy
     public function indexEdit(User $user, Post $post){
         return true;
     }
+=======
+use Modules\Xot\Models\Policies\XotBasePolicy;
+
+class ArticlePolicy extends XotBasePolicy{
+
+>>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
 }

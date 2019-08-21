@@ -5,9 +5,14 @@ use Illuminate\Database\Eloquent\Model;
 //--- TRAITS ---
 //use Modules\Blog\Models\Traits\LinkedTrait;
 
+<<<<<<< HEAD
 class Blog extends BaseModel
 {
     //use LinkedTrait;
+=======
+class Blog extends BaseModel {
+    protected $fillable=[''];
+>>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
     protected $table = 'blog_posts';
     /*
     //--- relationship --

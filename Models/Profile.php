@@ -1,13 +1,22 @@
 <?php
 namespace Modules\Blog\Models;
+<<<<<<< HEAD
 
 //use Illuminate\Database\Eloquent\Model;
 //use Laravel\Scout\Searchable;
 
+=======
+//use Illuminate\Database\Eloquent\Model;
+//use Laravel\Scout\Searchable;
+>>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
 //--------- models --------
 use Modules\LU\Models\User;
 //--- TRAITS ---
 //use Modules\Blog\Models\Traits\LinkedTrait;
+<<<<<<< HEAD
+=======
+use Modules\Blog\Models\Traits\PrivacyTrait;
+>>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
 //use Modules\Extend\Traits\Updater;
 //--- services
 use Modules\Theme\Services\ThemeService;
@@ -21,11 +30,20 @@ use Modules\Blog\Models\Privacy;
  *
  * @mixin \Eloquent
  */
+<<<<<<< HEAD
 class Profile extends BaseModel
 {
     //use Searchable; //se non si crea prima indice da un sacco di errori
     //use Updater;
     //use LinkedTrait;
+=======
+class Profile extends BaseModel {
+    //use Searchable; //se non si crea prima indice da un sacco di errori
+    //use Updater;
+    //use LinkedTrait;
+    use PrivacyTrait; // da mettere anche in restaurant owner ?
+
+>>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
     protected $connection = 'mysql'; // this will use the specified database conneciton
     protected $table = 'blog_post_profiles';
     protected $fillable = ['post_id'];
@@ -36,6 +54,7 @@ class Profile extends BaseModel
     
     //------- RELATIONSHIP ----------
 
+<<<<<<< HEAD
     public function privacies(){
         $related=Privacy::class;
         if(is_string($related)){
@@ -106,4 +125,7 @@ class Profile extends BaseModel
         return; //'aaa';
     }
     */
+=======
+    
+>>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
 }//end model
