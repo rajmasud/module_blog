@@ -30,15 +30,12 @@ class PrivacyMorph extends MorphPivot{
         return $this->hasOne(Privacy::class,'post_id','related_id');
     }
     //---------- mutators -------------------
-<<<<<<< HEAD
-=======
     /*  
     public function getTitleAttribute($value){
         ddd($this);
     }//end getTitleAttribute
     //*/
 
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
     public function setTitleAttribute($value){
         if(!isset($this->attributes['value'])){
             $this->attributes['value']=0;

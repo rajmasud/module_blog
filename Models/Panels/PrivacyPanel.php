@@ -11,12 +11,7 @@ use Modules\Extend\Services\RouteService;
 
 use Modules\Xot\Models\Panels\XotBasePanel;
 
-<<<<<<< HEAD
-class PrivacyPanel extends XotBasePanel
-{
-=======
 class PrivacyPanel extends XotBasePanel{
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
     /**
      * The model the resource corresponds to.
      *

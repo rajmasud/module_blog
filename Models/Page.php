@@ -66,10 +66,7 @@ class Page extends BaseModel{
         return $post->related()->wherePivot('type', $type); //->where('lang',\App::getLocale());
     }
     */
-<<<<<<< HEAD
-=======
 
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
     //---------- mututars -----------
     /*
     public function getPublishedAtAttribute($value){
@@ -93,10 +90,7 @@ class Page extends BaseModel{
     }
     */
     /*
-<<<<<<< HEAD
-=======
 
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
     public function setArticleTypeAttribute($value)
     {
         //dd();

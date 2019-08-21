@@ -92,14 +92,10 @@ trait LinkedTrait{
         return camel_case(class_basename($this));
     }
     */
-<<<<<<< HEAD
-    public function getPostTypeAttribute($value){
-=======
 
 
     public function getPostTypeAttribute($value)
     {
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
         //if($value!='') return $value; ??????????????????????????????????????????
         //return 'aa';
         //ddd(snake_case(class_basename($this)));
@@ -158,13 +154,9 @@ trait LinkedTrait{
     public function getGuidAttribute($value)        {return $this->getPostAttr(__FUNCTION__,$value);}
     public function getImageSrcAttribute($value)    {return $this->getPostAttr(__FUNCTION__,$value);}
     public function getTxtAttribute($value)         {return $this->getPostAttr(__FUNCTION__,$value);}
-<<<<<<< HEAD
-    public function getUrlAttribute($value)         {return $this->getPostAttr(__FUNCTION__,$value);}
-=======
     //*
     public function getUrlAttribute($value)         {return $this->getPostAttr(__FUNCTION__,$value);} 
     //*/
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
     public function getRoutenameAttribute($value)   {return $this->getPostAttr(__FUNCTION__,$value);}
 
     //public function setTitleAttribute($value)       {return $this->setPostAttr(__FUNCTION__,$value);}

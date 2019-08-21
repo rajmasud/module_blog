@@ -15,11 +15,7 @@ use Modules\Theme\Services\ThemeService;
 trait RatingTrait{
 
 	//----- relationship -----
-<<<<<<< HEAD
-
-=======
     /*
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
 	 public function ratings(){
         $related=Rating::class;
         if(is_string($related)){
@@ -46,14 +42,11 @@ trait RatingTrait{
                     //->wherePivot('auth_user_id',\Auth::user()->auth_user_id)
         ;
     }
-<<<<<<< HEAD
-=======
     */
     public function ratings(){
         $related=Rating::class;
         return $this->morphRelated($related);
     }
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
 
     public function ratingObjectives(){
         $related=Rating::class;
@@ -66,11 +59,7 @@ trait RatingTrait{
         return $rows;
     }
 	//----- mutators -----
-<<<<<<< HEAD
-
-=======
     /*
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
     public function getMyRatingAttribute($value){
         $my=$this->myRatings;
         return $my->pluck('pivot.rating','post_id');
@@ -79,10 +68,6 @@ trait RatingTrait{
     public function setMyRatingAttribute($value){
         ddd($value);
     }
-<<<<<<< HEAD
-
-=======
     */
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
 
 }

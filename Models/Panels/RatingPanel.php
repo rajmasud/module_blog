@@ -12,40 +12,12 @@ use Modules\Extend\Services\RouteService;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
 
-<<<<<<< HEAD
-class RatingPanel extends XotBasePanel
-{
-    /**
-     * The model the resource corresponds to.
-     *
-     * @var string
-     */
-    public static $model = 'Modules\Blog\Models\Rating';
-
-    /**
-     * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
-     */
-    public static $title = "title"; 
-
-    /**
-     * The columns that should be searched.
-     *
-     * @var array
-     */
-    public static $search = [];
-    
-    public function search()
-    {
-=======
 class RatingPanel extends XotBasePanel{
     public static $model = 'Modules\Blog\Models\Rating';
     public static $title = "title"; 
     public static $search = [];
     
     public function search(){
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
       return [];
     }
 
@@ -54,12 +26,7 @@ class RatingPanel extends XotBasePanel{
     *
     * @var array
     */
-<<<<<<< HEAD
-    public static function with()
-    {
-=======
     public static function with(){
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
       return [];
     }
 
@@ -88,12 +55,7 @@ class RatingPanel extends XotBasePanel{
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-<<<<<<< HEAD
-    public static function fields()
-    {
-=======
     public static function fields(){
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
         return array (
               (object) array(
                  'type' => 'BigInt',
@@ -129,12 +91,7 @@ class RatingPanel extends XotBasePanel{
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-<<<<<<< HEAD
-    public function cards(Request $request)
-    {
-=======
     public function cards(Request $request){
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
         return [];
     }
 
@@ -144,12 +101,7 @@ class RatingPanel extends XotBasePanel{
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-<<<<<<< HEAD
-    public function filters(Request $request=null)
-    {
-=======
     public function filters(Request $request=null){
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
         return [];
     }
 
@@ -159,12 +111,7 @@ class RatingPanel extends XotBasePanel{
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-<<<<<<< HEAD
-    public function lenses(Request $request)
-    {
-=======
     public function lenses(Request $request){
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
         return [];
     }
 
@@ -174,13 +121,10 @@ class RatingPanel extends XotBasePanel{
      * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-<<<<<<< HEAD
-=======
     public function actions(){
         return [];
     }
     /*
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
     public function actions()
     {
         return [];
@@ -197,9 +141,5 @@ class RatingPanel extends XotBasePanel{
         //return $_layout->view_extend.'.body.multi_select';
         return $_layout->view_extend.'.body.rating';
     }
-<<<<<<< HEAD
-
-=======
     */
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
 }

@@ -19,12 +19,7 @@ use Modules\Theme\Services\ThemeService;
  *
  * @mixin \Eloquent
  */
-<<<<<<< HEAD
-class Article extends BaseModel
-{
-=======
 class Article extends BaseModel {
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
     //use Searchable; //se non si crea prima indice da un sacco di errori
     /*
     use Updater;
@@ -36,26 +31,15 @@ class Article extends BaseModel {
      *
      * @var array
      */
-<<<<<<< HEAD
-    protected $fillable = ['post_id', 'article_type', 'published_at','guid'];
-=======
     protected $fillable = ['post_id', 'article_type', 'published_at','parent_id','parent_type'];
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
     //protected $appends=['category_id'];
     protected $casts = [
         //'category_id' => 'integer',
     ];
-<<<<<<< HEAD
-    protected $dates = ['published_at'/* 'created_at', 'updated_at'*/];
-    protected $primaryKey = 'post_id';
-    public $incrementing = true;
-
-=======
     protected $dates = ['published_at', 'created_at', 'updated_at' ];
     protected $primaryKey = 'post_id';
     public $incrementing = true;
     /*
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
     public function filter($params)
     {
         $row = new self();
@@ -63,12 +47,6 @@ class Article extends BaseModel {
 
         return $row;
     }
-<<<<<<< HEAD
-
-    //end filter
-
-    //--------- relationship ---------------
-=======
     */
     //end filter
 
@@ -79,7 +57,6 @@ class Article extends BaseModel {
     }
 
 
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
     /*
     public function post()
     {
@@ -114,11 +91,6 @@ class Article extends BaseModel {
         //return $value->formatLocalized('%d/%m/%Y %H:%M');
     }
     //*/
-<<<<<<< HEAD
-
-    public function setPublishedAtAttribute($value)
-    {
-=======
     public function getParentIdAttribute($value){
         if($value!='') return $value;
         $value=0;
@@ -129,7 +101,6 @@ class Article extends BaseModel {
 
 
     public function setPublishedAtAttribute($value){
->>>>>>> 44adda4afca837381a42d347e2970d1e23ee648e
         if (\is_string($value)) {
             //ddd($value);
             /*
