@@ -19,8 +19,8 @@ class CreateBlogPostArticlesTable extends Migration
                 $table->increments('post_id');//->primary();
                 $table->string('article_type', 50)->nullable();
                 $table->datetime('published_at')->nullable();
-                $table->string('updated_by', 255)->nullable()->after('updated_at');
-                $table->string('created_by', 255)->nullable()->after('created_at');
+                $table->string('updated_by', 255)->nullable();
+                $table->string('created_by', 255)->nullable();
                 $table->timestamps();
             });
         }
