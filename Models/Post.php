@@ -18,7 +18,6 @@ use Modules\LU\Models\User;
 
 //NO BaseModel
 class Post extends Model {
-	use Updater;
 
 	protected $fillable = [
 		'id','post_id','lang','guid',
@@ -26,8 +25,9 @@ class Post extends Model {
 		'subtitle',
 		'post_type', 
 		'txt',
-		'image_src', 'image_alt', 'image_title', //image
-		
+		//------ IMAGE ---------
+		'image_src', 'image_alt', 'image_title', 
+		//------ SEO FIELDS -----
 		'meta_description','meta_keyword', // seo
 		'author_id',
 		'url','url_lang', //buffer
@@ -51,6 +51,7 @@ class Post extends Model {
 		'url_lang' => 'array',
 	];
 
+	use Updater;
 
 	public function getRouteKeyName(){
 		return in_admin()?'guid':'post_id';
@@ -65,11 +66,11 @@ class Post extends Model {
 		$post_type=$this->post_type;
 		$obj=$this->getLinkedModel();
 		$table=$obj->getTable();
-		//*
-		$rows=$obj->join('blog_posts','blog_posts.post_id',$table.'.post_id')
+		$post_table=with(new Post)->getTable();
+		$rows=$obj->join($post_table,$post_table.'.post_id',$table.'.post_id')
                     ->where('lang',$lang)
-                    ->where('blog_posts.post_type',$post_type)
-                    ->where('blog_posts.guid','!=',$post_type)
+                    ->where($post_table.'.post_type',$post_type)
+                    ->where($post_table.'.guid','!=',$post_type)
                     ->orderBy($table.'.updated_at','desc')
                     ->with('post')
                     ;

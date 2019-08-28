@@ -17,22 +17,16 @@ use Modules\Xot\Services\StubService;
 trait LinkedTrait{
 
     public function getRouteKeyName(){
-        //return 'guid';
-        //return \Request::segment(1) === 'admin' ? 'post_id' : 'guid';
         return \inAdmin() ? 'post_id' : 'guid';
-        //return  'post.guid';
     }
     //------- relationships ------------
     public function post(){
-        //update blog_posts set linkable_type=type
         return $this->morphOne(Post::class,'post',null,'post_id')->where('lang',$this->lang);
-        //return $this->hasOne(Post::class,'post_id','post_id')->where('type',$this->post_type)->where('lang',$this->lang); 
     }
 
 
 
     public function morphRelated($related,$inverse=false){
-        //$related=Privacy::class;
         if($inverse){
             $model=$this;
             $pivot=get_class($this).'Morph';
@@ -52,7 +46,6 @@ trait LinkedTrait{
                 'stub'=>'morph_pivot',  //con questo crea anche la migration
                 'model'=>$model,
             ]);
-            //Artisan::call('db:seed', ['--force' => true], $outputLog); 
             ddd('Refresh Page ');
         }
 
@@ -67,40 +60,19 @@ trait LinkedTrait{
         }
         $parentKey = 'post_id';
         $relatedKey = 'post_id'; 
-        /*select count(*) as aggregate from `blog_post_profiles` inner join `restaurant_morph` on `blog_post_profiles`.`post_id` = `restaurant_morph`.`post_id` where `restaurant_morph`.`related_id` = 3 and `restaurant_morph`.`post_type` = 'restaurant'
-
-        select count(*) as aggregate from `blog_post_profiles` inner join `restaurant_morph` on `blog_post_profiles`.`post_id` = `restaurant_morph`.`post_id` where `restaurant_morph`.`related_id` = 3 and `restaurant_morph`.`post_type` = 'profile'
-
-        */
-        //$inverse=false;
-        //$related_table=with(new $related)->getTable();
-        //return $this->morphRelated($related);
-        ///*
         return $this->morphToMany($related, $name,$pivot_table, $foreignPivotKey,
                                 $relatedPivotKey, $parentKey,
                                 $relatedKey, $inverse)
                     ->using($pivot)
                     ->withPivot($pivot_fields)
-                    //->wherePivot('auth_user_id',\Auth::user()->auth_user_id)
                     ->withTimestamps()
         ;
     }
 
     //------- mutators -------------
-    /*
-    public function getTypeAttribute($value){
-        return camel_case(class_basename($this));
-    }
-    */
 
 
-    public function getPostTypeAttribute($value)
-    {
-        //if($value!='') return $value; ??????????????????????????????????????????
-        //return 'aa';
-        //ddd(snake_case(class_basename($this)));
-        //no camel_case ma snake_case
-        //da controllare prima questo
+    public function getPostTypeAttribute($value){
         $post_type=collect(config('xra.model'))->search(get_class($this));
         if($post_type===false){
             $post_type=snake_case(class_basename($this));
@@ -126,20 +98,14 @@ trait LinkedTrait{
         $str1='Attribute';
         $name=substr($func, strlen($str0),-strlen($str1));
         $name=Str::snake($name);
-        //if($name=='title'){
-            //ddd($value);
-        //}
         if($value!=''){ return $value; }
         if(class_basename($this)=='Post'){
-            //ddd($name);//create_url
             return $this->$name;
         }
         if (isset($this->pivot) && Str::endsWith($name, '_url') ) { // solo le url dipendono dal pivot
-            //ddd(get_class($this->pivot));// Modules\Blog\Models\PostRelatedMorphPivot
             return $this->pivot->$name;//.'#PIVOT';
         } 
         if (isset($this->post)) {
-            //echo($value.' '.$name); ddd($this->attributes);
             return $this->post->$name;//.'#NO-PIVOT';
         }
         if(Str::endsWith($name, '_url')){ 
@@ -212,28 +178,9 @@ trait LinkedTrait{
     public function getDetachUrlAttribute($value)   {return $this->getPostAttr(__FUNCTION__,$value);}
 
 
-    
-
-    public function getTabsAttribute($value){
-        //if($this->post->guid!=$this->post->post_type){
-            //ddd($this->post->guid.'  '.$this->post->post_type);
-            //ddd('-['.$this->attributes['guid'].']  ['.$this->attributes['type'].']');
-        //    return ['cuisine','photo','article','contact','map'];
-        //}
-    }
-
-    public function getParentTabsAttribute($value){
-        $params = \Route::current()->parameters();
-        //$second_last = collect(\array_slice($params, -2))->first(); //penultimo
-        $n_params=count($params);
-        $second_last=collect($params)->take(-2)->first();        
-        if(is_object($second_last) && $n_params>1){
-            return $second_last->tabs;
-        }
-    }
-
     //----------------------------------------------
     public function imageResizeSrc($params){
+        return '['.__FILE__.']['.__LINE__.']';
         $value=null;
         if (isset($this->post)) {
             $value = $this->post->imageResizeSrc($params);
@@ -252,6 +199,7 @@ trait LinkedTrait{
     }
 
     public function urlLang($params){
+        return '['.__FILE__.']['.__LINE__.']';
         if (!isset($this->post)) {
             return '#';
         }
@@ -266,17 +214,18 @@ trait LinkedTrait{
 
     //------------------------------------
     public function item($guid){
+        $post_table=with(new Post)->getTable();
         if(in_admin()){
-            $rows=$this->join('blog_posts','blog_posts.post_id','=',$this->getTable().'.post_id')
+            $rows=$this->join($post_table,$post_table.'.post_id','=',$this->getTable().'.post_id')
                                 ->where('lang',$this->lang)
-                                ->where('blog_posts.post_id',$guid)
-                                ->where('blog_posts.post_type',$this->post_type)
+                                ->where($post_table.'.post_id',$guid)
+                                ->where($post_table.'.post_type',$this->post_type)
                                 ;    
         }else{
-            $rows=$this->join('blog_posts','blog_posts.post_id','=',$this->getTable().'.post_id')
+            $rows=$this->join($post_table,$post_table.'.post_id','=',$this->getTable().'.post_id')
                                 ->where('lang',$this->lang)
-                                ->where('blog_posts.guid',$guid)
-                                ->where('blog_posts.post_type',$this->post_type)
+                                ->where($post_table.'.guid',$guid)
+                                ->where($post_table.'.post_type',$this->post_type)
                                 ;
         }
         /* -- testare i tempi
@@ -300,13 +249,8 @@ trait LinkedTrait{
     }
 
     public function scopeWithPost($query,$guid){
-        /*
-        return $query->join('blog_posts as post','post.post_id','=',$this->getTable().'.post_id')
-                                ->where('lang',$this->lang)
-                                ->where('post.post_type',$this->post_type)
-                                ;
-        */
-        return $query->join('blog_posts as post',function ($join) {
+        $post_table=with(new Post)->getTable();
+        return $query->join($post_table.' as post',function ($join) {
                 $join->on('post.post_id','=',$this->getTable().'.post_id')
                         ->where('lang',$this->lang)
                         ->where('post.post_type',$this->post_type)
@@ -314,39 +258,6 @@ trait LinkedTrait{
         });
     }
 
-    /*
-    // In your model
-public function scopeWithCalculatedPricing( $query, $include_tax = false ) {
-  $tax_multiplier = $include_tax ? 1.2 : 1;
-  $query->selectRaw( 'products.*, ( products.price * ' . $tax_multiplier . ' ) as total_price' )
-      ->where( 'stock', '>', 0 );
-}
-
-// Elsewhere...
-// Let's get some product with the total_price calculated with tax
-$products_with_prices = Product::withCalculatedPricing( true );
-
-
-$customers = Customer::with( [ 'products' => function( $query ) {
-    // Attaching the scope to the current Query Builder, $query
-    $query->withCalculatedPricing(true);
-    // Result: Object of class Illuminate\Database\Eloquent\Relations\HasMany could not be converted to string
-}]);
-
-https://hashnode.com/post/a-little-trick-with-eloquent-query-scopes-that-makes-them-super-reusable-ciylr4k0r001os453wuvd4t8w
-
-
-public function scopeActiveDvdsPerSeries($query, $series_id)
-{
-    $filter = function ($q) use ($series_id) {
-        $q->where('active', 1)->where('series_id', $series_id);
-    };
-
-    return $query->whereHas('dvds', $filter)->with(['dvds' => $filter]);
-}
-
-
-*/
 
     //---------------------------------
     public function listItemSchemaOrg($params){

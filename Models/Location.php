@@ -53,21 +53,24 @@ class Location extends BaseModel {
 
     public function restaurants(){
         $related_table=with(new Restaurant)->getTable();
+        $post_table=with(new Post)->getTable();
         return $this->hasMany(Restaurant::class,'locality','locality')
-            ->join('blog_posts','blog_posts.post_id','=',$related_table.'.post_id')
-            ->where('blog_posts.lang',$this->lang)
-            ->where('blog_posts.post_type','restaurant')
+
+            ->join($post_table,$post_table.'.post_id','=',$related_table.'.post_id')
+            ->where($post_table.'.lang',$this->lang)
+            ->where($post_table.'.post_type','restaurant')
             ->with(['cuisineCats','post']);
     }
 
     public function cuisineCats(){
         $related_table=with(new CuisineCat)->getTable();
+        $post_table=with(new Post)->getTable();
         return $this->hasManyDeepFromRelations($this->restaurants(), (new Restaurant)->cuisineCats())
-         //* 
-            ->join('blog_posts','blog_posts.post_id','=',$related_table.'.post_id')
-            ->where('blog_posts.lang',$this->lang)
-            ->where('blog_posts.post_type','cuisineCat')
-            ->groupBy('blog_posts.guid')
+          
+            ->join($post_table,$post_table.'.post_id','=',$related_table.'.post_id')
+            ->where($post_table.'.lang',$this->lang)
+            ->where($post_table.'.post_type','cuisineCat')
+            ->groupBy($post_table.'.guid')
             //*/
             ->with(['post']);
             ;
