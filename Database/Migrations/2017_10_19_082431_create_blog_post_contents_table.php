@@ -1,7 +1,4 @@
 <?php
-
-
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -9,9 +6,6 @@ class CreateBlogPostContentsTable extends Migration
 {
     protected $table = 'blog_post_contents';
 
-    /**
-     * Run the migrations.
-     */
     public function up()
     {
         if (!Schema::hasTable($this->table)) {
@@ -30,9 +24,6 @@ class CreateBlogPostContentsTable extends Migration
         }
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down()
     {
         Schema::drop($this->table);

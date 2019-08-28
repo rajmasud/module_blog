@@ -6,8 +6,7 @@ use Illuminate\Support\Facades\Schema;
 use Modules\Blog\Models\PostRelated as MyModel;
 
 
-class CreateBlogPostRelatedTable extends Migration
-{
+class CreateBlogPostRelatedTable extends Migration{
     public function getTable(){
         return with(new MyModel())->getTable();
     }
@@ -19,9 +18,6 @@ class CreateBlogPostRelatedTable extends Migration
                 $table->increments('id');
                 $table->nullableMorphs('post');
                 $table->nullableMorphs('related');
-                //$table->integer('post_id')->nullable();
-                //$table->string('post_type', 50)->nullable();
-                //$table->integer('related_id')->nullable();
                 $table->integer('pos')->nullable();
                 $table->string('note')->nullable();
                 $table->integer('sons_count')->nullable();
@@ -63,14 +59,12 @@ class CreateBlogPostRelatedTable extends Migration
             if (!$schema_builder->hasIndex($this->getTable().'_'.'related_id'.'_index')) {
                 $table->integer('related_id')->nullable()->index()->change();
             }
-            //*
             if (!Schema::hasColumn($this->getTable(), 'post_type')) {
                 $table->string('post_type', 50)->nullable()->index();
             }
             if (!$schema_builder->hasIndex($this->getTable().'_'.'post_type'.'_index')) {
                 $table->string('post_type', 50)->nullable()->index()->change();
             }
-            //*/
             if (!Schema::hasColumn($this->getTable(), 'related_type')) {
                 $table->string('related_type', 50)->nullable()->index();
             }

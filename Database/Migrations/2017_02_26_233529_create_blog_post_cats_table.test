@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateBlogPostCatsTable extends Migration
 {
-    protected $table = 'blog_post_cats';
+    //protected $table = 'blog_post_cats';
 
     public function up(){
         if (!Schema::hasTable($this->table)) {

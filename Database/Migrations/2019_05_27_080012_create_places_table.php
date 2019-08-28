@@ -5,15 +5,7 @@ use Illuminate\Support\Facades\Schema;
 //----- models -----
 use Modules\Blog\Models\Place as MyModel;
 
-//--
-/*
-https://phppot.com/php/php-star-rating-system-with-javascript/
-https://www.phpzag.com/star-rating-system-with-ajax-php-and-mysql/
-*/
-
-
-class CreatePlacesTable extends Migration
-{
+class CreatePlacesTable extends Migration{
     public function getTable(){
         return with(new MyModel())->getTable();
     }
@@ -27,7 +19,6 @@ class CreatePlacesTable extends Migration
                 $table->string('formatted_address')->nullable();
                 $table->decimal('latitude', 15, 10)->nullable();
                 $table->decimal('longitude', 15, 10)->nullable();
-                //$table->string('post_type',50)->index()->nullable();
                 $address_components = MyModel::$address_components;
                 foreach ($address_components as $el) {
                     if (!Schema::hasColumn($this->getTable(), $el)) {
@@ -49,33 +40,10 @@ class CreatePlacesTable extends Migration
         }
         //----- update -----
         Schema::table($this->getTable(), function (Blueprint $table) {
-            if (!Schema::hasColumn($this->getTable(), 'post_type')) {
-                //$table->string('post_type',50)->index()->nullable();
-                //$table->morphs('post');
-            };
-            if (!Schema::hasColumn($this->getTable(), 'formatted_address')) {
-                $table->string('formatted_address',150)->nullable();
-                //$table->morphs('post');
-            };
-            /*
-            if (!Schema::hasColumn($this->getTable(), 'date_start')) {
-                $table->dateTime('date_start')->nullable();
-                $table->dateTime('date_end')->nullable();
-            };
-
-            if (!Schema::hasColumn($this->getTable(), 'created_by')) {
-                $table->string('created_by')->nullable();
-                $table->string('updated_by')->nullable();
-                $table->string('deleted_by')->nullable();
-            };
-            $sql='ALTER TABLE '.$this->getTable().' CHANGE COLUMN post_id post_id INT(16) AUTO_INCREMENT FIRST;';
-            \DB::unprepared($sql);
-            */
         });
     }
 
-    public function down()
-    {
-        // Schema::dropIfExists($this->getTable());
+    public function down(){
+        Schema::dropIfExists($this->getTable());
     }
 }

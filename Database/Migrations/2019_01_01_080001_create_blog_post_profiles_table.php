@@ -9,8 +9,7 @@ use Modules\Blog\Models\Location;
 
 class CreateBlogPostProfilesTable extends Migration
 {
-    public function getTable()
-    {
+    public function getTable(){
         return with(new MyModel())->getTable();
     }
 

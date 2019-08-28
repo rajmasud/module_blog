@@ -1,21 +1,19 @@
 <?php
-
-
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateBlogPostShopItemsTable extends Migration
-{
-    protected $table = 'blog_post_shop_items';
+//------ models ------
+use Modules\Blog\Models\PostShopItem as MyModel;
 
-    /**
-     * Run the migrations.
-     */
-    public function up()
-    {
-        if (!Schema::hasTable($this->table)) {
-            Schema::create($this->table, function (Blueprint $table) {
+
+class CreateBlogPostShopItemsTable extends Migration{
+    
+    public function getTable(){
+        return with(new MyModel())->getTable();
+    }
+    public function up(){
+        if (!Schema::hasTable($this->getTable())) {
+            Schema::create($this->getTable(), function (Blueprint $table) {
                 $table->increments('id');
                 $table->integer('post_cat_id');
                 $table->integer('post_id');
@@ -29,11 +27,8 @@ class CreateBlogPostShopItemsTable extends Migration
         }
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down()
     {
-        Schema::drop($this->table);
+        Schema::dropIfExists($this->getTable());
     }
 }

@@ -7,7 +7,7 @@ use Modules\Blog\Models\Article as MyModel;;
 
 class CreateBlogPostArticlesTable extends Migration
 {
-    //protected $table = 'blog_post_articles';
+    ////protected $table = 'blog_post_articles';
     public function getTable()
     {
         return with(new MyModel())->getTable();

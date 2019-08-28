@@ -11,31 +11,14 @@ use Modules\Extend\Services\RouteService;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
 class ArticlePanel extends XotBasePanel{
-    /**
-     * The model the resource corresponds to.
-     *
-     * @var string
-     */
+    
     public static $model = 'Modules\Blog\Models\Article';
 
-    /**
-     * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
-     */
+    
     public static $title = "title"; 
 
-    /**
-     * The columns that should be searched.
-     *
-     * @var array
-     */
     public static $search = [];
-    /**
-    * The relationships that should be eager loaded on index queries.
-    *
-    * @var array
-    */
+    
     public static function with(){
       return ['post'];
     }
@@ -46,12 +29,7 @@ class ArticlePanel extends XotBasePanel{
         ];
     }
 
-    /**
-     * Get the fields displayed by the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
+    
     public static function fields(){
         return array (
           (object) array(

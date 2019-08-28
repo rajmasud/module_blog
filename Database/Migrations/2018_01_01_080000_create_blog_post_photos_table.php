@@ -4,14 +4,13 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 //---models
-use Modules\Blog\Models\Photo;
+use Modules\Blog\Models\Photo as MyModel;
 
 
 class CreateBlogPostPhotosTable extends Migration
 {
-    public function getTable()
-    {
-        return with(new Photo())->getTable();
+    public function getTable(){
+        return with(new MyModel())->getTable();
     }
 
     public function up()

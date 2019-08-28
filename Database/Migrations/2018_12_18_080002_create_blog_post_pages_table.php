@@ -5,13 +5,12 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Modules\Blog\Models\Page;
+use Modules\Blog\Models\Page as MyModel;
 
 class CreateBlogPostPagesTable extends Migration
 {
-    public function getTable()
-    {
-        return with(new Page())->getTable();
+    public function getTable(){
+        return with(new MyModel())->getTable();
     }
 
     public function up()

@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateBlogCommentsTable extends Migration
 {
+    public function getTable(){
+        return with(new MyModel())->getTable();
+    }
+    
     public function up()
     {
         if (!Schema::hasTable('blog_comments')) {

@@ -1,25 +1,21 @@
 <?php
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-
-//------ models ------
-use Modules\Blog\Models\PostShopItemVar as MyModel;
+use Illuminate\Support\Facades\Schema;
 
 
-class CreateBlogPostShopItemVarsTable extends Migration{
-    
+
+class CreateBlogFeedsTable extends Migration
+{
     public function getTable(){
         return with(new MyModel())->getTable();
     }
+    
     public function up()
     {
         if (!Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
-                $table->integer('post_shop_item_id')->index();
-                $table->integer('post_cat_id');
-                $table->integer('post_id');
-                $table->text('note');
-                $table->string('created_by')->nullable();
+                $table->increments('post_id');//->primary();
                 $table->timestamps();
             });
         }
