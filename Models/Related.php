@@ -9,8 +9,8 @@ namespace Modules\Blog\Models;
 //use Modules\Blog\Models\Post\PostTrait;
 //--- TRAITS ---
 //use Modules\Blog\Models\Traits\LinkedTrait;
-//use Modules\Extend\Traits\FilterTrait;
-//use Modules\Extend\Traits\Updater;
+//use Modules\Xot\Traits\FilterTrait;
+//use Modules\Xot\Traits\Updater;
 use Modules\LU\Models\User;
 
 //https://developers.google.com/search/docs/data-types/articles

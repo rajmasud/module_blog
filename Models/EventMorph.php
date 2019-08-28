@@ -4,7 +4,7 @@ namespace Modules\Blog\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\MorphPivot;
 
-use Modules\Extend\Traits\Updater; 
+use Modules\Xot\Traits\Updater; 
 
 class EventMorph extends MorphPivot{
     use Updater;

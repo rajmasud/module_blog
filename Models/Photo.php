@@ -7,7 +7,7 @@ use Carbon\Carbon;
 //use Illuminate\Database\Eloquent\Model;
 //--- TRAITS ---
 //use Modules\Blog\Models\Traits\LinkedTrait;
-//use Modules\Extend\Traits\Updater;
+//use Modules\Xot\Traits\Updater;
 //--- services
 //--- models ---
 

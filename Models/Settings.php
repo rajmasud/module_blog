@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
 //--- TRAITS ---
 use Modules\Blog\Models\Traits\LinkedTrait;
-use Modules\Extend\Traits\Updater;
+use Modules\Xot\Traits\Updater;
 */
 /**
  * Modules\Blog\Models\Settings.

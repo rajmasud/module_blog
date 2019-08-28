@@ -1,10 +1,9 @@
 <?php
-
-
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+
+use Modules\Blog\Models\PostLink as MyModel;
 
 class CreateBlogPostLinksTable extends Migration
 {
@@ -12,11 +11,9 @@ class CreateBlogPostLinksTable extends Migration
 
     public function up()
     {
-        if (!Schema::hasTable($this->table)) {
-            Schema::create($this->table, function (Blueprint $table) {
-                $table->increments('post_id');//->primary();
-                
-                //$table->integer('post_id')->index();
+        if (!Schema::hasTable($this->getTable())) {
+            Schema::create($this->getTable(), function (Blueprint $table) {
+                $table->increments('post_id');
                 $table->string('title')->nullable();
                 $table->string('url')->nullable();
                 $table->string('link_type')->nullable();
@@ -35,6 +32,6 @@ class CreateBlogPostLinksTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists($this->table);
+        Schema::dropIfExists($this->getTable());
     }
 }

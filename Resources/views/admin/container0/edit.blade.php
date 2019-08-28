@@ -1,8 +1,8 @@
 @extends('adm_theme::layouts.app')
 @section('page_heading','Update '.$container0->title.' - '.$item0->title)
-@include('extend::includes.components')
+
 @section('content')
-@include('extend::includes.flash')
+@include('theme::includes.flash')
 <style>
 .panel-title .fa {
   transition: .3s transform ease-in-out;

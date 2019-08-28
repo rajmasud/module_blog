@@ -5,8 +5,8 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 //--- Services --
-use Modules\Extend\Services\StubService;
-use Modules\Extend\Services\RouteService;
+use Modules\Xot\Services\StubService;
+use Modules\Xot\Services\RouteService;
 
 //-------- rules ---
 use Modules\Blog\Rules\PrivacyCheckRule;

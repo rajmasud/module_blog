@@ -6,10 +6,10 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
 //--- traits ---
-use Modules\Extend\Traits\Updater;
+use Modules\Xot\Traits\Updater;
 //---- services --
-use Modules\Extend\Services\ImageService;
-use Modules\Extend\Services\ImportService;
+use Modules\Xot\Services\ImageService;
+use Modules\Xot\Services\ImportService;
 use Modules\Theme\Services\ThemeService;
 
 

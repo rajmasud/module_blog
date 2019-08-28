@@ -8,7 +8,7 @@ namespace Modules\Blog\Models;
 //--- TRAITS ---
 //use Modules\Blog\Models\Traits\LinkedTrait;
 //use Modules\Blog\Models\Traits\PostTrait;
-//use Modules\Extend\Traits\Updater;
+//use Modules\Xot\Traits\Updater;
 
 /**
  * { item_description }

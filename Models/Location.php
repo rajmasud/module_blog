@@ -5,7 +5,7 @@ use Modules\Blog\Models\Post;
 use Modules\Blog\Models\PostRelated;
 //--- services
 use Modules\Theme\Services\ThemeService;
-use Modules\Extend\Services\ImportService;
+use Modules\Xot\Services\ImportService;
 
 //--- traits 
 

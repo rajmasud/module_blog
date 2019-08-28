@@ -5,11 +5,11 @@ namespace Modules\Blog\Models;
 //use Laravel\Scout\Searchable;
 
 //use Modules\Blog\Models\Traits\LinkedTrait;
-//use Modules\Extend\Traits\Updater;
+//use Modules\Xot\Traits\Updater;
 
 //------services---------
 use Modules\Theme\Services\ThemeService;
-use Modules\Extend\Services\ImportService;
+use Modules\Xot\Services\ImportService;
 
 //------ models --------
 use Modules\Blog\Models\Article;

@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use Modules\Theme\Services\ThemeService;
 //--- TRAITS ---
 //use Modules\Blog\Models\Traits\LinkedTrait;
-///use Modules\Extend\Traits\Updater;
+///use Modules\Xot\Traits\Updater;
 
 //--- models ---
 

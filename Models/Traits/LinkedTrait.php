@@ -9,8 +9,8 @@ use Modules\Blog\Models\PostRelatedPivot;
 use Modules\Blog\Models\PostRelatedMorphPivot;
 //----- services -----
 use Modules\Theme\Services\ThemeService;
-use Modules\Extend\Services\RouteService;
-use Modules\Extend\Services\StubService;
+use Modules\Xot\Services\RouteService;
+use Modules\Xot\Services\StubService;
 
 //------ traits ---
 

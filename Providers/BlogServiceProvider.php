@@ -11,7 +11,7 @@ use Modules\Blog\Services\BlogService;
 //-------models-----------
 use Modules\Blog\Models\Post;
 //use Modules\Blog\Models\PostRelated;
-//use Modules\Extend\Models\ServiceProviderTrait;
+//use Modules\Xot\Models\ServiceProviderTrait;
 
 use Modules\Xot\Providers\XotBaseServiceProvider;
 

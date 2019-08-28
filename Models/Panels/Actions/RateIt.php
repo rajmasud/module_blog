@@ -2,8 +2,8 @@
 namespace Modules\Blog\Models\Panels\Actions;
 
 //-------- services --------
-use Modules\Extend\Services\ArrayService;
-use Modules\Extend\Services\RouteService;
+use Modules\Xot\Services\ArrayService;
+use Modules\Xot\Services\RouteService;
 
 //-------- bases -----------
 use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;

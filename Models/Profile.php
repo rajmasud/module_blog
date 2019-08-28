@@ -7,7 +7,7 @@ use Modules\LU\Models\User;
 //--- TRAITS ---
 //use Modules\Blog\Models\Traits\LinkedTrait;
 use Modules\Blog\Models\Traits\PrivacyTrait;
-//use Modules\Extend\Traits\Updater;
+//use Modules\Xot\Traits\Updater;
 //--- services
 use Modules\Theme\Services\ThemeService;
 

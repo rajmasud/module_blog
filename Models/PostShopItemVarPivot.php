@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 
 //use Laravel\Scout\Searchable;
 
-//use Modules\Extend\Traits\Updater;
+//use Modules\Xot\Traits\Updater;
 
 /**
  * { item_description }
