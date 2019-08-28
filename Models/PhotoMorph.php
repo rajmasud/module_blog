@@ -9,9 +9,10 @@ use Modules\Xot\Traits\Updater;
 class PhotoMorph extends MorphPivot{
     use Updater;
     protected $fillable = [
-        'id','post_id','post_type','related_id','related_type', //-- testare se toglierli 
+        'id',
+        'post_id','post_type',
+        'related_id','related_type', 
         'auth_user_id',
-        //'title','value',
     ];
     protected $dates = [
         'created_at',
@@ -22,6 +23,6 @@ class PhotoMorph extends MorphPivot{
     protected $appends = [];
     protected $primaryKey = 'id';
     public $incrementing = true;
-    public $timestamps = true; //Indicates if the model should be timestamped.
+    public $timestamps = true; 
     
 }

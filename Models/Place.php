@@ -1,12 +1,6 @@
 <?php
 namespace Modules\Blog\Models;
 
-//use Illuminate\Database\Eloquent\Model;
-//use Laravel\Scout\Searchable;
-
-//use Modules\Blog\Models\Traits\LinkedTrait;
-//use Modules\Xot\Traits\Updater;
-
 //------services---------
 use Modules\Theme\Services\ThemeService;
 use Modules\Xot\Services\ImportService;
@@ -39,16 +33,8 @@ class Place extends BaseModel{
         ];
 
     //----- mutators -----
-        /*
-    public function setLocalityAttribute($value){
-        $address=$this->attributes['formatted_address'];
-        $tmp=ImportService::getAddressFields(['address' => $address]);
-        $this->attributes=array_merge($this->attributes,$tmp);
-    }
-    */
-    public function setFormattedAddressAttribute($value){
-        //ddd($value);
 
+    public function setFormattedAddressAttribute($value){
         if(isset($this->attributes['formatted_address'])){
             $address=$this->attributes['formatted_address'];
         }else{

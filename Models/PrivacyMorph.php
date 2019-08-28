@@ -17,7 +17,6 @@ class PrivacyMorph extends MorphPivot{
         'created_at',
         'updated_at',
         'deleted_at',
-       // 'published_at',
     ];
     protected $appends = [];
     protected $primaryKey = 'id';
@@ -30,12 +29,6 @@ class PrivacyMorph extends MorphPivot{
         return $this->hasOne(Privacy::class,'post_id','related_id');
     }
     //---------- mutators -------------------
-    /*  
-    public function getTitleAttribute($value){
-        ddd($this);
-    }//end getTitleAttribute
-    //*/
-
     public function setTitleAttribute($value){
         if(!isset($this->attributes['value'])){
             $this->attributes['value']=0;

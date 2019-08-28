@@ -9,9 +9,7 @@ use Modules\Blog\Models\Traits\LinkedTrait;
 
 use GeneaLabs\LaravelModelCaching\Traits\Cachable;
 
-abstract class XotBaseModel extends Model
-{
-    //use Cachable; //mi da un errore 
+abstract class XotBaseModel extends Model {
     use Updater;
     use Searchable;
     use LinkedTrait;

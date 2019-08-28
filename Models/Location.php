@@ -18,7 +18,8 @@ class Location extends BaseModel {
 
     protected $fillable = ['post_id', 'latitude', 'longitude', 'address1', 'address2', 'address3', 'city', 'zip_code', 'country', 'state', 'phone', 'display_phone', 'price', 'is_closed', 'review_count', 'yelp_url', 'rating'];
 
-    public static $food_engines = ['justeat', 'sgnamit', 'googleplace', 'foodracers',
+    public static $food_engines = [
+            'justeat', 'sgnamit', 'googleplace', 'foodracers',
             'foodora', 'moovenda', 'deliveroo',
             'bacchetteforchette',
             'theforkit', 'misiedocom',
@@ -78,14 +79,6 @@ class Location extends BaseModel {
         return self::$food_engines;
     }
 
-    public function getRestaurantsCountAttribute($value){
-        return $this->restaurants->count();
-    }
-
-    public function getCuisineCatsCountAttribute($value){
-        return '?? da fare';
-    }
-
     public function getImageSrcAttribute($value){
         if ('' == $value) {
             $ris = ImportService::pixabay(['q' => $this->locality.' '.$this->country]);
@@ -111,7 +104,6 @@ class Location extends BaseModel {
                 $this->save();
             }
             $this->post = $post;
-            //return $post->url;
         }
 
         return $this->post->url;
