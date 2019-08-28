@@ -15,8 +15,11 @@ use Modules\Theme\Services\ThemeService;
 
 //--- models ---
 use Modules\LU\Models\User;
+/**
+* NO BaseModel 
+*
+**/
 
-//NO BaseModel
 class Post extends Model {
 
 	protected $fillable = [
@@ -76,6 +79,14 @@ class Post extends Model {
                     ;
         return $rows;
 	}//end function
+	//-------------- MUTATORS ------------------
+	public function getGuidAttribute($value){
+		if($value!='') return $value;
+		$value=Str::slug($this->attributes['title']);
+		$this->guid=$value;
+		$this->save();
+	}
 
+	
 
 }//end class

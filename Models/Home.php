@@ -8,7 +8,6 @@ use Modules\Theme\Services\ThemeService;
 use Modules\Blog\Models\Traits\LinkedTrait;
 
 class Home extends BaseModel{
-    protected $table = 'blog_post_pages';
     protected $fillable = ['post_id', 'article_type', 'published_at'/*, 'category_id'*/];
     protected $appends = [    ];
     protected $casts = [         ];

@@ -7,7 +7,6 @@ use Modules\Theme\Services\ThemeService;
 //--- models ---
 
 class Article extends BaseModel {
-    protected $table = 'blog_post_articles';
     protected $fillable = ['post_id', 'article_type', 'published_at','parent_id','parent_type'];
     protected $appends=[];
     protected $casts = [];

@@ -8,7 +8,6 @@ use Modules\Blog\Models\Place;
 
 
 class Event extends BaseModel{
-    protected   $table                = 'blog_post_events';
     protected   $fillable             = ['post_id','date_start','date_end'/*,'formatted_address'*/];
     public      $fillableRelationship = ['address'];
     protected   $appends              = [/*'formatted_address'*/]; 

@@ -5,9 +5,7 @@ use Illuminate\Support\Facades\Schema;
 
 use Modules\Blog\Models\Article as MyModel;;
 
-class CreateBlogPostArticlesTable extends Migration
-{
-    ////protected $table = 'blog_post_articles';
+class CreateBlogPostArticlesTable extends Migration{
     public function getTable(){
         return with(new MyModel())->getTable();
     }
