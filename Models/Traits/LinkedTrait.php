@@ -148,34 +148,28 @@ trait LinkedTrait{
         print_r($data);
         unset($this->attributes[$name]);
     }
-    /*
+    //*
     public function urlActFunc($func,$value){
         $str0='get';
         $str1='Attribute';
         $name=substr($func, strlen($str0),-strlen($str1));
-        $name=Str::snake($name);
-        if(class_basename($this)=='Post'){
-            //ddd($name);//create_url
-        }
-        if (isset($this->pivot)) {
-            return $this->pivot->$name;//.'#PIVOT';
-        }
-        if (isset($this->post)) {
-            return $this->post->$name;
-        }
-        return $value;
+        $act=Str::snake($name);
+        $act=substr($act,0,-4);
+        $url= RouteService::urlModel(['model'=>$this,'act'=>$act]);
+        return $url;
     }
-    */
-    public function getEditUrlAttribute($value)     {return $this->getPostAttr(__FUNCTION__,$value);}
-    public function getMoveupUrlAttribute($value)   {return $this->getPostAttr(__FUNCTION__,$value);}
-    public function getMovedownUrlAttribute($value) {return $this->getPostAttr(__FUNCTION__,$value);}
-    public function getIndexUrlAttribute($value)    {return $this->getPostAttr(__FUNCTION__,$value);}
-    public function getShowUrlAttribute($value)     {return $this->getPostAttr(__FUNCTION__,$value);}
-    public function getIndexEditUrlAttribute($value){return $this->getPostAttr(__FUNCTION__,$value);}
-    public function getCreateUrlAttribute($value)   {return $this->getPostAttr(__FUNCTION__,$value);}
-    public function getUpdateUrlAttribute($value)   {return $this->getPostAttr(__FUNCTION__,$value);}
-    public function getDestroyUrlAttribute($value)  {return $this->getPostAttr(__FUNCTION__,$value);}
-    public function getDetachUrlAttribute($value)   {return $this->getPostAttr(__FUNCTION__,$value);}
+    
+    //*/
+    public function getEditUrlAttribute($value)     {return $this->urlActFunc(__FUNCTION__,$value);}
+    public function getMoveupUrlAttribute($value)   {return $this->urlActFunc(__FUNCTION__,$value);}
+    public function getMovedownUrlAttribute($value) {return $this->urlActFunc(__FUNCTION__,$value);}
+    public function getIndexUrlAttribute($value)    {return $this->urlActFunc(__FUNCTION__,$value);}
+    public function getShowUrlAttribute($value)     {return $this->urlActFunc(__FUNCTION__,$value);}
+    public function getIndexEditUrlAttribute($value){return $this->urlActFunc(__FUNCTION__,$value);}
+    public function getCreateUrlAttribute($value)   {return $this->urlActFunc(__FUNCTION__,$value);}
+    public function getUpdateUrlAttribute($value)   {return $this->urlActFunc(__FUNCTION__,$value);}
+    public function getDestroyUrlAttribute($value)  {return $this->urlActFunc(__FUNCTION__,$value);}
+    public function getDetachUrlAttribute($value)   {return $this->urlActFunc(__FUNCTION__,$value);}
 
 
     //----------------------------------------------
