@@ -7,7 +7,7 @@ use Modules\Blog\Models\Traits\PrivacyTrait;
 //--- services
 use Modules\Theme\Services\ThemeService;
 
-use Modules\Blog\Models\Privacy;
+
 
 class Profile extends BaseModel {
     use PrivacyTrait; // da mettere anche in restaurant owner 
@@ -20,6 +20,8 @@ class Profile extends BaseModel {
     public $incrementing = true;
     
     //------- RELATIONSHIP ----------
-
+    public function user(){
+    	return $this->hasOne(User::class,'auth_user_id','auth_user_id');
+    }
     
 }//end model
