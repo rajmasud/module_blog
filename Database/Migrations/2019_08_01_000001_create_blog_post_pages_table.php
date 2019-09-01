@@ -29,8 +29,7 @@ class CreateBlogPostPagesTable extends Migration{
             if (!Schema::hasColumn($this->getTable(), 'layout_position')) {
                 $table->string('layout_position')->nullable();
             }
-            $sql='ALTER TABLE '.$this->getTable().' CHANGE COLUMN post_id post_id INT(16) NOT NULL AUTO_INCREMENT FIRST;';
-            \DB::unprepared($sql);
+           
         });
     }
 

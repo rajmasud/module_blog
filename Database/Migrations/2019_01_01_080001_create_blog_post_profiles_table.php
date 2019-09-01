@@ -67,8 +67,7 @@ class CreateBlogPostProfilesTable extends Migration
                     $table->string($el.'_short')->nullable();
                 }
             }
-            //$sql='ALTER TABLE '.$this->getTable().' CHANGE COLUMN post_id post_id INT(16) NOT NULL AUTO_INCREMENT FIRST;';
-            //\DB::unprepared($sql);
+           
 
 
             

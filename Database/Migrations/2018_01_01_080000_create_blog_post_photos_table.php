@@ -7,14 +7,12 @@ use Illuminate\Support\Facades\Schema;
 use Modules\Blog\Models\Photo as MyModel;
 
 
-class CreateBlogPostPhotosTable extends Migration
-{
+class CreateBlogPostPhotosTable extends Migration{
     public function getTable(){
         return with(new MyModel())->getTable();
     }
 
-    public function up()
-    {
+    public function up(){
         if (!Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
                 $table->increments('post_id');//->primary();
@@ -31,13 +29,10 @@ class CreateBlogPostPhotosTable extends Migration
             if (!Schema::hasColumn($this->getTable(), 'created_by')) {
                 $table->string('created_by')->nullable()->after('created_at');
             }
-            $sql='ALTER TABLE '.$this->getTable().' CHANGE COLUMN post_id post_id INT(16) NOT NULL AUTO_INCREMENT FIRST;';
-            \DB::unprepared($sql);
         });
     }
 
-    public function down()
-    {
+    public function down(){
         Schema::dropIfExists($this->getTable());
     }
 }
