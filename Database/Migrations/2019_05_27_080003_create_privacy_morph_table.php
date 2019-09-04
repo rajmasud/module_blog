@@ -15,8 +15,8 @@ class CreatePrivacyMorphTable extends Migration{
         if (!Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
                 $table->increments('id');
-                $table->nullableMorphs('post',191);
-                $table->nullableMorphs('related',191);
+                $table->nullableMorphs('post');
+                $table->nullableMorphs('related');
                 $table->text('title')->nullable(); //ricopio il title
                 $table->tinyInteger('value')->nullable(); //-- 0 o 1 
                 $table->integer('auth_user_id')->nullable()->index();

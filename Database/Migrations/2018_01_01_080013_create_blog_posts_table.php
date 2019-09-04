@@ -16,7 +16,7 @@ class CreateBlogPostsTable extends Migration
         if (!Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
                 $table->increments('id');
-                $table->nullableMorphs('post',191);
+                $table->nullableMorphs('post');
                 $table->string('lang', 2)->nullable();
                 $table->string('title')->index();
                 $table->string('subtitle')->nullable();

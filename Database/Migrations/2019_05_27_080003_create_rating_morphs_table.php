@@ -15,8 +15,8 @@ class CreateRatingMorphsTable extends Migration{
         if (!Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
                 $table->increments('id');
-                $table->nullableMorphs('post',191);
-                $table->nullableMorphs('related',191);
+                $table->nullableMorphs('post');
+                $table->nullableMorphs('related');
                 $table->integer('rating')->nullable();
                 $table->string('created_by')->nullable();
                 $table->string('updated_by')->nullable();
