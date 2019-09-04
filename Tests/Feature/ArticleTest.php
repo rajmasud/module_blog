@@ -1,29 +1,22 @@
 <?php
+
 namespace Modules\Blog\Tests\Feature;
 
-/**
-* NOTE 
+/*
+* NOTE
 *
 **/
 
 //-----  MODELS  -----
 use Modules\LU\Models\User;
-
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Http\Response;
 
 /**
-* https://www.toptal.com/laravel/restful-laravel-api-tutorial
-*
-**/
-
-
-class ArticleTest extends TestCase
-{
-    public function testsArticlesAreCreatedCorrectly()
-    {
+ * https://www.toptal.com/laravel/restful-laravel-api-tutorial.
+ *
+ **/
+class ArticleTest extends TestCase {
+    public function testsArticlesAreCreatedCorrectly() {
         $user = factory(User::class)->create();
         $token = $user->generateToken();
         $headers = ['Authorization' => "Bearer $token"];
@@ -37,8 +30,7 @@ class ArticleTest extends TestCase
             ->assertJson(['id' => 1, 'title' => 'Lorem', 'body' => 'Ipsum']);
     }
 
-    public function testsArticlesAreUpdatedCorrectly()
-    {
+    public function testsArticlesAreUpdatedCorrectly() {
         $user = factory(User::class)->create();
         $token = $user->generateToken();
         $headers = ['Authorization' => "Bearer $token"];
@@ -52,17 +44,16 @@ class ArticleTest extends TestCase
             'body' => 'Ipsum',
         ];
 
-        $response = $this->json('PUT', '/api/articles/' . $article->id, $payload, $headers)
+        $response = $this->json('PUT', '/api/articles/'.$article->id, $payload, $headers)
             ->assertStatus(200)
-            ->assertJson([ 
-                'id' => 1, 
-                'title' => 'Lorem', 
-                'body' => 'Ipsum' 
+            ->assertJson([
+                'id' => 1,
+                'title' => 'Lorem',
+                'body' => 'Ipsum',
             ]);
     }
 
-    public function testsArtilcesAreDeletedCorrectly()
-    {
+    public function testsArtilcesAreDeletedCorrectly() {
         $user = factory(User::class)->create();
         $token = $user->generateToken();
         $headers = ['Authorization' => "Bearer $token"];
@@ -71,20 +62,19 @@ class ArticleTest extends TestCase
             'body' => 'First Body',
         ]);
 
-        $this->json('DELETE', '/api/articles/' . $article->id, [], $headers)
+        $this->json('DELETE', '/api/articles/'.$article->id, [], $headers)
             ->assertStatus(204);
     }
 
-    public function testArticlesAreListedCorrectly()
-    {
+    public function testArticlesAreListedCorrectly() {
         factory(Article::class)->create([
             'title' => 'First Article',
-            'body' => 'First Body'
+            'body' => 'First Body',
         ]);
 
         factory(Article::class)->create([
             'title' => 'Second Article',
-            'body' => 'Second Body'
+            'body' => 'Second Body',
         ]);
 
         $user = factory(User::class)->create();
@@ -94,12 +84,11 @@ class ArticleTest extends TestCase
         $response = $this->json('GET', '/api/articles', [], $headers)
             ->assertStatus(200)
             ->assertJson([
-                [ 'title' => 'First Article', 'body' => 'First Body' ],
-                [ 'title' => 'Second Article', 'body' => 'Second Body' ]
+                ['title' => 'First Article', 'body' => 'First Body'],
+                ['title' => 'Second Article', 'body' => 'Second Body'],
             ])
             ->assertJsonStructure([
                 '*' => ['id', 'body', 'title', 'created_at', 'updated_at'],
             ]);
     }
-
 }

@@ -2,13 +2,11 @@
 
 namespace Modules\Blog\Rules;
 
-use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Contracts\Validation\ImplicitRule;
-
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
-
+use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Arr;
+
 //use Illuminate\Http\Request;
 //use Illuminate\Http\Response;
 /*
@@ -19,7 +17,7 @@ http://derekmd.com/2017/02/improving-laravel-validation-replacer-functions/
 --- recaptcha
 https://crnkovic.me/simple-and-reusable-recaptcha-validation-in-laravel/
 https://m.dotdev.co/google-recaptcha-integration-with-laravel-ad0f30b52d7d
---- pincode 
+--- pincode
 https://www.cedextech.com/blog/use-laravel-55-rule-object-to-validate-the-pincode
 --- da leggere
 https://www.sitepoint.com/data-validation-laravel-right-way/
@@ -39,10 +37,7 @@ http://www.coding4developers.com/laravel/customize-validation-error-response-in-
 
 */
 
-
-class PrivacyCheckRule implements Rule,ImplicitRule{
-
-
+class PrivacyCheckRule implements Rule, ImplicitRule {
     /**
      * The source control provider instance.
      *
@@ -50,26 +45,26 @@ class PrivacyCheckRule implements Rule,ImplicitRule{
      */
     public $field_name;
     public $field_name_required;
+
     /**
      * Create a new rule instance.
-     *
-     * @return void
      */
-    public function __construct($field_name=null,$field_name_required=null){
+    public function __construct($field_name = null, $field_name_required = null) {
         //ddd($field_name);
-        $this->field_name=$field_name;
-        $this->field_name_required=$field_name_required;
+        $this->field_name = $field_name;
+        $this->field_name_required = $field_name_required;
         //ddd(get_called_class());//Modules\Blog\Rules\PrivacyCheckRule
     }
 
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
+     * @param string $attribute
+     * @param mixed  $value
+     *
      * @return bool
      */
-    public function passes($attribute, $value){
+    public function passes($attribute, $value) {
         /*
         if($value==''){
             $data=(\Request::all());
@@ -87,27 +82,27 @@ class PrivacyCheckRule implements Rule,ImplicitRule{
             ddd($data);
         }
         */
-       
+
         //$request->route()->parameter('id');
         //
         //ddd($attribute);//privacies.111.pivot.value
         //ddd($value);//5
         //ddd($this->source());
         //$fullnames = request()->get('fullname');
-        $key_required=substr($attribute, 0,-strlen($this->field_name)).''.$this->field_name_required;
+        $key_required = substr($attribute, 0, -strlen($this->field_name)).''.$this->field_name_required;
         //ddd($key_required);
-        $data=(\Request::all());
-        $value_required=Arr::get($data, $key_required);
-        $value=(integer)$value;
+        $data = (\Request::all());
+        $value_required = Arr::get($data, $key_required);
+        $value = (int) $value;
         //ddd($data);
         //ddd($key_required.' '.$value_required);
         //if($key_required!='privacies.111.pivot.privacy.obligatory'){
-            //ddd('<h3>['.$key_required.']['.$value_required.']['.$value.']</h3>');
+        //ddd('<h3>['.$key_required.']['.$value_required.']['.$value.']</h3>');
         //}
-        if($key_required!='privacies.111.pivot.privacy.obligatory'){
+        if ('privacies.111.pivot.privacy.obligatory' != $key_required) {
             //ddd('<h3>['.$key_required.']['.$value_required.']['.$value.']</h3>');
         }
-        if($value_required==1 && $value==0 ){
+        if (1 == $value_required && 0 == $value) {
             return false;
         }
         //return false;
@@ -120,7 +115,7 @@ class PrivacyCheckRule implements Rule,ImplicitRule{
      *
      * @return string
      */
-    public function message(){
+    public function message() {
         return ':attribute must be checked.';
     }
 }

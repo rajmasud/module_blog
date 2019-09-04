@@ -1,22 +1,21 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 //----- models -----
 use Modules\Blog\Models\Event as MyModel;
 
-
-class CreateBlogPostEventsTable extends Migration
-{
-    public function getTable(){
+class CreateBlogPostEventsTable extends Migration {
+    public function getTable() {
         return with(new MyModel())->getTable();
     }
 
-    public function up(){
+    public function up() {
         //----- create -----
-        if (!Schema::hasTable($this->getTable())) {
+        if (! Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
-                $table->increments('post_id');//->primary();
+                $table->increments('post_id'); //->primary();
                 //$table->string('article_type',50)->nullable();
                 //$table->datetime('published_at')->nullable();
                 //$table->text('bio')->nullable();
@@ -25,22 +24,20 @@ class CreateBlogPostEventsTable extends Migration
         }
         //----- update -----
         Schema::table($this->getTable(), function (Blueprint $table) {
-            if (!Schema::hasColumn($this->getTable(), 'date_start')) {
+            if (! Schema::hasColumn($this->getTable(), 'date_start')) {
                 $table->dateTime('date_start')->nullable();
                 $table->dateTime('date_end')->nullable();
-            };
+            }
 
-            if (!Schema::hasColumn($this->getTable(), 'created_by')) {
+            if (! Schema::hasColumn($this->getTable(), 'created_by')) {
                 $table->string('created_by')->nullable();
                 $table->string('updated_by')->nullable();
                 $table->string('deleted_by')->nullable();
-            };
+            }
         });
-
     }
 
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists($this->getTable());
     }
 }

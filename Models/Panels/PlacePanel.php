@@ -1,16 +1,14 @@
 <?php
+
 namespace Modules\Blog\Models\Panels;
 
 use Illuminate\Http\Request;
-
 //-------- Services -----
-use Modules\Xot\Services\StubService;
-use Modules\Xot\Services\RouteService;
-//---- bases --
 use Modules\Xot\Models\Panels\XotBasePanel;
+//---- bases --
+use Modules\Xot\Services\RouteService;
 
-class PlacePanel extends XotBasePanel
-{
+class PlacePanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
      *
@@ -23,196 +21,176 @@ class PlacePanel extends XotBasePanel
      *
      * @var string
      */
-    public static $title = "title"; 
+    public static $title = 'title';
 
     /**
      * The columns that should be searched.
      *
      * @var array
      */
-    public static $search = array (
-) ;
+    public static $search = [
+];
+
     /**
-    * The relationships that should be eager loaded on index queries.
-    *
-    * @var array
-    */
-    public static function with()
-    {
-      return [];
+     * The relationships that should be eager loaded on index queries.
+     *
+     * @var array
+     */
+    public static function with() {
+        return [];
     }
 
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public static function fields()
-    {
-        return array (
-  0 => 
-  (object) array(
+    public static function fields() {
+        return [
+  0 => (object) [
      'type' => 'Text',
      'name' => 'id',
-  ),
-  1 => 
-  (object) array(
+  ],
+  1 => (object) [
      'type' => 'Integer',
      'name' => 'post_id',
-  ),
-  2 => 
-  (object) array(
+  ],
+  2 => (object) [
      'type' => 'Text',
      'name' => 'post_type',
-  ),
-  3 => 
-  (object) array(
+  ],
+  3 => (object) [
      'type' => 'String',
      'name' => 'premise',
-  ),
-  4 => 
-  (object) array(
+  ],
+  4 => (object) [
      'type' => 'String',
      'name' => 'locality',
-  ),
-  5 => 
-  (object) array(
+  ],
+  5 => (object) [
      'type' => 'String',
      'name' => 'postal_town',
-  ),
-  6 => 
-  (object) array(
+  ],
+  6 => (object) [
      'type' => 'String',
      'name' => 'administrative_area_level_3',
-  ),
-  7 => 
-  (object) array(
+  ],
+  7 => (object) [
      'type' => 'String',
      'name' => 'administrative_area_level_2',
-  ),
-  8 => 
-  (object) array(
+  ],
+  8 => (object) [
      'type' => 'String',
      'name' => 'administrative_area_level_1',
-  ),
-  9 => 
-  (object) array(
+  ],
+  9 => (object) [
      'type' => 'String',
      'name' => 'country',
-  ),
-  10 => 
-  (object) array(
+  ],
+  10 => (object) [
      'type' => 'String',
      'name' => 'street_number',
-  ),
-  11 => 
-  (object) array(
+  ],
+  11 => (object) [
      'type' => 'String',
      'name' => 'route',
-  ),
-  12 => 
-  (object) array(
+  ],
+  12 => (object) [
      'type' => 'String',
      'name' => 'postal_code',
-  ),
-  13 => 
-  (object) array(
+  ],
+  13 => (object) [
      'type' => 'String',
      'name' => 'googleplace_url',
-  ),
-  14 => 
-  (object) array(
+  ],
+  14 => (object) [
      'type' => 'String',
      'name' => 'point_of_interest',
-  ),
-  15 => 
-  (object) array(
+  ],
+  15 => (object) [
      'type' => 'String',
      'name' => 'political',
-  ),
-  16 => 
-  (object) array(
+  ],
+  16 => (object) [
      'type' => 'String',
      'name' => 'campground',
-  ),
-  17 => 
-  (object) array(
+  ],
+  17 => (object) [
      'type' => 'Text',
      'name' => 'latitude',
-  ),
-  18 => 
-  (object) array(
+  ],
+  18 => (object) [
      'type' => 'Text',
      'name' => 'longitude',
-  ),
-  19 => 
-  (object) array(
+  ],
+  19 => (object) [
      'type' => 'Text',
      'name' => 'formatted_address',
-  ),
-  20 => 
-  (object) array(
+  ],
+  20 => (object) [
      'type' => 'Text',
      'name' => 'nearest_street',
-  ),
-);
+  ],
+];
     }
+
     /**
-     * Get the tabs available 
+     * Get the tabs available.
      *
-     * @return array  
+     * @return array
      */
-    public function tabs(){
+    public function tabs() {
         $tabs_name = [];
+
         return RouteService::tabs([
-            'tabs_name'=>$tabs_name,
-            'model'=>self::$model
+            'tabs_name' => $tabs_name,
+            'model' => self::$model,
         ]);
-        
     }
 
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public function cards(Request $request)
-    {
+    public function cards(Request $request) {
         return [];
     }
 
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public function filters(Request $request=null)
-    {
+    public function filters(Request $request = null) {
         return [];
     }
 
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public function lenses(Request $request)
-    {
+    public function lenses(Request $request) {
         return [];
     }
 
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public function actions()
-    {
+    public function actions() {
         return [];
     }
 }

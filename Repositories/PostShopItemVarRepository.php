@@ -1,12 +1,13 @@
 <?php
+
 namespace Modules\Blog\Repositories;
 
 //---base
 use Modules\Xot\Repositories\XotBaseRepository;
 
-class PostShopItemVarRepository extends XotBaseRepository{
+class PostShopItemVarRepository extends XotBaseRepository {
     /**
-     * Specify Model class name
+     * Specify Model class name.
      *
      * @return string
      */

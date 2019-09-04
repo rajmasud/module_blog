@@ -1,11 +1,11 @@
 <?php
+
 namespace Modules\Blog\Models\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\Users\Models\User;
 
-class SettingsPolicy
-{
+class SettingsPolicy {
     use HandlesAuthorization;
 
     /**
@@ -14,8 +14,7 @@ class SettingsPolicy
      * @param mixed $user
      * @param mixed $ability
      */
-    public function before($user, $ability)
-    {
+    public function before($user, $ability) {
         if (User::findOrFail($user->id)->superAdmin()) {
             return true;
         }
@@ -28,8 +27,7 @@ class SettingsPolicy
      *
      * @return bool
      */
-    public function access($user)
-    {
+    public function access($user) {
         return User::findOrFail($user->id)->hasPermission('XRA::blog.access');
     }
 
@@ -40,11 +38,11 @@ class SettingsPolicy
      *
      * @return bool
      */
-    public function update($user)
-    {
+    public function update($user) {
         return User::findOrFail($user->id)->hasPermission('XRA::blog.settings');
     }
-    public function indexEdit(User $user, Post $post){
+
+    public function indexEdit(User $user, Post $post) {
         return true;
     }
 }

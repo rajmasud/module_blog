@@ -1,26 +1,21 @@
 <?php
+
 namespace Modules\Blog\Models\Panels;
 
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-
 //--- Services --
-use Modules\Xot\Services\StubService;
-use Modules\Xot\Services\RouteService;
-
+use Modules\Blog\Rules\PivotRequiredRule;
 //-------- rules ---
 use Modules\Blog\Rules\PrivacyCheckRule;
-use Modules\Blog\Rules\PivotRequiredRule;
-
-//----- bases ---------
 use Modules\Xot\Models\Panels\XotBasePanel;
+//----- bases ---------
+use Modules\Xot\Services\RouteService;
 
 /*
 Validator::extendImplicit()
 */
 
-
-class PrivacyMorphPanel extends XotBasePanel{
+class PrivacyMorphPanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
      *
@@ -33,7 +28,7 @@ class PrivacyMorphPanel extends XotBasePanel{
      *
      * @var string
      */
-    public static $title = "title"; 
+    public static $title = 'title';
 
     /**
      * The columns that should be searched.
@@ -43,48 +38,41 @@ class PrivacyMorphPanel extends XotBasePanel{
     public static $search = [];
 
     /**
-    * The relationships that should be eager loaded on index queries.
-    *
-    * @var array
-    */
-    public static function with()
-    {
-      return [];
+     * The relationships that should be eager loaded on index queries.
+     *
+     * @var array
+     */
+    public static function with() {
+        return [];
     }
 
-
     /**
-     * on select the option id
-     *
+     * on select the option id.
      */
-
-    public function optionId($row){
+    public function optionId($row) {
         return $row->area_id;
     }
 
     /**
-     * on select the option label 
-     *
+     * on select the option label.
      */
-
-    public function optionLabel($row){
+    public function optionLabel($row) {
         return $row->area_define_name;
     }
 
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
-
         'col_bs_size' => 6,
         'sortable' => 1,
         'rules' => 'required',
         'rules_messages' => ['it'=>['required'=>'Nome Obbligatorio']],
         'value'=>'..',
-
      */
-    public static function fields(){
+    public static function fields() {
         return [
             /*
             (object) array(
@@ -107,33 +95,33 @@ class PrivacyMorphPanel extends XotBasePanel{
                 'type' => 'String',
                 'name' => 'related_type',
             ),
-            
+
             (object) array(
                 'type' => 'Integer',
                 'name' => 'auth_user_id',
             ),
             */
-            (object) array(
+            (object) [
                 'type' => 'Hidden',
                 'name' => 'title',
-                'rules'=>'required',
-            ),
-            (object) array(
+                'rules' => 'required',
+            ],
+            (object) [
                 'type' => 'Hidden',
                 'name' => 'privacy.obligatory',
-                'rules' => ['boolean','nullable'],//,new PivotRequiredRule('privacy.obligatory','value')],
+                'rules' => ['boolean', 'nullable'], //,new PivotRequiredRule('privacy.obligatory','value')],
 
                 //'rules' => 'required_if:payment_type,cc',
                 /*
                 accepted
 The field under validation must be yes, on, 1, or true. This is useful for validating "Terms of Service" acceptance.
                 */
-            ),
-            (object) array(
-                'type' => 'Boolean',  
+            ],
+            (object) [
+                'type' => 'Boolean',
                 'name' => 'value',
                 //'rules' => ['boolean','nullable'],
-                'rules' => ['boolean','nullable',new PrivacyCheckRule('value','privacy.obligatory') ],
+                'rules' => ['boolean', 'nullable', new PrivacyCheckRule('value', 'privacy.obligatory')],
                 //'attributes'=>['label' => 'label test'],
                 //'attributes'=>['label'=>'test label' ],
                 //'rules' => 'required_if:payment_type,cc',
@@ -141,65 +129,65 @@ The field under validation must be yes, on, 1, or true. This is useful for valid
                 accepted
 The field under validation must be yes, on, 1, or true. This is useful for validating "Terms of Service" acceptance.
                 */
-            ),
+            ],
         ];
     }
-     
+
     /**
-     * Get the tabs available 
+     * Get the tabs available.
      *
-     * @return array  
+     * @return array
      */
-    public function tabs(){
+    public function tabs() {
         $tabs_name = [];
+
         return RouteService::tabs([
-            'tabs_name'=>$tabs_name,
-            'model'=>self::$model
+            'tabs_name' => $tabs_name,
+            'model' => self::$model,
         ]);
-        
     }
+
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public function cards(Request $request)
-    {
+    public function cards(Request $request) {
         return [];
     }
 
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public function filters(Request $request=null)
-    {
+    public function filters(Request $request = null) {
         return [];
     }
 
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public function lenses(Request $request)
-    {
+    public function lenses(Request $request) {
         return [];
     }
 
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public function actions()
-    {
+    public function actions() {
         return [];
     }
-
 }

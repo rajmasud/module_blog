@@ -1,22 +1,19 @@
 <?php
+
 namespace Modules\Blog\Models\Traits;
 
 //use Laravel\Scout\Searchable;
 
 //----- models------
 use Modules\Blog\Models\Post;
-use Modules\Blog\Models\PostRelatedPivot;
 use Modules\Blog\Models\Rating;
-use Modules\Blog\Models\RatingMorph;
 
 //------ traits ---
-use Modules\Theme\Services\ThemeService;
 
-trait RatingTrait{
-
-	//----- relationship -----
+trait RatingTrait {
+    //----- relationship -----
     /*
-	 public function ratings(){
+     public function ratings(){
         $related=Rating::class;
         if(is_string($related)){
             $pivot=$related.'Morph';
@@ -27,10 +24,10 @@ trait RatingTrait{
         $pivot_table=with(new $pivot)->getTable();
         $pivot_fields=with(new $pivot)->getFillable();
         //ddd($pivot_fields);
-        $foreignPivotKey = 'post_id'; 
-        $relatedPivotKey = 'related_id'; 
+        $foreignPivotKey = 'post_id';
+        $relatedPivotKey = 'related_id';
         $parentKey = 'post_id';
-        $relatedKey = 'post_id'; 
+        $relatedKey = 'post_id';
         $inverse=false;
         //$related_table=with(new $related)->getTable();
         //return $this->morphRelated($related);
@@ -43,22 +40,26 @@ trait RatingTrait{
         ;
     }
     */
-    public function ratings(){
-        $related=Rating::class;
+    public function ratings() {
+        $related = Rating::class;
+
         return $this->morphRelated($related);
     }
 
-    public function ratingObjectives(){
-        $related=Rating::class;
-        return $this->hasMany($related,'related_type','post_type');
+    public function ratingObjectives() {
+        $related = Rating::class;
+
+        return $this->hasMany($related, 'related_type', 'post_type');
     }
 
-    public function myRatings(){
-        $auth_user_id=\Auth::user()->auth_user_id;
-        $rows=$this->ratings()->wherePivot('auth_user_id',$auth_user_id);
+    public function myRatings() {
+        $auth_user_id = \Auth::user()->auth_user_id;
+        $rows = $this->ratings()->wherePivot('auth_user_id', $auth_user_id);
+
         return $rows;
     }
-	//----- mutators -----
+
+    //----- mutators -----
     /*
     public function getMyRatingAttribute($value){
         $my=$this->myRatings;
@@ -69,5 +70,4 @@ trait RatingTrait{
         ddd($value);
     }
     */
-
 }

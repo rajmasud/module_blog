@@ -1,8 +1,6 @@
 <?php
-namespace Modules\Blog\Providers;
 
-use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+namespace Modules\Blog\Providers;
 
 //-------models-----------
 //use Modules\Blog\Models\Post;
@@ -10,13 +8,12 @@ use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvi
 //--- bases ---
 use Modules\Xot\Providers\XotBaseRouteServiceProvider;
 
-class RouteServiceProvider extends XotBaseRouteServiceProvider{
-	
-	protected $moduleNamespace = 'Modules\Blog\Http\Controllers';
-    protected $module_dir= __DIR__;
-    protected $module_ns=__NAMESPACE__;
+class RouteServiceProvider extends XotBaseRouteServiceProvider {
+    protected $moduleNamespace = 'Modules\Blog\Http\Controllers';
+    protected $module_dir = __DIR__;
+    protected $module_ns = __NAMESPACE__;
 
     //public function bootCallback(){
-        
+
     //}
 }

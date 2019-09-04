@@ -1,16 +1,15 @@
 <?php
-namespace Modules\Blog\Models\Policies;
-use Illuminate\Auth\Access\HandlesAuthorization;
 
+namespace Modules\Blog\Models\Policies;
+
+use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\Blog\Models\Post as Post;
 use Modules\LU\Models\User;
 
-class PostPolicy
-{
+class PostPolicy {
     use HandlesAuthorization;
 
-    public function before($user, $ability)
-    {
+    public function before($user, $ability) {
         if (isset($user->perm) && $user->perm->perm_type >= 5) {  //superadmin
             return true;
         }
@@ -23,39 +22,35 @@ class PostPolicy
     }
     */
 
-    public function create(User $user)
-    {
+    public function create(User $user) {
         return true;
     }
 
-    public function edit(User $user, Post $post)
-    {
+    public function edit(User $user, Post $post) {
         if ($post->created_by == $user->handle) {
             return true;
         }
 
         return false;
     }
-    public function update(User $user, Post $post)
-    {
+
+    public function update(User $user, Post $post) {
         if ($post->created_by == $user->handle) {
             return true;
         }
 
         return false;
     }
-    
-    public function index(User $user, Post $post)
-    {
+
+    public function index(User $user, Post $post) {
         return true;
     }
 
-    public function show(User $user, Post $post)
-    {
+    public function show(User $user, Post $post) {
         return true;
     }
 
-    public function indexEdit(User $user, Post $post){
+    public function indexEdit(User $user, Post $post) {
         return true;
     }
 }

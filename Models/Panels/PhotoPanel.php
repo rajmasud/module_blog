@@ -1,17 +1,14 @@
 <?php
+
 namespace Modules\Blog\Models\Panels;
 
 use Illuminate\Http\Request;
-
 //--- Services --
-use Modules\Xot\Services\StubService;
+use Modules\Xot\Models\Panels\XotBasePanel;
+//---- bases --
 use Modules\Xot\Services\RouteService;
 
-//---- bases --
-use Modules\Xot\Models\Panels\XotBasePanel;
-
-class PhotoPanel extends XotBasePanel
-{
+class PhotoPanel extends XotBasePanel {
     /**
      * The model the resource corresponds to.
      *
@@ -24,34 +21,34 @@ class PhotoPanel extends XotBasePanel
      *
      * @var string
      */
-    public static $title = "title"; 
+    public static $title = 'title';
 
     /**
      * The columns that should be searched.
      *
      * @var array
      */
-    public static $search = array (
-) ;
+    public static $search = [
+];
+
     /**
-    * The relationships that should be eager loaded on index queries.
-    *
-    * @var array
-    */
-    public static function with()
-    {
-      return [];
+     * The relationships that should be eager loaded on index queries.
+     *
+     * @var array
+     */
+    public static function with() {
+        return [];
     }
 
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public static function fields()
-    {
-        return array (
+    public static function fields() {
+        return [
    /*
   (object) array(
      'type' => 'Integer',
@@ -59,79 +56,79 @@ class PhotoPanel extends XotBasePanel
   ),
   */
   //*
-  (object) array(
+  (object) [
      'type' => 'Text',
      'name' => 'title',
-  ),
-  
-  (object) array(
+  ],
+
+  (object) [
      'type' => 'Text',
      'name' => 'subtitle',
-  ),
+  ],
   /*
   (object) array(
      'type' => 'Text',
      'name' => 'post[title]',
   ),
   */
-);
+];
     }
-     
+
     /**
-     * Get the tabs available 
+     * Get the tabs available.
      *
-     * @return array  
+     * @return array
      */
-    public function tabs(){
+    public function tabs() {
         $tabs_name = [];
+
         return RouteService::tabs([
-            'tabs_name'=>$tabs_name,
-            'model'=>self::$model
+            'tabs_name' => $tabs_name,
+            'model' => self::$model,
         ]);
-        
     }
+
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public function cards(Request $request)
-    {
+    public function cards(Request $request) {
         return [];
     }
 
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public function filters(Request $request=null)
-    {
+    public function filters(Request $request = null) {
         return [];
     }
 
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public function lenses(Request $request)
-    {
+    public function lenses(Request $request) {
         return [];
     }
 
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return array
      */
-    public function actions()
-    {
+    public function actions() {
         return [];
     }
-
 }

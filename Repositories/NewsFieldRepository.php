@@ -1,12 +1,13 @@
 <?php
+
 namespace Modules\Blog\Repositories;
 
 //---base
 use Modules\Xot\Repositories\XotBaseRepository;
 
-class NewsFieldRepository extends XotBaseRepository{
+class NewsFieldRepository extends XotBaseRepository {
     /**
-     * Specify Model class name
+     * Specify Model class name.
      *
      * @return string
      */

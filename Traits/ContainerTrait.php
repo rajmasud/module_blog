@@ -1,4 +1,5 @@
 <?php
+
 namespace Modules\Blog\Traits;
 
 use App\Http\Controllers\Controller;
@@ -9,25 +10,21 @@ use Illuminate\Http\Request;
 //---- models --
 use Modules\Blog\Models\Post;
 
-
-trait ContainerTrait
-{
+trait ContainerTrait {
     /**
      * @var UserRepository
      */
     protected $repository;
 
-    public function getModel()
-    {
+    public function getModel() {
         //return new Post;
         $params = \Route::current()->parameters();
         \extract($params);
-        if(is_object($container0)) return get_class($container0);
-
+        if (is_object($container0)) {
+            return get_class($container0);
+        }
 
         $post_type = \is_object($container0) ? $container0->post_type : $container0;
-
-
 
         //echo '<h3>['.$post_type.']</h3>';
         $model = config('xra.model.'.$post_type);
@@ -35,12 +32,13 @@ trait ContainerTrait
             //$row = Post::where('lang', \App::getLocale())->where('guid', $post_type)->first();
             //$model = config('xra.model.'.$row->post_type);
             //if ('' == $model) {
-                die('<hr/>settare modello['.$post_type.'] in config/xra<hr/>'.'['.__LINE__.']['.__FILE__.']');
+            die('<hr/>settare modello['.$post_type.'] in config/xra<hr/>'.'['.__LINE__.']['.__FILE__.']');
             //}
         }
 
         return $model;
     }
+
     /*
     public function __construct(PostRepository $repository)
     {
@@ -48,10 +46,9 @@ trait ContainerTrait
     }
     */
 
-    public function getController()
-    {
+    public function getController() {
         $params = \Route::current()->parameters();
-        \extract($params); 
+        \extract($params);
         $model = $this->getModel();
         if (\Request::is('admin/*')) {
             $controller = \str_replace('\\Models\\', '\\Http\\Controllers\\Admin\\', $model);
@@ -71,7 +68,7 @@ trait ContainerTrait
         return $controller;
     }
 
-    public function __call($method, $args){
+    public function __call($method, $args) {
         //ddd($args);
         $controller = $this->getController();
         //dd($controller);

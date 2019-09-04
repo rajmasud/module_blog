@@ -1,15 +1,14 @@
 <?php
+
 namespace Modules\Blog\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\MorphPivot;
+use Modules\Xot\Traits\Updater;
 
-use Modules\Xot\Traits\Updater; 
-
-class ArticleMorph extends MorphPivot{
+class ArticleMorph extends MorphPivot {
     use Updater;
     protected $fillable = [
-        'id','post_id','post_type','related_id','related_type', //-- testare se toglierli 
+        'id', 'post_id', 'post_type', 'related_id', 'related_type', //-- testare se toglierli
         'auth_user_id',
         //'title','value',
     ];
@@ -23,5 +22,4 @@ class ArticleMorph extends MorphPivot{
     protected $primaryKey = 'id';
     public $incrementing = true;
     public $timestamps = true; //Indicates if the model should be timestamped.
-    
 }

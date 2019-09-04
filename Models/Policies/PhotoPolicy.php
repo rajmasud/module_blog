@@ -1,11 +1,8 @@
 <?php
-namespace Modules\Blog\Models\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
-use Modules\Blog\Models\Photo as Post;
-use Modules\LU\Models\User;
+namespace Modules\Blog\Models\Policies;
 
 use Modules\Xot\Models\Policies\XotBasePolicy;
 
-class PhotoPolicy extends XotBasePolicy{
+class PhotoPolicy extends XotBasePolicy {
 }

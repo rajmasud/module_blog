@@ -1,13 +1,12 @@
 <?php
+
 namespace Modules\Blog\Models;
+
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Scout\Searchable;
-
 //---------- traits
-use Modules\Xot\Traits\Updater;
 use Modules\Blog\Models\Traits\LinkedTrait;
-
-use GeneaLabs\LaravelModelCaching\Traits\Cachable;
+use Modules\Xot\Traits\Updater;
 
 abstract class XotBaseModel extends Model {
     use Updater;

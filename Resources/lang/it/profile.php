@@ -1,4 +1,5 @@
 <?php
+
 return [
-	'privacies' => 'Privacy',
+    'privacies' => 'Privacy',
 ];

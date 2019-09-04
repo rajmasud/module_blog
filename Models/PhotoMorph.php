@@ -1,17 +1,16 @@
 <?php
+
 namespace Modules\Blog\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\MorphPivot;
+use Modules\Xot\Traits\Updater;
 
-use Modules\Xot\Traits\Updater; 
-
-class PhotoMorph extends MorphPivot{
+class PhotoMorph extends MorphPivot {
     use Updater;
     protected $fillable = [
         'id',
-        'post_id','post_type',
-        'related_id','related_type', 
+        'post_id', 'post_type',
+        'related_id', 'related_type',
         'auth_user_id',
     ];
     protected $dates = [
@@ -23,6 +22,5 @@ class PhotoMorph extends MorphPivot{
     protected $appends = [];
     protected $primaryKey = 'id';
     public $incrementing = true;
-    public $timestamps = true; 
-    
+    public $timestamps = true;
 }

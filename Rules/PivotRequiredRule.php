@@ -3,11 +3,9 @@
 namespace Modules\Blog\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
-
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Arr;
+
 //use Illuminate\Http\Request;
 //use Illuminate\Http\Response;
 /*
@@ -18,7 +16,7 @@ http://derekmd.com/2017/02/improving-laravel-validation-replacer-functions/
 --- recaptcha
 https://crnkovic.me/simple-and-reusable-recaptcha-validation-in-laravel/
 https://m.dotdev.co/google-recaptcha-integration-with-laravel-ad0f30b52d7d
---- pincode 
+--- pincode
 https://www.cedextech.com/blog/use-laravel-55-rule-object-to-validate-the-pincode
 --- da leggere
 https://www.sitepoint.com/data-validation-laravel-right-way/
@@ -38,10 +36,7 @@ http://www.coding4developers.com/laravel/customize-validation-error-response-in-
 
 */
 
-
-class PivotRequiredRule implements Rule{
-
-
+class PivotRequiredRule implements Rule {
     /**
      * The source control provider instance.
      *
@@ -49,30 +44,30 @@ class PivotRequiredRule implements Rule{
      */
     public $field_name; //il mio nome
     public $field_name_required; //il campo che deve essere obbligatorio
+
     /**
      * Create a new rule instance.
-     *
-     * @return void
      */
-    public function __construct($field_name=null,$field_name_required=null){
+    public function __construct($field_name = null, $field_name_required = null) {
         //ddd($field_name);
-        $this->field_name=$field_name;
-        $this->field_name_required=$field_name_required;
+        $this->field_name = $field_name;
+        $this->field_name_required = $field_name_required;
     }
 
     /**
      * Determine if the validation rule passes.
-     * 
-     * @param  string  $attribute
-     * @param  mixed  $value
+     *
+     * @param string $attribute
+     * @param mixed  $value
+     *
      * @return bool
      */
-    public function passes($attribute, $value){
-        $key_required=substr($attribute, 0,-strlen($this->field_name)).''.$this->field_name_required;
-        $data=(\Request::all());
-        $value_required=Arr::get($data, $key_required);
-        $value=(integer)$value;
-        if($value && !$value_required){
+    public function passes($attribute, $value) {
+        $key_required = substr($attribute, 0, -strlen($this->field_name)).''.$this->field_name_required;
+        $data = (\Request::all());
+        $value_required = Arr::get($data, $key_required);
+        $value = (int) $value;
+        if ($value && ! $value_required) {
             return false;
         }
         //return false;
@@ -85,7 +80,7 @@ class PivotRequiredRule implements Rule{
      *
      * @return string
      */
-    public function message(){
+    public function message() {
         return ':attribute must be checked.';
     }
 }

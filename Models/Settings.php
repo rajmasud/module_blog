@@ -1,5 +1,6 @@
 <?php
-namespace Modules\Blog\Models;
-class Settings extends BaseModel {
 
+namespace Modules\Blog\Models;
+
+class Settings extends BaseModel {
 }

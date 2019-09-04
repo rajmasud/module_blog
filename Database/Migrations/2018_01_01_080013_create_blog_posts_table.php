@@ -1,19 +1,18 @@
 <?php
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
 //--- models --
 use Modules\Blog\Models\Post as MyModel;
 
-class CreateBlogPostsTable extends Migration
-{
-    public function getTable(){
+class CreateBlogPostsTable extends Migration {
+    public function getTable() {
         return with(new MyModel())->getTable();
     }
 
-    public function up(){
-        if (!Schema::hasTable($this->getTable())) {
+    public function up() {
+        if (! Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
                 $table->increments('id');
                 $table->nullableMorphs('post');
@@ -39,75 +38,72 @@ class CreateBlogPostsTable extends Migration
                 ->getDoctrineSchemaManager()
                 ->listTableDetails($table->getTable());
 
-            if (!$schema_builder->hasIndex($this->getTable().'_'.'guid'.'_index')) {
-                $table->string('guid',100)->index()->change();
+            if (! $schema_builder->hasIndex($this->getTable().'_'.'guid'.'_index')) {
+                $table->string('guid', 100)->index()->change();
             }
 
-
-
-            if (!Schema::hasColumn($this->getTable(), 'guid')) {
+            if (! Schema::hasColumn($this->getTable(), 'guid')) {
                 $table->string('guid')->nullable();
             }
-            if (!Schema::hasColumn($this->getTable(), 'category_id')) {
+            if (! Schema::hasColumn($this->getTable(), 'category_id')) {
                 $table->integer('category_id')->nullable();
             }
-            if (!Schema::hasColumn($this->getTable(), 'author_id')) {
+            if (! Schema::hasColumn($this->getTable(), 'author_id')) {
                 $table->integer('author_id')->nullable();
             }
-            if (!Schema::hasColumn($this->getTable(), 'subtitle')) {
+            if (! Schema::hasColumn($this->getTable(), 'subtitle')) {
                 $table->string('subtitle')->nullable();
             }
-            if (!Schema::hasColumn($this->getTable(), 'image')) {
+            if (! Schema::hasColumn($this->getTable(), 'image')) {
                 $table->string('image')->nullable();
             }
-            if (!Schema::hasColumn($this->getTable(), 'image_alt')) {
+            if (! Schema::hasColumn($this->getTable(), 'image_alt')) {
                 $table->string('image_alt')->nullable();
             }
-            if (!Schema::hasColumn($this->getTable(), 'image_title')) {
+            if (! Schema::hasColumn($this->getTable(), 'image_title')) {
                 $table->string('image_title')->nullable();
             }
-            if (!Schema::hasColumn($this->getTable(), 'meta_description')) {
+            if (! Schema::hasColumn($this->getTable(), 'meta_description')) {
                 $table->text('meta_description')->nullable();
             }
-            if (!Schema::hasColumn($this->getTable(), 'meta_keywords')) {
+            if (! Schema::hasColumn($this->getTable(), 'meta_keywords')) {
                 $table->text('meta_keywords')->nullable();
             }
-            if (!Schema::hasColumn($this->getTable(), 'content')) {
+            if (! Schema::hasColumn($this->getTable(), 'content')) {
                 $table->text('content')->nullable();
             }
-            if (!Schema::hasColumn($this->getTable(), 'published')) {
+            if (! Schema::hasColumn($this->getTable(), 'published')) {
                 $table->boolean('published')->nullable();
             }
-            if (!Schema::hasColumn($this->getTable(), 'created_by')) {
+            if (! Schema::hasColumn($this->getTable(), 'created_by')) {
                 $table->string('created_by')->nullable();
             }
-            if (!Schema::hasColumn($this->getTable(), 'updated_by')) {
+            if (! Schema::hasColumn($this->getTable(), 'updated_by')) {
                 $table->string('updated_by')->nullable();
             }
 
-
-            if (!Schema::hasColumn($this->getTable(), 'url')) {
+            if (! Schema::hasColumn($this->getTable(), 'url')) {
                 $table->string('url')->nullable();
             }
-            if (!Schema::hasColumn($this->getTable(), 'url_lang')) {
+            if (! Schema::hasColumn($this->getTable(), 'url_lang')) {
                 $table->text('url_lang')->nullable();
             }
-            if (!Schema::hasColumn($this->getTable(), 'image_resize_src')) {
+            if (! Schema::hasColumn($this->getTable(), 'image_resize_src')) {
                 $table->text('image_resize_src')->nullable();
             }
-            if (!Schema::hasColumn($this->getTable(), 'linked_count')) {
+            if (! Schema::hasColumn($this->getTable(), 'linked_count')) {
                 $table->text('linked_count')->nullable();
             }
-            if (!Schema::hasColumn($this->getTable(), 'related_count')) {
+            if (! Schema::hasColumn($this->getTable(), 'related_count')) {
                 $table->text('related_count')->nullable();
             }
-            if (!Schema::hasColumn($this->getTable(), 'relatedrev_count')) {
+            if (! Schema::hasColumn($this->getTable(), 'relatedrev_count')) {
                 $table->text('relatedrev_count')->nullable();
             }
-            if (!Schema::hasColumn($this->getTable(), 'linkable_type')) {
+            if (! Schema::hasColumn($this->getTable(), 'linkable_type')) {
                 $table->string('linkable_type', 20)->index()->nullable();
             }
-            if (!Schema::hasColumn($this->getTable(), 'post_type')) {
+            if (! Schema::hasColumn($this->getTable(), 'post_type')) {
                 $table->string('post_type', 40)->index()->nullable();
             }
             //------- CHANGE INDEX-------
@@ -115,13 +111,13 @@ class CreateBlogPostsTable extends Migration
                 ->getDoctrineSchemaManager()
                 ->listTableDetails($table->getTable());
 
-            if (!$schema_builder->hasIndex($this->getTable().'_'.'post_id'.'_index')) {
+            if (! $schema_builder->hasIndex($this->getTable().'_'.'post_id'.'_index')) {
                 $table->integer('post_id')->nullable()->index()->change();
             }
             // if (!$schema_builder->hasIndex($this->getTable().'_'.'type'.'_index')) {
             //     $table->string('type', 30)->nullable()->index()->change();
             // }
-            if (!$schema_builder->hasIndex($this->getTable().'_'.'lang'.'_index')) {
+            if (! $schema_builder->hasIndex($this->getTable().'_'.'lang'.'_index')) {
                 $table->string('lang', 3)->nullable()->index()->change();
             }
             //-------- CHANGE FIELD -------------
@@ -131,8 +127,7 @@ class CreateBlogPostsTable extends Migration
 
     //end up
 
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists($this->getTable());
     }
 

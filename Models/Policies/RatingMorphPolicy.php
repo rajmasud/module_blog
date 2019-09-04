@@ -3,18 +3,15 @@
 namespace Modules\Blog\Models\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Modules\Blog\Models\RatingMorph as Post;
 use Modules\LU\Models\User as User;
-use Modules\Blog\Models\RatingMorph as Post; 
-
 use Modules\Xot\Traits\XotBasePolicyTrait;
 
-class RatingMorphPolicy
-{
+class RatingMorphPolicy {
     //use HandlesAuthorization; e' dentro XotBasePolicyTrait
-    use XotBasePolicyTrait; 
-    
-    public function before($user, $ability)
-    {
+    use XotBasePolicyTrait;
+
+    public function before($user, $ability) {
         if (isset($user->perm) && $user->perm->perm_type >= 5) {  //superadmin
             return true;
         }
@@ -23,68 +20,65 @@ class RatingMorphPolicy
     /**
      * Determine whether the user can view any DocDummyPluralModel.
      *
-     * @param  \Modules\LU\Models\User  $user
+     * @param \Modules\LU\Models\User $user
+     *
      * @return mixed
      */
-    public function index(User $user, Post $post)
-    {
+    public function index(User $user, Post $post) {
         return true;
     }
 
     /**
      * Determine whether the user can view any DocDummyPluralModel.
      *
-     * @param  \Modules\LU\Models\User  $user
+     * @param \Modules\LU\Models\User $user
+     *
      * @return mixed
      */
-    public function viewAny(User $user)
-    {
-        //
+    public function viewAny(User $user) {
     }
 
     /**
      * Determine whether the user can show the DocDummyModel.
      *
-     * @param  \Modules\LU\Models\User  $user
-     * @param  \Modules\Blog\Models\RatingMorph  $dummyModel
+     * @param \Modules\LU\Models\User          $user
+     * @param \Modules\Blog\Models\RatingMorph $dummyModel
+     *
      * @return mixed
      */
-    public function show(User $user, Post $post)
-    {
-        //
+    public function show(User $user, Post $post) {
     }
 
     /**
      * Determine whether the user can view the DocDummyModel.
      *
-     * @param  \Modules\LU\Models\User  $user
-     * @param  \Modules\Blog\Models\RatingMorph  $dummyModel
+     * @param \Modules\LU\Models\User          $user
+     * @param \Modules\Blog\Models\RatingMorph $dummyModel
+     *
      * @return mixed
      */
-    public function view(User $user, Post $post)
-    {
-        //
+    public function view(User $user, Post $post) {
     }
 
     /**
      * Determine whether the user can create DocDummyPluralModel.
      *
-     * @param  \Modules\LU\Models\User  $user
+     * @param \Modules\LU\Models\User $user
+     *
      * @return mixed
      */
-    public function create(User $user)
-    {
-        //
+    public function create(User $user) {
     }
+
     /**
      * Determine whether the user can edit the DocDummyModel.
      *
-     * @param  \Modules\LU\Models\User  $user
-     * @param  \Modules\Blog\Models\RatingMorph  $dummyModel
+     * @param \Modules\LU\Models\User          $user
+     * @param \Modules\Blog\Models\RatingMorph $dummyModel
+     *
      * @return mixed
      */
-    public function edit(User $user, Post $post)
-    {
+    public function edit(User $user, Post $post) {
         if ($post->created_by == $user->handle) {
             return true;
         }
@@ -92,25 +86,23 @@ class RatingMorphPolicy
         return false;
     }
 
-    public function indexEdit(User $user, Post $post)
-    {
+    public function indexEdit(User $user, Post $post) {
         if ($post->created_by == $user->handle) {
             return true;
         }
 
         return false;
     }
-
 
     /**
      * Determine whether the user can update the DocDummyModel.
      *
-     * @param  \Modules\LU\Models\User  $user
-     * @param  \Modules\Blog\Models\RatingMorph  $dummyModel
+     * @param \Modules\LU\Models\User          $user
+     * @param \Modules\Blog\Models\RatingMorph $dummyModel
+     *
      * @return mixed
      */
-    public function update(User $user, Post $post)
-    {
+    public function update(User $user, Post $post) {
         if ($post->created_by == $user->handle) {
             return true;
         }
@@ -118,8 +110,7 @@ class RatingMorphPolicy
         return false;
     }
 
-    public function destroy(User $user, Post $post)
-    {
+    public function destroy(User $user, Post $post) {
         if ($post->created_by == $user->handle) {
             return true;
         }
@@ -130,12 +121,12 @@ class RatingMorphPolicy
     /**
      * Determine whether the user can delete the DocDummyModel.
      *
-     * @param  \Modules\LU\Models\User  $user
-     * @param  \Modules\Blog\Models\RatingMorph  $dummyModel
+     * @param \Modules\LU\Models\User          $user
+     * @param \Modules\Blog\Models\RatingMorph $dummyModel
+     *
      * @return mixed
      */
-    public function delete(User $user, Post $post)
-    {
+    public function delete(User $user, Post $post) {
         if ($post->created_by == $user->handle) {
             return true;
         }
@@ -146,12 +137,12 @@ class RatingMorphPolicy
     /**
      * Determine whether the user can restore the DocDummyModel.
      *
-     * @param  \Modules\LU\Models\User  $user
-     * @param  \Modules\Blog\Models\RatingMorph  $dummyModel
+     * @param \Modules\LU\Models\User          $user
+     * @param \Modules\Blog\Models\RatingMorph $dummyModel
+     *
      * @return mixed
      */
-    public function restore(User $user, Post $post)
-    {
+    public function restore(User $user, Post $post) {
         if ($post->created_by == $user->handle) {
             return true;
         }
@@ -162,12 +153,11 @@ class RatingMorphPolicy
     /**
      * Determine whether the user can permanently delete the DocDummyModel.
      *
-     * @param  \Modules\LU\Models\User  $user
-     * @param  \Modules\Blog\Models\RatingMorph  $dummyModel
+     * @param \Modules\LU\Models\User          $user
+     * @param \Modules\Blog\Models\RatingMorph $dummyModel
+     *
      * @return mixed
      */
-    public function forceDelete(User $user, Post $post)
-    {
-        //
+    public function forceDelete(User $user, Post $post) {
     }
 }

@@ -1,16 +1,16 @@
 <?php
+
 namespace Modules\Blog\Models;
+
 //--------- models --------
-use Modules\LU\Models\User;
-//--- TRAITS ---
 use Modules\Blog\Models\Traits\PrivacyTrait;
+//--- TRAITS ---
+use Modules\LU\Models\User;
+
 //--- services
-use Modules\Theme\Services\ThemeService;
-
-
 
 class Profile extends BaseModel {
-    use PrivacyTrait; // da mettere anche in restaurant owner 
+    use PrivacyTrait; // da mettere anche in restaurant owner
 
     //protected $connection = 'mysql'; // this will use the specified database conneciton
     protected $fillable = ['post_id'];
@@ -18,10 +18,9 @@ class Profile extends BaseModel {
     protected $dates = ['created_at', 'updated_at'];
     protected $primaryKey = 'post_id';
     public $incrementing = true;
-    
+
     //------- RELATIONSHIP ----------
-    public function user(){
-    	return $this->hasOne(User::class,'auth_user_id','auth_user_id');
+    public function user() {
+        return $this->hasOne(User::class, 'auth_user_id', 'auth_user_id');
     }
-    
 }//end model

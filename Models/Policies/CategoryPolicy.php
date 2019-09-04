@@ -1,12 +1,12 @@
 <?php
+
 namespace Modules\Blog\Models\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\Blog\Models\Category;
 use Modules\Users\Models\User;
 
-class CategoryPolicy
-{
+class CategoryPolicy {
     use HandlesAuthorization;
 
     /**
@@ -15,8 +15,7 @@ class CategoryPolicy
      * @param mixed $user
      * @param mixed $ability
      */
-    public function before($user, $ability)
-    {
+    public function before($user, $ability) {
         if ('delete' != $ability && User::findOrFail($user->id)->superAdmin()) {
             return true;
         }
@@ -29,8 +28,7 @@ class CategoryPolicy
      *
      * @return bool
      */
-    public function access($user)
-    {
+    public function access($user) {
         return User::findOrFail($user->id)->hasPermission('XRA::blog.categories.access');
     }
 
@@ -41,8 +39,7 @@ class CategoryPolicy
      *
      * @return bool
      */
-    public function create($user)
-    {
+    public function create($user) {
         return User::findOrFail($user->id)->hasPermission('XRA::blog.categories.create');
     }
 
@@ -53,8 +50,7 @@ class CategoryPolicy
      *
      * @return bool
      */
-    public function view($user)
-    {
+    public function view($user) {
         return User::findOrFail($user->id)->hasPermission('XRA::blog.categories.view');
     }
 
@@ -65,8 +61,7 @@ class CategoryPolicy
      *
      * @return bool
      */
-    public function update($user, Category $category)
-    {
+    public function update($user, Category $category) {
         return User::findOrFail($user->id)->hasPermission('XRA::blog.categories.update');
     }
 
@@ -77,8 +72,7 @@ class CategoryPolicy
      *
      * @return bool
      */
-    public function delete($user, Category $category)
-    {
+    public function delete($user, Category $category) {
         if (Category::first()->id == $category->id) {
             return false;
         }
@@ -88,7 +82,7 @@ class CategoryPolicy
         return $user->superAdmin() || $user->hasPermission('XRA::blog.categories.delete');
     }
 
-    public function indexEdit(User $user, Post $post){
+    public function indexEdit(User $user, Post $post) {
         return true;
     }
 }

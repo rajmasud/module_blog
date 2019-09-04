@@ -1,12 +1,11 @@
 <?php
+
 namespace Modules\Blog\Rules;
 
 use App\Source;
-
 use Illuminate\Contracts\Validation\Rule;
 
-class ValidRepositoryRule implements Rule
-{
+class ValidRepositoryRule implements Rule {
     /**
      * The source control provider instance.
      *
@@ -19,41 +18,43 @@ class ValidRepositoryRule implements Rule
      * @var string
      */
     public $branch;
+
     /**
      * Create a new rule instance.
      *
-     * @param  \App\Source  $source
-     * @param  string  $branch
-     * @return void
+     * @param \App\Source $source
+     * @param string      $branch
      */
-    public function __construct($source, $branch)
-    {
+    public function __construct($source, $branch) {
         $this->source = $source;
         $this->branch = $branch;
     }
+
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
+     * @param string $attribute
+     * @param mixed  $value
+     *
      * @return bool
      */
-    public function passes($attribute, $value)
-    {
+    public function passes($attribute, $value) {
         if (! $this->source instanceof Source) {
             return false;
         }
+
         return $this->source->client()->validRepository(
-            $value, $this->branch
+            $value,
+            $this->branch
         );
     }
+
     /**
      * Get the validation error message.
      *
      * @return string
      */
-    public function message()
-    {
+    public function message() {
         return 'The given repository is invalid.';
     }
 }

@@ -1,12 +1,12 @@
 <?php
+
 namespace Modules\Blog\Models\Policies;
 
 use Illuminate\Auth\Access\HandlesAuthorization;
 use Modules\Blog\Models\Comment;
 use Modules\Users\Models\User;
 
-class CommentPolicy
-{
+class CommentPolicy {
     use HandlesAuthorization;
 
     /**
@@ -15,8 +15,7 @@ class CommentPolicy
      * @param mixed $user
      * @param mixed $ability
      */
-    public function before($user, $ability)
-    {
+    public function before($user, $ability) {
         if (User::findOrFail($user->id)->superAdmin()) {
             return true;
         }
@@ -29,8 +28,7 @@ class CommentPolicy
      *
      * @return bool
      */
-    public function access($user)
-    {
+    public function access($user) {
         return User::findOrFail($user->id)->hasPermission('XRA::blog.comments.access');
     }
 
@@ -41,8 +39,7 @@ class CommentPolicy
      *
      * @return bool
      */
-    public function publicAccess($user)
-    {
+    public function publicAccess($user) {
         return User::findOrFail($user->id)->hasPermission('XRA::blog.comments.access-public');
     }
 
@@ -53,8 +50,7 @@ class CommentPolicy
      *
      * @return bool
      */
-    public function create($user)
-    {
+    public function create($user) {
         return User::findOrFail($user->id)->hasPermission('XRA::blog.comments.create');
     }
 
@@ -65,21 +61,19 @@ class CommentPolicy
      *
      * @return bool
      */
-    public function publicCreate($user)
-    {
+    public function publicCreate($user) {
         return User::findOrFail($user->id)->hasPermission('XRA::blog.comments.create-public');
     }
 
     /**
      * Determine if the current user can view comments.
      *
-     * @param mixed                    $user
+     * @param mixed                        $user
      * @param \Modules\Blog\Models\Comment $comment
      *
      * @return bool
      */
-    public function view($user, Comment $comment)
-    {
+    public function view($user, Comment $comment) {
         if ($comment->user->id == $user->id) {
             return true;
         }
@@ -90,13 +84,12 @@ class CommentPolicy
     /**
      * Determine if the current user can view comments. (public).
      *
-     * @param mixed                    $user
+     * @param mixed                        $user
      * @param \Modules\Blog\Models\Comment $comment
      *
      * @return bool
      */
-    public function publicView($user, Comment $comment)
-    {
+    public function publicView($user, Comment $comment) {
         if ($comment->user->id == $user->id) {
             return true;
         }
@@ -107,13 +100,12 @@ class CommentPolicy
     /**
      * Determine if the current user can update comments.
      *
-     * @param mixed                    $user
+     * @param mixed                        $user
      * @param \Modules\Blog\Models\Comment $comment
      *
      * @return bool
      */
-    public function update($user, Comment $comment)
-    {
+    public function update($user, Comment $comment) {
         if ($comment->user->id == $user->id) {
             return true;
         }
@@ -124,13 +116,12 @@ class CommentPolicy
     /**
      * Determine if the current user can update comments. (public).
      *
-     * @param mixed                    $user
+     * @param mixed                        $user
      * @param \Modules\Blog\Models\Comment $comment
      *
      * @return bool
      */
-    public function publicUpdate($user, Comment $comment)
-    {
+    public function publicUpdate($user, Comment $comment) {
         if ($comment->user->id == $user->id) {
             return true;
         }
@@ -141,13 +132,12 @@ class CommentPolicy
     /**
      * Determine if the current user can delete comments.
      *
-     * @param mixed                    $user
+     * @param mixed                        $user
      * @param \Modules\Blog\Models\Comment $comment
      *
      * @return bool
      */
-    public function delete($user, Comment $comment)
-    {
+    public function delete($user, Comment $comment) {
         $user = User::findOrFail($user->id);
         if ($comment->user->id == $user->id || $user->hasPermission('XRA::blog.posts.delete')) {
             return true;
@@ -159,13 +149,12 @@ class CommentPolicy
     /**
      * Determine if the current user can delete comments. (public).
      *
-     * @param mixed                    $user
+     * @param mixed                        $user
      * @param \Modules\Blog\Models\Comment $comment
      *
      * @return bool
      */
-    public function publicDelete($user, Comment $comment)
-    {
+    public function publicDelete($user, Comment $comment) {
         $user = User::findOrFail($user->id);
         if ($comment->user->id == $user->id || $user->hasPermission('XRA::blog.posts.delete')) {
             return true;
@@ -174,7 +163,7 @@ class CommentPolicy
         return User::findOrFail($user->id)->hasPermission('XRA::blog.comments.delete-public');
     }
 
-    public function indexEdit(User $user, Post $post){
+    public function indexEdit(User $user, Post $post) {
         return true;
     }
 }

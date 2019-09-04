@@ -3,7 +3,7 @@
 https://appdividend.com/2017/09/02/laravel-5-5-validation-example-scratch/
 https://laravel-guide.readthedocs.io/en/latest/validation/
 https://www.codeclouds.com/blog/custom-validation-rules-laravel/
-//---- register to newsletter 
+//---- register to newsletter
 https://jasonmccreary.me/articles/test-validation-laravel-form-request-assertion/
 
 https://mattstauffer.com/blog/laravel-5.0-form-requests/
@@ -16,32 +16,23 @@ namespace Modules\Blog\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
 
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-
-
-class FiveCharactersRule implements Rule{
+class FiveCharactersRule implements Rule {
     /**
      * Create a new rule instance.
-     *
-     * @return void
      */
-    public function __construct()
-    {
-        //
+    public function __construct() {
     }
 
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
+     * @param string $attribute
+     * @param mixed  $value
+     *
      * @return bool
      */
-    public function passes($attribute, $value)
-    {
-        return strlen($value) === 5;
+    public function passes($attribute, $value) {
+        return 5 === strlen($value);
     }
 
     /**
@@ -49,8 +40,7 @@ class FiveCharactersRule implements Rule{
      *
      * @return string
      */
-    public function message()
-    {
+    public function message() {
         //return 'The :attribute must be 5 characters';
         return trans('validation.only_uppercase');
     }

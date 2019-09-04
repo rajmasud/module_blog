@@ -1,7 +1,5 @@
 <?php
 
-
-
 return [
     'euro' => '&euro;',
     'id_spese' => 'voce spesa',
