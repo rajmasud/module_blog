@@ -1,8 +1,8 @@
 @extends('adm_theme::layouts.app')
 @section('page_heading',''.$container0->title.' - '.$item0->title)
-@include('backend::includes.components')
+
 @section('content')
-@include('backend::includes.flash')
+@include('formx::includes.flash')
 <div class="row">
 	<div class="col-md-10">
 		<div class="nav-tabs-custom">

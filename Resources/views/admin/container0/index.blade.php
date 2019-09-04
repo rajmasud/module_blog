@@ -3,9 +3,9 @@
 	//ddd($params);
 @endphp
 @section('page_heading',''.$container0->post_type.'] '.$container0->title)
-@include('backend::includes.components')
+
 @section('content')
-@include('backend::includes.flash')
+@include('formx::includes.flash')
 <div class="row">
 	<div class="col-md-12">
 		<div class="nav-tabs-custom">

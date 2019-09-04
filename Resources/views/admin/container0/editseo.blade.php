@@ -1,8 +1,8 @@
 @extends('adm_theme::layouts.app')
 @section('page_heading','Modifica SEO '.$container0->title.' &raquo; '.$item->title)
-@include('backend::includes.components')
+
 @section('content')
-@include('backend::includes.flash')
+@include('formx::includes.flash')
 <div class="row">
 	<div class="col-md-12">
 		<div class="nav-tabs-custom">

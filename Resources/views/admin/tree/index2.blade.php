@@ -1,5 +1,5 @@
 @extends('adm_theme::layouts.app')
-@include('backend::includes.components')
+
 {{ Theme::add('theme/bc/bootstrap-language/languages.min.css') }}
 {{-- view-source:http://webbakerlab.com/nestedsortable/  --}}
 {{-- Theme::add("theme/bc/jquery/dist/jquery.min.js") --}}
@@ -18,7 +18,7 @@
 @endpush
 --}}
 @section('content')
-@include('backend::includes.flash')
+@include('formx::includes.flash')
 
 <header class="panel-heading">
 	<h3>

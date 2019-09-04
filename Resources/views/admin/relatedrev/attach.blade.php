@@ -1,6 +1,6 @@
 @extends('adm_theme::layouts.app')
 @section('page_heading','Modifica')
-@include('backend::includes.components')
+
 @section('content')
 
 {!! Form::bsOpen($row,'update') !!}

@@ -30,7 +30,7 @@ class CreateBlogPostArticlesTable extends Migration{
                 $table->string('created_by', 255)->nullable()->after('created_at');
             }
             if (!Schema::hasColumn($this->getTable(), 'parent_id')) {
-                $table->nullableMorphs('parent');
+                $table->nullableMorphs('parent',191);
             }
             
 

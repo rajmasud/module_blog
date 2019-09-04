@@ -16,14 +16,11 @@ class CreateBlogPostsTable extends Migration
         if (!Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
                 $table->increments('id');
-                //$table->integer('post_id')->nullable();
-                //$table->string('post_type', 40)->index()->nullable();
-                $table->nullableMorphs('post');
+                $table->nullableMorphs('post',191);
                 $table->string('lang', 2)->nullable();
                 $table->string('title')->index();
                 $table->string('subtitle')->nullable();
-                $table->string('guid')->nullable();
-                // $table->string('type', 50)->nullable(); //da capire se fare tabella collegata o meno
+                $table->string('guid')->index()->nullable();
                 $table->text('txt')->nullable();
                 $table->string('image_src')->nullable();
                 $table->string('image_alt')->nullable();

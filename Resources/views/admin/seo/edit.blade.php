@@ -1,6 +1,6 @@
 @extends('adm_theme::layouts.app')
 @section('page_heading','Modifica Seo Articolo')
-@include('backend::includes.components')
+
 @section('content')
 
 @include('blog::admin.post.edit.nav')

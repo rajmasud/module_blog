@@ -1,8 +1,8 @@
 @extends('adm_theme::layouts.app')
 @section('page_heading','Related of Post')
-@include('backend::includes.components')
+
 @section('content')
-@include('backend::includes.flash')
+@include('formx::includes.flash')
 @include('blog::admin.post.edit.nav')
 <br style="clear:both" />
 {!! Form::bsBtnCreate() !!}

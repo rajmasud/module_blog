@@ -16,8 +16,8 @@ class CreateArticleMorphTable extends Migration{
         if (!Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
                 $table->increments('id');
-                $table->nullableMorphs('post');
-                $table->nullableMorphs('related');
+                $table->nullableMorphs('post',191);
+                $table->nullableMorphs('related',191);
                 $table->integer('auth_user_id')->nullable()->index();
 
 

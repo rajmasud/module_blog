@@ -1,6 +1,6 @@
 @extends('adm_theme::layouts.app')
 @section('page_heading','Posts')
-@include('backend::includes.components')
+
 {{-- view-source:http://webbakerlab.com/nestedsortable/  --}}
 {{-- Theme::add("theme/bc/jquery/dist/jquery.min.js") --}}
 {{ Theme::add("theme/bc/jquery-ui/jquery-ui.min.js") }}

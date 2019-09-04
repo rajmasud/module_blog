@@ -1,8 +1,8 @@
 @extends('adm_theme::layouts.app')
 @section('page_heading','Crea')
-@include('backend::includes.components')
+
 @section('content')
-@include('backend::includes.flash')
+@include('formx::includes.flash')
 {{--
 @include('blog::admin.post.nav')
 --}}
