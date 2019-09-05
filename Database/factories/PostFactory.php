@@ -7,7 +7,10 @@ use Modules\Blog\Models\Post;
 $factory->define(Post::class, function (Faker $faker) {
     return [
         'title' => $faker->sentence,
-        'description' => $faker->paragraph,
+        'guid' => $faker->slug,
+        'subtitle' => $faker->sentence,
+        'txt' => $faker->paragraph,
+        'lang' => \App::getLocale(),
         //'user_id' => factory('App\User')->create()->id,
     ];
 });
