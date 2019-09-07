@@ -41,7 +41,7 @@
 		$params['container1']=$v;
 	@endphp
 	<li role="presentation" >
-		<a href="{{ route('blog.container0.container1.index',$params) }}">Related {{studly_case($v)}}</a>
+		<a href="{{ route('blog.container0.container1.index',$params) }}">Related {{Str::studly($v)}}</a>
 	</li>
 	@endforeach
 	{{--

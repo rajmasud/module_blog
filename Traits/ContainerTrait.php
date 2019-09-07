@@ -60,7 +60,7 @@ trait ContainerTrait {
             if (isset($$cont_name)) {
                 $cont = $$cont_name;
                 $type = \is_object($cont) ? $cont->post_type : $cont;
-                $controller .= '\\'.studly_case($type);
+                $controller .= '\\'.Str::studly($type);
             }
         }
         $controller .= 'Controller';
@@ -76,7 +76,7 @@ trait ContainerTrait {
             $request = \str_replace('\\Controllers\\', '\\Requests\\', $controller);
             $request = \mb_substr($request, 0, -\mb_strlen('Controller'));
             $pos = \mb_strrpos($request, '\\');
-            $request = \mb_substr($request, 0, $pos + 1).studly_case($method).\mb_substr($request, $pos + 1);
+            $request = \mb_substr($request, 0, $pos + 1).Str::studly($method).\mb_substr($request, $pos + 1);
             $request = $request::capture();
             $request->validate($request->rules(), $request->messages());
 
