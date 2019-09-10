@@ -16,6 +16,7 @@ use Modules\Xot\Traits\Updater;
  *
  **/
 class Post extends Model {
+    protected $connection = 'mysql';
     protected $fillable = [
         'id', 'post_id', 'lang', 'guid',
         'title',
