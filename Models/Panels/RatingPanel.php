@@ -9,9 +9,9 @@ use Modules\Xot\Models\Panels\XotBasePanel;
 use Modules\Xot\Services\RouteService;
 
 class RatingPanel extends XotBasePanel {
-    public static $model = 'Modules\Blog\Models\Rating';
-    public static $title = 'title';
-    public static $search = [];
+    protected static $model = 'Modules\Blog\Models\Rating';
+    protected static $title = 'title';
+    protected static $search = [];
 
     public function search() {
         return [];

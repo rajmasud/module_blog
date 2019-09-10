@@ -13,21 +13,21 @@ class CategoryPanel extends XotBasePanel {
      *
      * @var string
      */
-    public static $model = 'Modules\Blog\Models\Category';
+    protected static $model = 'Modules\Blog\Models\Category';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'title';
+    protected static $title = 'title';
 
     /**
      * The columns that should be searched.
      *
      * @var array
      */
-    public static $search = [
+    protected static $search = [
 ];
 
     /**

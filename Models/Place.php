@@ -22,7 +22,7 @@ class Place extends BaseModel {
             'latitude', 'longitude', 'formatted_address', 'nearest_street',
         ];
 
-    public static $address_components = [
+    protected static $address_components = [
             'premise', 'locality', 'postal_town',
             'administrative_area_level_3', 'administrative_area_level_2',  'administrative_area_level_1',
              'country',

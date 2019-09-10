@@ -9,11 +9,11 @@ use Modules\Xot\Models\Panels\XotBasePanel;
 use Modules\Xot\Services\RouteService;
 
 class ArticlePanel extends XotBasePanel {
-    public static $model = 'Modules\Blog\Models\Article';
+    protected static $model = 'Modules\Blog\Models\Article';
 
-    public static $title = 'title';
+    protected static $title = 'title';
 
-    public static $search = [];
+    protected static $search = [];
 
     public static function with() {
         return ['post'];

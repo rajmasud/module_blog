@@ -13,7 +13,7 @@ class Profile extends BaseModel {
     use PrivacyTrait; // da mettere anche in restaurant owner
 
     //protected $connection = 'mysql'; // this will use the specified database conneciton
-    protected $fillable = ['post_id', 'auth_user_id'];
+    protected $fillable = ['post_id', 'auth_user_id','phone'];
     protected $appends = [];
     protected $dates = ['created_at', 'updated_at'];
     protected $primaryKey = 'post_id';

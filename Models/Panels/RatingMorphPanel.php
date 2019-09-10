@@ -11,9 +11,9 @@ use Modules\Xot\Models\Panels\XotBasePanel;
 use Modules\Xot\Services\RouteService;
 
 class RatingMorphPanel extends XotBasePanel {
-    public static $model = 'Modules\Blog\Models\RatingMorph';
-    public static $title = 'title';
-    public static $search = [];
+    protected static $model = 'Modules\Blog\Models\RatingMorph';
+    protected static $title = 'title';
+    protected static $search = [];
 
     public static function with() {
         return [];

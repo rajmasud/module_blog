@@ -1,18 +1,19 @@
 <?php
-/*
-https://appdividend.com/2017/09/02/laravel-5-5-validation-example-scratch/
-https://laravel-guide.readthedocs.io/en/latest/validation/
-https://www.codeclouds.com/blog/custom-validation-rules-laravel/
-//---- register to newsletter
-https://jasonmccreary.me/articles/test-validation-laravel-form-request-assertion/
-
-https://mattstauffer.com/blog/laravel-5.0-form-requests/
-
-//--  REGISTERING THE NEW VALIDATOR WITH SERVICE PROVIDER
-https://marabesi.com/php/2017/05/31/laravel-custom-validator.html
-*/
-
 namespace Modules\Blog\Rules;
+
+/**
+* https://appdividend.com/2017/09/02/laravel-5-5-validation-example-scratch/
+* https://laravel-guide.readthedocs.io/en/latest/validation/
+* https://www.codeclouds.com/blog/custom-validation-rules-laravel/
+* //---- register to newsletter
+* https://jasonmccreary.me/articles/test-validation-laravel-form-request-assertion/
+*
+* https://mattstauffer.com/blog/laravel-5.0-form-requests/
+*
+* //--  REGISTERING THE NEW VALIDATOR WITH SERVICE PROVIDER
+* https://marabesi.com/php/2017/05/31/laravel-custom-validator.html
+**/
+
 
 use Illuminate\Contracts\Validation\Rule;
 
