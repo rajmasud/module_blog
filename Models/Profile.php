@@ -21,6 +21,10 @@ class Profile extends BaseModel {
 
     //------- RELATIONSHIP ----------
     public function user() {
+<<<<<<< HEAD
         return $this->belongsTo(User::class, 'auth_user_id', 'auth_user_id');
+=======
+        return $this->hasOne(User::class, 'auth_user_id', 'auth_user_id');
+>>>>>>> ,
     }
 }//end model
