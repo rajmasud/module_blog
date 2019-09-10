@@ -13,7 +13,7 @@ class Profile extends BaseModel {
     use PrivacyTrait; // da mettere anche in restaurant owner
 
     //protected $connection = 'mysql'; // this will use the specified database conneciton
-    protected $fillable = ['post_id'];
+    protected $fillable = ['post_id','auth_user_id'];
     protected $appends = [];
     protected $dates = ['created_at', 'updated_at'];
     protected $primaryKey = 'post_id';
@@ -21,6 +21,6 @@ class Profile extends BaseModel {
 
     //------- RELATIONSHIP ----------
     public function user() {
-        return $this->hasOne(User::class, 'auth_user_id', 'auth_user_id');
+        return $this->belongsTo(User::class, 'auth_user_id', 'auth_user_id');
     }
 }//end model
