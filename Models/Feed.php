@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 
 namespace Modules\Blog\Models;
@@ -10,16 +9,3 @@ namespace Modules\Blog\Models;
 class Feed extends BaseModel {
     protected $fillable = ['post_id'];
 }
-=======
-<?php
-
-namespace Modules\Blog\Models;
-
-//--- services
-
-//--- TRAITS ---
-
-class Feed extends BaseModel {
-    protected $fillable = ['post_id'];
-}
->>>>>>> ,
