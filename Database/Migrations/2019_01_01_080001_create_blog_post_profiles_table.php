@@ -1,22 +1,25 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-//----- models-------
-use Modules\Blog\Models\Location;  //blog o food ?
-use Modules\Blog\Models\Profile as MyModel;
 
-class CreateBlogPostProfilesTable extends Migration {
-    public function getTable() {
+//----- models-------
+use Modules\Blog\Models\Profile as MyModel;  //blog o food ?
+use Modules\Blog\Models\Location;
+
+class CreateBlogPostProfilesTable extends Migration
+{
+    public function getTable(){
         return with(new MyModel())->getTable();
     }
 
-    public function up() {
-        if (! Schema::hasTable($this->getTable())) {
+
+    public function up()
+    {
+        if (!Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
-                $table->increments('post_id'); //->primary();//->primary();
-                $table->string('post_type', 191)->nullable()->index();
+                $table->increments('post_id');//->primary();//->primary();
+                $table->string('post_type',191)->nullable()->index();
                 //$table->string('article_type',50)->nullable();
                 //$table->datetime('published_at')->nullable();
                 $table->text('bio')->nullable();
@@ -27,47 +30,53 @@ class CreateBlogPostProfilesTable extends Migration {
             //$table->increments('post_id')->change();
             //->autoIncrement()
             //------- add
-            if (! Schema::hasColumn($this->getTable(), 'created_by')) {
+            if (!Schema::hasColumn($this->getTable(), 'created_by')) {
                 $table->string('created_by')->nullable();
             }
-            if (! Schema::hasColumn($this->getTable(), 'updated_by')) {
+            if (!Schema::hasColumn($this->getTable(), 'updated_by')) {
                 $table->string('updated_by')->nullable();
             }
-            if (! Schema::hasColumn($this->getTable(), 'deleted_by')) {
+            if (!Schema::hasColumn($this->getTable(), 'deleted_by')) {
                 $table->string('deleted_by')->nullable();
             }
-            if (! Schema::hasColumn($this->getTable(), 'firstname')) {
+            if (!Schema::hasColumn($this->getTable(), 'firstname')) {
                 $table->string('firstname')->nullable();
             }
-            if (! Schema::hasColumn($this->getTable(), 'surname')) {
+            if (!Schema::hasColumn($this->getTable(), 'surname')) {
                 $table->string('surname')->nullable();
             }
-            if (! Schema::hasColumn($this->getTable(), 'email')) {
+            if (!Schema::hasColumn($this->getTable(), 'email')) {
                 $table->string('email')->nullable();
             }
-            if (! Schema::hasColumn($this->getTable(), 'phone')) {
+            if (!Schema::hasColumn($this->getTable(), 'phone')) {
                 $table->string('phone')->nullable();
             }
-            if (! Schema::hasColumn($this->getTable(), 'address')) {
+            if (!Schema::hasColumn($this->getTable(), 'address')) {
                 $table->string('address')->nullable();
             }
-            if (! Schema::hasColumn($this->getTable(), 'auth_user_id')) {
+            if (!Schema::hasColumn($this->getTable(), 'auth_user_id')) {
                 $table->integer('auth_user_id')->nullable()->index();
             }
 
             $address_components = Location::$address_components;
             foreach ($address_components as $el) {
-                if (! Schema::hasColumn($this->getTable(), $el)) {
+                if (!Schema::hasColumn($this->getTable(), $el)) {
                     $table->string($el)->nullable();
                 }
-                if (! Schema::hasColumn($this->getTable(), $el.'_short')) {
+                if (!Schema::hasColumn($this->getTable(), $el.'_short')) {
                     $table->string($el.'_short')->nullable();
                 }
             }
+           
+
+
+            
+
         });
     }
 
-    public function down() {
+    public function down()
+    {
         Schema::dropIfExists($this->getTable());
     }
 }
