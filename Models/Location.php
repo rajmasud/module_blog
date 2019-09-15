@@ -15,8 +15,8 @@ class Location extends BaseModel {
     protected $primaryKey = 'post_id';
     public $incrementing = true;
 
-    protected $fillable = ['post_id', 'latitude', 'longitude', 'address1', 'address2', 'address3', 'city', 'zip_code', 'country', 'state', 'phone', 'display_phone', 'price', 'is_closed', 'review_count', 'yelp_url', 'rating'];
-
+    protected $fillable = ['post_id', 'latitude', 'longitude', 'address1', 'address2', 'address3', 'city', 'zip_code', 'country', 'state', 'phone', 'display_phone', 'price', 'is_closed', 'review_count']; //, 'yelp_url', 'rating'
+    /* 
     public static $food_engines = [
             'justeat', 'sgnamit', 'googleplace', 'foodracers',
             'foodora', 'moovenda', 'deliveroo',
@@ -25,6 +25,7 @@ class Location extends BaseModel {
             'yelp', 'zomato', 'restopolitanit',
             'mymenu', 'foodpanda', 'facebook',
     ];
+    */
     public static $address_components = [
             'premise', 'locality', 'postal_town',
             'administrative_area_level_3', 'administrative_area_level_2',  'administrative_area_level_1',
