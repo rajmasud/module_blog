@@ -82,6 +82,9 @@ class Post extends Model {
             return $value;
         }
         $value = Str::slug($this->attributes['title']);
+        if($value==''){
+            $value=Str::slug($this->attributes['post_type'].' '.$this->attributes['post_id']);
+        }
         $this->guid = $value;
         $this->save();
     }
