@@ -87,5 +87,6 @@ class Post extends Model {
         }
         $this->guid = $value;
         $this->save();
+        return $value;
     }
 }//end class
