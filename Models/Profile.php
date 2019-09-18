@@ -1,5 +1,4 @@
 <?php
-
 namespace Modules\Blog\Models;
 
 //--------- models --------
@@ -11,8 +10,12 @@ use Modules\LU\Models\User;
 
 class Profile extends BaseModel {
     use PrivacyTrait; // da mettere anche in restaurant owner
+    /**
+    * se non metto $connection  quando faccio la relazione con lu, prende la connection di lu
+    *
+    **/
 
-    //protected $connection = 'mysql'; // this will use the specified database conneciton
+    protected $connection = 'mysql'; // this will use the specified database conneciton
     protected $fillable = ['post_id', 'auth_user_id','phone'];
     protected $appends = [];
     protected $dates = ['created_at', 'updated_at'];
