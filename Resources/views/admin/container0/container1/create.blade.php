@@ -45,7 +45,7 @@ Form::bsText('guid')
 	@include('blog::admin.post.partials.theme')
 </div>
 --}}
-{{ Form::bs3Submit('Salva e continua') }}
+{{ Form::bsSubmit('Salva e continua') }}
 {!! Form::close() !!}
 {{--  
 <div id="msg" >MSG</div>

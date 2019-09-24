@@ -13,7 +13,7 @@
 				{{ Form::bsTextarea('meta_description') }}
 				{{ Form::bsTextarea('meta_keywords') }}
 				{{ Form::bsChips('tags') }}
-				{{ Form::bs3Submit('Salva e continua') }}
+				{{ Form::bsSubmit('Salva e continua') }}
 				{!! Form::close() !!}
 				{{--  
 				<div id="msg" >MSG</div>

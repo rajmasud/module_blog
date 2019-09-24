@@ -108,7 +108,7 @@
 				</div>
 
 
-				{{ Form::bs3Submit('Salva e continua') }}
+				{{ Form::bsSubmit('Salva e continua') }}
 				{!! Form::close() !!}
 				<br style="clear:both" />
 				
