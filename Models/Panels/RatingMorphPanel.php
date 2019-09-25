@@ -80,28 +80,25 @@ class RatingMorphPanel extends XotBasePanel {
             (object) [
                 'type' => 'Id',
                 'name' => 'id',
-                'comment' => 'not in Doctrine',
             ],
             (object) [
                 'type' => 'Integer',
                 'name' => 'post_id',
-                'comment' => 'not in Doctrine',
             ],
             (object) [
                 'type' => 'Text',
                 'name' => 'post_type',
-                'comment' => 'not in Doctrine',
             ],
             (object) [
                 'type' => 'Text',
                 'name' => 'related_id',
-                'comment' => 'not in Doctrine',
             ],
+            /*
             (object) [
                 'type' => 'Hidden',
                 'name' => 'related_type',
-                'comment' => 'not in Doctrine',
             ],
+            */
             /*
             (object) [
                 'type' => 'Text',
@@ -110,17 +107,16 @@ class RatingMorphPanel extends XotBasePanel {
             ],
             */
             (object) [
-                'type' => 'RatingStar',
+                'type' => 'Decimal',
+                'sub_type'=>'Star',
                 'name' => 'rating',
-                'comment' => 'not in Doctrine',
             ],
-            /*
+            //*
             (object) [
                 'type' => 'Hidden',
                 'name' => 'auth_user_id',
-                'comment' => 'not in Doctrine',
             ],
-            */
+            //*/
         ];
     }
 

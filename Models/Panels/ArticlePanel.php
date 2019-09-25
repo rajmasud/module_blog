@@ -64,7 +64,7 @@ class ArticlePanel extends XotBasePanel {
              'col_bs_size' => 6,
           ],
           (object) [
-             'type' => 'Tinymce',
+             'type' => 'Wysiwyg',
              //'name' => 'post[subtitle]'
              'name' => 'post.txt',
              'except' => ['index'],

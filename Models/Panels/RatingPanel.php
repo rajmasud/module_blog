@@ -50,19 +50,28 @@ class RatingPanel extends XotBasePanel {
     public static function fields() {
         return [
               (object) [
-                 'type' => 'BigInt',
+                 'type' => 'Id',
                  'name' => 'post_id',
               ],
               (object) [
                  'type' => 'Text',
-                 'name' => 'my_rating',
-              ],
-              (object) [
-                 'type' => 'String',
                  'name' => 'related_type',
               ],
-            ];
-    }
+              (object) [
+                 'type' => 'Text',
+                 'name' => 'post.title',
+              ],
+              (object) [
+                 'type' => 'Text',
+                 'name' => 'post.subtitle',
+              ],
+              (object) [
+                 'type' => 'Textarea',
+                 'name' => 'post.txt',
+              ],
+        ];
+
+    }       
 
     /**
      * Get the tabs available.

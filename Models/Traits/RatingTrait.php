@@ -7,6 +7,7 @@ namespace Modules\Blog\Models\Traits;
 //----- models------
 use Modules\Blog\Models\Post;
 use Modules\Blog\Models\Rating;
+use Modules\Blog\Models\RatingMorph;
 
 //------ traits ---
 
@@ -41,31 +42,40 @@ trait RatingTrait {
     }
     */
     public function ratings() {
+        /*
         $related = Rating::class;
-
         return $this->morphRelated($related);
+        select * from `rating_morph` where `rating_morph`.`post_id` = 1 and `rating_morph`.`post_id` is not null and `post_type` = 'restaurant' limit 20 offset 0
+        */
+        //return $this->hasMany(RatingMorph::class,'post_id','post_id')->where('post_type',$this->post_type);
+        return $this->morphMany(RatingMorph::class,'post');
     }
 
     public function ratingObjectives() {
         $related = Rating::class;
-
         return $this->hasMany($related, 'related_type', 'post_type');
     }
-
+    
     public function myRatings() {
         $auth_user_id = \Auth::user()->auth_user_id;
+        /*
         $rows = $this->ratings()->wherePivot('auth_user_id', $auth_user_id);
-
         return $rows;
+        */
+        //--
+        $related = Rating::class;
+        return $this->morphRelated($related)->wherePivot('auth_user_id', $auth_user_id);
     }
+    
 
     //----- mutators -----
-    /*
+    //*
     public function getMyRatingAttribute($value){
         $my=$this->myRatings;
         return $my->pluck('pivot.rating','post_id');
     }
-
+    //*/
+    /*
     public function setMyRatingAttribute($value){
         ddd($value);
     }
