@@ -188,4 +188,10 @@ class MyRatingPanel extends XotBasePanel {
         }
         //return $_layout->view_extend.'.body.rating';
     }
+
+
+    public function indexEditSpecialCase(){
+        return 'LOGGATI PER VOTARE';
+    }
+
 }
