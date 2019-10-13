@@ -16,46 +16,15 @@ Validator::extendImplicit()
 */
 
 class PrivacyMorphPanel extends XotBasePanel {
-    /**
-     * The model the resource corresponds to.
-     *
-     * @var string
-     */
     protected static $model = 'Modules\Blog\Models\PrivacyMorph';
-
-    /**
-     * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
-     */
     protected static $title = 'title';
-
-    /**
-     * The columns that should be searched.
-     *
-     * @var array
-     */
     protected static $search = [];
-
-    /**
-     * The relationships that should be eager loaded on index queries.
-     *
-     * @var array
-     */
     public static function with() {
         return [];
     }
-
-    /**
-     * on select the option id.
-     */
     public function optionId($row) {
         return $row->area_id;
     }
-
-    /**
-     * on select the option label.
-     */
     public function optionLabel($row) {
         return $row->area_define_name;
     }
@@ -74,33 +43,6 @@ class PrivacyMorphPanel extends XotBasePanel {
      */
     public static function fields() {
         return [
-            /*
-            (object) array(
-                'type' => 'Id',
-                'name' => 'id',
-            ),
-            (object) array(
-                'type' => 'Integer',
-                'name' => 'post_id',
-            ),
-            (object) array(
-                'type' => 'String',
-                'name' => 'post_type',
-            ),
-            (object) array(
-                'type' => 'Integer',
-                'name' => 'related_id',
-            ),
-            (object) array(
-                'type' => 'String',
-                'name' => 'related_type',
-            ),
-
-            (object) array(
-                'type' => 'Integer',
-                'name' => 'auth_user_id',
-            ),
-            */
             (object) [
                 'type' => 'Hidden',
                 'name' => 'title',
@@ -108,7 +50,7 @@ class PrivacyMorphPanel extends XotBasePanel {
             ],
             (object) [
                 'type' => 'Hidden',
-                'name' => 'privacy.obligatory',
+                'name' => 'obligatory',
                 'rules' => ['boolean', 'nullable'], //,new PivotRequiredRule('privacy.obligatory','value')],
 
                 //'rules' => 'required_if:payment_type,cc',
@@ -118,10 +60,9 @@ The field under validation must be yes, on, 1, or true. This is useful for valid
                 */
             ],
             (object) [
-                'type' => 'Boolean',
+                'type' => 'BooleanAccept',
                 'name' => 'value',
-                //'rules' => ['boolean','nullable'],
-                'rules' => ['boolean', 'nullable', new PrivacyCheckRule('value', 'privacy.obligatory')],
+                'rules' => ['boolean', 'nullable', new PrivacyCheckRule('value', 'obligatory')],
                 //'attributes'=>['label' => 'label test'],
                 //'attributes'=>['label'=>'test label' ],
                 //'rules' => 'required_if:payment_type,cc',
