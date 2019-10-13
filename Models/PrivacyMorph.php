@@ -28,9 +28,11 @@ class PrivacyMorph extends MorphPivot {
     }
 
     //---------- mutators -------------------
+    /*
     public function setTitleAttribute($value) {
         if (! isset($this->attributes['value'])) {
             $this->attributes['value'] = 0;
         }
     }
+    */
 }
