@@ -108,7 +108,8 @@ class RatingMorphPanel extends XotBasePanel {
             */
             (object) [
                 'type' => 'Decimal',
-                'sub_type'=>'Star',
+                'sub_type'=>'JqStar',
+                //'sub_type'=>'VueStar',
                 'name' => 'rating',
             ],
             //*
