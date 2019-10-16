@@ -32,11 +32,15 @@ class Article extends BaseModel {
 
         return $value;
     }
-
+    //*
     public function setPublishedAtAttribute($value) {
+        ddd($value);
         if (\is_string($value)) {
-            $value = Carbon::now();
+            //$value = Carbon::now();
+            //config('app.date_format')
+            $value=Carbon::createFromFormat('d/m/Y H:i', $value);
         }
         $this->attributes['published_at'] = $value;
     }
+    //*/
 }//end model

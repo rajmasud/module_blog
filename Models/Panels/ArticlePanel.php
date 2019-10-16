@@ -43,13 +43,26 @@ class ArticlePanel extends XotBasePanel {
              'name' => 'article_type',
              'col_bs_size' => 6,
           ],
-          (object) [
+          (object) [ 
              'type' => 'DateTime',
-             'name' => 'published_at',
-             'rules' => 'nullable|date', // https://laravel.com/docs/5.8/validation
+             'name' => 'published_at',  
+             //'rules' => new \Modules\Xot\Rules\DateTimeRule(),
+             //'rules' => 'nullable|date_format:d/m/Y H:i', // https://laravel.com/docs/5.8/validation
           //'publish_at' => 'nullable|date',
              'col_bs_size' => 6,
           ],
+
+          /*
+            public function setEntryDateAttribute($input)
+{
+    $this->attributes['entry_date'] = 
+      Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+}
+
+
+          */
+
+
           (object) [
              'type' => 'Text',
              //'name' => 'post[title]',
