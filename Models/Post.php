@@ -77,10 +77,17 @@ class Post extends Model {
 
     //end function
     //-------------- MUTATORS ------------------
+    public function getTitleAttribute($value) {
+        if ('' != $value) return $value;
+        $value=$this->attributes['post_type'].' '.$this->attributes['post_id'];
+        $this->title=$value;
+        $this->save();
+        return $value;
+    }
+    
     public function getGuidAttribute($value) {
-        if ('' != $value) {
-            return $value;
-        }
+        if ('' != $value) return $value;
+        
         //$value = Str::slug($this->attributes['title']);
         $value=$this->title;
         if($value==''){
