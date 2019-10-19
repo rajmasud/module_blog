@@ -2,11 +2,13 @@
 namespace Modules\Blog\Models;
 
 //--------- models --------
-use Modules\Blog\Models\Traits\PrivacyTrait;
-//--- TRAITS ---
 use Modules\LU\Models\User;
-
+//--- TRAITS ---
+use Modules\Blog\Models\Traits\PrivacyTrait;
 //--- services
+//--- bases
+//use Modules\Xot\Models\XotBaseModel;
+
 
 class Profile extends BaseModel {
     use PrivacyTrait; // da mettere anche in restaurant owner

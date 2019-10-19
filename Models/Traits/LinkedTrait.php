@@ -111,12 +111,16 @@ trait LinkedTrait {
         if (isset($this->pivot) && Str::endsWith($name, '_url')) { // solo le url dipendono dal pivot
             return $this->pivot->$name; //.'#PIVOT';
         }
+        if (!isset($this->post) && $this->getKey()!='') {
+            $this->post=$this->post()->create(['lang'=>\App::getLocale()]);
+        }
+
+
         if (isset($this->post)) {
             return $this->post->$name; //.'#NO-PIVOT';
         }
         if (Str::endsWith($name, '_url')) {
             $act = Str::before($name, '_url');
-
             return RouteService::urlModel(['model' => $this, 'act' => $act]);
         }
 
