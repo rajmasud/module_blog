@@ -35,7 +35,7 @@ class Article extends BaseModel {
 
         return $value;
     }
-    //*
+    /*
     public function setPublishedAtAttribute($value) {
         ddd($value);
         if (\is_string($value)) {
