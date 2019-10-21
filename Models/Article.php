@@ -2,6 +2,9 @@
 
 namespace Modules\Blog\Models;
 
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+
 use Carbon\Carbon;
 
 //------services---------
