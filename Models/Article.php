@@ -21,9 +21,12 @@ class Article extends BaseModel {
 
     //--------- relationship ---------------
     public function sons() {
-        return $this->hasMany(Article::class, 'post_id', 'parent_id');
+        return $this->hasMany(Article::class, 'parent_id', 'post_id');
     }
 
+    public function articles() {
+        return $this->hasMany(Article::class, 'parent_id', 'post_id');
+    }
     //---------- mututars -----------
     public function getParentIdAttribute($value) {
         if ('' != $value) {
