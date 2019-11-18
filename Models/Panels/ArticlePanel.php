@@ -33,7 +33,8 @@ class ArticlePanel extends XotBasePanel {
              'col_bs_size' => 6,
           ],
           (object) [
-             'type' => 'Integer',
+             'type' => 'Select',
+             'sub_type'=>'Parent',
              //'name' => 'post[subtitle]'
              'name' => 'parent_id',
              'col_bs_size' => 6,
