@@ -2,7 +2,7 @@
 	<li role="presentation" class="nav-item" >
 		<a class="nav-link" href="{{ route('blog.container0.index',$params) }}">&laquo;start</a>
 	</li>
-	{{--  
+	{{--
 	@foreach($params as $p)
 	@if(is_object($p))
 	<li role="presentation">
@@ -52,3 +52,4 @@
 	{{-- lang --}}
 	@include('adm_theme::layouts.partials.lang')
 </ul>
+
