@@ -46,19 +46,7 @@ class ArticlePanel extends XotBasePanel {
              'name' => 'parent_id',
              'col_bs_size' => 6,
           ],
-          (object) [
-             'type' => 'String',
-             'name' => 'article_type',
-             'col_bs_size' => 6,
-          ],
-          (object) [ 
-             'type' => 'DateTime',
-             'name' => 'published_at',  
-             //'rules' => new \Modules\Xot\Rules\DateTimeRule(),
-             //'rules' => 'nullable|date_format:d/m/Y H:i', // https://laravel.com/docs/5.8/validation
-          //'publish_at' => 'nullable|date',
-             'col_bs_size' => 6,
-          ],
+          
 
           /*
             public function setEntryDateAttribute($input)
@@ -75,14 +63,14 @@ class ArticlePanel extends XotBasePanel {
              'type' => 'Text',
              //'name' => 'post[title]',
              'name' => 'post.title',
-             'col_bs_size' => 6,
+             'col_bs_size' => 12,
           ],
           (object) [
-             'type' => 'Text',
+             'type' => 'Textarea',
              //'name' => 'post[subtitle]'
              'name' => 'post.subtitle',
              'except' => ['index'],
-             'col_bs_size' => 6,
+             'col_bs_size' => 12,
           ],
           (object) [
              'type' => 'Wysiwyg',
@@ -90,6 +78,19 @@ class ArticlePanel extends XotBasePanel {
              'name' => 'post.txt',
              'except' => ['index'],
              'col_bs_size' => 12,
+          ],
+          (object) [
+             'type' => 'String',
+             'name' => 'article_type',
+             'col_bs_size' => 6,
+          ],
+          (object) [ 
+             'type' => 'DateTime',
+             'name' => 'published_at',  
+             //'rules' => new \Modules\Xot\Rules\DateTimeRule(),
+             //'rules' => 'nullable|date_format:d/m/Y H:i', // https://laravel.com/docs/5.8/validation
+          //'publish_at' => 'nullable|date',
+             'col_bs_size' => 6,
           ],
         ];
     }
