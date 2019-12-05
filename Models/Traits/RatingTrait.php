@@ -8,6 +8,8 @@ namespace Modules\Blog\Models\Traits;
 use Modules\Blog\Models\Post;
 use Modules\Blog\Models\Rating;
 use Modules\Blog\Models\RatingMorph;
+//---- services -----
+use Modules\FormX\Services\FormXService;
 
 //------ traits ---
 
@@ -53,7 +55,6 @@ trait RatingTrait {
 
     public function ratingObjectives() {
         $related = Rating::class;
-
         return $this->hasMany($related, 'related_type', 'post_type');
     }
 
@@ -83,4 +84,15 @@ trait RatingTrait {
         ddd($value);
     }
     */
+
+    //------ functions ------ 
+    public function ratingAvgHtml(){
+        $ratings=$this->ratings;
+        //ddd($ratings->count('rating'));
+        //return '&#11088;&starf;&star;() '.$ratings->count('rating');
+        $msg='('.$ratings->avg('rating').') '.$ratings->count('rating').' Votes ';
+        return '<a href="" style="color:white;decoration:none">'.$msg.'</a>';
+    }
+
+
 }
