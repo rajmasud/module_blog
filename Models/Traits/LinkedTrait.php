@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 //----- models------
 use Modules\Blog\Models\Post;
 //----- services -----
+use Modules\Xot\Services\PanelService as Panel;
 use Modules\Xot\Services\RouteService;
 use Modules\Xot\Services\StubService;
 
@@ -150,7 +151,10 @@ trait LinkedTrait {
 
     //*
     public function getUrlAttribute($value) {
+        /*
         return $this->getPostAttr(__FUNCTION__, $value);
+        */
+        return Panel::get($this)->url();
     }
 
     //*/

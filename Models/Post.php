@@ -89,18 +89,22 @@ class Post extends Model {
     }
 
     public function getGuidAttribute($value) {
-        if ('' != $value) {
+        if ('' != $value && false === strpos($value, ' ')) {
             return $value;
         }
-
-        //$value = Str::slug($this->attributes['title']);
         $value = $this->title;
         if ('' == $value) {
-            $value = Str::slug($this->attributes['post_type'].' '.$this->attributes['post_id']);
+            $value = $this->attributes['post_type'].' '.$this->attributes['post_id'];
         }
-        $this->guid = $value;
+        $this->guid = Str::slug($value);
         $this->save();
 
         return $value;
     }
+
+    /*
+    public function getUrlAttribute($value) {
+
+    }
+    */
 }//end class
