@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 //--- Services --
 use Modules\Xot\Models\Panels\XotBasePanel;
-use Modules\Xot\Services\RouteService;
 
 class ProfilePanel extends XotBasePanel {
     /**

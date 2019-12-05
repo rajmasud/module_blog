@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 //-------- Services -----
 use Modules\Xot\Models\Panels\XotBasePanel;
 //---- bases --
-use Modules\Xot\Services\RouteService;
 
 class ArticlePanel extends XotBasePanel {
     protected static $model = 'Modules\Blog\Models\Article';
@@ -18,6 +17,7 @@ class ArticlePanel extends XotBasePanel {
     public function optionId($row) {
         return $row->post_id;
     }
+
     public function optionLabel($row) {
         return $row->post->title;
     }
@@ -41,23 +41,21 @@ class ArticlePanel extends XotBasePanel {
           ],
           (object) [
              'type' => 'Select',
-             'sub_type'=>'Parent',
+             'sub_type' => 'Parent',
              //'name' => 'post[subtitle]'
              'name' => 'parent_id',
              'col_bs_size' => 6,
           ],
-          
 
           /*
             public function setEntryDateAttribute($input)
 {
-    $this->attributes['entry_date'] = 
+    $this->attributes['entry_date'] =
       Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
 }
 
 
           */
-
 
           (object) [
              'type' => 'Text',
@@ -84,9 +82,9 @@ class ArticlePanel extends XotBasePanel {
              'name' => 'article_type',
              'col_bs_size' => 6,
           ],
-          (object) [ 
+          (object) [
              'type' => 'DateTime',
-             'name' => 'published_at',  
+             'name' => 'published_at',
              //'rules' => new \Modules\Xot\Rules\DateTimeRule(),
              //'rules' => 'nullable|date_format:d/m/Y H:i', // https://laravel.com/docs/5.8/validation
           //'publish_at' => 'nullable|date',

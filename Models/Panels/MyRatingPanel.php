@@ -5,7 +5,6 @@ namespace Modules\Blog\Models\Panels;
 use Illuminate\Http\Request;
 //--- Services --
 use Modules\Xot\Models\Panels\XotBasePanel;
-use Modules\Xot\Services\RouteService;
 
 class MyRatingPanel extends XotBasePanel {
     /**
@@ -189,9 +188,7 @@ class MyRatingPanel extends XotBasePanel {
         //return $_layout->view_extend.'.body.rating';
     }
 
-
-    public function indexEditSpecialCase(){
+    public function indexEditSpecialCase() {
         return 'LOGGATI PER VOTARE';
     }
-
 }

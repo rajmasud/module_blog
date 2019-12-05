@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 //--- Services --
 use Modules\Xot\Models\Panels\XotBasePanel;
 //---- bases --
-use Modules\Xot\Services\RouteService;
 
 class RatingPanel extends XotBasePanel {
     protected static $model = 'Modules\Blog\Models\Rating';
@@ -70,8 +69,7 @@ class RatingPanel extends XotBasePanel {
                  'name' => 'post.txt',
               ],
         ];
-
-    }       
+    }
 
     /**
      * Get the tabs available.

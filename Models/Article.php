@@ -2,9 +2,6 @@
 
 namespace Modules\Blog\Models;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
-
 use Carbon\Carbon;
 
 //------services---------
@@ -33,6 +30,7 @@ class Article extends BaseModel {
     public function articles() {
         return $this->hasMany(Article::class, 'parent_id', 'post_id');
     }
+
     //---------- mututars -----------
     public function getParentIdAttribute($value) {
         if ('' != $value) {
@@ -44,6 +42,7 @@ class Article extends BaseModel {
 
         return $value;
     }
+
     /*
     public function setPublishedAtAttribute($value) {
         ddd($value);

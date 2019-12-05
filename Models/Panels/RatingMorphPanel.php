@@ -8,8 +8,6 @@ use Modules\Xot\Models\Panels\XotBasePanel;
 //----- actions ---
 //use Modules\Blog\Models\Panels\Actions\RateItAction;
 
-use Modules\Xot\Services\RouteService;
-
 class RatingMorphPanel extends XotBasePanel {
     protected static $model = 'Modules\Blog\Models\RatingMorph';
     protected static $title = 'title';
@@ -108,7 +106,7 @@ class RatingMorphPanel extends XotBasePanel {
             */
             (object) [
                 'type' => 'Decimal',
-                'sub_type'=>'JqStar',
+                'sub_type' => 'JqStar',
                 //'sub_type'=>'VueStar',
                 'name' => 'rating',
             ],

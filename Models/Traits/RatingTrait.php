@@ -48,14 +48,15 @@ trait RatingTrait {
         select * from `rating_morph` where `rating_morph`.`post_id` = 1 and `rating_morph`.`post_id` is not null and `post_type` = 'restaurant' limit 20 offset 0
         */
         //return $this->hasMany(RatingMorph::class,'post_id','post_id')->where('post_type',$this->post_type);
-        return $this->morphMany(RatingMorph::class,'post');
+        return $this->morphMany(RatingMorph::class, 'post');
     }
 
     public function ratingObjectives() {
         $related = Rating::class;
+
         return $this->hasMany($related, 'related_type', 'post_type');
     }
-    
+
     public function myRatings() {
         $auth_user_id = \Auth::user()->auth_user_id;
         /*
@@ -64,16 +65,18 @@ trait RatingTrait {
         */
         //--
         $related = Rating::class;
+
         return $this->morphRelated($related)->wherePivot('auth_user_id', $auth_user_id);
     }
-    
 
     //----- mutators -----
     //*
-    public function getMyRatingAttribute($value){
-        $my=$this->myRatings;
-        return $my->pluck('pivot.rating','post_id');
+    public function getMyRatingAttribute($value) {
+        $my = $this->myRatings;
+
+        return $my->pluck('pivot.rating', 'post_id');
     }
+
     //*/
     /*
     public function setMyRatingAttribute($value){
