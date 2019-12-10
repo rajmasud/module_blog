@@ -8,6 +8,7 @@ use Modules\Blog\Rules\PivotRequiredRule;
 //-------- rules ---
 use Modules\Blog\Rules\PrivacyCheckRule;
 use Modules\Xot\Models\Panels\XotBasePanel;
+
 //----- bases ---------
 
 /*

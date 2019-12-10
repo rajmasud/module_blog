@@ -5,6 +5,7 @@ namespace Modules\Blog\Models\Panels;
 use Illuminate\Http\Request;
 //--- Services --
 use Modules\Xot\Models\Panels\XotBasePanel;
+
 //---- bases --
 
 class RatingPanel extends XotBasePanel {

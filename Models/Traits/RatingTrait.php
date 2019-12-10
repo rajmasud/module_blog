@@ -10,7 +10,6 @@ use Modules\Blog\Models\Rating;
 use Modules\Blog\Models\RatingMorph;
 //---- services -----
 use Modules\Xot\Services\PanelService as Panel;
-use Modules\FormX\Services\FormXService;
 
 //------ traits ---
 
@@ -56,6 +55,7 @@ trait RatingTrait {
 
     public function ratingObjectives() {
         $related = Rating::class;
+
         return $this->hasMany($related, 'related_type', 'post_type');
     }
 
@@ -86,16 +86,15 @@ trait RatingTrait {
     }
     */
 
-    //------ functions ------ 
-    public function ratingAvgHtml(){
-        $ratings=$this->ratings;
+    //------ functions ------
+    public function ratingAvgHtml() {
+        $ratings = $this->ratings;
         //ddd($ratings->count('rating'));
         //return '&#11088;&starf;&star;() '.$ratings->count('rating');
-        $msg='('.$ratings->avg('rating').') '.$ratings->count('rating').' Votes ';
-        $rating_url=Panel::get($this)->relatedUrl(['related_name'=>'my_rating','act'=>'index_edit']);
+        $msg = '('.$ratings->avg('rating').') '.$ratings->count('rating').' Votes ';
+        $rating_url = Panel::get($this)->relatedUrl(['related_name' => 'my_rating', 'act' => 'index_edit']);
+
         return $msg.'<a data-href="'.$rating_url.'" class="btn btn-danger" data-toggle="modal" data-target="#myModalAjax" data-title="Rate it">
         Rate It </a>';
     }
-
-
 }

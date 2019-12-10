@@ -5,6 +5,7 @@ namespace Modules\Blog\Models\Panels;
 use Illuminate\Http\Request;
 //--- Services --
 use Modules\Xot\Models\Panels\XotBasePanel;
+
 //----- actions ---
 //use Modules\Blog\Models\Panels\Actions\RateItAction;
 
