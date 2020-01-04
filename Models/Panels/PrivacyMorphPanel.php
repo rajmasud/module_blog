@@ -8,8 +8,8 @@ use Modules\Blog\Rules\PivotRequiredRule;
 //-------- rules ---
 use Modules\Blog\Rules\PrivacyCheckRule;
 use Modules\Xot\Models\Panels\XotBasePanel;
+
 //----- bases ---------
-use Modules\Xot\Services\RouteService;
 
 /*
 Validator::extendImplicit()
@@ -19,12 +19,15 @@ class PrivacyMorphPanel extends XotBasePanel {
     protected static $model = 'Modules\Blog\Models\PrivacyMorph';
     protected static $title = 'title';
     protected static $search = [];
+
     public static function with() {
         return [];
     }
+
     public function optionId($row) {
         return $row->area_id;
     }
+
     public function optionLabel($row) {
         return $row->area_define_name;
     }

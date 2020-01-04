@@ -16,7 +16,7 @@ class Location extends BaseModel {
     public $incrementing = true;
 
     protected $fillable = ['post_id', 'latitude', 'longitude', 'address1', 'address2', 'address3', 'city', 'zip_code', 'country', 'state', 'phone', 'display_phone', 'price', 'is_closed', 'review_count']; //, 'yelp_url', 'rating'
-    /* 
+    /*
     public static $food_engines = [
             'justeat', 'sgnamit', 'googleplace', 'foodracers',
             'foodora', 'moovenda', 'deliveroo',

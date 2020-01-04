@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 //----- models------
 use Modules\Blog\Models\Post;
 //----- services -----
+use Modules\Xot\Services\PanelService as Panel;
 use Modules\Xot\Services\RouteService;
 use Modules\Xot\Services\StubService;
 
@@ -111,16 +112,16 @@ trait LinkedTrait {
         if (isset($this->pivot) && Str::endsWith($name, '_url')) { // solo le url dipendono dal pivot
             return $this->pivot->$name; //.'#PIVOT';
         }
-        if (!isset($this->post) && $this->getKey()!='') {
-            $this->post=$this->post()->create(['lang'=>\App::getLocale()]);
+        if (! isset($this->post) && '' != $this->getKey()) {
+            $this->post = $this->post()->create(['lang' => \App::getLocale()]);
         }
-
 
         if (isset($this->post)) {
             return $this->post->$name; //.'#NO-PIVOT';
         }
         if (Str::endsWith($name, '_url')) {
             $act = Str::before($name, '_url');
+
             return RouteService::urlModel(['model' => $this, 'act' => $act]);
         }
 
@@ -150,7 +151,10 @@ trait LinkedTrait {
 
     //*
     public function getUrlAttribute($value) {
+        /*
         return $this->getPostAttr(__FUNCTION__, $value);
+        */
+        return Panel::get($this)->url();
     }
 
     //*/

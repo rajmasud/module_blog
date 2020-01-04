@@ -1,7 +1,8 @@
 <?php
+
 namespace Modules\Blog\Rules;
 
-/**
+/*
 * https://appdividend.com/2017/09/02/laravel-5-5-validation-example-scratch/
 * https://laravel-guide.readthedocs.io/en/latest/validation/
 * https://www.codeclouds.com/blog/custom-validation-rules-laravel/
@@ -13,7 +14,6 @@ namespace Modules\Blog\Rules;
 * //--  REGISTERING THE NEW VALIDATOR WITH SERVICE PROVIDER
 * https://marabesi.com/php/2017/05/31/laravel-custom-validator.html
 **/
-
 
 use Illuminate\Contracts\Validation\Rule;
 

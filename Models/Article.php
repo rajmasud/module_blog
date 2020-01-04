@@ -2,22 +2,29 @@
 
 namespace Modules\Blog\Models;
 
-use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
-
 use Carbon\Carbon;
+//----- traits ----
+use Modules\Blog\Models\Traits\RatingTrait;
 
 //------services---------
 
 //--- models ---
 
 class Article extends BaseModel {
+    use RatingTrait;
+
     protected $fillable = ['post_id', 'article_type', 'published_at', 'parent_id', 'parent_type'];
     protected $appends = [];
-    protected $casts = [];
+    /* https://itnext.io/7-things-you-need-to-know-to-get-the-most-out-of-your-laravel-model-4f915acbb47c */
+    protected $casts = [
+        //'published_at' => 'datetime:Y-m-d', // da verificare
+    ];
     protected $dates = ['published_at', 'created_at', 'updated_at'];
     protected $primaryKey = 'post_id';
     public $incrementing = true;
+    protected $hidden = [
+        //'password'
+    ];
 
     //--------- relationship ---------------
     public function sons() {
@@ -27,6 +34,7 @@ class Article extends BaseModel {
     public function articles() {
         return $this->hasMany(Article::class, 'parent_id', 'post_id');
     }
+
     //---------- mututars -----------
     public function getParentIdAttribute($value) {
         if ('' != $value) {
@@ -38,6 +46,7 @@ class Article extends BaseModel {
 
         return $value;
     }
+
     /*
     public function setPublishedAtAttribute($value) {
         ddd($value);

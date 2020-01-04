@@ -78,23 +78,33 @@ class Post extends Model {
     //end function
     //-------------- MUTATORS ------------------
     public function getTitleAttribute($value) {
-        if ('' != $value) return $value;
-        $value=$this->attributes['post_type'].' '.$this->attributes['post_id'];
-        $this->title=$value;
-        $this->save();
-        return $value;
-    }
-    
-    public function getGuidAttribute($value) {
-        if ('' != $value) return $value;
-        
-        //$value = Str::slug($this->attributes['title']);
-        $value=$this->title;
-        if($value==''){
-            $value=Str::slug($this->attributes['post_type'].' '.$this->attributes['post_id']);
+        if ('' != $value) {
+            return $value;
         }
-        $this->guid = $value;
+        $value = $this->attributes['post_type'].' '.$this->attributes['post_id'];
+        $this->title = $value;
         $this->save();
+
         return $value;
     }
+
+    public function getGuidAttribute($value) {
+        if ('' != $value && false === strpos($value, ' ')) {
+            return $value;
+        }
+        $value = $this->title;
+        if ('' == $value) {
+            $value = $this->attributes['post_type'].' '.$this->attributes['post_id'];
+        }
+        $this->guid = Str::slug($value);
+        $this->save();
+
+        return $value;
+    }
+
+    /*
+    public function getUrlAttribute($value) {
+
+    }
+    */
 }//end class

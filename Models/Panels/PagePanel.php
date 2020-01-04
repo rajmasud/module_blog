@@ -5,8 +5,8 @@ namespace Modules\Blog\Models\Panels;
 use Illuminate\Http\Request;
 //--- Services --
 use Modules\Xot\Models\Panels\XotBasePanel;
+
 //---- bases --
-use Modules\Xot\Services\RouteService;
 
 class PagePanel extends XotBasePanel {
     /**

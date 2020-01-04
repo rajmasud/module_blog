@@ -5,7 +5,6 @@ namespace Modules\Blog\Models\Panels;
 use Illuminate\Http\Request;
 //--- Services --
 use Modules\Xot\Models\Panels\XotBasePanel;
-use Modules\Xot\Services\RouteService;
 
 class ArticleMorphPanel extends XotBasePanel {
     protected static $model = 'Modules\Blog\Models\ArticleMorph';
