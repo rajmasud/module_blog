@@ -83,6 +83,7 @@ class ArticlePanel extends XotBasePanel {
              'name' => 'article_type',
              'col_bs_size' => 6,
           ],
+          /*
           (object) [
              'type' => 'DateTime',
              'name' => 'published_at',
@@ -91,6 +92,7 @@ class ArticlePanel extends XotBasePanel {
           //'publish_at' => 'nullable|date',
              'col_bs_size' => 6,
           ],
+          */
         ];
     }
 
