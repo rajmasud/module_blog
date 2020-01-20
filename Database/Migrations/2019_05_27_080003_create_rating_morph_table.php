@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 //----- models -----
 use Modules\Blog\Models\RatingMorph as MyModel;
 
-class CreateRatingMorphsTable extends Migration {
+class CreateRatingMorphTable extends Migration {
     public function getTable() {
         return with(new MyModel())->getTable();
     }
