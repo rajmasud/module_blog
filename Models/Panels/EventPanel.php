@@ -66,17 +66,18 @@ class EventPanel extends XotBasePanel {
           (object) [
              'type' => 'Id',
              'name' => 'post_id',
+             'col_bs_size' => 2,
           ],
           (object) [
              //'type' => 'DateTime2Fields',
             'type' => 'DateTime',
              'name' => 'date_start',
-             'col_bs_size' => 6,
+             'col_bs_size' => 5,
           ],
           (object) [
              'type' => 'DateTime',
              'name' => 'date_end',
-             'col_bs_size' => 6,
+             'col_bs_size' => 5,
           ],
           (object) [
                 'type' => 'Text',
@@ -87,7 +88,7 @@ class EventPanel extends XotBasePanel {
                 'name' => 'subtitle',
             ],
             (object) [
-                'type' => 'Html5UploadImg',
+                'type' => 'Text',//'Html5UploadImg',
                 'name' => 'image_src',
                 'col_bs_size' => 6,
                 'except' => ['index'],
