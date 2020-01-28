@@ -92,6 +92,10 @@ trait LinkedTrait
 
     public function getLangAttribute($value)
     {
+        if ($value != '') {
+            return $value;
+        }
+
         $lang = \App::getLocale();
 
         return $lang;
@@ -343,6 +347,22 @@ trait LinkedTrait
         });
          */
         return $rows->first();
+    }
+
+    public function fixItemLang($item_guid)
+    {
+        $item_guid  = str_replace('%20', '%', $item_guid);
+        $panel      = Panel::get($this);
+        $other_lang = Post::where('post_type', $panel->postType())
+            ->where('guid', 'like', $item_guid)
+            ->first();
+        if (is_object($other_lang)) {
+            $up       = $other_lang->replicate();
+            $up->lang = \App::getLocale();
+            $up->save();
+            $row = self::firstOrCreate(['post_id' => $up->post_id]);
+            return $row;
+        }
     }
 
     public function scopeOfItem($query, $guid)
