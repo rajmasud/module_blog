@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 //----- models -----
-use Modules\Blog\Models\Feed as MyModel;
+use Modules\Blog\Models\Sitemap as MyModel;
 
 class CreateSitemapsTable extends Migration
 {
