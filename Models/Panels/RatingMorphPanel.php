@@ -9,24 +9,24 @@ use Modules\Xot\Models\Panels\XotBasePanel;
 //----- actions ---
 //use Modules\Blog\Models\Panels\Actions\RateItAction;
 
-class RatingMorphPanel extends XotBasePanel {
-    protected static $model = 'Modules\Blog\Models\RatingMorph';
-    protected static $title = 'title';
+class RatingMorphPanel extends XotBasePanel
+{
+    protected static $model  = 'Modules\Blog\Models\RatingMorph';
+    protected static $title  = 'title';
     protected static $search = [];
 
-    public static function with() {
+    public static function with()
+    {
         return [];
     }
 
-    public function search() {
+    public function search()
+    {
         return [];
     }
 
-    public function optionId($row) {
-        return $row->area_id;
-    }
-
-    public function optionLabel($row) {
+    public function optionLabel($row)
+    {
         return $row->area_define_name;
     }
 
@@ -36,13 +36,14 @@ class RatingMorphPanel extends XotBasePanel {
      * @param \Illuminate\Http\Request $request
      *
      * @return array
-        'col_bs_size' => 6,
-        'sortable' => 1,
-        'rules' => 'required',
-        'rules_messages' => ['it'=>['required'=>'Nome Obbligatorio']],
-        'value'=>'..',
+    'col_bs_size' => 6,
+    'sortable' => 1,
+    'rules' => 'required',
+    'rules_messages' => ['it'=>['required'=>'Nome Obbligatorio']],
+    'value'=>'..',
      */
-    public function indexNav() {
+    public function indexNav()
+    {
         return null;
     }
 
@@ -54,7 +55,8 @@ class RatingMorphPanel extends XotBasePanel {
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public static function indexQuery($data, $query) {
+    public static function indexQuery($data, $query)
+    {
         //return $query->where('auth_user_id', $request->user()->auth_user_id);
         return $query;
     }
@@ -69,54 +71,69 @@ class RatingMorphPanel extends XotBasePanel {
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public static function relatableQuery(Request $request, $query) {
+    public static function relatableQuery(Request $request, $query)
+    {
         //return $query->where('auth_user_id', $request->user()->auth_user_id);
-         //return $query->where('user_id', $request->user()->id);
+        //return $query->where('user_id', $request->user()->id);
     }
 
-    public static function fields() {
+    public static function fields()
+    {
+        //$route_params = \Route::current()->parameters();
+        [$containers, $items] = params2ContainerItem();
         return [
-            (object) [
-                'type' => 'Id',
-                'name' => 'id',
-            ],
-            (object) [
-                'type' => 'Integer',
-                'name' => 'post_id',
-            ],
-            (object) [
-                'type' => 'Text',
-                'name' => 'post_type',
-            ],
-            (object) [
-                'type' => 'Text',
-                'name' => 'related_id',
-            ],
             /*
             (object) [
-                'type' => 'Hidden',
-                'name' => 'related_type',
+            'type' => 'Id',
+            'name' => 'id',
             ],
-            */
+            (object) [
+            'type' => 'Integer',
+            'name' => 'post_id',
+            ],
+            (object) [
+            'type' => 'Text',
+            'name' => 'post_type',
+            ],
+            (object) [
+            'type' => 'Text',
+            'name' => 'related_id',
+            ],
+             */
             /*
             (object) [
-                'type' => 'Text',
-                'name' => 'title',
-                'comment' => 'not in Doctrine',
+            'type' => 'Hidden',
+            'name' => 'related_type',
             ],
-            */
+             */
+            /*
             (object) [
-                'type' => 'Decimal',
-                'sub_type' => 'JqStar',
+            'type' => 'Text',
+            'name' => 'title',
+            'comment' => 'not in Doctrine',
+            ],
+             */
+            /*
+            (object) [
+            'type'     => 'Decimal',
+            'sub_type' => 'JqStar',
+            //'sub_type'=>'VueStar',
+            'name'     => 'rating',
+            ],
+             */
+            (object) [
+                'type'   => 'Rating',
+                //'sub_type' => 'JqStar',
                 //'sub_type'=>'VueStar',
-                'name' => 'rating',
+                'name'   => 'myRatings',
+                'parent' => last($items),
             ],
-            //*
-            (object) [
-                'type' => 'Hidden',
-                'name' => 'auth_user_id',
-            ],
-            //*/
+            /*
+        (object) [
+        'type' => 'Hidden',
+        'name' => 'auth_user_id',
+        ],
+        //*/
         ];
     }
 
@@ -125,7 +142,8 @@ class RatingMorphPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function tabs() {
+    public function tabs()
+    {
         $tabs_name = [];
 
         return [];
@@ -138,7 +156,8 @@ class RatingMorphPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function cards(Request $request) {
+    public function cards(Request $request)
+    {
         return [];
     }
 
@@ -149,7 +168,8 @@ class RatingMorphPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function filters(Request $request = null) {
+    public function filters(Request $request = null)
+    {
         return [];
     }
 
@@ -160,7 +180,8 @@ class RatingMorphPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function lenses(Request $request) {
+    public function lenses(Request $request)
+    {
         return [];
     }
 
@@ -171,9 +192,10 @@ class RatingMorphPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function actions() {
+    public function actions()
+    {
         return [
-                new Actions\RateIt(),
-            ];
+            new Actions\RateIt(),
+        ];
     }
 }

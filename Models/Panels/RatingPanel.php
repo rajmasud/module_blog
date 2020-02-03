@@ -8,12 +8,14 @@ use Modules\Xot\Models\Panels\XotBasePanel;
 
 //---- bases --
 
-class RatingPanel extends XotBasePanel {
-    protected static $model = 'Modules\Blog\Models\Rating';
-    protected static $title = 'title';
+class RatingPanel extends XotBasePanel
+{
+    protected static $model  = 'Modules\Blog\Models\Rating';
+    protected static $title  = 'title';
     protected static $search = [];
 
-    public function search() {
+    public function search()
+    {
         return [];
     }
 
@@ -22,21 +24,20 @@ class RatingPanel extends XotBasePanel {
      *
      * @var array
      */
-    public static function with() {
+    public static function with()
+    {
         return [];
     }
 
     /**
      * on select the option id.
      */
-    public function optionId($row) {
-        return $row->post_id;
-    }
 
     /**
      * on select the option label.
      */
-    public function optionLabel($row) {
+    public function optionLabel($row)
+    {
         return $row->title;
     }
 
@@ -47,28 +48,49 @@ class RatingPanel extends XotBasePanel {
      *
      * @return array
      */
-    public static function fields() {
+    public static function fields()
+    {
+
         return [
-              (object) [
-                 'type' => 'Id',
-                 'name' => 'post_id',
-              ],
-              (object) [
-                 'type' => 'Text',
-                 'name' => 'related_type',
-              ],
-              (object) [
-                 'type' => 'Text',
-                 'name' => 'post.title',
-              ],
-              (object) [
-                 'type' => 'Text',
-                 'name' => 'post.subtitle',
-              ],
-              (object) [
-                 'type' => 'Textarea',
-                 'name' => 'post.txt',
-              ],
+            //*
+            (object) [
+                'type' => 'Id',
+                'name' => 'post_id',
+            ],
+            (object) [
+                'type' => 'Text',
+                'name' => 'related_type',
+            ],
+            (object) [
+                'type' => 'Text',
+                'name' => 'post.title',
+            ],
+            (object) [
+                'type' => 'Decimal',
+                'name' => 'pivot.rating',
+            ],
+            (object) [
+                'type' => 'Text',
+                'name' => 'pivot.auth_user_id',
+            ],
+            /*
+            (object) [
+            'type' => 'Text',
+            'name' => 'post.subtitle',
+            ],
+            (object) [
+            'type' => 'Textarea',
+            'name' => 'post.txt',
+            ],
+             */
+            // */
+            /*
+        (object) [
+        'type' => 'Rating',
+        'name' => 'myRatings',
+        ],
+         */
+
         ];
     }
 
@@ -77,7 +99,8 @@ class RatingPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function tabs() {
+    public function tabs()
+    {
         $tabs_name = [];
 
         return [];
@@ -90,7 +113,8 @@ class RatingPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function cards(Request $request) {
+    public function cards(Request $request)
+    {
         return [];
     }
 
@@ -101,7 +125,8 @@ class RatingPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function filters(Request $request = null) {
+    public function filters(Request $request = null)
+    {
         return [];
     }
 
@@ -112,7 +137,8 @@ class RatingPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function lenses(Request $request) {
+    public function lenses(Request $request)
+    {
         return [];
     }
 
@@ -123,26 +149,27 @@ class RatingPanel extends XotBasePanel {
      *
      * @return array
      */
-    public function actions() {
-        return [];
-    }
-
-    /*
     public function actions()
     {
         return [];
     }
 
-    public function indexEdit(){
-        $params = \Route::current()->parameters();
-        list($containers,$items)=params2ContainerItem($params);
-    }
-    public function bodyContentView($params=[]){
-        extract($params);
-        $route_params = \Route::current()->parameters();
-        list($containers,$items)=params2ContainerItem($route_params);
-        //return $_layout->view_extend.'.body.multi_select';
-        return $_layout->view_extend.'.body.rating';
-    }
-    */
+    /*
+public function actions()
+{
+return [];
+}
+
+public function indexEdit(){
+$params = \Route::current()->parameters();
+list($containers,$items)=params2ContainerItem($params);
+}
+public function bodyContentView($params=[]){
+extract($params);
+$route_params = \Route::current()->parameters();
+list($containers,$items)=params2ContainerItem($route_params);
+//return $_layout->view_extend.'.body.multi_select';
+return $_layout->view_extend.'.body.rating';
+}
+ */
 }

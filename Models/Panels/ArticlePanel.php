@@ -8,91 +8,108 @@ use Modules\Xot\Models\Panels\XotBasePanel;
 
 //---- bases --
 
-class ArticlePanel extends XotBasePanel {
+class ArticlePanel extends XotBasePanel
+{
     protected static $model = 'Modules\Blog\Models\Article';
 
     protected static $title = 'title';
 
     protected static $search = [];
 
-    public function optionId($row) {
+    public function optionId($row)
+    {
         return $row->post_id;
     }
 
-    public function optionLabel($row) {
+    public function optionLabel($row)
+    {
         return $row->post->title;
     }
 
-    public static function with() {
+    public static function with()
+    {
         return ['post'];
     }
 
-    public function search() {
+    public function search()
+    {
         return [
             'post.title',
         ];
     }
 
-    public static function fields() {
+    public static function fields()
+    {
         return [
-          (object) [
-             'type' => 'Id',
-             'name' => 'post_id',
-             'col_bs_size' => 6,
-          ],
-          (object) [
-             'type' => 'Select',
-             'sub_type' => 'Parent',
-             //'name' => 'post[subtitle]'
-             'name' => 'parent_id',
-             'col_bs_size' => 6,
-          ],
+            (object) [
+                'type'        => 'Id',
+                'name'        => 'post_id',
+                'col_bs_size' => 6,
+            ],
+            (object) [
+                'type'        => 'Select',
+                'sub_type'    => 'Parent',
+                //'name' => 'post[subtitle]'
+                'name'        => 'parent_id',
+                'col_bs_size' => 6,
+            ],
 
-          /*
+            /*
             public function setEntryDateAttribute($input)
-{
-    $this->attributes['entry_date'] =
-      Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
-}
+            {
+            $this->attributes['entry_date'] =
+            Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+            }
 
+             */
 
-          */
-
-          (object) [
-             'type' => 'Text',
-             //'name' => 'post[title]',
-             'name' => 'post.title',
-             'col_bs_size' => 12,
-          ],
-          (object) [
-             'type' => 'Textarea',
-             //'name' => 'post[subtitle]'
-             'name' => 'post.subtitle',
-             'except' => ['index'],
-             'col_bs_size' => 12,
-          ],
-          (object) [
-             'type' => 'Wysiwyg',
-             //'name' => 'post[subtitle]'
-             'name' => 'post.txt',
-             'except' => ['index'],
-             'col_bs_size' => 12,
-          ],
-          (object) [
-             'type' => 'String',
-             'name' => 'article_type',
-             'col_bs_size' => 6,
-          ],
-          /*
-          (object) [
-             'type' => 'DateTime',
-             'name' => 'published_at',
-             //'rules' => new \Modules\Xot\Rules\DateTimeRule(),
-             //'rules' => 'nullable|date_format:d/m/Y H:i', // https://laravel.com/docs/5.8/validation
-          //'publish_at' => 'nullable|date',
-             'col_bs_size' => 6,
-          ],
-          */
+            (object) [
+                'type'        => 'Text',
+                //'name' => 'post[title]',
+                'name'        => 'post.title',
+                'col_bs_size' => 12,
+            ],
+            (object) [
+                'type'        => 'Textarea',
+                //'name' => 'post[subtitle]'
+                'name'        => 'post.subtitle',
+                'except'      => ['index'],
+                'col_bs_size' => 12,
+            ],
+            (object) [
+                'type'        => 'Wysiwyg',
+                //'name' => 'post[subtitle]'
+                'name'        => 'post.txt',
+                'except'      => ['index'],
+                'col_bs_size' => 12,
+            ],
+            /*
+            (object) [
+            'type' => 'String',
+            'name' => 'article_type',
+            'col_bs_size' => 6,
+            ],
+            (object) [
+            'type' => 'DateTime',
+            'name' => 'published_at',
+            //'rules' => new \Modules\Xot\Rules\DateTimeRule(),
+            //'rules' => 'nullable|date_format:d/m/Y H:i', // https://laravel.com/docs/5.8/validation
+            //'publish_at' => 'nullable|date',
+            'col_bs_size' => 6,
+            ],
+             */
+            (object) [
+                'type'        => 'Rating',
+                'name'        => 'myRatings',
+                'except'      => ['index'],
+                'col_bs_size' => 12,
+            ],
+            (object) [
+                'type'        => 'Rating',
+                'name'        => 'ratings',
+                'except'      => ['edit', 'create'],
+                'col_bs_size' => 12,
+            ],
         ];
     }
 
@@ -101,7 +118,8 @@ class ArticlePanel extends XotBasePanel {
      *
      * @return array
      */
-    public function tabs() {
+    public function tabs()
+    {
         $tabs_name = [];
 
         return [];
@@ -114,7 +132,8 @@ class ArticlePanel extends XotBasePanel {
      *
      * @return array
      */
-    public function cards(Request $request) {
+    public function cards(Request $request)
+    {
         return [];
     }
 
@@ -125,7 +144,8 @@ class ArticlePanel extends XotBasePanel {
      *
      * @return array
      */
-    public function filters(Request $request = null) {
+    public function filters(Request $request = null)
+    {
         return [];
     }
 
@@ -136,7 +156,8 @@ class ArticlePanel extends XotBasePanel {
      *
      * @return array
      */
-    public function lenses(Request $request) {
+    public function lenses(Request $request)
+    {
         return [];
     }
 
@@ -147,7 +168,8 @@ class ArticlePanel extends XotBasePanel {
      *
      * @return array
      */
-    public function actions() {
+    public function actions()
+    {
         return [];
     }
 }
