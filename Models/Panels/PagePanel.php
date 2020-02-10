@@ -29,7 +29,7 @@ class PagePanel extends XotBasePanel {
      * @var array
      */
     protected static $search = [
-];
+    ];
 
     /**
      * The relationships that should be eager loaded on index queries.
@@ -63,27 +63,27 @@ class PagePanel extends XotBasePanel {
      */
     public function fields() {
         return [
-  0 => (object) [
-     'type' => 'Integer',
-     'name' => 'post_id',
-  ],
-  1 => (object) [
-     'type' => 'Text',
-     'name' => 'article_type',
-  ],
-  2 => (object) [
-     'type' => 'DateTime',
-     'name' => 'published_at',
-  ],
-  3 => (object) [
-     'type' => 'Text',
-     'name' => 'category_id',
-  ],
-  4 => (object) [
-     'type' => 'String',
-     'name' => 'layout_position',
-  ],
-];
+            0 => (object) [
+                'type' => 'Integer',
+                'name' => 'post_id',
+            ],
+            1 => (object) [
+                'type' => 'Text',
+                'name' => 'article_type',
+            ],
+            2 => (object) [
+                'type' => 'DateTime',
+                'name' => 'published_at',
+            ],
+            3 => (object) [
+                'type' => 'Text',
+                'name' => 'category_id',
+            ],
+            4 => (object) [
+                'type' => 'String',
+                'name' => 'layout_position',
+            ],
+        ];
     }
 
     /**
@@ -99,8 +99,6 @@ class PagePanel extends XotBasePanel {
 
     /**
      * Get the cards available for the request.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -121,8 +119,6 @@ class PagePanel extends XotBasePanel {
 
     /**
      * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */

@@ -89,7 +89,6 @@ class PostPanel extends XotBasePanel {
      *
      * This query determines which instances of the model may be attached to other resources.
      *
-     * @param Request                               $request
      * @param \Illuminate\Database\Eloquent\Builder $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
@@ -102,91 +101,91 @@ class PostPanel extends XotBasePanel {
     public function fields() {
         return [
             (object) [
-            'type' => 'Id',
-            'name' => 'id',
-            'rules' => 'required',
-            'comment' => null,
+                'type' => 'Id',
+                'name' => 'id',
+                'rules' => 'required',
+                'comment' => null,
             ],
             (object) [
-            'type' => 'Integer',
-            'name' => 'post_id',
-            'comment' => null,
+                'type' => 'Integer',
+                'name' => 'post_id',
+                'comment' => null,
             ],
             (object) [
-            'type' => 'String',
-            'name' => 'lang',
-            'comment' => null,
+                'type' => 'String',
+                'name' => 'lang',
+                'comment' => null,
             ],
             (object) [
-            'type' => 'String',
-            'name' => 'guid',
-            'comment' => null,
+                'type' => 'String',
+                'name' => 'guid',
+                'comment' => null,
             ],
             (object) [
-            'type' => 'String',
-            'name' => 'title',
-            'rules' => 'required',
-            'comment' => null,
+                'type' => 'String',
+                'name' => 'title',
+                'rules' => 'required',
+                'comment' => null,
             ],
             (object) [
-            'type' => 'Text',
-            'name' => 'subtitle',
-            'comment' => null,
+                'type' => 'Text',
+                'name' => 'subtitle',
+                'comment' => null,
             ],
             (object) [
-            'type' => 'String',
-            'name' => 'post_type',
-            'comment' => null,
+                'type' => 'String',
+                'name' => 'post_type',
+                'comment' => null,
             ],
             (object) [
-            'type' => 'Text',
-            'name' => 'txt',
-            'comment' => null,
+                'type' => 'Text',
+                'name' => 'txt',
+                'comment' => null,
             ],
             (object) [
-            'type' => 'String',
-            'name' => 'image_src',
-            'comment' => null,
+                'type' => 'String',
+                'name' => 'image_src',
+                'comment' => null,
             ],
             (object) [
-            'type' => 'String',
-            'name' => 'image_alt',
-            'comment' => null,
+                'type' => 'String',
+                'name' => 'image_alt',
+                'comment' => null,
             ],
             (object) [
-            'type' => 'String',
-            'name' => 'image_title',
-            'comment' => null,
+                'type' => 'String',
+                'name' => 'image_title',
+                'comment' => null,
             ],
             (object) [
-            'type' => 'Text',
-            'name' => 'meta_description',
-            'comment' => null,
+                'type' => 'Text',
+                'name' => 'meta_description',
+                'comment' => null,
             ],
             (object) [
-            'type' => 'Text',
-            'name' => 'meta_keyword',
-            'comment' => 'not in Doctrine',
+                'type' => 'Text',
+                'name' => 'meta_keyword',
+                'comment' => 'not in Doctrine',
             ],
             (object) [
-            'type' => 'Integer',
-            'name' => 'author_id',
-            'comment' => null,
+                'type' => 'Integer',
+                'name' => 'author_id',
+                'comment' => null,
             ],
             (object) [
-            'type' => 'String',
-            'name' => 'url',
-            'comment' => null,
+                'type' => 'String',
+                'name' => 'url',
+                'comment' => null,
             ],
             (object) [
-            'type' => 'Text',
-            'name' => 'url_lang',
-            'comment' => null,
+                'type' => 'Text',
+                'name' => 'url_lang',
+                'comment' => null,
             ],
             (object) [
-            'type' => 'Text',
-            'name' => 'image_resize_src',
-            'comment' => null,
+                'type' => 'Text',
+                'name' => 'image_resize_src',
+                'comment' => null,
             ],
         ];
     }
@@ -204,8 +203,6 @@ class PostPanel extends XotBasePanel {
 
     /**
      * Get the cards available for the request.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -226,8 +223,6 @@ class PostPanel extends XotBasePanel {
 
     /**
      * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */

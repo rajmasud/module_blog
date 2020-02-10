@@ -6,13 +6,10 @@ use Illuminate\Routing\Controller;
 
 //---- services ---
 
-class SitemapController extends Controller
-{
-
+class SitemapController extends Controller {
     private static $instance = null;
 
-    public static function getInstance()
-    {
+    public static function getInstance() {
         if (null === self::$instance) {
             self::$instance = new self();
         }
@@ -20,18 +17,15 @@ class SitemapController extends Controller
         return self::$instance;
     }
 
-    public function index()
-    {
+    public function index() {
         return self::getInstance(); /// per il fluent, o chaining
     }
 
-    public function show()
-    {
+    public function show() {
         return self::getInstance(); /// per il fluent, o chaining
     }
 
-    public function out()
-    {
+    public function out() {
         return 'to-do';
     }
 }

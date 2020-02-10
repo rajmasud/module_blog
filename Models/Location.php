@@ -27,13 +27,13 @@ class Location extends BaseModel {
     ];
     */
     public static $address_components = [
-            'premise', 'locality', 'postal_town',
-            'administrative_area_level_3', 'administrative_area_level_2',  'administrative_area_level_1',
-             'country',
-             'street_number', 'route', 'postal_code',
-             'googleplace_url',
-            'point_of_interest', 'political', 'campground',
-        ];
+        'premise', 'locality', 'postal_town',
+        'administrative_area_level_3', 'administrative_area_level_2',  'administrative_area_level_1',
+        'country',
+        'street_number', 'route', 'postal_code',
+        'googleplace_url',
+        'point_of_interest', 'political', 'campground',
+    ];
 
     //-------- relationships ----------------------
     public function restaurantProviders() {

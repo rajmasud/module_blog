@@ -8,14 +8,12 @@ use Modules\Xot\Models\Panels\XotBasePanel;
 
 //---- bases --
 
-class RatingPanel extends XotBasePanel
-{
-    protected static $model  = 'Modules\Blog\Models\Rating';
-    protected static $title  = 'title';
+class RatingPanel extends XotBasePanel {
+    protected static $model = 'Modules\Blog\Models\Rating';
+    protected static $title = 'title';
     protected static $search = [];
 
-    public function search()
-    {
+    public function search() {
         return [];
     }
 
@@ -24,8 +22,7 @@ class RatingPanel extends XotBasePanel
      *
      * @var array
      */
-    public static function with()
-    {
+    public static function with() {
         return [];
     }
 
@@ -36,8 +33,7 @@ class RatingPanel extends XotBasePanel
     /**
      * on select the option label.
      */
-    public function optionLabel($row)
-    {
+    public function optionLabel($row) {
         return $row->title;
     }
 
@@ -48,9 +44,7 @@ class RatingPanel extends XotBasePanel
      *
      * @return array
      */
-    public function fields()
-    {
-
+    public function fields() {
         return [
             //*
             (object) [
@@ -90,7 +84,6 @@ class RatingPanel extends XotBasePanel
         'name' => 'myRatings',
         ],
          */
-
         ];
     }
 
@@ -99,8 +92,7 @@ class RatingPanel extends XotBasePanel
      *
      * @return array
      */
-    public function tabs()
-    {
+    public function tabs() {
         $tabs_name = [];
 
         return [];
@@ -109,12 +101,9 @@ class RatingPanel extends XotBasePanel
     /**
      * Get the cards available for the request.
      *
-     * @param \Illuminate\Http\Request $request
-     *
      * @return array
      */
-    public function cards(Request $request)
-    {
+    public function cards(Request $request) {
         return [];
     }
 
@@ -125,20 +114,16 @@ class RatingPanel extends XotBasePanel
      *
      * @return array
      */
-    public function filters(Request $request = null)
-    {
+    public function filters(Request $request = null) {
         return [];
     }
 
     /**
      * Get the lenses available for the resource.
      *
-     * @param \Illuminate\Http\Request $request
-     *
      * @return array
      */
-    public function lenses(Request $request)
-    {
+    public function lenses(Request $request) {
         return [];
     }
 
@@ -149,8 +134,7 @@ class RatingPanel extends XotBasePanel
      *
      * @return array
      */
-    public function actions()
-    {
+    public function actions() {
         return [];
     }
 

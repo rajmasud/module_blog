@@ -27,7 +27,7 @@ class LocationPanel extends XotBasePanel {
      * @var array
      */
     protected static $search = [
-];
+    ];
 
     /**
      * The relationships that should be eager loaded on index queries.
@@ -90,7 +90,6 @@ class LocationPanel extends XotBasePanel {
      *
      * This query determines which instances of the model may be attached to other resources.
      *
-     * @param Request                               $request
      * @param \Illuminate\Database\Eloquent\Builder $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
@@ -102,92 +101,92 @@ class LocationPanel extends XotBasePanel {
 
     public function fields() {
         return [
-  0 => (object) [
-     'type' => 'Text',
-     'name' => 'post_id',
-     'comment' => 'not in Doctrine',
-  ],
-  1 => (object) [
-     'type' => 'Text',
-     'name' => 'latitude',
-     'comment' => 'not in Doctrine',
-  ],
-  2 => (object) [
-     'type' => 'Text',
-     'name' => 'longitude',
-     'comment' => 'not in Doctrine',
-  ],
-  3 => (object) [
-     'type' => 'Text',
-     'name' => 'address1',
-     'comment' => 'not in Doctrine',
-  ],
-  4 => (object) [
-     'type' => 'Text',
-     'name' => 'address2',
-     'comment' => 'not in Doctrine',
-  ],
-  5 => (object) [
-     'type' => 'Text',
-     'name' => 'address3',
-     'comment' => 'not in Doctrine',
-  ],
-  6 => (object) [
-     'type' => 'Text',
-     'name' => 'city',
-     'comment' => 'not in Doctrine',
-  ],
-  7 => (object) [
-     'type' => 'Text',
-     'name' => 'zip_code',
-     'comment' => 'not in Doctrine',
-  ],
-  8 => (object) [
-     'type' => 'Text',
-     'name' => 'country',
-     'comment' => 'not in Doctrine',
-  ],
-  9 => (object) [
-     'type' => 'Text',
-     'name' => 'state',
-     'comment' => 'not in Doctrine',
-  ],
-  10 => (object) [
-     'type' => 'Text',
-     'name' => 'phone',
-     'comment' => 'not in Doctrine',
-  ],
-  11 => (object) [
-     'type' => 'Text',
-     'name' => 'display_phone',
-     'comment' => 'not in Doctrine',
-  ],
-  12 => (object) [
-     'type' => 'Text',
-     'name' => 'price',
-     'comment' => 'not in Doctrine',
-  ],
-  13 => (object) [
-     'type' => 'Text',
-     'name' => 'is_closed',
-     'comment' => 'not in Doctrine',
-  ],
-  14 => (object) [
-     'type' => 'Text',
-     'name' => 'review_count',
-     'comment' => 'not in Doctrine',
-  ],
-  15 => (object) [
-     'type' => 'Text',
-     'name' => 'yelp_url',
-     'comment' => 'not in Doctrine',
-  ],
-  16 => (object) [
-     'type' => 'Text',
-     'name' => 'rating',
-     'comment' => 'not in Doctrine',
-  ],
-];
+            0 => (object) [
+                'type' => 'Text',
+                'name' => 'post_id',
+                'comment' => 'not in Doctrine',
+            ],
+            1 => (object) [
+                'type' => 'Text',
+                'name' => 'latitude',
+                'comment' => 'not in Doctrine',
+            ],
+            2 => (object) [
+                'type' => 'Text',
+                'name' => 'longitude',
+                'comment' => 'not in Doctrine',
+            ],
+            3 => (object) [
+                'type' => 'Text',
+                'name' => 'address1',
+                'comment' => 'not in Doctrine',
+            ],
+            4 => (object) [
+                'type' => 'Text',
+                'name' => 'address2',
+                'comment' => 'not in Doctrine',
+            ],
+            5 => (object) [
+                'type' => 'Text',
+                'name' => 'address3',
+                'comment' => 'not in Doctrine',
+            ],
+            6 => (object) [
+                'type' => 'Text',
+                'name' => 'city',
+                'comment' => 'not in Doctrine',
+            ],
+            7 => (object) [
+                'type' => 'Text',
+                'name' => 'zip_code',
+                'comment' => 'not in Doctrine',
+            ],
+            8 => (object) [
+                'type' => 'Text',
+                'name' => 'country',
+                'comment' => 'not in Doctrine',
+            ],
+            9 => (object) [
+                'type' => 'Text',
+                'name' => 'state',
+                'comment' => 'not in Doctrine',
+            ],
+            10 => (object) [
+                'type' => 'Text',
+                'name' => 'phone',
+                'comment' => 'not in Doctrine',
+            ],
+            11 => (object) [
+                'type' => 'Text',
+                'name' => 'display_phone',
+                'comment' => 'not in Doctrine',
+            ],
+            12 => (object) [
+                'type' => 'Text',
+                'name' => 'price',
+                'comment' => 'not in Doctrine',
+            ],
+            13 => (object) [
+                'type' => 'Text',
+                'name' => 'is_closed',
+                'comment' => 'not in Doctrine',
+            ],
+            14 => (object) [
+                'type' => 'Text',
+                'name' => 'review_count',
+                'comment' => 'not in Doctrine',
+            ],
+            15 => (object) [
+                'type' => 'Text',
+                'name' => 'yelp_url',
+                'comment' => 'not in Doctrine',
+            ],
+            16 => (object) [
+                'type' => 'Text',
+                'name' => 'rating',
+                'comment' => 'not in Doctrine',
+            ],
+        ];
     }
 
     /**
@@ -203,8 +202,6 @@ class LocationPanel extends XotBasePanel {
 
     /**
      * Get the cards available for the request.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -225,8 +222,6 @@ class LocationPanel extends XotBasePanel {
 
     /**
      * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */

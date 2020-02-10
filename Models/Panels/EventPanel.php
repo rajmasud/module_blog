@@ -29,7 +29,7 @@ class EventPanel extends XotBasePanel {
      * @var array
      */
     protected static $search = [
-];
+    ];
 
     /**
      * The relationships that should be eager loaded on index queries.
@@ -63,23 +63,23 @@ class EventPanel extends XotBasePanel {
      */
     public function fields() {
         return [
-          (object) [
-             'type' => 'Id',
-             'name' => 'post_id',
-             'col_bs_size' => 2,
-          ],
-          (object) [
-             //'type' => 'DateTime2Fields',
-            'type' => 'DateTime',
-             'name' => 'date_start',
-             'col_bs_size' => 5,
-          ],
-          (object) [
-             'type' => 'DateTime',
-             'name' => 'date_end',
-             'col_bs_size' => 5,
-          ],
-          (object) [
+            (object) [
+                'type' => 'Id',
+                'name' => 'post_id',
+                'col_bs_size' => 2,
+            ],
+            (object) [
+                //'type' => 'DateTime2Fields',
+                'type' => 'DateTime',
+                'name' => 'date_start',
+                'col_bs_size' => 5,
+            ],
+            (object) [
+                'type' => 'DateTime',
+                'name' => 'date_end',
+                'col_bs_size' => 5,
+            ],
+            (object) [
                 'type' => 'Text',
                 'name' => 'title',
             ],
@@ -88,7 +88,7 @@ class EventPanel extends XotBasePanel {
                 'name' => 'subtitle',
             ],
             (object) [
-                'type' => 'Text',//'Html5UploadImg',
+                'type' => 'Text', //'Html5UploadImg',
                 'name' => 'image_src',
                 'col_bs_size' => 6,
                 'except' => ['index'],
@@ -110,8 +110,6 @@ class EventPanel extends XotBasePanel {
     /**
      * Get the cards available for the request.
      *
-     * @param \Illuminate\Http\Request $request
-     *
      * @return array
      */
     public function cards(Request $request) {
@@ -131,8 +129,6 @@ class EventPanel extends XotBasePanel {
 
     /**
      * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */

@@ -9,24 +9,20 @@ use Modules\Xot\Models\Panels\XotBasePanel;
 //----- actions ---
 //use Modules\Blog\Models\Panels\Actions\RateItAction;
 
-class RatingMorphPanel extends XotBasePanel
-{
-    protected static $model  = 'Modules\Blog\Models\RatingMorph';
-    protected static $title  = 'title';
+class RatingMorphPanel extends XotBasePanel {
+    protected static $model = 'Modules\Blog\Models\RatingMorph';
+    protected static $title = 'title';
     protected static $search = [];
 
-    public static function with()
-    {
+    public static function with() {
         return [];
     }
 
-    public function search()
-    {
+    public function search() {
         return [];
     }
 
-    public function optionLabel($row)
-    {
+    public function optionLabel($row) {
         return $row->area_define_name;
     }
 
@@ -42,8 +38,7 @@ class RatingMorphPanel extends XotBasePanel
     'rules_messages' => ['it'=>['required'=>'Nome Obbligatorio']],
     'value'=>'..',
      */
-    public function indexNav()
-    {
+    public function indexNav() {
         return null;
     }
 
@@ -55,8 +50,7 @@ class RatingMorphPanel extends XotBasePanel
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public static function indexQuery($data, $query)
-    {
+    public static function indexQuery($data, $query) {
         //return $query->where('auth_user_id', $request->user()->auth_user_id);
         return $query;
     }
@@ -66,21 +60,19 @@ class RatingMorphPanel extends XotBasePanel
      *
      * This query determines which instances of the model may be attached to other resources.
      *
-     * @param Request                               $request
      * @param \Illuminate\Database\Eloquent\Builder $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public static function relatableQuery(Request $request, $query)
-    {
+    public static function relatableQuery(Request $request, $query) {
         //return $query->where('auth_user_id', $request->user()->auth_user_id);
         //return $query->where('user_id', $request->user()->id);
     }
 
-    public function fields()
-    {
+    public function fields() {
         //$route_params = \Route::current()->parameters();
         [$containers, $items] = params2ContainerItem();
+
         return [
             /*
             (object) [
@@ -122,10 +114,10 @@ class RatingMorphPanel extends XotBasePanel
             ],
              */
             (object) [
-                'type'   => 'Rating',
+                'type' => 'Rating',
                 //'sub_type' => 'JqStar',
                 //'sub_type'=>'VueStar',
-                'name'   => 'myRatings',
+                'name' => 'myRatings',
                 'parent' => last($items),
             ],
             /*
@@ -142,8 +134,7 @@ class RatingMorphPanel extends XotBasePanel
      *
      * @return array
      */
-    public function tabs()
-    {
+    public function tabs() {
         $tabs_name = [];
 
         return [];
@@ -152,12 +143,9 @@ class RatingMorphPanel extends XotBasePanel
     /**
      * Get the cards available for the request.
      *
-     * @param \Illuminate\Http\Request $request
-     *
      * @return array
      */
-    public function cards(Request $request)
-    {
+    public function cards(Request $request) {
         return [];
     }
 
@@ -168,20 +156,16 @@ class RatingMorphPanel extends XotBasePanel
      *
      * @return array
      */
-    public function filters(Request $request = null)
-    {
+    public function filters(Request $request = null) {
         return [];
     }
 
     /**
      * Get the lenses available for the resource.
      *
-     * @param \Illuminate\Http\Request $request
-     *
      * @return array
      */
-    public function lenses(Request $request)
-    {
+    public function lenses(Request $request) {
         return [];
     }
 
@@ -192,8 +176,7 @@ class RatingMorphPanel extends XotBasePanel
      *
      * @return array
      */
-    public function actions()
-    {
+    public function actions() {
         return [
             new Actions\RateIt(),
         ];
