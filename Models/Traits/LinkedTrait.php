@@ -352,6 +352,7 @@ trait LinkedTrait
     public function fixItemLang($item_guid)
     {
         $item_guid  = str_replace('%20', '%', $item_guid);
+        $item_guid  = str_replace(' ', '%', $item_guid);
         $panel      = Panel::get($this);
         $other_lang = Post::where('post_type', $panel->postType())
             ->where('guid', 'like', $item_guid)
