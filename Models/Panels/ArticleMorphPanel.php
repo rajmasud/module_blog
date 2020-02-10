@@ -31,7 +31,7 @@ class ArticleMorphPanel extends XotBasePanel {
         return null;
     }
 
-    public static function fields() {
+    public function fields() {
         return [
   (object) [
      'type' => 'Text',

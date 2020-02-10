@@ -77,7 +77,7 @@ class RatingMorphPanel extends XotBasePanel
         //return $query->where('user_id', $request->user()->id);
     }
 
-    public static function fields()
+    public function fields()
     {
         //$route_params = \Route::current()->parameters();
         [$containers, $items] = params2ContainerItem();

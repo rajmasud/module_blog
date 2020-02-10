@@ -96,7 +96,7 @@ class PostRelatedMorphPivotPanel extends XotBasePanel {
          //return $query->where('user_id', $request->user()->id);
     }
 
-    public static function fields() {
+    public function fields() {
         return [
   0 => (object) [
      'type' => 'Integer',

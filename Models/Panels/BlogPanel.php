@@ -64,7 +64,7 @@ class BlogPanel extends XotBasePanel {
         'rules_messages' => ['it'=>['required'=>'Nome Obbligatorio']],
         'value'=>'..',
      */
-    public static function fields() {
+    public function fields() {
         return [
 ];
     }

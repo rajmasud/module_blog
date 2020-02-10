@@ -47,7 +47,7 @@ class PlacePanel extends XotBasePanel {
      *
      * @return array
      */
-    public static function fields() {
+    public function fields() {
         return [
   0 => (object) [
      'type' => 'Text',
