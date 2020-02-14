@@ -4,6 +4,8 @@ namespace Modules\Blog\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 
+use Modules\Theme\Services\ThemeService;
+
 //---- services ---
 
 class PageController extends Controller
@@ -29,10 +31,13 @@ class PageController extends Controller
         $instance=self::getInstance();
         [$containers,$items]=params2ContainerItem();
         $last_item=last($items);
+        if(!is_object($last_item)){
         $instance->html= (string)view('pub_theme::pages.'.$last_item)
         ->with('lang', \App::getLocale());
 
         return $instance;// per il fluent, o chaining
+    	}
+    	return ThemeService::view();
     }
 
     public function out()
