@@ -37,7 +37,8 @@ class PageController extends Controller
 
         return $instance;// per il fluent, o chaining
     	}
-        $instance->html= (string) ThemeService::view();
+        $instance->html= (string) ThemeService::view()
+                        ->with('row',$last_item);
     	return $instance;
     }
 
