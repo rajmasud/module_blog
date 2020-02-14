@@ -37,7 +37,8 @@ class PageController extends Controller
 
         return $instance;// per il fluent, o chaining
     	}
-    	return ThemeService::view();
+        $instance->html= (string) ThemeService::view();
+    	return $instance;
     }
 
     public function out()
