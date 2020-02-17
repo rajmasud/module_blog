@@ -8,8 +8,9 @@ use Modules\Xot\Services\ImportService;
 
 //--- traits
 
-class Location extends BaseModel {
-    use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
+class Location extends BaseModel
+{
+    //use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
     //https://github.com/staudenmeir/eloquent-has-many-deep#morphedbymany
     public $table = 'import_items'; //<name pack>_items
     protected $primaryKey = 'post_id';
