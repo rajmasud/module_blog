@@ -63,32 +63,32 @@ class PrivacyPanel extends XotBasePanel {
         'rules_messages' => ['it'=>['required'=>'Nome Obbligatorio']],
         'value'=>'..',
      */
-    public static function fields() {
+    public function fields() {
         return [
-              (object) [
-                 'type' => 'Id',
-                 'name' => 'post_id',
-              ],
-              (object) [
-                 'type' => 'Text',
-                 'name' => 'related_type',
-              ],
-              (object) [
-                 'type' => 'Text',
-                 'name' => 'post.title',
-              ],
-              (object) [
-                 'type' => 'Integer',
-                 'name' => 'obligatory',
-              ],
-              (object) [
-                 'type' => 'Text',
-                 'name' => 'post.subtitle',
-              ],
-              (object) [
-                 'type' => 'Textarea',
-                 'name' => 'post.txt',
-              ],
+            (object) [
+                'type' => 'Id',
+                'name' => 'post_id',
+            ],
+            (object) [
+                'type' => 'Text',
+                'name' => 'related_type',
+            ],
+            (object) [
+                'type' => 'Text',
+                'name' => 'post.title',
+            ],
+            (object) [
+                'type' => 'Integer',
+                'name' => 'obligatory',
+            ],
+            (object) [
+                'type' => 'Text',
+                'name' => 'post.subtitle',
+            ],
+            (object) [
+                'type' => 'Textarea',
+                'name' => 'post.txt',
+            ],
         ];
     }
 
@@ -105,8 +105,6 @@ class PrivacyPanel extends XotBasePanel {
 
     /**
      * Get the cards available for the request.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -127,8 +125,6 @@ class PrivacyPanel extends XotBasePanel {
 
     /**
      * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */

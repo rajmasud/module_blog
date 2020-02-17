@@ -31,39 +31,39 @@ class ArticleMorphPanel extends XotBasePanel {
         return null;
     }
 
-    public static function fields() {
+    public function fields() {
         return [
-  (object) [
-     'type' => 'Text',
-     'name' => 'id',
-     'comment' => 'not in Doctrine',
-  ],
-  (object) [
-     'type' => 'Text',
-     'name' => 'post_id',
-     'comment' => 'not in Doctrine',
-  ],
-  (object) [
-     'type' => 'Text',
-     'name' => 'post_type',
-     'comment' => 'not in Doctrine',
-  ],
-  (object) [
-     'type' => 'Text',
-     'name' => 'related_id',
-     'comment' => 'not in Doctrine',
-  ],
-  (object) [
-     'type' => 'Text',
-     'name' => 'related_type',
-     'comment' => 'not in Doctrine',
-  ],
-  (object) [
-     'type' => 'Text',
-     'name' => 'auth_user_id',
-     'comment' => 'not in Doctrine',
-  ],
-];
+            (object) [
+                'type' => 'Text',
+                'name' => 'id',
+                'comment' => 'not in Doctrine',
+            ],
+            (object) [
+                'type' => 'Text',
+                'name' => 'post_id',
+                'comment' => 'not in Doctrine',
+            ],
+            (object) [
+                'type' => 'Text',
+                'name' => 'post_type',
+                'comment' => 'not in Doctrine',
+            ],
+            (object) [
+                'type' => 'Text',
+                'name' => 'related_id',
+                'comment' => 'not in Doctrine',
+            ],
+            (object) [
+                'type' => 'Text',
+                'name' => 'related_type',
+                'comment' => 'not in Doctrine',
+            ],
+            (object) [
+                'type' => 'Text',
+                'name' => 'auth_user_id',
+                'comment' => 'not in Doctrine',
+            ],
+        ];
     }
 
     public function tabs() {

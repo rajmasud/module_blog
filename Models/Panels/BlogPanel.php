@@ -27,7 +27,7 @@ class BlogPanel extends XotBasePanel {
      * @var array
      */
     protected static $search = [
-];
+    ];
 
     /**
      * The relationships that should be eager loaded on index queries.
@@ -64,9 +64,9 @@ class BlogPanel extends XotBasePanel {
         'rules_messages' => ['it'=>['required'=>'Nome Obbligatorio']],
         'value'=>'..',
      */
-    public static function fields() {
+    public function fields() {
         return [
-];
+        ];
     }
 
     /**
@@ -82,8 +82,6 @@ class BlogPanel extends XotBasePanel {
 
     /**
      * Get the cards available for the request.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -104,8 +102,6 @@ class BlogPanel extends XotBasePanel {
 
     /**
      * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */

@@ -29,9 +29,6 @@ class RatingPanel extends XotBasePanel {
     /**
      * on select the option id.
      */
-    public function optionId($row) {
-        return $row->post_id;
-    }
 
     /**
      * on select the option label.
@@ -47,28 +44,46 @@ class RatingPanel extends XotBasePanel {
      *
      * @return array
      */
-    public static function fields() {
+    public function fields() {
         return [
-              (object) [
-                 'type' => 'Id',
-                 'name' => 'post_id',
-              ],
-              (object) [
-                 'type' => 'Text',
-                 'name' => 'related_type',
-              ],
-              (object) [
-                 'type' => 'Text',
-                 'name' => 'post.title',
-              ],
-              (object) [
-                 'type' => 'Text',
-                 'name' => 'post.subtitle',
-              ],
-              (object) [
-                 'type' => 'Textarea',
-                 'name' => 'post.txt',
-              ],
+            //*
+            (object) [
+                'type' => 'Id',
+                'name' => 'post_id',
+            ],
+            (object) [
+                'type' => 'Text',
+                'name' => 'related_type',
+            ],
+            (object) [
+                'type' => 'Text',
+                'name' => 'post.title',
+            ],
+            (object) [
+                'type' => 'Decimal',
+                'name' => 'pivot.rating',
+            ],
+            (object) [
+                'type' => 'Text',
+                'name' => 'pivot.auth_user_id',
+            ],
+            /*
+            (object) [
+            'type' => 'Text',
+            'name' => 'post.subtitle',
+            ],
+            (object) [
+            'type' => 'Textarea',
+            'name' => 'post.txt',
+            ],
+             */
+            // */
+            /*
+        (object) [
+        'type' => 'Rating',
+        'name' => 'myRatings',
+        ],
+         */
         ];
     }
 
@@ -85,8 +100,6 @@ class RatingPanel extends XotBasePanel {
 
     /**
      * Get the cards available for the request.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -108,8 +121,6 @@ class RatingPanel extends XotBasePanel {
     /**
      * Get the lenses available for the resource.
      *
-     * @param \Illuminate\Http\Request $request
-     *
      * @return array
      */
     public function lenses(Request $request) {
@@ -128,21 +139,21 @@ class RatingPanel extends XotBasePanel {
     }
 
     /*
-    public function actions()
-    {
-        return [];
-    }
+public function actions()
+{
+return [];
+}
 
-    public function indexEdit(){
-        $params = \Route::current()->parameters();
-        list($containers,$items)=params2ContainerItem($params);
-    }
-    public function bodyContentView($params=[]){
-        extract($params);
-        $route_params = \Route::current()->parameters();
-        list($containers,$items)=params2ContainerItem($route_params);
-        //return $_layout->view_extend.'.body.multi_select';
-        return $_layout->view_extend.'.body.rating';
-    }
-    */
+public function indexEdit(){
+$params = \Route::current()->parameters();
+list($containers,$items)=params2ContainerItem($params);
+}
+public function bodyContentView($params=[]){
+extract($params);
+$route_params = \Route::current()->parameters();
+list($containers,$items)=params2ContainerItem($route_params);
+//return $_layout->view_extend.'.body.multi_select';
+return $_layout->view_extend.'.body.rating';
+}
+ */
 }

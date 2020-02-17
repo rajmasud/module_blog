@@ -27,7 +27,7 @@ class PostRelatedMorphPivotPanel extends XotBasePanel {
      * @var array
      */
     protected static $search = [
-];
+    ];
 
     /**
      * The relationships that should be eager loaded on index queries.
@@ -86,7 +86,6 @@ class PostRelatedMorphPivotPanel extends XotBasePanel {
      *
      * This query determines which instances of the model may be attached to other resources.
      *
-     * @param Request                               $request
      * @param \Illuminate\Database\Eloquent\Builder $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
@@ -96,45 +95,45 @@ class PostRelatedMorphPivotPanel extends XotBasePanel {
          //return $query->where('user_id', $request->user()->id);
     }
 
-    public static function fields() {
+    public function fields() {
         return [
-  0 => (object) [
-     'type' => 'Integer',
-     'name' => 'post_id',
-  ],
-  1 => (object) [
-     'type' => 'String',
-     'name' => 'post_type',
-  ],
-  2 => (object) [
-     'type' => 'Integer',
-     'name' => 'related_id',
-  ],
-  3 => (object) [
-     'type' => 'String',
-     'name' => 'related_type',
-  ],
-  4 => (object) [
-     'type' => 'Integer',
-     'name' => 'pos',
-  ],
-  5 => (object) [
-     'type' => 'Decimal',
-     'name' => 'price',
-  ],
-  6 => (object) [
-     'type' => 'String',
-     'name' => 'price_currency',
-  ],
-  7 => (object) [
-     'type' => 'Text',
-     'name' => 'launch_avaible',
-  ],
-  8 => (object) [
-     'type' => 'Text',
-     'name' => 'dinner_avaible',
-  ],
-];
+            0 => (object) [
+                'type' => 'Integer',
+                'name' => 'post_id',
+            ],
+            1 => (object) [
+                'type' => 'String',
+                'name' => 'post_type',
+            ],
+            2 => (object) [
+                'type' => 'Integer',
+                'name' => 'related_id',
+            ],
+            3 => (object) [
+                'type' => 'String',
+                'name' => 'related_type',
+            ],
+            4 => (object) [
+                'type' => 'Integer',
+                'name' => 'pos',
+            ],
+            5 => (object) [
+                'type' => 'Decimal',
+                'name' => 'price',
+            ],
+            6 => (object) [
+                'type' => 'String',
+                'name' => 'price_currency',
+            ],
+            7 => (object) [
+                'type' => 'Text',
+                'name' => 'launch_avaible',
+            ],
+            8 => (object) [
+                'type' => 'Text',
+                'name' => 'dinner_avaible',
+            ],
+        ];
     }
 
     /**
@@ -150,8 +149,6 @@ class PostRelatedMorphPivotPanel extends XotBasePanel {
 
     /**
      * Get the cards available for the request.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -172,8 +169,6 @@ class PostRelatedMorphPivotPanel extends XotBasePanel {
 
     /**
      * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */

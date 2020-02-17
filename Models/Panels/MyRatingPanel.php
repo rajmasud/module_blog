@@ -89,7 +89,6 @@ class MyRatingPanel extends XotBasePanel {
      *
      * This query determines which instances of the model may be attached to other resources.
      *
-     * @param Request                               $request
      * @param \Illuminate\Database\Eloquent\Builder $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
@@ -99,7 +98,7 @@ class MyRatingPanel extends XotBasePanel {
          //return $query->where('user_id', $request->user()->id);
     }
 
-    public static function fields() {
+    public function fields() {
         return [
             (object) [
                 'type' => 'Id',
@@ -133,8 +132,6 @@ class MyRatingPanel extends XotBasePanel {
     /**
      * Get the cards available for the request.
      *
-     * @param \Illuminate\Http\Request $request
-     *
      * @return array
      */
     public function cards(Request $request) {
@@ -154,8 +151,6 @@ class MyRatingPanel extends XotBasePanel {
 
     /**
      * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */

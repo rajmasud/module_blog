@@ -27,7 +27,7 @@ class FeedPanel extends XotBasePanel {
      * @var array
      */
     protected static $search = [
-];
+    ];
 
     /**
      * The relationships that should be eager loaded on index queries.
@@ -90,7 +90,6 @@ class FeedPanel extends XotBasePanel {
      *
      * This query determines which instances of the model may be attached to other resources.
      *
-     * @param Request                               $request
      * @param \Illuminate\Database\Eloquent\Builder $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
@@ -100,14 +99,14 @@ class FeedPanel extends XotBasePanel {
          //return $query->where('user_id', $request->user()->id);
     }
 
-    public static function fields() {
+    public function fields() {
         return [
-  0 => (object) [
-     'type' => 'Text',
-     'name' => 'post_id',
-     'comment' => 'not in Doctrine',
-  ],
-];
+            0 => (object) [
+                'type' => 'Text',
+                'name' => 'post_id',
+                'comment' => 'not in Doctrine',
+            ],
+        ];
     }
 
     /**
@@ -123,8 +122,6 @@ class FeedPanel extends XotBasePanel {
 
     /**
      * Get the cards available for the request.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -145,8 +142,6 @@ class FeedPanel extends XotBasePanel {
 
     /**
      * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */

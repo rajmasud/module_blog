@@ -44,7 +44,7 @@ class PrivacyMorphPanel extends XotBasePanel {
         'rules_messages' => ['it'=>['required'=>'Nome Obbligatorio']],
         'value'=>'..',
      */
-    public static function fields() {
+    public function fields() {
         return [
             (object) [
                 'type' => 'Hidden',
@@ -91,8 +91,6 @@ The field under validation must be yes, on, 1, or true. This is useful for valid
     /**
      * Get the cards available for the request.
      *
-     * @param \Illuminate\Http\Request $request
-     *
      * @return array
      */
     public function cards(Request $request) {
@@ -112,8 +110,6 @@ The field under validation must be yes, on, 1, or true. This is useful for valid
 
     /**
      * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */

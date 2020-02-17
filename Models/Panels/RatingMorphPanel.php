@@ -22,10 +22,6 @@ class RatingMorphPanel extends XotBasePanel {
         return [];
     }
 
-    public function optionId($row) {
-        return $row->area_id;
-    }
-
     public function optionLabel($row) {
         return $row->area_define_name;
     }
@@ -36,11 +32,11 @@ class RatingMorphPanel extends XotBasePanel {
      * @param \Illuminate\Http\Request $request
      *
      * @return array
-        'col_bs_size' => 6,
-        'sortable' => 1,
-        'rules' => 'required',
-        'rules_messages' => ['it'=>['required'=>'Nome Obbligatorio']],
-        'value'=>'..',
+    'col_bs_size' => 6,
+    'sortable' => 1,
+    'rules' => 'required',
+    'rules_messages' => ['it'=>['required'=>'Nome Obbligatorio']],
+    'value'=>'..',
      */
     public function indexNav() {
         return null;
@@ -64,59 +60,72 @@ class RatingMorphPanel extends XotBasePanel {
      *
      * This query determines which instances of the model may be attached to other resources.
      *
-     * @param Request                               $request
      * @param \Illuminate\Database\Eloquent\Builder $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public static function relatableQuery(Request $request, $query) {
         //return $query->where('auth_user_id', $request->user()->auth_user_id);
-         //return $query->where('user_id', $request->user()->id);
+        //return $query->where('user_id', $request->user()->id);
     }
 
-    public static function fields() {
+    public function fields() {
+        //$route_params = \Route::current()->parameters();
+        [$containers, $items] = params2ContainerItem();
+
         return [
-            (object) [
-                'type' => 'Id',
-                'name' => 'id',
-            ],
-            (object) [
-                'type' => 'Integer',
-                'name' => 'post_id',
-            ],
-            (object) [
-                'type' => 'Text',
-                'name' => 'post_type',
-            ],
-            (object) [
-                'type' => 'Text',
-                'name' => 'related_id',
-            ],
             /*
             (object) [
-                'type' => 'Hidden',
-                'name' => 'related_type',
+            'type' => 'Id',
+            'name' => 'id',
             ],
-            */
+            (object) [
+            'type' => 'Integer',
+            'name' => 'post_id',
+            ],
+            (object) [
+            'type' => 'Text',
+            'name' => 'post_type',
+            ],
+            (object) [
+            'type' => 'Text',
+            'name' => 'related_id',
+            ],
+             */
             /*
             (object) [
-                'type' => 'Text',
-                'name' => 'title',
-                'comment' => 'not in Doctrine',
+            'type' => 'Hidden',
+            'name' => 'related_type',
             ],
-            */
+             */
+            /*
             (object) [
-                'type' => 'Decimal',
-                'sub_type' => 'JqStar',
+            'type' => 'Text',
+            'name' => 'title',
+            'comment' => 'not in Doctrine',
+            ],
+             */
+            /*
+            (object) [
+            'type'     => 'Decimal',
+            'sub_type' => 'JqStar',
+            //'sub_type'=>'VueStar',
+            'name'     => 'rating',
+            ],
+             */
+            (object) [
+                'type' => 'Rating',
+                //'sub_type' => 'JqStar',
                 //'sub_type'=>'VueStar',
-                'name' => 'rating',
+                'name' => 'myRatings',
+                'parent' => last($items),
             ],
-            //*
-            (object) [
-                'type' => 'Hidden',
-                'name' => 'auth_user_id',
-            ],
-            //*/
+            /*
+        (object) [
+        'type' => 'Hidden',
+        'name' => 'auth_user_id',
+        ],
+        //*/
         ];
     }
 
@@ -133,8 +142,6 @@ class RatingMorphPanel extends XotBasePanel {
 
     /**
      * Get the cards available for the request.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -156,8 +163,6 @@ class RatingMorphPanel extends XotBasePanel {
     /**
      * Get the lenses available for the resource.
      *
-     * @param \Illuminate\Http\Request $request
-     *
      * @return array
      */
     public function lenses(Request $request) {
@@ -173,7 +178,7 @@ class RatingMorphPanel extends XotBasePanel {
      */
     public function actions() {
         return [
-                new Actions\RateIt(),
-            ];
+            new Actions\RateIt(),
+        ];
     }
 }

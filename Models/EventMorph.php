@@ -16,7 +16,7 @@ class EventMorph extends MorphPivot {
         'created_at',
         'updated_at',
         'deleted_at',
-       // 'published_at',
+        // 'published_at',
     ];
     protected $appends = [];
     protected $primaryKey = 'id';

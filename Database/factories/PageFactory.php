@@ -9,7 +9,7 @@ $factory->define(Page::class, function (Faker $faker) {
     return [
         //'title' => $faker->sentence,
         //'description' => $faker->paragraph,
-       //'auth_user_id' => factory(User::class)->create()->auth_user_id,
+        //'auth_user_id' => factory(User::class)->create()->auth_user_id,
         /*
     	'latitude' 			=> $faker->latitude,
         'longitude' 		=> $faker->longitude,

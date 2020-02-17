@@ -6,7 +6,7 @@ use Illuminate\Routing\Controller;
 
 //---- services ---
 
-class SitemapController extends Controller {
+class FeedController extends Controller {
     private static $instance = null;
 
     public static function getInstance() {

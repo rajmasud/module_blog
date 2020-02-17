@@ -27,7 +27,7 @@ class RelatedPanel extends XotBasePanel {
      * @var array
      */
     protected static $search = [
-];
+    ];
 
     /**
      * The relationships that should be eager loaded on index queries.
@@ -90,7 +90,6 @@ class RelatedPanel extends XotBasePanel {
      *
      * This query determines which instances of the model may be attached to other resources.
      *
-     * @param Request                               $request
      * @param \Illuminate\Database\Eloquent\Builder $query
      *
      * @return \Illuminate\Database\Eloquent\Builder
@@ -100,54 +99,54 @@ class RelatedPanel extends XotBasePanel {
          //return $query->where('user_id', $request->user()->id);
     }
 
-    public static function fields() {
+    public function fields() {
         return [
-  0 => (object) [
-     'type' => 'Text',
-     'name' => 'guid',
-     'comment' => 'not in Doctrine',
-  ],
-  1 => (object) [
-     'type' => 'Text',
-     'name' => 'lang',
-     'comment' => 'not in Doctrine',
-  ],
-  2 => (object) [
-     'type' => 'Text',
-     'name' => 'title',
-     'comment' => 'not in Doctrine',
-  ],
-  3 => (object) [
-     'type' => 'Text',
-     'name' => 'type',
-     'comment' => 'not in Doctrine',
-  ],
-  4 => (object) [
-     'type' => 'Text',
-     'name' => 'user_id',
-     'comment' => 'not in Doctrine',
-  ],
-  5 => (object) [
-     'type' => 'Text',
-     'name' => 'category_id',
-     'comment' => 'not in Doctrine',
-  ],
-  6 => (object) [
-     'type' => 'Text',
-     'name' => 'title',
-     'comment' => 'not in Doctrine',
-  ],
-  7 => (object) [
-     'type' => 'Text',
-     'name' => 'description',
-     'comment' => 'not in Doctrine',
-  ],
-  8 => (object) [
-     'type' => 'Text',
-     'name' => 'content',
-     'comment' => 'not in Doctrine',
-  ],
-];
+            0 => (object) [
+                'type' => 'Text',
+                'name' => 'guid',
+                'comment' => 'not in Doctrine',
+            ],
+            1 => (object) [
+                'type' => 'Text',
+                'name' => 'lang',
+                'comment' => 'not in Doctrine',
+            ],
+            2 => (object) [
+                'type' => 'Text',
+                'name' => 'title',
+                'comment' => 'not in Doctrine',
+            ],
+            3 => (object) [
+                'type' => 'Text',
+                'name' => 'type',
+                'comment' => 'not in Doctrine',
+            ],
+            4 => (object) [
+                'type' => 'Text',
+                'name' => 'user_id',
+                'comment' => 'not in Doctrine',
+            ],
+            5 => (object) [
+                'type' => 'Text',
+                'name' => 'category_id',
+                'comment' => 'not in Doctrine',
+            ],
+            6 => (object) [
+                'type' => 'Text',
+                'name' => 'title',
+                'comment' => 'not in Doctrine',
+            ],
+            7 => (object) [
+                'type' => 'Text',
+                'name' => 'description',
+                'comment' => 'not in Doctrine',
+            ],
+            8 => (object) [
+                'type' => 'Text',
+                'name' => 'content',
+                'comment' => 'not in Doctrine',
+            ],
+        ];
     }
 
     /**
@@ -163,8 +162,6 @@ class RelatedPanel extends XotBasePanel {
 
     /**
      * Get the cards available for the request.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -185,8 +182,6 @@ class RelatedPanel extends XotBasePanel {
 
     /**
      * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */

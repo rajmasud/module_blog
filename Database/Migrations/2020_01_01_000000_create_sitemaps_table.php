@@ -6,16 +6,13 @@ use Illuminate\Support\Facades\Schema;
 //----- models -----
 use Modules\Blog\Models\Sitemap as MyModel;
 
-class CreateSitemapsTable extends Migration
-{
-    public function getTable()
-    {
+class CreateSitemapsTable extends Migration {
+    public function getTable() {
         return with(new MyModel())->getTable();
     }
 
-    public function up()
-    {
-        if (!Schema::hasTable($this->getTable())) {
+    public function up() {
+        if (! Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
                 $table->increments('post_id'); //->primary();
                 $table->string('created_by')->nullable();
@@ -25,8 +22,7 @@ class CreateSitemapsTable extends Migration
         }
     }
 
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists($this->getTable());
     }
 }

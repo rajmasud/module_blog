@@ -33,66 +33,77 @@ class ArticlePanel extends XotBasePanel {
         ];
     }
 
-    public static function fields() {
+    public function fields() {
         return [
-          (object) [
-             'type' => 'Id',
-             'name' => 'post_id',
-             'col_bs_size' => 6,
-          ],
-          (object) [
-             'type' => 'Select',
-             'sub_type' => 'Parent',
-             //'name' => 'post[subtitle]'
-             'name' => 'parent_id',
-             'col_bs_size' => 6,
-          ],
+            (object) [
+                'type' => 'Id',
+                'name' => 'post_id',
+                'col_bs_size' => 6,
+            ],
+            (object) [
+                'type' => 'Select',
+                'sub_type' => 'Parent',
+                //'name' => 'post[subtitle]'
+                'name' => 'parent_id',
+                'col_bs_size' => 6,
+            ],
 
-          /*
+            /*
             public function setEntryDateAttribute($input)
-{
-    $this->attributes['entry_date'] =
-      Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
-}
+            {
+            $this->attributes['entry_date'] =
+            Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
+            }
 
+             */
 
-          */
-
-          (object) [
-             'type' => 'Text',
-             //'name' => 'post[title]',
-             'name' => 'post.title',
-             'col_bs_size' => 12,
-          ],
-          (object) [
-             'type' => 'Textarea',
-             //'name' => 'post[subtitle]'
-             'name' => 'post.subtitle',
-             'except' => ['index'],
-             'col_bs_size' => 12,
-          ],
-          (object) [
-             'type' => 'Wysiwyg',
-             //'name' => 'post[subtitle]'
-             'name' => 'post.txt',
-             'except' => ['index'],
-             'col_bs_size' => 12,
-          ],
-          (object) [
-             'type' => 'String',
-             'name' => 'article_type',
-             'col_bs_size' => 6,
-          ],
-          /*
-          (object) [
-             'type' => 'DateTime',
-             'name' => 'published_at',
-             //'rules' => new \Modules\Xot\Rules\DateTimeRule(),
-             //'rules' => 'nullable|date_format:d/m/Y H:i', // https://laravel.com/docs/5.8/validation
-          //'publish_at' => 'nullable|date',
-             'col_bs_size' => 6,
-          ],
-          */
+            (object) [
+                'type' => 'Text',
+                //'name' => 'post[title]',
+                'name' => 'post.title',
+                'col_bs_size' => 12,
+            ],
+            (object) [
+                'type' => 'Textarea',
+                //'name' => 'post[subtitle]'
+                'name' => 'post.subtitle',
+                'except' => ['index'],
+                'col_bs_size' => 12,
+            ],
+            (object) [
+                'type' => 'Wysiwyg',
+                //'name' => 'post[subtitle]'
+                'name' => 'post.txt',
+                'except' => ['index'],
+                'col_bs_size' => 12,
+            ],
+            /*
+            (object) [
+            'type' => 'String',
+            'name' => 'article_type',
+            'col_bs_size' => 6,
+            ],
+            (object) [
+            'type' => 'DateTime',
+            'name' => 'published_at',
+            //'rules' => new \Modules\Xot\Rules\DateTimeRule(),
+            //'rules' => 'nullable|date_format:d/m/Y H:i', // https://laravel.com/docs/5.8/validation
+            //'publish_at' => 'nullable|date',
+            'col_bs_size' => 6,
+            ],
+             */
+            (object) [
+                'type' => 'Rating',
+                'name' => 'myRatings',
+                'except' => ['index'],
+                'col_bs_size' => 12,
+            ],
+            (object) [
+                'type' => 'Rating',
+                'name' => 'ratings',
+                'except' => ['edit', 'create'],
+                'col_bs_size' => 12,
+            ],
         ];
     }
 
@@ -109,8 +120,6 @@ class ArticlePanel extends XotBasePanel {
 
     /**
      * Get the cards available for the request.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -131,8 +140,6 @@ class ArticlePanel extends XotBasePanel {
 
     /**
      * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */

@@ -29,7 +29,7 @@ class PlacePanel extends XotBasePanel {
      * @var array
      */
     protected static $search = [
-];
+    ];
 
     /**
      * The relationships that should be eager loaded on index queries.
@@ -47,93 +47,93 @@ class PlacePanel extends XotBasePanel {
      *
      * @return array
      */
-    public static function fields() {
+    public function fields() {
         return [
-  0 => (object) [
-     'type' => 'Text',
-     'name' => 'id',
-  ],
-  1 => (object) [
-     'type' => 'Integer',
-     'name' => 'post_id',
-  ],
-  2 => (object) [
-     'type' => 'Text',
-     'name' => 'post_type',
-  ],
-  3 => (object) [
-     'type' => 'String',
-     'name' => 'premise',
-  ],
-  4 => (object) [
-     'type' => 'String',
-     'name' => 'locality',
-  ],
-  5 => (object) [
-     'type' => 'String',
-     'name' => 'postal_town',
-  ],
-  6 => (object) [
-     'type' => 'String',
-     'name' => 'administrative_area_level_3',
-  ],
-  7 => (object) [
-     'type' => 'String',
-     'name' => 'administrative_area_level_2',
-  ],
-  8 => (object) [
-     'type' => 'String',
-     'name' => 'administrative_area_level_1',
-  ],
-  9 => (object) [
-     'type' => 'String',
-     'name' => 'country',
-  ],
-  10 => (object) [
-     'type' => 'String',
-     'name' => 'street_number',
-  ],
-  11 => (object) [
-     'type' => 'String',
-     'name' => 'route',
-  ],
-  12 => (object) [
-     'type' => 'String',
-     'name' => 'postal_code',
-  ],
-  13 => (object) [
-     'type' => 'String',
-     'name' => 'googleplace_url',
-  ],
-  14 => (object) [
-     'type' => 'String',
-     'name' => 'point_of_interest',
-  ],
-  15 => (object) [
-     'type' => 'String',
-     'name' => 'political',
-  ],
-  16 => (object) [
-     'type' => 'String',
-     'name' => 'campground',
-  ],
-  17 => (object) [
-     'type' => 'Text',
-     'name' => 'latitude',
-  ],
-  18 => (object) [
-     'type' => 'Text',
-     'name' => 'longitude',
-  ],
-  19 => (object) [
-     'type' => 'Text',
-     'name' => 'formatted_address',
-  ],
-  20 => (object) [
-     'type' => 'Text',
-     'name' => 'nearest_street',
-  ],
-];
+            0 => (object) [
+                'type' => 'Text',
+                'name' => 'id',
+            ],
+            1 => (object) [
+                'type' => 'Integer',
+                'name' => 'post_id',
+            ],
+            2 => (object) [
+                'type' => 'Text',
+                'name' => 'post_type',
+            ],
+            3 => (object) [
+                'type' => 'String',
+                'name' => 'premise',
+            ],
+            4 => (object) [
+                'type' => 'String',
+                'name' => 'locality',
+            ],
+            5 => (object) [
+                'type' => 'String',
+                'name' => 'postal_town',
+            ],
+            6 => (object) [
+                'type' => 'String',
+                'name' => 'administrative_area_level_3',
+            ],
+            7 => (object) [
+                'type' => 'String',
+                'name' => 'administrative_area_level_2',
+            ],
+            8 => (object) [
+                'type' => 'String',
+                'name' => 'administrative_area_level_1',
+            ],
+            9 => (object) [
+                'type' => 'String',
+                'name' => 'country',
+            ],
+            10 => (object) [
+                'type' => 'String',
+                'name' => 'street_number',
+            ],
+            11 => (object) [
+                'type' => 'String',
+                'name' => 'route',
+            ],
+            12 => (object) [
+                'type' => 'String',
+                'name' => 'postal_code',
+            ],
+            13 => (object) [
+                'type' => 'String',
+                'name' => 'googleplace_url',
+            ],
+            14 => (object) [
+                'type' => 'String',
+                'name' => 'point_of_interest',
+            ],
+            15 => (object) [
+                'type' => 'String',
+                'name' => 'political',
+            ],
+            16 => (object) [
+                'type' => 'String',
+                'name' => 'campground',
+            ],
+            17 => (object) [
+                'type' => 'Text',
+                'name' => 'latitude',
+            ],
+            18 => (object) [
+                'type' => 'Text',
+                'name' => 'longitude',
+            ],
+            19 => (object) [
+                'type' => 'Text',
+                'name' => 'formatted_address',
+            ],
+            20 => (object) [
+                'type' => 'Text',
+                'name' => 'nearest_street',
+            ],
+        ];
     }
 
     /**
@@ -149,8 +149,6 @@ class PlacePanel extends XotBasePanel {
 
     /**
      * Get the cards available for the request.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -171,8 +169,6 @@ class PlacePanel extends XotBasePanel {
 
     /**
      * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */

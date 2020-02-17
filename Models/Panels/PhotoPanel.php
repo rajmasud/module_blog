@@ -29,7 +29,7 @@ class PhotoPanel extends XotBasePanel {
      * @var array
      */
     protected static $search = [
-];
+    ];
 
     /**
      * The relationships that should be eager loaded on index queries.
@@ -47,31 +47,31 @@ class PhotoPanel extends XotBasePanel {
      *
      * @return array
      */
-    public static function fields() {
+    public function fields() {
         return [
-   /*
+            /*
   (object) array(
      'type' => 'Integer',
      'name' => 'post_id',
   ),
   */
-  //*
-  (object) [
-     'type' => 'Text',
-     'name' => 'title',
-  ],
+            //*
+            (object) [
+                'type' => 'Text',
+                'name' => 'title',
+            ],
 
-  (object) [
-     'type' => 'Text',
-     'name' => 'subtitle',
-  ],
-  /*
+            (object) [
+                'type' => 'Text',
+                'name' => 'subtitle',
+            ],
+            /*
   (object) array(
      'type' => 'Text',
      'name' => 'post[title]',
   ),
   */
-];
+        ];
     }
 
     /**
@@ -87,8 +87,6 @@ class PhotoPanel extends XotBasePanel {
 
     /**
      * Get the cards available for the request.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */
@@ -109,8 +107,6 @@ class PhotoPanel extends XotBasePanel {
 
     /**
      * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
      *
      * @return array
      */

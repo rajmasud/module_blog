@@ -40,6 +40,9 @@ class CreatePlacesTable extends Migration {
         }
         //----- update -----
         Schema::table($this->getTable(), function (Blueprint $table) {
+            if (! Schema::hasColumn($this->getTable(), 'post_type')) {
+                $table->string('post_type', 50)->index()->nullable();
+            }
         });
     }
 
