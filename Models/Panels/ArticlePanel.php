@@ -56,13 +56,14 @@ class ArticlePanel extends XotBasePanel {
             }
 
              */
-
+            //*
             (object) [
                 'type' => 'Text',
                 //'name' => 'post[title]',
                 'name' => 'post.title',
                 'col_bs_size' => 12,
             ],
+            //*/
             (object) [
                 'type' => 'Textarea',
                 //'name' => 'post[subtitle]'
