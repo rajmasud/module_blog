@@ -1,2 +1,10 @@
-rate action blade
-<h3>-{{ $row->post_id }}-</h3>
+{{--
+{{  Form::bsOpen($row,'update')  }}
+    --}}
+{!! Form::model($row,['url'=>Request::fullUrl() ]) !!}
+	@method('put')
+{!! Form::bsRating('ratings') !!}
+{!! Form::bsSubmit('vota') !!}
+{!! Form::close() !!}
+{{ Theme::showStyles(false) }}
+{{ Theme::showScripts(false) }}
