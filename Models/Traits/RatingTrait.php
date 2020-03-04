@@ -54,11 +54,36 @@ trait RatingTrait {
         return $this->morphRelated($related);
     }
 
+
+
     public function ratingObjectives() {
         $related = Rating::class;
-        //ddd($this->post_type);
-        return $this->hasMany($related, 'related_type', 'post_type');
+        $user_id=\Auth::id();
+        return $this->hasMany($related, 'related_type', 'post_type')
+            ->selectRaw(
+                'ratings.*,
+                count(rating) as rating_count,
+                avg(rating) as rating_avg,
+                sum(if(auth_user_id="'.$user_id.'",rating,0)) AS rating_my
+                '
+            )->leftJoin(
+                'rating_morph',
+                function ($join) {
+                    $join->on('rating_morph.related_id', 'ratings.post_id')
+                        ->whereRaw('rating_morph.post_type = ratings.related_type')
+                        ->where('rating_morph.post_id', $this->post_id);
+                }
+            )->groupBy('ratings.post_id');
+        }
+
+    public function scopeWithRating($query){
+        return $query->leftJoin('rating_morph',
+            function($join){
+                $join->on('rating_morph.post_type = ratings.related_type');
+            }
+        );
     }
+
 
     public function myRatings() {
         //$auth_user_id = \Auth::user()->auth_user_id;

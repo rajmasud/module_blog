@@ -14,11 +14,12 @@ class Article extends BaseModel {
     use RatingTrait;
 
     protected $fillable = ['post_id', 'article_type', 'published_at', 'parent_id', 'parent_type'];
-    protected $appends = [];
+    protected $appends = ['title'];
     /* https://itnext.io/7-things-you-need-to-know-to-get-the-most-out-of-your-laravel-model-4f915acbb47c */
     protected $casts = [
         //'published_at' => 'datetime:Y-m-d', // da verificare
     ];
+
     protected $dates = ['published_at', 'created_at', 'updated_at'];
     protected $primaryKey = 'post_id';
     public $incrementing = true;
