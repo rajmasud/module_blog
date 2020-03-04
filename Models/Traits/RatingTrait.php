@@ -77,8 +77,9 @@ trait RatingTrait {
         }
 
     public function scopeWithRating($query){
-        return $query->leftJoin('rating_morph',
-            function($join){
+        return $query->leftJoin(
+            'rating_morph',
+            function ($join) {
                 $join->on('rating_morph.post_type = ratings.related_type');
             }
         );
@@ -127,8 +128,13 @@ trait RatingTrait {
         //return '&#11088;&starf;&star;() '.$ratings->count('rating');
         $msg = '('.$ratings->avg('rating').') '.$ratings->count('rating').' Votes ';
         $rating_url = Panel::get($this)->relatedUrl(['related_name' => 'my_rating', 'act' => 'index_edit']);
-
+        $rating_url = Panel::get($this)->showUrl().'?_act=rate';
+        //http://geek.local/public_html/it/article/prova-articolo?_act=rate
+        /*
         return $msg.'<a data-href="'.$rating_url.'" class="btn btn-danger" data-toggle="modal" data-target="#myModalAjax" data-title="Rate it">
         Rate It </a>';
+        */
+        return '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#vueModal" data-title="rate " data-href="'.$rating_url.'">Rate It</button>
+        ';
     }
 }
