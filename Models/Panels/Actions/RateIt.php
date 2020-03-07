@@ -31,6 +31,9 @@ class RateIt extends XotBasePanelAction {
     //-- Perform the action on the given models.
     public function handle() {
         $view = 'blog::actions.rate';
+        if(request()->ajax()){
+            $view.='_ajax';
+        }
         return ThemeService ::view($view)
             ->with('row', $this->row)
             ;

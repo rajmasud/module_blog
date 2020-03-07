@@ -124,9 +124,10 @@ trait RatingTrait {
     //------ functions ------
     public function ratingAvgHtml() {
         $ratings = $this->ratings;
+
         //ddd($ratings->count('rating'));
         //return '&#11088;&starf;&star;() '.$ratings->count('rating');
-        $msg = '('.$ratings->avg('rating').') '.$ratings->count('rating').' Votes ';
+        $msg = '('.$ratings->avg('pivot.rating').') '.$ratings->count('pivot.rating').' Votes ';
         $rating_url = Panel::get($this)->relatedUrl(['related_name' => 'my_rating', 'act' => 'index_edit']);
         $rating_url = Panel::get($this)->showUrl().'?_act=rate';
         //http://geek.local/public_html/it/article/prova-articolo?_act=rate
@@ -134,7 +135,12 @@ trait RatingTrait {
         return $msg.'<a data-href="'.$rating_url.'" class="btn btn-danger" data-toggle="modal" data-target="#myModalAjax" data-title="Rate it">
         Rate It </a>';
         */
-        return '<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#vueModal" data-title="rate " data-href="'.$rating_url.'">Rate It</button>
+        $title='Vota '.$this->title;
+
+
+        return $msg.'<button type="button" class="btn btn-red btn-danger" data-toggle="modal" data-target="#vueModal" data-title="'.$title.'" data-href="'.$rating_url.'">
+        <span class="font-white"><i class="fa fa-star"></i> Vota ! </span>
+        </button>
         ';
     }
 }
