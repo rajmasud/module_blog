@@ -142,10 +142,14 @@ trait RatingTrait {
         */
         $title='Vota '.$this->title;
 
-
-        return $msg.'<button type="button" class="btn btn-red btn-danger" data-toggle="modal" data-target="#vueModal" data-title="'.$title.'" data-href="'.$rating_url.'">
+        $btn='<button type="button" class="btn btn-red btn-danger" data-toggle="modal" data-target="#vueModal" data-title="'.$title.'" data-href="'.$rating_url.'">
         <span class="font-white"><i class="fa fa-star"></i> Vota ! </span>
-        </button>
-        ';
+        </button>';
+
+        $btn_iframe='<button type="button" class="btn btn-red btn-danger" data-toggle="modal" data-target="#vueIframeModal" data-title="'.$title.'" data-href="'.$rating_url.'">
+        <span class="font-white"><i class="fa fa-star"></i> Vota ! </span>
+        </button>';
+
+        return $msg.$btn.$btn_iframe;
     }
 }

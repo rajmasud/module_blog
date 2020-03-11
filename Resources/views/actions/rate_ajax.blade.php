@@ -9,7 +9,9 @@
 {!! Form::model($row,['url'=>Request::fullUrl() ]) !!}
 @method('put') {{-- Se Post da errore :) --}}
 {!! Form::bsRatingMulti('ratings') !!}
-
+--
+<rating-one value="3.23" title="qualita"></rating-one>
+--
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
     <button type="submit" class="btn btn-primary" data-dismiss="modal">Vota !</button>
