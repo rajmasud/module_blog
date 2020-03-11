@@ -17,7 +17,22 @@
         {!! Form::bsSubmit('vota') !!}
         --}}
 </div>
+
 {!! Form::close() !!}
-{{ Theme::showStyles(false) }}
-{{ Theme::showScripts(false) }}
+@php
+    /*
+    Theme::add('pub_theme::dist/js/manifest.js',1);
+    Theme::add('pub_theme::dist/js/vendor.js',2);
+    Theme::add('pub_theme::dist/js/app.js',3);
+    Theme::add('pub_theme::dist/js/app.css',3);
+    Theme::add('pub_theme::js/test.js');
+    */
+    Theme::add('http://rawgit.com/gjunge/rateit.js/master/scripts/rateit.css');
+    Theme::add('http://rawgit.com/gjunge/rateit.js/master/scripts/jquery.rateit.js');
+    Theme::add('pub_theme::js/test.js');
+@endphp
+inizio
+{!! Theme::showStyles(false) !!}
+{!! Theme::showScripts(false) !!}
+fine
 @endauth

@@ -124,11 +124,16 @@ trait RatingTrait {
     //------ functions ------
     public function ratingAvgHtml() {
         $ratings = $this->ratings;
+        $pivot_avg=$ratings->avg('pivot.rating');
+        $pivot_cout=$ratings->count('pivot.rating');
 
-        //ddd($ratings->count('rating'));
-        //return '&#11088;&starf;&star;() '.$ratings->count('rating');
-        $msg = '('.$ratings->avg('pivot.rating').') '.$ratings->count('pivot.rating').' Votes ';
-        $rating_url = Panel::get($this)->relatedUrl(['related_name' => 'my_rating', 'act' => 'index_edit']);
+        $msg='<div class="rateit" data-rateit-value="'.$pivot_avg.'" data-rateit-ispreset="true" data-rateit-readonly="true"></div>';
+        $msg .= '('.$pivot_avg.') '.$pivot_cout.' Votes ';
+
+
+
+
+        //$rating_url = Panel::get($this)->relatedUrl(['related_name' => 'my_rating', 'act' => 'index_edit']);
         $rating_url = Panel::get($this)->showUrl().'?_act=rate';
         //http://geek.local/public_html/it/article/prova-articolo?_act=rate
         /*
