@@ -6,7 +6,7 @@
 
 @endguest
 @auth
-@extends('pub_theme::layouts.app')
+@extends('pub_theme::layouts.iframe')
 @section('content')
 {!! Form::model($row,['url'=>Request::fullUrl() ]) !!}
 	@method('put')

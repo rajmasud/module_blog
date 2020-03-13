@@ -9,7 +9,7 @@
 {!! Form::model($row,['url'=>Request::fullUrl() ]) !!}
 @method('put') {{-- Se Post da errore :) --}}
 {!! Form::bsRatingMulti('ratings') !!}
---
+--aaaa
 <rating-one value="3.23" title="qualita"></rating-one>
 --
 <div class="modal-footer">
