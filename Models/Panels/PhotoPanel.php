@@ -122,6 +122,8 @@ class PhotoPanel extends XotBasePanel {
      * @return array
      */
     public function actions() {
-        return [];
+        return [
+            new Actions\RateIt(),
+        ];
     }
 }

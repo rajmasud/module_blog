@@ -6,20 +6,38 @@
 
 @endguest
 @auth
-@extends('pub_theme::layouts.iframe')
+
+@extends('pub_theme::layouts.app')
+@section('page_heading',trans($view.'.rate'))
 @section('content')
+@include('theme::includes.flash')
+<div class="page-wrapper">
+<section class="create-page inner-page">
+
+
+
+
 {!! Form::model($row,['url'=>Request::fullUrl() ]) !!}
-	@method('put')
-{!! Form::bsRatingMulti('ratings') !!}
+@method('put')
+{!! Form::bsRatingMultiVue('ratings') !!}
+{{--
+
+<p>
+    <div class="rateit" data-rateit-value="2.5" data-rateit-ispreset="true" data-rateit-readonly="true"></div>(2.5) 10 Votes
+</p>
 
 {!! Form::bsSubmit('vota') !!}
-{!! Form::close() !!}
-{{--
-    <p>
-        <div class="rateit" data-rateit-value="2.5" data-rateit-ispreset="true" data-rateit-readonly="true"></div>(2.5) 10 Votes
-    </p>
+<rating-one value="3.23" title="qualita"></rating-one>
+--}}
 
-    --}}
-    <rating-one value="3.23" title="qualita"></rating-one>
+<button type="submit" class="btn btn-lg btn-danger">Vota !</button>
+    {!! Form::close() !!}
+
+
+
+
+</section>
+</div>
+
 @endsection
 @endauth
