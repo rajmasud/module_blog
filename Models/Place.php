@@ -31,6 +31,8 @@ class Place extends BaseModel {
         'point_of_interest', 'political', 'campground',
     ];
 
+    protected $appends =['value'];
+
     //----- mutators -----
 
     public function setFormattedAddressAttribute($value) {
@@ -45,5 +47,9 @@ class Place extends BaseModel {
             $this->attributes = array_merge($this->attributes, $tmp);
             //ddd($this->attributes);
         }
+    }
+
+    public function getValueAttribute($value){
+        return $this->route.', '.$this->street_number.', '.$this->locality.', '.$this->administrative_area_level_2.', '.$this->country; 
     }
 }

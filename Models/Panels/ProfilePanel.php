@@ -136,18 +136,12 @@ class ProfilePanel extends XotBasePanel {
                 'col_bs_size' => 12,
             ],
             (object) [
-                'type' => 'String',
-                'name' => 'post.title',
+                'type' => 'AddressGoogle',
+                'name' => 'indirizzo',
                 //'rules' => 'required',
                 'comment' => null,
-                'col_bs_size' => 12,
-            ],
-            (object) [
-                'type' => 'Textarea',
-                'name' => 'post.txt',
-                //'rules' => 'required',
-                'comment' => null,
-                'col_bs_size' => 12,
+                'col_bs_size' => 12
+                
             ],
             (object) [
                 'type' => 'PivotFields', //-- da aggiornare
