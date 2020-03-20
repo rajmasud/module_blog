@@ -38,7 +38,8 @@ trait LinkedTrait {
         }
         $name = 'post';
         if (! class_exists($pivot)) {
-            StubService::missingClass([
+
+            StubService::fromModel([
                 'class' => $pivot,
                 'stub' => 'morph_pivot', //con questo crea anche la migration
                 'model' => $model,

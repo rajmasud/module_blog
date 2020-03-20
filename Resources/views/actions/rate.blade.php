@@ -10,12 +10,19 @@
 @extends('pub_theme::layouts.app')
 @section('page_heading',trans($view.'.rate'))
 @section('content')
-@include('theme::includes.flash')
 <div class="page-wrapper">
-<section class="create-page inner-page">
+    <section class="create-page inner-page">
+        @include('theme::includes.flash')
 
-
-
+    <a href="{{ Panel::get($row)->showUrl() }}" class="btn btn-info">
+        <i class="fas fa-step-backward"></i> Back to {{ $row->title }}
+    </a>
+    <div class="text-center mt-12">
+    <h2>Vota per </h2>
+    <h3>{{ $row->title }}</h3>
+<h4>{{ $row->subtitle }}</h4>
+    </div>
+<hr/>
 
 {!! Form::model($row,['url'=>Request::fullUrl() ]) !!}
 @method('put')
@@ -29,8 +36,10 @@
 {!! Form::bsSubmit('vota') !!}
 <rating-one value="3.23" title="qualita"></rating-one>
 --}}
-
+<div class="text-center mt-12">
+    <br>
 <button type="submit" class="btn btn-lg btn-danger">Vota !</button>
+</div>
     {!! Form::close() !!}
 
 
