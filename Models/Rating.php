@@ -8,4 +8,12 @@ class Rating extends BaseModel {
     protected $dates = ['created_at', 'updated_at'];
     protected $primaryKey = 'post_id';
     public $incrementing = true;
+
+    //-------- relationship -----
+    //-------- mutators ---------
+    /*
+    public function getRatingAvgAttribute($value){
+        return $this->ratingMorph()->avg('rating');
+    }
+    */
 }

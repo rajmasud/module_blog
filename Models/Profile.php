@@ -23,6 +23,7 @@ class Profile extends BaseModel {
     protected $dates = ['created_at', 'updated_at'];
     protected $primaryKey = 'post_id';
     public $incrementing = true;
+    
 
     //------- RELATIONSHIP ----------
     public function user() {

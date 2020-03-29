@@ -123,24 +123,25 @@ class ProfilePanel extends XotBasePanel {
             ],
             (object) [
                 'type' => 'String',
-                'name' => 'post.title',
+                'name' => 'user.handle',
                 //'rules' => 'required',
+                'comment' => null,
+                'col_bs_size' => 6,
+            ],
+            (object) [
+                'type' => 'PasswordWithConfirm',
+                'name' => 'user.passwd',
+                'rules' => 'required|confirmed',
                 'comment' => null,
                 'col_bs_size' => 12,
             ],
             (object) [
-                'type' => 'Textarea',
-                'name' => 'post.txt',
+                'type' => 'AddressGoogle',
+                'name' => 'indirizzo',
                 //'rules' => 'required',
                 'comment' => null,
-                'col_bs_size' => 12,
-            ],
-            (object) [
-                'type' => 'Textarea',
-                'name' => 'post.txt',
-                //'rules' => 'required',
-                'comment' => null,
-                'col_bs_size' => 12,
+                'col_bs_size' => 12
+                
             ],
             (object) [
                 'type' => 'PivotFields', //-- da aggiornare

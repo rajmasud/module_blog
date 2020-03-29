@@ -2,7 +2,11 @@
 
 namespace Modules\Blog\Models;
 
+//----- traits ----
+use Modules\Blog\Models\Traits\RatingTrait;
+
 class Photo extends BaseModel {
+    use RatingTrait;
     protected $fillable = ['post_id', 'article_type', 'published_at'];
     protected $appends = [];
     protected $casts = [];

@@ -54,11 +54,37 @@ trait RatingTrait {
         return $this->morphRelated($related);
     }
 
+
+
     public function ratingObjectives() {
         $related = Rating::class;
-        //ddd($this->post_type);
-        return $this->hasMany($related, 'related_type', 'post_type');
+        $user_id=\Auth::id();
+        return $this->hasMany($related, 'related_type', 'post_type')
+            ->selectRaw(
+                'ratings.*,
+                count(rating) as rating_count,
+                avg(rating) as rating_avg,
+                sum(if(auth_user_id="'.$user_id.'",rating,0)) AS rating_my
+                '
+            )->leftJoin(
+                'rating_morph',
+                function ($join) {
+                    $join->on('rating_morph.related_id', 'ratings.post_id')
+                        ->whereRaw('rating_morph.post_type = ratings.related_type')
+                        ->where('rating_morph.post_id', $this->post_id);
+                }
+            )->groupBy('ratings.post_id');
+        }
+
+    public function scopeWithRating($query){
+        return $query->leftJoin(
+            'rating_morph',
+            function ($join) {
+                $join->on('rating_morph.post_type = ratings.related_type');
+            }
+        );
     }
+
 
     public function myRatings() {
         //$auth_user_id = \Auth::user()->auth_user_id;
@@ -98,12 +124,32 @@ trait RatingTrait {
     //------ functions ------
     public function ratingAvgHtml() {
         $ratings = $this->ratings;
-        //ddd($ratings->count('rating'));
-        //return '&#11088;&starf;&star;() '.$ratings->count('rating');
-        $msg = '('.$ratings->avg('rating').') '.$ratings->count('rating').' Votes ';
-        $rating_url = Panel::get($this)->relatedUrl(['related_name' => 'my_rating', 'act' => 'index_edit']);
+        $pivot_avg=$ratings->avg('pivot.rating');
+        $pivot_cout=$ratings->count('pivot.rating');
 
+        $msg='<div class="rateit" data-rateit-value="'.$pivot_avg.'" data-rateit-ispreset="true" data-rateit-readonly="true"></div>';
+        $msg .= '('.$pivot_avg.') '.$pivot_cout.' Votes ';
+
+
+
+
+        //$rating_url = Panel::get($this)->relatedUrl(['related_name' => 'my_rating', 'act' => 'index_edit']);
+        $rating_url = Panel::get($this)->showUrl().'?_act=rate';
+        //http://geek.local/public_html/it/article/prova-articolo?_act=rate
+        /*
         return $msg.'<a data-href="'.$rating_url.'" class="btn btn-danger" data-toggle="modal" data-target="#myModalAjax" data-title="Rate it">
         Rate It </a>';
+        */
+        $title='Vota '.$this->title;
+
+        $btn='<button type="button" class="btn btn-red btn-danger" data-toggle="modal" data-target="#vueModal" data-title="'.$title.'" data-href="'.$rating_url.'">
+        <span class="font-white"><i class="fa fa-star"></i> Vota ! </span>
+        </button>';
+
+        $btn_iframe='<button type="button" class="btn btn-red btn-danger" data-toggle="modal" data-target="#vueIframeModal" data-title="'.$title.'" data-href="'.$rating_url.'">
+        <span class="font-white"><i class="fa fa-star"></i> Vota ! </span>
+        </button>';
+
+        return $msg.$btn.$btn_iframe;
     }
 }
