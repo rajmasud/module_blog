@@ -6,6 +6,7 @@ namespace Modules\Blog\Models\Traits;
 use Illuminate\Support\Str;
 //----- models------
 use Modules\Blog\Models\Post;
+use Modules\Blog\Models\Image;
 //----- services -----
 use Modules\Xot\Services\PanelService as Panel;
 use Modules\Xot\Services\RouteService;
@@ -22,6 +23,11 @@ trait LinkedTrait {
     public function post() {
         return $this->morphOne(Post::class, 'post', null, 'post_id')->where('lang', $this->lang);
     }
+
+    public function images(){
+        return $this->morphMany(Image::class,'post');
+    }
+
 
     public function morphRelated($related, $inverse = false) {
         if ($inverse) {
