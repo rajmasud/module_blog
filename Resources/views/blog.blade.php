@@ -1,1 +1,0 @@
-@include('pub_theme::blog.blog-sidebar-right')
