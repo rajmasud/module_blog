@@ -114,6 +114,24 @@ trait RatingTrait {
         return $my->pluck('pivot.rating', 'post_id');
     }
 
+
+    public function getRatingsAvgAttribute($value){
+        if($value=''){
+            return $value;
+        }
+        $value=$this->ratings->avg('pivot.rating');
+        return $value;
+    }
+
+    public function getRatingsCountAttribute($value){
+        if($value=''){
+            return $value;
+        }
+        $value=$this->ratings->count('pivot.rating');
+        return $value;
+    }
+
+
     //*/
     /*
     public function setMyRatingAttribute($value){

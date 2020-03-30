@@ -10,5 +10,6 @@ class Image extends BaseModel {
     protected $casts = [];
     protected $dates = ['created_at', 'updated_at'];
     protected $primaryKey = 'id';
-    public $incrementing = true;
+    //public $incrementing = true;
+    protected $fillable =['id','post_type','post_id','src','src_out','width','height','auth_user_id','note'];
 }

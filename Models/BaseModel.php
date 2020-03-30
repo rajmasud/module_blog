@@ -8,8 +8,13 @@ use Laravel\Scout\Searchable;
 use Modules\Blog\Models\Traits\LinkedTrait;
 use Modules\Xot\Traits\Updater;
 
-abstract class BaseModel extends Model {
+use Spatie\MediaLibrary\HasMedia\HasMedia;
+use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
+
+abstract class BaseModel extends Model implements HasMedia{
     use Updater;
     use Searchable;
     use LinkedTrait;
+
+    use HasMediaTrait;
 }
