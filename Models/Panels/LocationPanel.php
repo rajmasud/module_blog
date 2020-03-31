@@ -35,7 +35,7 @@ class LocationPanel extends XotBasePanel {
      * @var array
      */
     public static function with() {
-        return [];
+        return ['post', 'images'];
     }
 
     public function search() {
