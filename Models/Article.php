@@ -13,7 +13,7 @@ use Modules\Blog\Models\Traits\RatingTrait;
 class Article extends BaseModel {
     use RatingTrait;
 
-    protected $fillable = ['post_id', 'article_type', 'published_at', 'parent_id', 'parent_type'];
+    protected $fillable = ['post_id', 'pos', 'article_type', 'published_at', 'parent_id', 'parent_type'];
     protected $appends = ['title'];
     /* https://itnext.io/7-things-you-need-to-know-to-get-the-most-out-of-your-laravel-model-4f915acbb47c */
     protected $casts = [

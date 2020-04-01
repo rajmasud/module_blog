@@ -48,6 +48,18 @@ class ArticlePanel extends XotBasePanel {
                 'col_bs_size' => 6,
             ],
 
+
+
+
+
+            (object) [
+                'type' => 'Integer',
+                'sub_type' => 'Position',
+                'name' => 'pos',
+                'col_bs_size' => 6,
+                //'rules'=>'unique'
+            ],
+
             /*
             public function setEntryDateAttribute($input)
             {
@@ -57,6 +69,10 @@ class ArticlePanel extends XotBasePanel {
 
              */
             //*
+
+
+
+            
             (object) [
                 'type' => 'Text',
                 //'name' => 'post[title]',
