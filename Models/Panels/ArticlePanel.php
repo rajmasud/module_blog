@@ -47,32 +47,13 @@ class ArticlePanel extends XotBasePanel {
                 'name' => 'parent_id',
                 'col_bs_size' => 6,
             ],
-
-
-
-
-
             (object) [
                 'type' => 'Integer',
-                'sub_type' => 'Position',
+                'sub_type' => '',
                 'name' => 'pos',
                 'col_bs_size' => 6,
                 //'rules'=>'unique'
             ],
-
-            /*
-            public function setEntryDateAttribute($input)
-            {
-            $this->attributes['entry_date'] =
-            Carbon::createFromFormat(config('app.date_format'), $input)->format('Y-m-d');
-            }
-
-             */
-            //*
-
-
-
-            
             (object) [
                 'type' => 'Text',
                 //'name' => 'post[title]',
