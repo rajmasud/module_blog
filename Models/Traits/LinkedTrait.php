@@ -78,6 +78,7 @@ trait LinkedTrait {
             ->using($pivot)
             ->withPivot($pivot_fields)
             ->withTimestamps()
+            ->with('post')
         ;
     }
 
@@ -356,7 +357,7 @@ trait LinkedTrait {
             $join->on('post.post_id', '=', $this->getTable().'.post_id')
                 ->where('lang', $this->lang)
                 ->where('post.post_type', $this->post_type)
-                ->limit(1)
+                //->limit(1)
             ;
         });
     }
