@@ -238,6 +238,8 @@ class PostPanel extends XotBasePanel {
      * @return array
      */
     public function actions(Request $request = null) {
-        return [];
+        return [
+            new Actions\ClearDuplicatesAction(),
+        ];
     }
 }

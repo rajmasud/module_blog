@@ -48,11 +48,11 @@ class Post extends Model {
     ];
 
     use Updater;
-
+    /*
     public function getRouteKeyName() {
         return in_admin() ? 'guid' : 'post_id';
     }
-
+    */
     //-------- relationship ------
     public function linkable() {
         return $this->morphTo('post');
@@ -86,7 +86,11 @@ class Post extends Model {
         if ('' != $value) {
             return $value;
         }
-        $value = $this->attributes['post_type'].' '.$this->attributes['post_id'];
+        if(isset($this->attributes['post_type']) && $this->attributes['post_id']){
+            $value = $this->attributes['post_type'].' '.$this->attributes['post_id'];
+        }else{
+            $value=$this->post_type.' '.$this->post_id;
+        }
         $this->title = $value;
         $this->save();
 

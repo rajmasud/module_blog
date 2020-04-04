@@ -55,10 +55,11 @@ class Location extends BaseModel
         $post_table = with(new Post())->getTable();
 
         return $this->hasMany(Restaurant::class, 'locality', 'locality')
-
+           //*
             ->join($post_table, $post_table.'.post_id', '=', $related_table.'.post_id')
             ->where($post_table.'.lang', $this->lang)
             ->where($post_table.'.post_type', 'restaurant')
+            //*/
             ->with(['cuisineCats', 'post']);
     }
 
@@ -67,7 +68,7 @@ class Location extends BaseModel
         $post_table = with(new Post())->getTable();
 
         return $this->hasManyDeepFromRelations($this->restaurants(), (new Restaurant())->cuisineCats())
-
+            //*
             ->join($post_table, $post_table.'.post_id', '=', $related_table.'.post_id')
             ->where($post_table.'.lang', $this->lang)
             ->where($post_table.'.post_type', 'cuisineCat')
