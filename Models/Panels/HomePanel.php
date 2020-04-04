@@ -101,20 +101,34 @@ class HomePanel extends XotBasePanel {
 
     public function fields() {
         return [
-            0 => (object) [
-                'type' => 'Text',
+            (object) [
+                'type' => 'Id',
                 'name' => 'post_id',
-                'comment' => 'not in Doctrine',
             ],
-            1 => (object) [
+            (object) [
                 'type' => 'Text',
-                'name' => 'article_type',
-                'comment' => 'not in Doctrine',
+                //'name' => 'post[title]',
+                'name' => 'post.title',
+                'col_bs_size' => 12,
             ],
-            2 => (object) [
-                'type' => 'Text',
-                'name' => 'published_at',
-                'comment' => 'not in Doctrine',
+            //*/
+            (object) [
+                'type' => 'Textarea',
+                //'name' => 'post[subtitle]'
+                'name' => 'post.subtitle',  
+                'except' => ['index'],
+                'col_bs_size' => 12,
+            ],
+            (object) [
+                'type' => 'Wysiwyg',
+                //'name' => 'post[subtitle]'
+                'name' => 'post.txt',
+                'except' => ['index'],
+                'col_bs_size' => 12,
+            ],
+            (object) [
+                'type' => 'Image',
+                'name' => 'icon_src',
             ],
         ];
     }

@@ -10,4 +10,9 @@ class ArticlePolicy extends XotBasePolicy {
 
         return true;
     }
+
+    public function changePos($user,$post){
+
+        return true;
+    }
 }
