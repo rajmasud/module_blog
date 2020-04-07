@@ -43,15 +43,12 @@ class PagePanel extends XotBasePanel {
     /**
      * on select the option id.
      */
-    public function optionId($row) {
-        return $row->area_id;
-    }
-
+    
     /**
      * on select the option label.
      */
     public function optionLabel($row) {
-        return $row->area_define_name;
+        return $row->title;
     }
 
     /**
@@ -63,26 +60,71 @@ class PagePanel extends XotBasePanel {
      */
     public function fields() {
         return [
-            0 => (object) [
-                'type' => 'Integer',
+            (object) [
+                'type' => 'Id',
                 'name' => 'post_id',
+                'col_bs_size' => 6,
             ],
-            1 => (object) [
-                'type' => 'Text',
-                'name' => 'article_type',
+
+            (object) [
+                'type' => 'Select',
+                'sub_type' => 'Parent',
+                //'name' => 'post[subtitle]'
+                'name' => 'parent_id',
+                'col_bs_size' => 6,
             ],
-            2 => (object) [
-                'type' => 'DateTime',
-                'name' => 'published_at',
+
+
+            (object) [
+                'type' => 'Integer',
+                'name' => 'pos',
+                'col_bs_size' => 6,
+                //'rules'=>'unique'
             ],
-            3 => (object) [
-                'type' => 'Text',
-                'name' => 'category_id',
-            ],
-            4 => (object) [
+
+            (object) [
                 'type' => 'String',
-                'name' => 'layout_position',
+                'name' => 'icon',
+                'col_bs_size' => 6,
+                //'rules'=>'unique'
             ],
+
+            (object) [
+                'type' => 'Text',
+                //'name' => 'post[title]',
+                'name' => 'post.title',
+                'col_bs_size' => 12,
+            ],
+            (object) [
+                'type' => 'Image',
+                //'name' => 'post[title]',
+                'name' => 'post.image_src',
+                'col_bs_size' => 12,
+            ],
+            //*/
+            (object) [
+                'type' => 'Textarea',
+                //'name' => 'post[subtitle]'
+                'name' => 'post.subtitle',
+                'except' => ['index'],
+                'col_bs_size' => 12,
+            ],
+            (object) [
+                'type' => 'String',
+                //'name' => 'post[subtitle]'
+                'name' => 'blade',
+                //'except' => ['index'],
+                //'col_bs_size' => 12,
+            ],
+            /*
+            (object) [
+                //'type' => 'Wysiwyg',
+                'type' => 'Textarea', 
+                'name' => 'post.txt',
+                'except' => ['index'],
+                'col_bs_size' => 12,
+            ],
+            //*/
         ];
     }
 
@@ -134,6 +176,8 @@ class PagePanel extends XotBasePanel {
      * @return array
      */
     public function actions() {
-        return [];
+        return [
+            new Actions\SendMsgAction()
+        ];
     }
 }

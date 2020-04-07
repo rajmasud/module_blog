@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Modules\Blog\Models\Page as MyModel;
 
-class CreateBlogPostPagesTable extends Migration {
+class CreatePagesTable extends Migration {
     public function getTable() {
         return with(new MyModel())->getTable();
     }
@@ -28,6 +28,18 @@ class CreateBlogPostPagesTable extends Migration {
             }
             if (! Schema::hasColumn($this->getTable(), 'layout_position')) {
                 $table->string('layout_position')->nullable();
+            }
+            if (! Schema::hasColumn($this->getTable(), 'blade')) {
+                $table->string('blade')->nullable();
+            }
+            if (! Schema::hasColumn($this->getTable(), 'parent_id')) {
+                $table->integer('parent_id')->nullable();
+            }
+            if (! Schema::hasColumn($this->getTable(), 'pos')) {
+                $table->integer('pos')->nullable();
+            }
+            if (! Schema::hasColumn($this->getTable(), 'icon')) {
+                $table->string('icon')->nullable();
             }
         });
     }
