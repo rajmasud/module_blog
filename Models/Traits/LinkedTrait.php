@@ -2,6 +2,8 @@
 
 namespace Modules\Blog\Models\Traits;
 
+use Illuminate\Database\Eloquent\Relations\Relation; // per dizionario morph
+
 //use Laravel\Scout\Searchable;
 use Illuminate\Support\Str;
 //----- models------
@@ -64,7 +66,8 @@ trait LinkedTrait {
         }
         $parentKey = 'post_id';
         $relatedKey = 'post_id';
-
+        //dddx(app($related));
+        Relation::morphMap([app($related)->post_type=>$related]) ;
         return $this->morphToMany(
             $related,
             $name,
