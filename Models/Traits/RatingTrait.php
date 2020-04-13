@@ -120,6 +120,10 @@ trait RatingTrait {
             return $value;
         }
         $value=$this->ratings->avg('pivot.rating');
+        if($value!=''){
+            $this->ratings_avg=$value;
+            $this->save();
+        }
         return $value;
     }
 
@@ -128,6 +132,8 @@ trait RatingTrait {
             return $value;
         }
         $value=$this->ratings->count('pivot.rating');
+        $this->ratings_count=$value;
+        $this->save();
         return $value;
     }
 
