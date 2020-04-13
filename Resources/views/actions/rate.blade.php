@@ -7,7 +7,7 @@
 @endguest
 @auth
 
-@extends('pub_theme::layouts.app')
+@extends('pub_theme::layouts.app',['body_style'=>'padding-top:72px;'])
 @section('page_heading',trans($view.'.rate'))
 @section('content')
 <div class="page-wrapper">
