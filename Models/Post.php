@@ -28,6 +28,7 @@ class Post extends Model {
         //------ SEO FIELDS -----
         'meta_description', 'meta_keyword', // seo
         'author_id',
+        //------ BUFFER ----
         'url', 'url_lang', //buffer
         'image_resize_src', // buffer
     ];
