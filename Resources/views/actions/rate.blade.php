@@ -18,7 +18,7 @@
         <i class="fas fa-step-backward"></i> Back to {{ $row->title }}
     </a>
     <div class="text-center mt-12">
-    <h2>Vota per </h2>
+    <h2>Vota per <i class="fas fa-star fa-2x"></i></h2>
     <h3>{{ $row->title }}</h3>
 <h4>{{ $row->subtitle }}</h4>
     </div>
