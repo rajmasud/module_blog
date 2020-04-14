@@ -114,24 +114,44 @@ class CommentPanel extends XotBasePanel {
 
 	public function fields(){
 		return array (
-  0 => 
+			(object) array(
+     'type' => 'Id',
+     'name' => 'id',
+     'comment' => NULL,
+  ),
+  
+  
   (object) array(
-     'type' => 'BigInt',
+     'type' => 'Integer',
      'name' => 'post_id',
      'comment' => NULL,
   ),
-  1 => 
+ (object) array(
+     'type' => 'Integer',
+     'name' => 'post_type',
+     'comment' => NULL,
+  ),
+  (object) array(
+     'type' => 'Textarea',
+     'name' => 'txt',
+     'comment' => NULL,
+  ),
+   
   (object) array(
      'type' => 'Text',
      'name' => 'related_type',
      'comment' => 'not in Doctrine',
   ),
-  2 => 
   (object) array(
      'type' => 'Integer',
      'name' => 'auth_user_id',
      'comment' => NULL,
   ),
+  (object) [ 
+     'type' => 'Test',
+     'name' => 'ratings',
+     'comment' => NULL,
+  ],
 );
 	}
 	 
