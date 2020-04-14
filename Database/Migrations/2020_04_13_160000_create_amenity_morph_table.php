@@ -28,7 +28,10 @@ class CreateAmenityMorphTable extends XotBaseMigration{
             if (! $this->hasColumn('updated_at')) {
                 $table->timestamps();
             }
+            if (! $this->hasColumn('auth_user_id')) {
+                $table->integer('auth_user_id')->nullable();
+                $table->text('note')->nullable();
+            }
         });
     }//end up
 }//end class
-
