@@ -1,0 +1,20 @@
+<?php
+
+namespace Modules\Blog\Models;
+
+//------- services ----
+use Illuminate\Database\Eloquent\Model;
+//------- traits ---
+use Modules\Xot\Traits\Updater;
+
+//------- services ----
+
+class Favorite extends Model {
+    use Updater;
+    protected $fillable = ['id', 'post_id', 'post_type', 'auth_user_id'];
+
+    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
+    protected $primaryKey = 'id';
+    //protected $dateFormat = 'U';
+    public $incrementing = true;
+}

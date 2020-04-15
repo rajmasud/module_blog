@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 //----- models------
 use Modules\Blog\Models\Post;
 use Modules\Blog\Models\Image;
+use Modules\Blog\Models\Favorite;
+
 //----- services -----
 use Modules\Xot\Services\PanelService as Panel;
 use Modules\Xot\Services\RouteService;
@@ -28,6 +30,15 @@ trait LinkedTrait {
 
     public function images(){
         return $this->morphMany(Image::class,'post');
+    }
+
+    public function favorites(){
+        return $this->morphMany(Favorite::class,'post');
+    }
+
+    public function isMyFavorited(){
+        return $this->favorites()
+            ->where('auth_user_id', \Auth::id())->count() > 0;
     }
 
 
@@ -86,6 +97,14 @@ trait LinkedTrait {
     }
 
     //------- mutators -------------
+
+    public function postType(){
+        $post_type = collect(config('xra.model'))->search(get_class($this));
+        if (false === $post_type) {
+            $post_type = snake_case(class_basename($this));
+        }
+        return $post_type;
+    }
 
     public function getPostTypeAttribute($value) {
         $post_type = collect(config('xra.model'))->search(get_class($this));
