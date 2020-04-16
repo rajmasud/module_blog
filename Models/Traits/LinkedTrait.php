@@ -36,6 +36,11 @@ trait LinkedTrait {
         return $this->morphMany(Favorite::class,'post');
     }
 
+    public function myFavorites(){
+        return $this->morphMany(Favorite::class,'post')
+            ->where('auth_user_id', \Auth::id());
+    }
+
     public function isMyFavorited(){
         return $this->favorites()
             ->where('auth_user_id', \Auth::id())->count() > 0;
