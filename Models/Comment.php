@@ -2,14 +2,10 @@
 
 namespace Modules\Blog\Models;
 
-
-use Modules\Blog\Models\Rating;
-use Modules\Blog\Models\RatingMorph;
-
-
 //------- services ----
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+//----- models ---
+use Modules\LU\Models\User;
 //------- traits ---
 use Modules\Xot\Traits\Updater;
 
@@ -24,20 +20,19 @@ class Comment extends Model {
     //protected $dateFormat = 'U';
     public $incrementing = true;
 
-
-    public function ratingObjectives(){
-        return $this->hasMany(Rating::class,'related_type','post_type');
+    public function ratingObjectives() {
+        return $this->hasMany(Rating::class, 'related_type', 'post_type');
     }
 
-    public function linked(){
+    public function linked() {
         return $this->morphTo('post');
     }
 
-    public function ratings(){
+    public function ratings() {
         return $this->linked->ratings();
     }
 
-    public function commentRatings(){
+    public function commentRatings() {
         /*
         return $this->hasMany(RatingMorph::class, 'post_id', 'post_id')
                 ->where('post_type',$this->post_type)
@@ -49,14 +44,14 @@ class Comment extends Model {
         //return $this->morphMany(Image::class, 'post');//uguale a morphone senza limit 1
         //return $this->morphToMany(Rating::class, 'post');
         //return $this->morphedByMany('App\Post', 'taggable');
-        $related=Rating::class;
-        $name='post';
-        $pivot_table='rating_morph';
-        $foreignPivotKey='post_id';
-        $relatedPivotKey='related_id';
-        $parentKey='id';
-        $relatedKey='post_id';
-        $inverse=false;
+        $related = Rating::class;
+        $name = 'post';
+        $pivot_table = 'rating_morph';
+        $foreignPivotKey = 'post_id';
+        $relatedPivotKey = 'related_id';
+        $parentKey = 'id';
+        $relatedKey = 'post_id';
+        $inverse = false;
 
         return $this->morphToMany( //retituisce i voti che danno gli altri al commento
             $related,
@@ -68,9 +63,23 @@ class Comment extends Model {
             $relatedKey,
             $inverse
         );
+    }
 
+    public function profile() {
+        return $this->hasOne(Profile::class, 'auth_user_id', 'auth_user_id');
+    }
 
+    public function user() {
+        return $this->hasOne(User::class, 'auth_user_id', 'auth_user_id');
+    }
 
+    //---- funzione tampone ---
+    public function userName() {
+        $user = $this->user;
+        if (is_object($user)) {
+            return $user->handle;
+        }
 
+        return 'Unknown';
     }
 }

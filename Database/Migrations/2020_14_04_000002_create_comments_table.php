@@ -28,8 +28,8 @@ class CreateCommentsTable extends XotBaseMigration {
         }
         //-- UPDATE --
         $this->getConn()->table($this->getTable(), function (Blueprint $table) {
-            if (! $this->hasColumn('updated_at')) {
-                $table->timestamps();
+            if (! $this->hasColumn('status')) {
+                $table->integer('status')->nullable();
             }
         });
     }
