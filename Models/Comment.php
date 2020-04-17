@@ -11,7 +11,8 @@ use Modules\Xot\Traits\Updater;
 
 //------- services ----
 
-class Comment extends Model {
+class Comment extends Model
+{
     use Updater;
     protected $fillable = ['id', 'post_id', 'post_type', 'related_type', 'auth_user_id', 'txt', 'lang'];
 
@@ -20,19 +21,23 @@ class Comment extends Model {
     //protected $dateFormat = 'U';
     public $incrementing = true;
 
-    public function ratingObjectives() {
+    public function ratingObjectives()
+    {
         return $this->hasMany(Rating::class, 'related_type', 'post_type');
     }
 
-    public function linked() {
+    public function linked()
+    {
         return $this->morphTo('post');
     }
 
-    public function ratings() {
+    public function ratings()
+    {
         return $this->linked->ratings();
     }
 
-    public function commentRatings() {
+    public function commentRatings()
+    {
         /*
         return $this->hasMany(RatingMorph::class, 'post_id', 'post_id')
                 ->where('post_type',$this->post_type)
@@ -65,16 +70,25 @@ class Comment extends Model {
         );
     }
 
-    public function profile() {
+    public function profile()
+    {
         return $this->hasOne(Profile::class, 'auth_user_id', 'auth_user_id');
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->hasOne(User::class, 'auth_user_id', 'auth_user_id');
     }
 
+    //--- mutators ---
+    public function getCreatedDateAttribute()
+    {
+        return $this->created_at->diffForHumans();
+    }
+
     //---- funzione tampone ---
-    public function userName() {
+    public function userName()
+    {
         $user = $this->user;
         if (is_object($user)) {
             return $user->handle;
