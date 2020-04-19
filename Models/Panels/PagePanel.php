@@ -8,7 +8,8 @@ use Modules\Xot\Models\Panels\XotBasePanel;
 
 //---- bases --
 
-class PagePanel extends XotBasePanel {
+class PagePanel extends XotBasePanel
+{
     /**
      * The model the resource corresponds to.
      *
@@ -36,7 +37,8 @@ class PagePanel extends XotBasePanel {
      *
      * @var array
      */
-    public static function with() {
+    public static function with()
+    {
         return [];
     }
 
@@ -47,7 +49,8 @@ class PagePanel extends XotBasePanel {
     /**
      * on select the option label.
      */
-    public function optionLabel($row) {
+    public function optionLabel($row)
+    {
         return $row->title;
     }
 
@@ -58,7 +61,8 @@ class PagePanel extends XotBasePanel {
      *
      * @return array
      */
-    public function fields() {
+    public function fields()
+    {
         return [
             (object) [
                 'type' => 'Id',
@@ -116,15 +120,15 @@ class PagePanel extends XotBasePanel {
                 //'except' => ['index'],
                 //'col_bs_size' => 12,
             ],
-            /*
+
             (object) [
-                //'type' => 'Wysiwyg',
-                'type' => 'Textarea', 
+                'type' => 'Wysiwyg',
+                //'type' => 'Textarea',
                 'name' => 'post.txt',
                 'except' => ['index'],
                 'col_bs_size' => 12,
             ],
-            //*/
+
         ];
     }
 
@@ -133,7 +137,8 @@ class PagePanel extends XotBasePanel {
      *
      * @return array
      */
-    public function tabs() {
+    public function tabs()
+    {
         $tabs_name = [];
 
         return [];
@@ -144,7 +149,8 @@ class PagePanel extends XotBasePanel {
      *
      * @return array
      */
-    public function cards(Request $request) {
+    public function cards(Request $request)
+    {
         return [];
     }
 
@@ -155,7 +161,8 @@ class PagePanel extends XotBasePanel {
      *
      * @return array
      */
-    public function filters(Request $request = null) {
+    public function filters(Request $request = null)
+    {
         return [];
     }
 
@@ -164,7 +171,8 @@ class PagePanel extends XotBasePanel {
      *
      * @return array
      */
-    public function lenses(Request $request) {
+    public function lenses(Request $request)
+    {
         return [];
     }
 
@@ -175,7 +183,8 @@ class PagePanel extends XotBasePanel {
      *
      * @return array
      */
-    public function actions() {
+    public function actions()
+    {
         return [
             new Actions\SendMsgAction()
         ];
