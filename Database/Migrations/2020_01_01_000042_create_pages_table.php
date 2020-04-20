@@ -5,12 +5,15 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Modules\Blog\Models\Page as MyModel;
 
-class CreatePagesTable extends Migration {
-    public function getTable() {
+class CreatePagesTable extends Migration
+{
+    public function getTable()
+    {
         return with(new MyModel())->getTable();
     }
 
-    public function up() {
+    public function up()
+    {
         if (! Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
                 //$table->increments('id');
@@ -41,10 +44,14 @@ class CreatePagesTable extends Migration {
             if (! Schema::hasColumn($this->getTable(), 'icon')) {
                 $table->string('icon')->nullable();
             }
+            if (! Schema::hasColumn($this->getTable(), 'is_modal')) {
+                $table->boolean('is_modal')->nullable();
+            }
         });
     }
 
-    public function down() {
+    public function down()
+    {
         Schema::dropIfExists($this->getTable());
     }
 }

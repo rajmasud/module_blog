@@ -118,9 +118,15 @@ class PagePanel extends XotBasePanel
                 //'name' => 'post[subtitle]'
                 'name' => 'blade',
                 //'except' => ['index'],
-                //'col_bs_size' => 12,
+                'col_bs_size' => 6,
             ],
-
+            (object) [
+                'type' => 'Checkbox',
+                //'name' => 'post[subtitle]'
+                'name' => 'is_modal',
+                //'except' => ['index'],
+                'col_bs_size' => 6,
+            ],
             (object) [
                 'type' => 'Wysiwyg',
                 //'type' => 'Textarea',
