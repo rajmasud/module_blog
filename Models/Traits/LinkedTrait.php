@@ -25,7 +25,13 @@ trait LinkedTrait {
 
     //------- relationships ------------
     public function post() {
-        return $this->morphOne(Post::class, 'post', null, 'post_id')->where('lang', $this->lang);
+        return $this->morphOne(Post::class, 'post', null, 'post_id')
+                ->where('lang', $this->lang);
+    }
+    
+    public function postLang($lang) {
+        return $this->morphOne(Post::class, 'post', null, 'post_id')
+                ->where('lang', $lang);
     }
 
     public function images(){
