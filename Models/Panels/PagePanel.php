@@ -128,6 +128,13 @@ class PagePanel extends XotBasePanel
                 'col_bs_size' => 6,
             ],
             (object) [
+                'type' => 'Integer',
+                //'name' => 'post[subtitle]'
+                'name' => 'status',
+                //'except' => ['index'],
+                'col_bs_size' => 6,
+            ],
+            (object) [
                 'type' => 'Wysiwyg',
                 //'type' => 'Textarea',
                 'name' => 'post.txt',

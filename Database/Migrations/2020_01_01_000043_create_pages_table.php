@@ -47,6 +47,9 @@ class CreatePagesTable extends Migration
             if (! Schema::hasColumn($this->getTable(), 'is_modal')) {
                 $table->boolean('is_modal')->nullable();
             }
+            if (! Schema::hasColumn($this->getTable(), 'status')) {
+                $table->integer('status')->nullable()->after('post_id');
+            }
         });
     }
 

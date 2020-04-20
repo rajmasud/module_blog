@@ -8,7 +8,7 @@ class Page extends BaseModel
 {
     protected $fillable = ['post_id', 'pos', 'article_type', 'published_at', 'category_id',
      'layout_position', 'blade','parent_id','icon',
-     'is_modal',
+     'is_modal', 'status'
     ];
     protected $appends = [];
     protected $casts = [];
