@@ -6,10 +6,12 @@ use Illuminate\Http\Request;
 //--- Services --
 use Modules\Xot\Models\Panels\XotBasePanel;
 
+use Modules\Blog\Models\Panels\Traits\XotBasePanelTrait;
 //---- bases --
 
 class PagePanel extends XotBasePanel
 {
+    use XotBasePanelTrait;
     /**
      * The model the resource corresponds to.
      *
@@ -60,7 +62,7 @@ class PagePanel extends XotBasePanel
      * @param \Illuminate\Http\Request $request
      *
      * @return array
-     */
+     */ 
     public function fields()
     {
         return [
@@ -141,7 +143,13 @@ class PagePanel extends XotBasePanel
                 'except' => ['index'],
                 'col_bs_size' => 12,
             ],
-
+             (object) [
+                'type' => 'CellCollapse',
+                //'type' => 'Textarea',
+                'name' => 'Seo',
+                'fields' => $this->seoFields(),
+                'col_bs_size' => 12,
+            ],
         ];
     }
 
