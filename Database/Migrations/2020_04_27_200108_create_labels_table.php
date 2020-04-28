@@ -26,9 +26,9 @@ class CreateLabelsTable extends XotBaseMigration
         }
         //-- UPDATE --
         $this->getConn()->table($this->getTable(), function (Blueprint $table) {
-            //if (! $this->hasColumn('status')) {
-            //    $table->integer('status')->nullable();
-            //}
+            if (! $this->hasColumn('class')) {
+                $table->string('class')->nullable();
+            }
         });
     }
 
