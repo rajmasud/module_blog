@@ -29,4 +29,19 @@ class Profile extends BaseModel {
         return $this->belongsTo(User::class, 'auth_user_id', 'auth_user_id');
         //return $this->hasOne(User::class, 'auth_user_id', 'auth_user_id');
     }
+
+    //---- mutators ---
+    public function getFullNameAttribute($value) {
+        $user = $this->user;
+        if (! is_object($user)) {
+            dddx('questo non dovrebbe mai accadere');
+        }
+        $value = $user->first_name.' '.$user->last_name;
+        if (strlen($value) < 5) {
+            $value .= ' '.$user->handle;
+        }
+        $value = trim($value);
+
+        return $value;
+    }
 }//end model
