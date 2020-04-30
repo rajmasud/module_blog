@@ -71,16 +71,18 @@ trait LinkedTrait {
         $name = 'post';
         $pivot = $this->getTableMorph($related, $inverse);
         //$pivot_fields = app($pivot)->getFillable();
+        $model_name=Str::snake(class_basename($this));
+        $related_name=Str::snake(class_basename($related));
         if ($inverse) {
-            $foreignPivotKey = null;
-            $relatedPivotKey = $name.'_id';
-            $parentKey = null;
+            $foreignPivotKey = $model_name.'_id';
+            $relatedPivotKey = $table_key;
+            $parentKey ='id';
             $relatedKey = $table_key;
         } else {
-            $foreignPivotKey = null;
-            $relatedPivotKey = null;
+            $foreignPivotKey =$table_key;
+            $relatedPivotKey = $related_name.'_id';
             $parentKey = $table_key;
-            $relatedKey = null;
+            $relatedKey = 'id';
         }
 
         return $this->morphToMany(
@@ -108,35 +110,8 @@ trait LinkedTrait {
                 $relation = $this->morphToMany($related, $name, $pivot);
             }
         }
-        //*/
 
-        /*
-        $foreignPivotKey = null;
-        $relatedPivotKey = null;
-        $parentKey = null;
-        $relatedKey = null;
-        if (null != $table_key) {
-            if ($inverse) {
-                //$relatedKey='auth_user_id';
-                //$parentKey='post_id';
-            } else {
-                //$parentKey='auth_user_id';
-                //$relatedKey='post_id';
-            }
-        }
-
-        $relation = $this->morphToMany(
-            $related,
-            $name,
-            $pivot,
-            $foreignPivotKey,
-            $relatedPivotKey,
-            $parentKey,
-            $relatedKey,
-            $inverse
-        );
-        //*/
-        //return $relation;
+        return $relation;
 
         return $relation->using($pivot)
             ->withPivot($pivot_fields)
@@ -144,23 +119,6 @@ trait LinkedTrait {
             ->with('post')
         ;
 
-        /*
-        $foreignPivotKey=null;
-        $relatedPivotKey=null;
-        $parentKey=null;
-        $relatedKey=null;
-
-        return $this->morphToMany(
-            $related,
-            $name,
-            $pivot_table,
-            $foreignPivotKey,
-            $relatedPivotKey,
-            $parentKey,
-            $relatedKey,
-            $inverse
-        );
-        */
     }
 
     public function morphRelated_FUNZIONAMA($related, $inverse = false) {
