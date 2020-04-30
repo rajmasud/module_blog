@@ -6,6 +6,7 @@ namespace Modules\Blog\Models;
 
 //--- TRAITS ---
 
-class Feed extends BaseModel {
-    protected $fillable = ['post_id'];
+class Feed extends BaseModel
+{
+    protected $fillable = ['id'];
 }

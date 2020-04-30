@@ -8,15 +8,13 @@ use Modules\Xot\Services\ImportService;
 
 //--- traits
 
-class Location extends BaseModel
+class Location extends BaseModelLang
 {
     //use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
     //https://github.com/staudenmeir/eloquent-has-many-deep#morphedbymany
     public $table = 'import_items'; //<name pack>_items
-    protected $primaryKey = 'post_id';
-    public $incrementing = true;
 
-    protected $fillable = ['post_id', 'latitude', 'longitude', 'address1', 'address2', 'address3', 'city', 'zip_code', 'country', 'state', 'phone', 'display_phone', 'price', 'is_closed', 'review_count']; //, 'yelp_url', 'rating'
+    protected $fillable = ['id', 'latitude', 'longitude', 'address1', 'address2', 'address3', 'city', 'zip_code', 'country', 'state', 'phone', 'display_phone', 'price', 'is_closed', 'review_count']; //, 'yelp_url', 'rating'
     /*
     public static $food_engines = [
             'justeat', 'sgnamit', 'googleplace', 'foodracers',
@@ -37,7 +35,8 @@ class Location extends BaseModel
     ];
 
     //-------- relationships ----------------------
-    public function restaurantProviders() {
+    public function restaurantProviders()
+    {
         $rows = $this->hasManyThrough(
             RestaurantProvider::class,
             Restaurant::class,
@@ -50,7 +49,8 @@ class Location extends BaseModel
         return $rows;
     }
 
-    public function restaurants() {
+    public function restaurants()
+    {
         $related_table = with(new Restaurant())->getTable();
         $post_table = with(new Post())->getTable();
 
@@ -63,7 +63,8 @@ class Location extends BaseModel
             ->with(['cuisineCats', 'post']);
     }
 
-    public function cuisineCats() {
+    public function cuisineCats()
+    {
         $related_table = with(new CuisineCat())->getTable();
         $post_table = with(new Post())->getTable();
 
@@ -79,11 +80,13 @@ class Location extends BaseModel
 
     //-------- mutators ------
 
-    public function getFoodEnginesAttribute($value) {
+    public function getFoodEnginesAttribute($value)
+    {
         return self::$food_engines;
     }
 
-    public function getImageSrcAttribute($value) {
+    public function getImageSrcAttribute($value)
+    {
         if ('' == $value) {
             $ris = ImportService::pixabay(['q' => $this->locality.' '.$this->country]);
             if (\is_object($ris)) {
@@ -94,7 +97,8 @@ class Location extends BaseModel
         return $value;
     }
 
-    public function getUrlAttribute($value) {
+    public function getUrlAttribute($value)
+    {
         if (! $this->post) {
             $post = Post::firstOrCreate(
                 ['guid' => $this->guid, 'type' => $this->post_type, 'lang' => \App::getLocale()],

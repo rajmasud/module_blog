@@ -2,5 +2,6 @@
 
 namespace Modules\Blog\Models;
 
-class Contact extends BaseModel {
+class Contact extends BaseModelLang
+{
 }

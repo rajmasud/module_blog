@@ -11,15 +11,9 @@ use Modules\Xot\Traits\Updater;
 
 //------- services ----
 
-class Comment extends Model
+class Comment extends BaseModel
 {
-    use Updater;
     protected $fillable = ['id', 'post_id', 'post_type', 'related_type', 'auth_user_id', 'txt', 'lang'];
-
-    protected $dates = ['created_at', 'updated_at', 'deleted_at'];
-    protected $primaryKey = 'id';
-    //protected $dateFormat = 'U';
-    public $incrementing = true;
 
     public function ratingObjectives()
     {

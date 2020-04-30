@@ -2,5 +2,6 @@
 
 namespace Modules\Blog\Models;
 
-class Container extends BaseModel {
+class Container extends BaseModelLang
+{
 }

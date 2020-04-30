@@ -2,7 +2,8 @@
 
 namespace Modules\Blog\Models;
 
-class Blog extends BaseModel {
-    protected $fillable = ['post_id'];
+class Blog extends BaseModel
+{
+    protected $fillable = ['id'];
     //----- relationship -------
 }

@@ -11,11 +11,11 @@ use Modules\Xot\Traits\Updater;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-abstract class BaseModel extends Model implements HasMedia
+abstract class BaseModelLang extends Model implements HasMedia
 {
     use Updater;
     use Searchable;
-
+    use LinkedTrait;
 
     use HasMediaTrait;
 

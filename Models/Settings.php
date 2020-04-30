@@ -2,5 +2,6 @@
 
 namespace Modules\Blog\Models;
 
-class Settings extends BaseModel {
+class Settings extends BaseModel
+{
 }

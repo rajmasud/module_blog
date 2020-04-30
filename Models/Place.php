@@ -7,9 +7,8 @@ use Modules\Xot\Services\ImportService;
 
 //------ models --------
 
-class Place extends BaseModel {
-    protected $primaryKey = 'id';
-    public $incrementing = true;
+class Place extends BaseModelLang
+{
     protected $fillable = ['id', 'post_id', 'post_type',
         //---- address_components----
         'premise', 'locality', 'postal_town',
@@ -35,7 +34,8 @@ class Place extends BaseModel {
 
     //----- mutators -----
 
-    public function setFormattedAddressAttribute($value) {
+    public function setFormattedAddressAttribute($value)
+    {
         if (isset($this->attributes['formatted_address'])) {
             $address = $this->attributes['formatted_address'];
         } else {
@@ -49,7 +49,8 @@ class Place extends BaseModel {
         }
     }
 
-    public function getValueAttribute($value){
-        return $this->route.', '.$this->street_number.', '.$this->locality.', '.$this->administrative_area_level_2.', '.$this->country; 
+    public function getValueAttribute($value)
+    {
+        return $this->route.', '.$this->street_number.', '.$this->locality.', '.$this->administrative_area_level_2.', '.$this->country;
     }
 }

@@ -5,7 +5,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Modules\Blog\Models\Page as MyModel;
 
-class CreatePagesTable extends Migration
+use Modules\Xot\Database\Migrations\XotBaseMigration;
+
+class CreatePagesTable extends XotBaseMigration
 {
     public function getTable()
     {
@@ -49,6 +51,9 @@ class CreatePagesTable extends Migration
             }
             if (! Schema::hasColumn($this->getTable(), 'status')) {
                 $table->integer('status')->nullable()->after('post_id');
+            }
+            if (Schema::hasColumn($this->getTable(), 'post_id')) {
+                $table->renameColumn('post_id', 'id');
             }
         });
     }

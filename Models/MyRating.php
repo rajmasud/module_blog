@@ -2,11 +2,9 @@
 
 namespace Modules\Blog\Models;
 
-class MyRating extends BaseModel {
+class MyRating extends BaseModelLang
+{
     protected $table = 'ratings';
-    protected $fillable = ['post_id', 'my_rating', 'related_type'];
+    protected $fillable = ['id', 'my_rating', 'related_type'];
     protected $appends = ['my_rating'];
-    protected $dates = ['created_at', 'updated_at'];
-    protected $primaryKey = 'post_id';
-    public $incrementing = true;
 }

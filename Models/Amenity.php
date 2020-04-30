@@ -2,7 +2,7 @@
 
 namespace Modules\Blog\Models;
 
-class Amenity extends BaseModel
+class Amenity extends BaseModelLang
 {
-    protected $fillable=['post_id','related_type'];
+    protected $fillable=['id','related_type'];
 }

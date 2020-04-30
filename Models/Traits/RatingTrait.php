@@ -11,7 +11,8 @@ use Modules\Xot\Services\PanelService as Panel;
 
 //------ traits ---
 
-trait RatingTrait {
+trait RatingTrait
+{
     //----- relationship -----
     /*
     public function ratings(){
@@ -41,7 +42,8 @@ trait RatingTrait {
     ;
     }
      */
-    public function ratings() {
+    public function ratings()
+    {
         /*
         $related = Rating::class;
         return $this->morphRelated($related);
@@ -56,7 +58,8 @@ trait RatingTrait {
 
 
 
-    public function ratingObjectives() {
+    public function ratingObjectives()
+    {
         $related = Rating::class;
         $user_id=\Auth::id();
         return $this->hasMany($related, 'related_type', 'post_type')
@@ -69,14 +72,15 @@ trait RatingTrait {
             )->leftJoin(
                 'rating_morph',
                 function ($join) {
-                    $join->on('rating_morph.related_id', 'ratings.post_id')
+                    $join->on('rating_morph.related_id', 'ratings.id')
                         ->whereRaw('rating_morph.post_type = ratings.related_type')
-                        ->where('rating_morph.post_id', $this->post_id);
+                        ->where('rating_morph.post_id', $this->id);
                 }
-            )->groupBy('ratings.post_id');
-        }
+            )->groupBy('ratings.id');
+    }
 
-    public function scopeWithRating($query){
+    public function scopeWithRating($query)
+    {
         return $query->leftJoin(
             'rating_morph',
             function ($join) {
@@ -86,7 +90,8 @@ trait RatingTrait {
     }
 
 
-    public function myRatings() {
+    public function myRatings()
+    {
         //$auth_user_id = \Auth::user()->auth_user_id;
         /*
         $rows = $this->ratings()->wherePivot('auth_user_id', $auth_user_id);
@@ -108,27 +113,30 @@ trait RatingTrait {
 
     //----- mutators -----
     //*
-    public function getMyRatingAttribute($value) {
+    public function getMyRatingAttribute($value)
+    {
         $my = $this->myRatings;
 
         return $my->pluck('pivot.rating', 'post_id');
     }
 
 
-    public function getRatingsAvgAttribute($value){
-        if($value=''){
+    public function getRatingsAvgAttribute($value)
+    {
+        if ($value='') {
             return $value;
         }
         $value=$this->ratings->avg('pivot.rating');
-        if($value!=''){
+        if ($value!='') {
             $this->ratings_avg=$value;
             $this->save();
         }
         return $value;
     }
 
-    public function getRatingsCountAttribute($value){
-        if($value=''){
+    public function getRatingsCountAttribute($value)
+    {
+        if ($value='') {
             return $value;
         }
         $value=$this->ratings->count('pivot.rating');
@@ -146,7 +154,8 @@ trait RatingTrait {
      */
 
     //------ functions ------
-    public function ratingAvgHtml() {
+    public function ratingAvgHtml()
+    {
         $ratings = $this->ratings;
         $pivot_avg=$ratings->avg('pivot.rating');
         $pivot_cout=$ratings->count('pivot.rating');
