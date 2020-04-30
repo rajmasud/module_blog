@@ -1,22 +1,18 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+//use Modules\Blog\Models\Event as MyModel;
+//----- models -----
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-//----- models -----
-use Modules\Blog\Models\Event as MyModel;
-
-class CreateBlogPostEventsTable extends XotBaseMigration
-{
-    public function getTable()
-    {
+class CreateEventsTable extends XotBaseMigration {
+    /*
+    public function getTable() {
         return with(new MyModel())->getTable();
     }
-
-    public function up()
-    {
+    */
+    public function up() {
         //----- create -----
         if (! Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
@@ -45,8 +41,7 @@ class CreateBlogPostEventsTable extends XotBaseMigration
         });
     }
 
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists($this->getTable());
     }
 }
