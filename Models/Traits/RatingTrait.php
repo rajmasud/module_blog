@@ -72,7 +72,7 @@ trait RatingTrait
             )->leftJoin(
                 'rating_morph',
                 function ($join) {
-                    $join->on('rating_morph.related_id', 'ratings.id')
+                    $join->on('rating_morph.rating_id', 'ratings.id')
                         ->whereRaw('rating_morph.post_type = ratings.related_type')
                         ->where('rating_morph.post_id', $this->id);
                 }

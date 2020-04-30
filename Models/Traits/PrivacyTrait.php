@@ -11,7 +11,8 @@ use Modules\Blog\Models\Privacy;
 
 //------ traits ---
 
-trait PrivacyTrait {
+trait PrivacyTrait
+{
     /* --- da fare
     public function privacy(){
         try {
@@ -23,7 +24,23 @@ trait PrivacyTrait {
         }
     }
     */
-    public function privacies() { // controllare con linkedtrait
+    public function privacies()
+    {
+        /*
+        $related = Privacy::class;
+        $pivot = $related.'Morph';
+
+
+        return $this->morphToMany($related,'post','privacy_morph')
+            ->using($pivot)
+                    ->withPivot($pivot_fields)
+                    ->wherePivot('auth_user_id', $auth_user_id)
+                    ->withTimestamps();
+                */
+        return $this->morphRelated(Privacy::class)->wherePivot('auth_user_id', \Auth::id());
+    }
+    public function privacies_vecia()
+    { // controllare con linkedtrait
         $related = Privacy::class;
         if (is_string($related)) {
             $pivot = $related.'Morph';
@@ -35,7 +52,9 @@ trait PrivacyTrait {
         $pivot_table = with(new $pivot())->getTable();
         $pivot_fields = with(new $pivot())->getFillable();
         $foreignPivotKey = 'post_id';
-        $relatedPivotKey = 'related_id';
+        //$relatedPivotKey = 'related_id';
+        $relatedPivotKey = 'privacy_id';
+
         $parentKey = 'post_id';
         $relatedKey = 'post_id';
         $inverse = false;
@@ -68,7 +87,8 @@ trait PrivacyTrait {
     }
     */
 
-    public function getPrivaciesAttribute() {
+    public function getPrivaciesAttribute()
+    {
         return $this->getRelationValue('privacies')->keyBy('post_id');
     }
 }

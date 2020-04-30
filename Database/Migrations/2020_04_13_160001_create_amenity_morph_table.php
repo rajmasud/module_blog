@@ -5,13 +5,15 @@ use Illuminate\Database\Schema\Blueprint;
 //----- bases ----
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-class CreateAmenityMorphTable extends XotBaseMigration{
+class CreateAmenityMorphTable extends XotBaseMigration
+{
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up(){
+    public function up()
+    {
         //-- CREATE --
         if (! $this->tableExists()) {
             $this->getConn()->create($this->getTable(), function (Blueprint $table) {
@@ -32,6 +34,9 @@ class CreateAmenityMorphTable extends XotBaseMigration{
                 $table->integer('auth_user_id')->nullable();
                 $table->text('note')->nullable();
             }
+            if (Schema::hasColumn($this->getTable(), 'related_id')) {
+                $table->renameColumn('related_id', 'amenity_id');
+            };
         });
     }//end up
 }//end class

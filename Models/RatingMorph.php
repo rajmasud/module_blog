@@ -4,15 +4,13 @@ namespace Modules\Blog\Models;
 
 use Illuminate\Database\Eloquent\Relations\MorphPivot;
 
-class RatingMorph extends MorphPivot {
-    protected $fillable = ['id', 'post_id', 'post_type', 'related_id', 'related_type', 'rating', 'auth_user_id'];
-    protected $appends = [];
-    protected $dates = ['created_at', 'updated_at'];
-    protected $primaryKey = 'id';
-    public $incrementing = true;
+class RatingMorph extends BaseMorphPivot
+{
+    protected $fillable = ['id', 'post_id', 'post_type', 'rating_id', 'related_type', 'rating', 'auth_user_id'];
 
     //-------- RELATIONSHIP -----------
-    public function rating() {
-        return $this->hasOne(Rating::class, 'post_id', 'related_id');
+    public function rating()
+    {
+        return $this->hasOne(Rating::class); //, 'id', 'rating_id');
     }
 }

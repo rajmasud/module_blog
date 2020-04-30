@@ -78,16 +78,47 @@ trait LinkedTrait
     }
 
 
-    public function morphRelated($related, $inverse = false)
+    public function morphRelated($related, $inverse = false, $table_key=null)
     {
         $name='post';
         $pivot=$this->getTableMorph($related, $inverse);
         $pivot_fields=app($pivot)->getFillable();
+        /*
         if ($inverse) {
             $relation= $this->morphedByMany($related, $name, $pivot);
         } else {
             $relation= $this->morphToMany($related, $name, $pivot);
         }
+        */
+        $foreignPivotKey=null;
+        $relatedPivotKey=null;
+        $parentKey=null;
+        $relatedKey=null;
+        if ($table_key!=null) {
+            if ($inverse) {
+                $relatedKey='auth_user_id';
+                $parentKey='post_id';
+            } else {
+                $parentKey='auth_user_id';
+                $relatedKey='post_id';
+            }
+        }
+
+
+        $relation = $this->morphToMany(
+            $related,
+            $name,
+            $pivot,
+            $foreignPivotKey,
+            $relatedPivotKey,
+            $parentKey,
+            $relatedKey,
+            $inverse
+        );
+
+
+        return $relation;
+
         return $relation->using($pivot)
             ->withPivot($pivot_fields)
             ->withTimestamps()
@@ -441,6 +472,24 @@ trait LinkedTrait
                 ->where($post_table.'.post_type', $this->post_type)
             ;
         }
+
+
+        /*
+        return $query->join($post_table.' as post', function ($join) {
+            $join->on('post.post_id', '=', $this->getTable().'.id')
+                ->select('title', 'guid', 'subtitle')
+                ->where('lang', $this->lang)
+                ->where('post.post_type', $this->post_type)
+                //->limit(1)
+            ;
+        });
+        */
+
+
+
+
+
+
         /* -- testare i tempi
         $rows=$this->whereHas('post',function($query) use($guid){
         $query->where('guid',$guid);
@@ -482,10 +531,12 @@ trait LinkedTrait
 
     public function scopeWithPost($query, $guid)
     {
+        return $query; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         $post_table = with(new Post())->getTable();
 
         return $query->join($post_table.' as post', function ($join) {
             $join->on('post.post_id', '=', $this->getTable().'.id')
+                ->select('title', 'guid', 'subtitle')
                 ->where('lang', $this->lang)
                 ->where('post.post_type', $this->post_type)
                 //->limit(1)

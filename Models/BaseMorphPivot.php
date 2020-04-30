@@ -5,7 +5,8 @@ namespace Modules\Blog\Models;
 use Illuminate\Database\Eloquent\Relations\MorphPivot;
 use Modules\Xot\Traits\Updater;
 
-abstract class BaseMorphPivot extends MorphPivot {
+abstract class BaseMorphPivot extends MorphPivot
+{
     use Updater;
     protected $appends = [];
     protected $primaryKey = 'id';
@@ -21,7 +22,7 @@ abstract class BaseMorphPivot extends MorphPivot {
     protected $fillable = [
         'id',
         'post_id', 'post_type',
-        'related_id', 'related_type',
+        'related_type',
         'auth_user_id', //in amenity no, in rating si
         'note',
     ];
