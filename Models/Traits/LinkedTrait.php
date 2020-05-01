@@ -16,41 +16,50 @@ use Modules\Xot\Services\StubService;
 
 //------ traits ---
 
-trait LinkedTrait {
-    public function getRouteKeyName() {
+trait LinkedTrait
+{
+    public function getRouteKeyName()
+    {
         return \inAdmin() ? 'post_id' : 'guid';
     }
 
     //------- relationships ------------
-    public function post() {
+    public function post()
+    {
         return $this->morphOne(Post::class, 'post')//, null, 'id')
                 ->where('lang', $this->lang);
     }
 
-    public function postLang($lang) {
+    public function postLang($lang)
+    {
         return $this->morphOne(Post::class, 'post')//, null, 'id')
                 ->where('lang', $lang);
     }
 
-    public function images() {
+    public function images()
+    {
         return $this->morphMany(Image::class, 'post');
     }
 
-    public function favorites() {
+    public function favorites()
+    {
         return $this->morphMany(Favorite::class, 'post');
     }
 
-    public function myFavorites() {
+    public function myFavorites()
+    {
         return $this->morphMany(Favorite::class, 'post')
             ->where('auth_user_id', \Auth::id());
     }
 
-    public function isMyFavorited() {
+    public function isMyFavorited()
+    {
         return $this->favorites()
             ->where('auth_user_id', \Auth::id())->count() > 0;
     }
 
-    public function getTableMorph($related, $inverse) {
+    public function getTableMorph($related, $inverse)
+    {
         if ($inverse) {
             //$model = $this;
             $pivot = get_class($this).'Morph';
@@ -67,7 +76,8 @@ trait LinkedTrait {
         return $pivot;
     }
 
-    public function morphRelatedWithKey($related, $inverse, $table_key) {
+    public function morphRelatedWithKey($related, $inverse, $table_key)
+    {
         $name = 'post';
         $pivot = $this->getTableMorph($related, $inverse);
         //$pivot_fields = app($pivot)->getFillable();
@@ -97,7 +107,8 @@ trait LinkedTrait {
         );
     }
 
-    public function morphRelated($related, $inverse = false, $table_key = null) {
+    public function morphRelated($related, $inverse = false, $table_key = null)
+    {
         $name = 'post';
         $pivot = $this->getTableMorph($related, $inverse);
         $pivot_fields = app($pivot)->getFillable();
@@ -118,10 +129,10 @@ trait LinkedTrait {
             ->withTimestamps()
             ->with('post')
         ;
-
     }
 
-    public function morphRelated_FUNZIONAMA($related, $inverse = false) {
+    public function morphRelated_FUNZIONAMA($related, $inverse = false)
+    {
         if ($inverse) {
             $model = $this;
             $pivot = get_class($this).'Morph';
@@ -179,7 +190,8 @@ trait LinkedTrait {
 
     //------- mutators -------------
 
-    public function postType() {
+    public function postType()
+    {
         $post_type = collect(config('xra.model'))->search(get_class($this));
         if (false === $post_type) {
             $post_type = snake_case(class_basename($this));
@@ -188,7 +200,8 @@ trait LinkedTrait {
         return $post_type;
     }
 
-    public function getPostTypeAttribute($value) {
+    public function getPostTypeAttribute($value)
+    {
         $post_type = collect(config('xra.model'))->search(get_class($this));
         if (false === $post_type) {
             $post_type = snake_case(class_basename($this));
@@ -197,7 +210,8 @@ trait LinkedTrait {
         return $post_type;
     }
 
-    public function getLangAttribute($value) {
+    public function getLangAttribute($value)
+    {
         if ('' != $value) {
             return $value;
         }
@@ -207,14 +221,16 @@ trait LinkedTrait {
         return $lang;
     }
 
-    public function setGuidAttribute($value) {
+    public function setGuidAttribute($value)
+    {
         if ('' == $value) {
             $this->post->guid = Str::slug($this->attributes['title'].' '.$this->attributes['subtitle']);
             $res = $this->post->save();
         }
     }
 
-    public function getPostAttr($func, $value) {
+    public function getPostAttr($func, $value)
+    {
         $str0 = 'get';
         $str1 = 'Attribute';
         $name = substr($func, strlen($str0), -strlen($str1));
@@ -245,28 +261,34 @@ trait LinkedTrait {
     }
 
     //---- da mettere i mancanti ---
-    public function getTitleAttribute($value) {
+    public function getTitleAttribute($value)
+    {
         return $this->getPostAttr(__FUNCTION__, $value);
     }
 
-    public function getSubtitleAttribute($value) {
+    public function getSubtitleAttribute($value)
+    {
         return $this->getPostAttr(__FUNCTION__, $value);
     }
 
-    public function getGuidAttribute($value) {
+    public function getGuidAttribute($value)
+    {
         return $this->getPostAttr(__FUNCTION__, $value);
     }
 
-    public function getImageSrcAttribute($value) {
+    public function getImageSrcAttribute($value)
+    {
         return $this->getPostAttr(__FUNCTION__, $value);
     }
 
-    public function getTxtAttribute($value) {
+    public function getTxtAttribute($value)
+    {
         return $this->getPostAttr(__FUNCTION__, $value);
     }
 
     //*
-    public function getUrlAttribute($value) {
+    public function getUrlAttribute($value)
+    {
         /*
         return $this->getPostAttr(__FUNCTION__, $value);
          */
@@ -274,31 +296,37 @@ trait LinkedTrait {
     }
 
     //*/
-    public function getRoutenameAttribute($value) {
+    public function getRoutenameAttribute($value)
+    {
         return $this->getPostAttr(__FUNCTION__, $value);
     }
 
     //public function setTitleAttribute($value)       {return $this->setPostAttr(__FUNCTION__,$value);}
     //public function setSubtitleAttribute($value)    {return $this->setPostAttr(__FUNCTION__,$value);}
     //  public function setGuidAttribute($value)        {return $this->setPostAttr(__FUNCTION__,$value);}
-    public function setImageSrcAttribute($value) {
+    public function setImageSrcAttribute($value)
+    {
         return $this->setPostAttr(__FUNCTION__, $value);
     }
 
-    public function setTxtAttribute($value) {
+    public function setTxtAttribute($value)
+    {
         return $this->setPostAttr(__FUNCTION__, $value);
     }
 
-    public function setUrlAttribute($value) {
+    public function setUrlAttribute($value)
+    {
         return $this->setPostAttr(__FUNCTION__, $value);
     }
 
-    public function setRoutenameAttribute($value) {
+    public function setRoutenameAttribute($value)
+    {
         return $this->setPostAttr(__FUNCTION__, $value);
     }
 
     //--- attribute e' risertvato
-    public function setPostAttr($func, $value) {
+    public function setPostAttr($func, $value)
+    {
         $str0 = 'set';
         $str1 = 'Attribute';
         $name = substr($func, strlen($str0), -strlen($str1));
@@ -313,7 +341,8 @@ trait LinkedTrait {
     }
 
     //*
-    public function urlActFunc($func, $value) {
+    public function urlActFunc($func, $value)
+    {
         $str0 = 'get';
         $str1 = 'Attribute';
         $name = substr($func, strlen($str0), -strlen($str1));
@@ -325,48 +354,59 @@ trait LinkedTrait {
     }
 
     //*/
-    public function getEditUrlAttribute($value) {
+    public function getEditUrlAttribute($value)
+    {
         return $this->urlActFunc(__FUNCTION__, $value);
     }
 
-    public function getMoveupUrlAttribute($value) {
+    public function getMoveupUrlAttribute($value)
+    {
         return $this->urlActFunc(__FUNCTION__, $value);
     }
 
-    public function getMovedownUrlAttribute($value) {
+    public function getMovedownUrlAttribute($value)
+    {
         return $this->urlActFunc(__FUNCTION__, $value);
     }
 
-    public function getIndexUrlAttribute($value) {
+    public function getIndexUrlAttribute($value)
+    {
         return $this->urlActFunc(__FUNCTION__, $value);
     }
 
-    public function getShowUrlAttribute($value) {
+    public function getShowUrlAttribute($value)
+    {
         return $this->urlActFunc(__FUNCTION__, $value);
     }
 
-    public function getIndexEditUrlAttribute($value) {
+    public function getIndexEditUrlAttribute($value)
+    {
         return $this->urlActFunc(__FUNCTION__, $value);
     }
 
-    public function getCreateUrlAttribute($value) {
+    public function getCreateUrlAttribute($value)
+    {
         return $this->urlActFunc(__FUNCTION__, $value);
     }
 
-    public function getUpdateUrlAttribute($value) {
+    public function getUpdateUrlAttribute($value)
+    {
         return $this->urlActFunc(__FUNCTION__, $value);
     }
 
-    public function getDestroyUrlAttribute($value) {
+    public function getDestroyUrlAttribute($value)
+    {
         return $this->urlActFunc(__FUNCTION__, $value);
     }
 
-    public function getDetachUrlAttribute($value) {
+    public function getDetachUrlAttribute($value)
+    {
         return $this->urlActFunc(__FUNCTION__, $value);
     }
 
     //----------------------------------------------
-    public function imageResizeSrc($params) {
+    public function imageResizeSrc($params)
+    {
         return '['.__FILE__.']['.__LINE__.']';
         $value = null;
         if (isset($this->post)) {
@@ -376,7 +416,8 @@ trait LinkedTrait {
         return $value;
     }
 
-    public function image_html($params) {
+    public function image_html($params)
+    {
         $value = null;
         if (isset($this->post)) {
             $value = $this->post->image_html($params);
@@ -385,7 +426,8 @@ trait LinkedTrait {
         return $value;
     }
 
-    public function urlLang($params) {
+    public function urlLang($params)
+    {
         return '['.__FILE__.']['.__LINE__.']';
         if (! isset($this->post)) {
             return '#';
@@ -394,7 +436,8 @@ trait LinkedTrait {
         return $this->post->urlLang($params);
     }
 
-    public function linkedFormFields() {
+    public function linkedFormFields()
+    {
         $roots = Post::getRoots();
         $view = 'blog::admin.partials.'.snake_case(class_basename($this));
 
@@ -402,7 +445,8 @@ trait LinkedTrait {
     }
 
     //------------------------------------
-    public function item($guid) {
+    public function item($guid)
+    {
         $post_table = with(new Post())->getTable();
         if (in_admin()) {
             $rows = $this->join($post_table, $post_table.'.post_id', '=', $this->getTable().'.id')
@@ -437,7 +481,8 @@ trait LinkedTrait {
         return $rows->first();
     }
 
-    public function fixItemLang($item_guid) {
+    public function fixItemLang($item_guid)
+    {
         $item_guid = str_replace('%20', '%', $item_guid);
         $item_guid = str_replace(' ', '%', $item_guid);
         $panel = Panel::get($this);
@@ -454,7 +499,8 @@ trait LinkedTrait {
         }
     }
 
-    public function scopeOfItem($query, $guid) {
+    public function scopeOfItem($query, $guid)
+    {
         //getRouteKeyName
         if (in_admin()) {
             return $query->where('post_id', $guid);
@@ -466,7 +512,8 @@ trait LinkedTrait {
         }
     }
 
-    public function scopeWithPost($query, $guid) {
+    public function scopeWithPost($query, $guid)
+    {
         return $query; //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         $post_table = with(new Post())->getTable();
 
@@ -481,7 +528,8 @@ trait LinkedTrait {
     }
 
     //---------------------------------
-    public function listItemSchemaOrg($params) {
+    public function listItemSchemaOrg($params)
+    {
         $tmp = explode('\\', get_class($this));
         $ns = Str::snake($tmp[1]);
         $pack = Str::snake($tmp[3]);
@@ -497,7 +545,8 @@ trait LinkedTrait {
         return view($view)->with('row', $row);
     }
 
-    public function urlNextContainer($container) {
+    public function urlNextContainer($container)
+    {
         //ddd($this->post->pivot);
         //ddd($this->post);
         $params = \Route::current()->parameters();
