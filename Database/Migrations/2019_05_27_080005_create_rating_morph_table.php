@@ -6,7 +6,9 @@ use Illuminate\Support\Facades\Schema;
 //----- models -----
 use Modules\Blog\Models\RatingMorph as MyModel;
 
-class CreateRatingMorphTable extends Migration
+use Modules\Xot\Database\Migrations\XotBaseMigration;
+
+class CreateRatingMorphTable extends XotBaseMigration
 {
     public function getTable()
     {
