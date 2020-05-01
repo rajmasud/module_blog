@@ -30,4 +30,5 @@ abstract class BaseModelLang extends Model implements HasMedia
     protected $hidden = [
         //'password'
     ];
+    public $timestamps = true;
 }
