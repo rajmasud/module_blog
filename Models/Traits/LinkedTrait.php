@@ -122,7 +122,7 @@ trait LinkedTrait
             }
         }
 
-        return $relation;
+        //return $relation;
 
         return $relation->using($pivot)
             ->withPivot($pivot_fields)
