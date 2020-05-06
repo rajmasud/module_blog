@@ -115,7 +115,7 @@ class HomePanel extends XotBasePanel {
             (object) [
                 'type' => 'Textarea',
                 //'name' => 'post[subtitle]'
-                'name' => 'post.subtitle',  
+                'name' => 'post.subtitle',
                 'except' => ['index'],
                 'col_bs_size' => 12,
             ],
@@ -181,6 +181,8 @@ class HomePanel extends XotBasePanel {
      * @return array
      */
     public function actions(Request $request = null) {
-        return [];
+        return [
+            new Actions\ArtisanAction('migrate'),
+        ];
     }
 }
