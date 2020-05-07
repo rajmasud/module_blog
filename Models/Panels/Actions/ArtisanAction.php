@@ -17,7 +17,6 @@ class ArtisanAction extends XotBasePanelAction {
     public function __construct($cmd, $cmd_params = []) {
         $this->cmd = $cmd;
         $this->cmd_params = $cmd_params;
-        $this->name = $cmd;
     }
 
     public function handle() {

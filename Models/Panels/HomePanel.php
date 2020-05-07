@@ -182,7 +182,7 @@ class HomePanel extends XotBasePanel {
      */
     public function actions(Request $request = null) {
         return [
-            new Actions\ArtisanAction('migrate'),
+            new Actions\ArtisanAction(request()->input('cmd')),
         ];
     }
 }
