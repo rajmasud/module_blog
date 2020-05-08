@@ -65,7 +65,7 @@ class EventPanel extends XotBasePanel {
         return [
             (object) [
                 'type' => 'Id',
-                'name' => 'post_id',
+                'name' => 'id',
                 'col_bs_size' => 2,
             ],
             (object) [

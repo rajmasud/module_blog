@@ -37,7 +37,7 @@ class ArticlePanel extends XotBasePanel {
         return [
             (object) [
                 'type' => 'Id',
-                'name' => 'post_id',
+                'name' => 'id',
                 'col_bs_size' => 6,
             ],
             (object) [

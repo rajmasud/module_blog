@@ -104,7 +104,7 @@ class SitemapPanel extends XotBasePanel {
         return [
             0 => (object) ([
                 'type' => 'Id',
-                'name' => 'post_id',
+                'name' => 'id',
                 'comment' => null,
             ]),
             1 => (object) ([

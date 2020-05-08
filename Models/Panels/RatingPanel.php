@@ -49,7 +49,7 @@ class RatingPanel extends XotBasePanel {
             //*
             (object) [
                 'type' => 'Id',
-                'name' => 'post_id',
+                'name' => 'id',
             ],
             (object) [
                 'type' => 'Text',

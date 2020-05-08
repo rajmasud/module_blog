@@ -4,13 +4,12 @@ namespace Modules\Blog\Models\Panels;
 
 use Illuminate\Http\Request;
 //--- Services --
+use Modules\Blog\Models\Panels\Traits\XotBasePanelTrait;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
-use Modules\Blog\Models\Panels\Traits\XotBasePanelTrait;
 //---- bases --
 
-class PagePanel extends XotBasePanel
-{
+class PagePanel extends XotBasePanel {
     use XotBasePanelTrait;
     /**
      * The model the resource corresponds to.
@@ -39,20 +38,18 @@ class PagePanel extends XotBasePanel
      *
      * @var array
      */
-    public static function with()
-    {
+    public static function with() {
         return [];
     }
 
     /**
      * on select the option id.
      */
-    
+
     /**
      * on select the option label.
      */
-    public function optionLabel($row)
-    {
+    public function optionLabel($row) {
         return $row->title;
     }
 
@@ -62,13 +59,12 @@ class PagePanel extends XotBasePanel
      * @param \Illuminate\Http\Request $request
      *
      * @return array
-     */ 
-    public function fields()
-    {
+     */
+    public function fields() {
         return [
             (object) [
                 'type' => 'Id',
-                'name' => 'post_id',
+                'name' => 'id',
                 'col_bs_size' => 6,
             ],
 
@@ -79,7 +75,6 @@ class PagePanel extends XotBasePanel
                 'name' => 'parent_id',
                 'col_bs_size' => 6,
             ],
-
 
             (object) [
                 'type' => 'Integer',
@@ -143,7 +138,7 @@ class PagePanel extends XotBasePanel
                 'except' => ['index'],
                 'col_bs_size' => 12,
             ],
-             (object) [
+            (object) [
                 'type' => 'CellCollapse',
                 //'type' => 'Textarea',
                 'name' => 'Seo',
@@ -158,8 +153,7 @@ class PagePanel extends XotBasePanel
      *
      * @return array
      */
-    public function tabs()
-    {
+    public function tabs() {
         $tabs_name = [];
 
         return [];
@@ -170,8 +164,7 @@ class PagePanel extends XotBasePanel
      *
      * @return array
      */
-    public function cards(Request $request)
-    {
+    public function cards(Request $request) {
         return [];
     }
 
@@ -182,8 +175,7 @@ class PagePanel extends XotBasePanel
      *
      * @return array
      */
-    public function filters(Request $request = null)
-    {
+    public function filters(Request $request = null) {
         return [];
     }
 
@@ -192,8 +184,7 @@ class PagePanel extends XotBasePanel
      *
      * @return array
      */
-    public function lenses(Request $request)
-    {
+    public function lenses(Request $request) {
         return [];
     }
 
@@ -204,10 +195,9 @@ class PagePanel extends XotBasePanel
      *
      * @return array
      */
-    public function actions()
-    {
+    public function actions() {
         return [
-            new Actions\SendMsgAction()
+            new Actions\SendMsgAction(),
         ];
     }
 }

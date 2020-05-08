@@ -103,7 +103,7 @@ class ProfilePanel extends XotBasePanel {
         return [
             (object) [
                 'type' => 'Id',
-                'name' => 'post_id',
+                'name' => 'id',
                 //'rules' => 'required',
                 'comment' => null,
             ],
@@ -140,8 +140,7 @@ class ProfilePanel extends XotBasePanel {
                 'name' => 'indirizzo',
                 //'rules' => 'required',
                 'comment' => null,
-                'col_bs_size' => 12
-                
+                'col_bs_size' => 12,
             ],
             (object) [
                 'type' => 'PivotFields', //-- da aggiornare

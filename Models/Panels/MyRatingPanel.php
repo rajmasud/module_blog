@@ -102,7 +102,7 @@ class MyRatingPanel extends XotBasePanel {
         return [
             (object) [
                 'type' => 'Id',
-                'name' => 'post_id',
+                'name' => 'id',
                 'comment' => null,
             ],
             (object) [

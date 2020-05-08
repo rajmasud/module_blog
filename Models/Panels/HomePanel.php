@@ -103,7 +103,7 @@ class HomePanel extends XotBasePanel {
         return [
             (object) [
                 'type' => 'Id',
-                'name' => 'post_id',
+                'name' => 'id',
             ],
             (object) [
                 'type' => 'Text',

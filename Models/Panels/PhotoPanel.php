@@ -49,28 +49,40 @@ class PhotoPanel extends XotBasePanel {
      */
     public function fields() {
         return [
-            /*
-  (object) array(
-     'type' => 'Integer',
-     'name' => 'post_id',
-  ),
-  */
-            //*
             (object) [
-                'type' => 'Text',
-                'name' => 'title',
+                'type' => 'Id',
+                'name' => 'id',
+                'comment' => null,
             ],
 
             (object) [
                 'type' => 'Text',
-                'name' => 'subtitle',
+                'name' => 'post.title',
+                'col_bs_size' => 12,
+                //'except' => ['index'],
             ],
-            /*
-  (object) array(
-     'type' => 'Text',
-     'name' => 'post[title]',
-  ),
-  */
+
+            (object) [
+                'type' => 'Text',
+                'name' => 'post.image_title',
+                'col_bs_size' => 12,
+                //'except' => ['index'],
+            ],
+
+            (object) [
+                'type' => 'Text',
+                'name' => 'post.image_alt',
+                'col_bs_size' => 12,
+                //'except' => ['index'],
+            ],
+
+            (object) [
+                //'type' => 'UnisharpImg', //'Html5UploadImg',
+                'type' => 'Image',
+                'name' => 'post.image_src',
+                'col_bs_size' => 12,
+                //'except' => ['index'],
+            ],
         ];
     }
 
