@@ -1,25 +1,19 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Modules\Blog\Models\Article as MyModel;
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-use Modules\Blog\Models\Article as MyModel;
-
-class CreateArticlesTable extends XotBaseMigration
-{
-    public function getTable()
-    {
+class CreateArticlesTable extends XotBaseMigration {
+    public function getTable() {
         return with(new MyModel())->getTable();
     }
 
-    public function up()
-    {
+    public function up() {
         if (! Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
-                //$table->increments('id');
-                $table->increments('post_id'); //->primary();
+                $table->increments('id');
                 $table->nullableMorphs('parent');
                 $table->integer('pos')->nullable();
                 $table->string('article_type', 50)->nullable();
@@ -48,8 +42,7 @@ class CreateArticlesTable extends XotBaseMigration
         });
     }
 
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists($this->getTable());
     }
 }
