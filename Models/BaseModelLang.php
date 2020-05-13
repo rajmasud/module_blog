@@ -8,16 +8,10 @@ use Laravel\Scout\Searchable;
 use Modules\Blog\Models\Traits\LinkedTrait;
 use Modules\Xot\Traits\Updater;
 
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-
-abstract class BaseModelLang extends Model implements HasMedia
-{
+abstract class BaseModelLang extends Model {
     use Updater;
     use Searchable;
     use LinkedTrait;
-
-    use HasMediaTrait;
 
     protected $fillable = ['id'];
     protected $casts = [
