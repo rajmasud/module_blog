@@ -5,7 +5,9 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Modules\Blog\Models\Article as MyModel;
 
-class CreateArticlesTable extends Migration {
+use Modules\Xot\Database\Migrations\XotBaseMigration;
+
+class CreateArticlesTable extends XotBaseMigration {
     public function getTable() {
         return with(new MyModel())->getTable();
     }

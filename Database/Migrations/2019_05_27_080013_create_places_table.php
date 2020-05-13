@@ -1,12 +1,12 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 //----- models -----
 use Modules\Blog\Models\Place as MyModel;
+use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-class CreatePlacesTable extends Migration {
+class CreatePlacesTable extends XotBaseMigration {
     public function getTable() {
         return with(new MyModel())->getTable();
     }

@@ -1,20 +1,17 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 //----- models -----
 use Modules\Blog\Models\ArticleMorph as MyModel;
+use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-class CreateArticleMorphTable extends Migration
-{
-    public function getTable()
-    {
+class CreateArticleMorphTable extends XotBaseMigration {
+    public function getTable() {
         return with(new MyModel())->getTable();
     }
 
-    public function up()
-    {
+    public function up() {
         //----- create -----
         if (! Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
@@ -35,12 +32,11 @@ class CreateArticleMorphTable extends Migration
         Schema::table($this->getTable(), function (Blueprint $table) {
             if (Schema::hasColumn($this->getTable(), 'related_id')) {
                 $table->renameColumn('related_id', 'article_id');
-            };
+            }
         });
     }
 
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists($this->getTable());
     }
 }
