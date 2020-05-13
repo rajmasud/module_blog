@@ -10,29 +10,27 @@ use Modules\Blog\Models\Traits\RatingTrait;
 
 //--- models ---
 
-class Article extends BaseModelLang
-{
+class Article extends BaseModelLang {
     use RatingTrait;
 
-    protected $fillable = ['id', 'pos', 'article_type', 'published_at', 'parent_id', 'parent_type'];
+    protected $fillable = [
+        'id', 'pos', 'article_type', 'published_at',
+        'parent_id', 'parent_type',
+    ];
     protected $appends = ['title'];
     /* https://itnext.io/7-things-you-need-to-know-to-get-the-most-out-of-your-laravel-model-4f915acbb47c */
 
-
     //--------- relationship ---------------
-    public function sons()
-    {
-        return $this->hasMany(Article::class, 'parent_id', 'post_id');
+    public function sons() {
+        return $this->hasMany(Article::class, 'parent_id', 'id');
     }
 
-    public function articles()
-    {
-        return $this->hasMany(Article::class, 'parent_id', 'post_id');
+    public function articles() {
+        return $this->hasMany(Article::class, 'parent_id', 'id');
     }
 
     //---------- mututars -----------
-    public function getParentIdAttribute($value)
-    {
+    public function getParentIdAttribute($value) {
         if ('' != $value) {
             return $value;
         }
