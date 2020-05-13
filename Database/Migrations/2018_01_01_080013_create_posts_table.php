@@ -19,7 +19,7 @@ class CreatePostsTable extends XotBaseMigration {
                     $table->increments('id');
                     $table->nullableMorphs('post');
                     $table->string('lang', 2)->nullable();
-                    $table->string('title')->index();
+                    $table->string('title')->nullable()->index();
                     $table->string('subtitle')->nullable();
                     $table->string('guid')->index()->nullable();
                     $table->text('txt')->nullable();
