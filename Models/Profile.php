@@ -11,8 +11,7 @@ use Modules\LU\Models\User;
 //--- bases
 //use Modules\Xot\Models\XotBaseModel;
 
-class Profile extends BaseModelLang
-{
+class Profile extends BaseModelLang {
     use PrivacyTrait; // da mettere anche in restaurant owner
     /**
      * se non metto $connection  quando faccio la relazione con lu, prende la connection di lu.
@@ -22,18 +21,22 @@ class Profile extends BaseModelLang
     protected $fillable = ['id', 'auth_user_id', 'phone'];
 
     //------- RELATIONSHIP ----------
-    public function user()
-    {
+    public function user() {
         return $this->belongsTo(User::class, 'auth_user_id', 'auth_user_id');
         //return $this->hasOne(User::class, 'auth_user_id', 'auth_user_id');
     }
 
     //---- mutators ---
-    public function getFullNameAttribute($value)
-    {
+    public function getFullNameAttribute($value) {
         $user = $this->user;
         if (! is_object($user)) {
-            dddx('questo non dovrebbe mai accadere');
+            if ('' != $this->auth_user_id) {
+                $user = $this->user()->create();
+            } else {
+                $user = $user->create();
+                $profile = $user->profile()->create();
+            }
+            dddx(['questo non dovrebbe mai accadere', $this, 'user' => $user]);
         }
         $value = $user->first_name.' '.$user->last_name;
         if (strlen($value) < 5) {
