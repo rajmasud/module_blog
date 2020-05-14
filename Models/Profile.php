@@ -31,7 +31,7 @@ class Profile extends BaseModelLang {
         $user = $this->user;
         if (! is_object($user)) {
             if ('' != $this->auth_user_id) {
-                $user = $this->user()->create();
+                $this->user()->save(\Auth::user());
             } else {
                 $user = $user->create();
                 $profile = $user->profile()->create();
