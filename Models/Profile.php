@@ -36,7 +36,11 @@ class Profile extends BaseModelLang {
                 $user = $user->create();
                 $profile = $user->profile()->create();
             }
-            dddx(['questo non dovrebbe mai accadere', $this, 'user' => $user]);
+            dddx(['questo non dovrebbe mai accadere',
+                $this,
+                'user' => $user,
+                'auth_user' => \Auth::user(),
+            ]);
         }
         $value = $user->first_name.' '.$user->last_name;
         if (strlen($value) < 5) {
