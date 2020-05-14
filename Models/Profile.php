@@ -22,8 +22,8 @@ class Profile extends BaseModelLang {
 
     //------- RELATIONSHIP ----------
     public function user() {
-        return $this->belongsTo(User::class, 'auth_user_id', 'auth_user_id');
-        //return $this->hasOne(User::class, 'auth_user_id', 'auth_user_id');
+        //return $this->belongsTo(User::class, 'auth_user_id', 'auth_user_id');
+        return $this->hasOne(User::class, 'auth_user_id', 'auth_user_id');
     }
 
     //---- mutators ---
