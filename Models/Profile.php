@@ -28,7 +28,8 @@ class Profile extends BaseModelLang {
 
     //---- mutators ---
     public function getFullNameAttribute($value) {
-        $user = $this->user;
+        $user = User::firstOrCreate(['auth_user_id', $this->auth_user_id]);
+        /*
         if (! is_object($user)) {
             if ('' != $this->auth_user_id) {
                 $this->user()->associate(\Auth::user());
@@ -42,6 +43,7 @@ class Profile extends BaseModelLang {
                 'auth_user' => \Auth::user(),
             ]);
         }
+        */
         $value = $user->first_name.' '.$user->last_name;
         if (strlen($value) < 5) {
             $value .= ' '.$user->handle;
