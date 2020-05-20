@@ -20,8 +20,6 @@ trait AmenityTrait {
 
     // elenco delle amenities totali (non collegate a nessuna istanza di modello collegato)
     public function amenityObjectives() {
-        $related = Amenity::class;
-
-        return $this->hasMany($related, 'related_type', 'post_type');
+        return $this->hasMany(Amenity::class, 'related_type', 'post_type');
     }
 }
