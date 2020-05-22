@@ -11,8 +11,7 @@ use Modules\Xot\Services\PanelService as Panel;
 
 //------ traits ---
 
-trait RatingTrait
-{
+trait RatingTrait {
     //----- relationship -----
     /*
     public function ratings(){
@@ -42,8 +41,7 @@ trait RatingTrait
     ;
     }
      */
-    public function ratings()
-    {
+    public function ratings() {
         /*
         $related = Rating::class;
         return $this->morphRelated($related);
@@ -56,13 +54,12 @@ trait RatingTrait
         return $this->morphRelated($related);
     }
 
-
-
-    public function ratingObjectives()
-    {
+    public function ratingObjectives() {
         $related = Rating::class;
-        $user_id=\Auth::id();
+        $user_id = \Auth::id();
+
         return $this->hasMany($related, 'related_type', 'post_type')
+
             ->selectRaw(
                 'ratings.*,
                 count(rating) as rating_count,
@@ -76,11 +73,11 @@ trait RatingTrait
                         ->whereRaw('rating_morph.post_type = ratings.related_type')
                         ->where('rating_morph.post_id', $this->id);
                 }
-            )->groupBy('ratings.id');
+            )->groupBy('ratings.id')
+            ->with('post');
     }
 
-    public function scopeWithRating($query)
-    {
+    public function scopeWithRating($query) {
         return $query->leftJoin(
             'rating_morph',
             function ($join) {
@@ -89,9 +86,7 @@ trait RatingTrait
         );
     }
 
-
-    public function myRatings()
-    {
+    public function myRatings() {
         //$auth_user_id = \Auth::user()->auth_user_id;
         /*
         $rows = $this->ratings()->wherePivot('auth_user_id', $auth_user_id);
@@ -113,38 +108,35 @@ trait RatingTrait
 
     //----- mutators -----
     //*
-    public function getMyRatingAttribute($value)
-    {
+    public function getMyRatingAttribute($value) {
         $my = $this->myRatings;
 
         return $my->pluck('pivot.rating', 'post_id');
     }
 
-
-    public function getRatingsAvgAttribute($value)
-    {
-        if ($value='') {
+    public function getRatingsAvgAttribute($value) {
+        if ($value = '') {
             return $value;
         }
-        $value=$this->ratings->avg('pivot.rating');
-        if ($value!='') {
-            $this->ratings_avg=$value;
+        $value = $this->ratings->avg('pivot.rating');
+        if ('' != $value) {
+            $this->ratings_avg = $value;
             $this->save();
         }
+
         return $value;
     }
 
-    public function getRatingsCountAttribute($value)
-    {
-        if ($value='') {
+    public function getRatingsCountAttribute($value) {
+        if ($value = '') {
             return $value;
         }
-        $value=$this->ratings->count('pivot.rating');
-        $this->ratings_count=$value;
+        $value = $this->ratings->count('pivot.rating');
+        $this->ratings_count = $value;
         $this->save();
+
         return $value;
     }
-
 
     //*/
     /*
@@ -154,17 +146,13 @@ trait RatingTrait
      */
 
     //------ functions ------
-    public function ratingAvgHtml()
-    {
+    public function ratingAvgHtml() {
         $ratings = $this->ratings;
-        $pivot_avg=$ratings->avg('pivot.rating');
-        $pivot_cout=$ratings->count('pivot.rating');
+        $pivot_avg = $ratings->avg('pivot.rating');
+        $pivot_cout = $ratings->count('pivot.rating');
 
-        $msg='<div class="rateit" data-rateit-value="'.$pivot_avg.'" data-rateit-ispreset="true" data-rateit-readonly="true"></div>';
+        $msg = '<div class="rateit" data-rateit-value="'.$pivot_avg.'" data-rateit-ispreset="true" data-rateit-readonly="true"></div>';
         $msg .= '('.$pivot_avg.') '.$pivot_cout.' Votes ';
-
-
-
 
         //$rating_url = Panel::get($this)->relatedUrl(['related_name' => 'my_rating', 'act' => 'index_edit']);
         $rating_url = Panel::get($this)->showUrl().'?_act=rate';
@@ -173,13 +161,13 @@ trait RatingTrait
         return $msg.'<a data-href="'.$rating_url.'" class="btn btn-danger" data-toggle="modal" data-target="#myModalAjax" data-title="Rate it">
         Rate It </a>';
         */
-        $title='Vota '.$this->title;
+        $title = 'Vota '.$this->title;
 
-        $btn='<button type="button" class="btn btn-red btn-danger" data-toggle="modal" data-target="#vueModal" data-title="'.$title.'" data-href="'.$rating_url.'">
+        $btn = '<button type="button" class="btn btn-red btn-danger" data-toggle="modal" data-target="#vueModal" data-title="'.$title.'" data-href="'.$rating_url.'">
         <span class="font-white"><i class="fa fa-star"></i> Vota ! </span>
         </button>';
 
-        $btn_iframe='<button type="button" class="btn btn-red btn-danger" data-toggle="modal" data-target="#vueIframeModal" data-title="'.$title.'" data-href="'.$rating_url.'">
+        $btn_iframe = '<button type="button" class="btn btn-red btn-danger" data-toggle="modal" data-target="#vueIframeModal" data-title="'.$title.'" data-href="'.$rating_url.'">
         <span class="font-white"><i class="fa fa-star"></i> Vota ! </span>
         </button>';
 

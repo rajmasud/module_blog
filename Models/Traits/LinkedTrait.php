@@ -236,9 +236,11 @@ trait LinkedTrait {
         if ('Post' == class_basename($this)) {
             return $this->$name;
         }
+
         if (isset($this->pivot) && Str::endsWith($name, '_url')) { // solo le url dipendono dal pivot
             return $this->pivot->$name; //.'#PIVOT';
         }
+
         if (! isset($this->post) && '' != $this->getKey()) {
             $this->post = $this->post()->create(['lang' => \App::getLocale()]);
         }
