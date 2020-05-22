@@ -13,6 +13,7 @@ use Modules\Blog\Models\Post;
 use Modules\Xot\Services\PanelService as Panel;
 use Modules\Xot\Services\RouteService;
 use Modules\Xot\Services\StubService;
+use Modules\Xot\Services\TenantService as Tenant;
 
 //------ traits ---
 
@@ -23,6 +24,17 @@ trait LinkedTrait {
 
     //------- relationships ------------
     public function post() {
+        $models = Tenant::config('xra.model');
+        $class = get_class($this);
+        $alias = collect($models)->search($class);
+        if (false === $alias) {
+            $data = [];
+            $panel = Panel::get($this);
+            $alias = $panel->postType();
+            $data['model'][$alias] = $class;
+            Tenant::saveConfig(['name' => 'xra', 'data' => $data]);
+        }
+
         return $this->morphOne(Post::class, 'post')//, null, 'id')
                 ->where('lang', $this->lang);
     }
