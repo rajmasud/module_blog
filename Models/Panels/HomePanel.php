@@ -185,4 +185,8 @@ class HomePanel extends XotBasePanel {
             new Actions\ArtisanAction(request()->input('cmd')),
         ];
     }
+
+    public function hasLang() {
+        return true;
+    }
 }
