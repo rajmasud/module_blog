@@ -22,7 +22,7 @@ class Article extends BaseModelLang {
 
     //--------- relationship ---------------
     public function sons() {
-        return $this->hasMany(Article::class, 'parent_id', 'id');
+        return $this->hasMany(Article::class, 'parent_id', 'id')->orderBy('pos');
     }
 
     public function articles() {
