@@ -117,18 +117,22 @@ trait LinkedTrait {
             $relation = $this->morphRelatedWithKey($related, $inverse, $table_key);
         } else {
             if ($inverse) {
+                //$with = Panel::get($this)->with();
                 $relation = $this->morphedByMany($related, $name, $pivot);
             } else {
+                //$with = Panel::get($related)->with();
+
                 $relation = $this->morphToMany($related, $name, $pivot);
             }
         }
 
         //return $relation;
+        //dddx($with);
 
         return $relation->using($pivot)
             ->withPivot($pivot_fields)
             ->withTimestamps()
-            ->with('post')
+            ->with(['post']) //Eager
         ;
     }
 

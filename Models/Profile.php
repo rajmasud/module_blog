@@ -27,8 +27,8 @@ class Profile extends BaseModelLang {
     }
 
     //---- mutators ---
-    public function getFullNameAttribute($value) {
-        //return $value;
+    public function getFullNameAttribute($value) { //DA RIVEDERE
+        return $value;
         $user = User::firstOrCreate(['auth_user_id' => $this->auth_user_id]);
         $user->post()->firstOrCreate(['guid' => $user->handle, 'lang' => \App::getLocale()]);
         /*
