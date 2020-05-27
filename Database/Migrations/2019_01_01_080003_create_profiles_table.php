@@ -1,23 +1,13 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Modules\Xot\Database\Migrations\XotBaseMigration;
-
+use Modules\Blog\Models\Location;
 //----- models-------
-use Modules\Blog\Models\Location;  //blog o food ?
-use Modules\Blog\Models\Profile as MyModel;
+use Modules\Xot\Database\Migrations\XotBaseMigration;  //blog o food ?
 
-class CreateProfilesTable extends XotBaseMigration
-{
-    public function getTable()
-    {
-        return with(new MyModel())->getTable();
-    }
-
-    public function up()
-    {
+class CreateProfilesTable extends XotBaseMigration {
+    public function up() {
         if (! Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
                 $table->increments('post_id'); //->primary();//->primary();
@@ -76,8 +66,7 @@ class CreateProfilesTable extends XotBaseMigration
         });
     }
 
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists($this->getTable());
     }
 }
