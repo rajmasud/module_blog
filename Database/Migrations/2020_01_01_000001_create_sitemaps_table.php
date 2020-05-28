@@ -1,25 +1,20 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Modules\Blog\Models\Sitemap as MyModel;
+//----- models -----
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-//----- models -----
-use Modules\Blog\Models\Sitemap as MyModel;
-
-class CreateSitemapsTable extends XotBaseMigration
-{
-    public function getTable()
-    {
+class CreateSitemapsTable extends XotBaseMigration {
+    public function getTable() {
         return with(new MyModel())->getTable();
     }
 
-    public function up()
-    {
+    public function up() {
         if (! Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
-                $table->increments('post_id'); //->primary();
+                $table->increments('id'); //->primary();
                 $table->string('created_by')->nullable();
                 $table->string('updated_by')->nullable();
                 $table->timestamps();
@@ -34,8 +29,7 @@ class CreateSitemapsTable extends XotBaseMigration
         });
     }
 
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists($this->getTable());
     }
 }

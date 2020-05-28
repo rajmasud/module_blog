@@ -6,8 +6,7 @@ use Illuminate\Database\Schema\Blueprint;
 //----- bases ----
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-class CreateContactsTable extends XotBaseMigration
-{
+class CreateContactsTable extends XotBaseMigration {
     //use XotBaseMigrationTrait;
 
     /**
@@ -15,12 +14,11 @@ class CreateContactsTable extends XotBaseMigration
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         //-- CREATE --
         if (! $this->tableExists()) {
             $this->getConn()->create($this->getTable(), function (Blueprint $table) {
-                $table->increments('post_id');
+                $table->increments('id');
             });
         }//end create
 

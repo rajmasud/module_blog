@@ -11,7 +11,7 @@ class CreatePhotosTable extends XotBaseMigration {
     public function up() {
         if (! Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
-                $table->increments('post_id'); //->primary();
+                $table->increments('id'); //->primary();
                 $table->string('updated_by')->nullable();
                 $table->string('created_by')->nullable();
                 $table->timestamps();

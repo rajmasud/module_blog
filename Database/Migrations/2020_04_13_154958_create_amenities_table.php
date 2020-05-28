@@ -1,23 +1,20 @@
 <?php
 
 use Illuminate\Database\Schema\Blueprint;
-
 //----- bases ----
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-class CreateAmenitiesTable extends XotBaseMigration
-{
+class CreateAmenitiesTable extends XotBaseMigration {
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
+    public function up() {
         //-- CREATE --
         if (! $this->tableExists()) {
             $this->getConn()->create($this->getTable(), function (Blueprint $table) {
-                $table->increments('post_id');
+                $table->increments('id');
                 $table->string('related_type', 50)->index()->nullable();
                 $table->string('created_by')->nullable();
                 $table->string('updated_by')->nullable();
@@ -34,5 +31,7 @@ class CreateAmenitiesTable extends XotBaseMigration
                 $table->renameColumn('post_id', 'id');
             }
         });
-    }//end up
+    }
+
+    //end up
 }//end class

@@ -10,7 +10,7 @@ class CreateProfilesTable extends XotBaseMigration {
     public function up() {
         if (! Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
-                $table->increments('post_id'); //->primary();//->primary();
+                $table->increments('id'); //->primary();//->primary();
                 $table->string('post_type', 191)->nullable()->index();
                 //$table->string('article_type',50)->nullable();
                 //$table->datetime('published_at')->nullable();
@@ -19,8 +19,6 @@ class CreateProfilesTable extends XotBaseMigration {
             });
         }
         Schema::table($this->getTable(), function (Blueprint $table) {
-            //$table->increments('post_id')->change();
-            //->autoIncrement()
             //------- add
             if (! Schema::hasColumn($this->getTable(), 'created_by')) {
                 $table->string('created_by')->nullable();
