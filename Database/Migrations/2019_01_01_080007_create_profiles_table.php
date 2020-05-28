@@ -8,7 +8,7 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;  //blog o food ?
 class CreateProfilesTable extends XotBaseMigration {
     public function up() {
         //-- CREATE --
-        \DB::reconnect('mysql');
+        //\DB::reconnect('mysql');
         //$queries = DB::getQueryLog();
         dddx($this->getConn());
         //dddx(config('database'));
