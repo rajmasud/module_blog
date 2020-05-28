@@ -8,6 +8,7 @@ use Modules\Xot\Database\Migrations\XotBaseMigration;  //blog o food ?
 class CreateProfilesTable extends XotBaseMigration {
     public function up() {
         //-- CREATE --
+        dddx($this->getConn());
         if (! $this->tableExists()) {
             $this->getConn()->create(
                 $this->getTable(),
