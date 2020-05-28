@@ -10,7 +10,7 @@ class CreateProfilesTable extends XotBaseMigration {
         //-- CREATE --
         //\DB::reconnect('mysql');
         //$queries = DB::getQueryLog();
-        dddx($this->getConn());
+        //dddx($this->getConn());
         //dddx(config('database'));
         if (! $this->tableExists()) {
             $this->getConn()->create(
