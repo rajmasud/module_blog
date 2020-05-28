@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 use Modules\Blog\Models\Location;
 //----- models-------
 use Modules\Xot\Database\Migrations\XotBaseMigration;  //blog o food ?
@@ -27,45 +26,45 @@ class CreateProfilesTable extends XotBaseMigration {
             $this->getTable(),
             function (Blueprint $table) {
                 //------- add
-                if (! Schema::hasColumn($this->getTable(), 'created_by')) {
+                if (! $this->hasColumn('created_by')) {
                     $table->string('created_by')->nullable();
                 }
-                if (! Schema::hasColumn($this->getTable(), 'updated_by')) {
+                if (! $this->hasColumn('updated_by')) {
                     $table->string('updated_by')->nullable();
                 }
-                if (! Schema::hasColumn($this->getTable(), 'deleted_by')) {
+                if (! $this->hasColumn('deleted_by')) {
                     $table->string('deleted_by')->nullable();
                 }
-                if (! Schema::hasColumn($this->getTable(), 'firstname')) {
+                if (! $this->hasColumn('firstname')) {
                     $table->string('firstname')->nullable();
                 }
-                if (! Schema::hasColumn($this->getTable(), 'surname')) {
+                if (! $this->hasColumn('surname')) {
                     $table->string('surname')->nullable();
                 }
-                if (! Schema::hasColumn($this->getTable(), 'email')) {
+                if (! $this->hasColumn('email')) {
                     $table->string('email')->nullable();
                 }
-                if (! Schema::hasColumn($this->getTable(), 'phone')) {
+                if (! $this->hasColumn('phone')) {
                     $table->string('phone')->nullable();
                 }
-                if (! Schema::hasColumn($this->getTable(), 'address')) {
+                if (! $this->hasColumn('address')) {
                     $table->string('address')->nullable();
                 }
-                if (! Schema::hasColumn($this->getTable(), 'auth_user_id')) {
+                if (! $this->hasColumn('auth_user_id')) {
                     $table->integer('auth_user_id')->nullable()->index();
                 }
 
                 $address_components = Location::$address_components;
                 foreach ($address_components as $el) {
-                    if (! Schema::hasColumn($this->getTable(), $el)) {
+                    if (! $this->hasColumn($el)) {
                         $table->string($el)->nullable();
                     }
-                    if (! Schema::hasColumn($this->getTable(), $el.'_short')) {
+                    if (! $this->hasColumn($el.'_short')) {
                         $table->string($el.'_short')->nullable();
                     }
                 }
 
-                if (Schema::hasColumn($this->getTable(), 'post_id')) {
+                if ($this->hasColumn('post_id')) {
                     $table->dropPrimary('post_id');
                     $table->renameColumn('post_id', 'id');
                     $table->primary('id');
