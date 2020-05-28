@@ -4,6 +4,7 @@ namespace Modules\Blog\Models;
 
 //--------- models --------
 use Modules\Blog\Models\Traits\PrivacyTrait;
+use Modules\LU\Models\Traits\HasProfileTrait;
 //--- TRAITS ---
 use Modules\LU\Models\User;
 
@@ -13,6 +14,7 @@ use Modules\LU\Models\User;
 
 class Profile extends BaseModelLang {
     use PrivacyTrait; // da mettere anche in restaurant owner
+    use HasProfileTrait;
     /**
      * se non metto $connection  quando faccio la relazione con lu, prende la connection di lu.
      *
@@ -27,25 +29,12 @@ class Profile extends BaseModelLang {
     }
 
     //---- mutators ---
-    public function getFullNameAttribute($value) { //DA RIVEDERE
+    /*  ------------------ utilizza quello di HasProfileTrait
+    public function getFullNameAttribute($value) {
         return $value;
         $user = User::firstOrCreate(['auth_user_id' => $this->auth_user_id]);
         $user->post()->firstOrCreate(['guid' => $user->handle, 'lang' => \App::getLocale()]);
-        /*
-        if (! is_object($user)) {
-            if ('' != $this->auth_user_id) {
-                $this->user()->associate(\Auth::user());
-            } else {
-                $user = $user->create();
-                $profile = $user->profile()->create();
-            }
-            dddx(['questo non dovrebbe mai accadere',
-                $this,
-                'user' => $user,
-                'auth_user' => \Auth::user(),
-            ]);
-        }
-        */
+
         $value = $user->first_name.' '.$user->last_name;
         if (strlen($value) < 5) {
             $value .= ' '.$user->handle;
@@ -54,4 +43,5 @@ class Profile extends BaseModelLang {
 
         return $value;
     }
+    */
 }//end model
