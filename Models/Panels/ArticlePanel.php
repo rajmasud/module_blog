@@ -16,7 +16,7 @@ class ArticlePanel extends XotBasePanel {
     protected static $search = [];
 
     public function optionLabel($row) {
-        return $row->post->title;
+        return $row->title;
     }
 
     public static function with() {
