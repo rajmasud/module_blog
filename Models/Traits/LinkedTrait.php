@@ -470,6 +470,7 @@ trait LinkedTrait {
             $up->lang = App::getLocale();
             $up->save();
             $row = self::firstOrCreate(['post_id' => $up->post_id]);
+            //$row = $this->firstOrCreate(['post_id' => $up->post_id]);
 
             return $row;
         }
