@@ -33,7 +33,7 @@ class Profile extends BaseModelLang {
     public function getFullNameAttribute($value) {
         return $value;
         $user = User::firstOrCreate(['auth_user_id' => $this->auth_user_id]);
-        $user->post()->firstOrCreate(['guid' => $user->handle, 'lang' => \App::getLocale()]);
+        $user->post()->firstOrCreate(['guid' => $user->handle, 'lang' => app()->getLocale()]);
 
         $value = $user->first_name.' '.$user->last_name;
         if (strlen($value) < 5) {

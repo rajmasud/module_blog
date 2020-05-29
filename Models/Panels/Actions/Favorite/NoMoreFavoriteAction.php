@@ -2,6 +2,7 @@
 
 namespace Modules\Blog\Models\Panels\Actions\Favorite;
 
+use Illuminate\Support\Facades\Route;
 //-------- services --------
 use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
 
@@ -28,7 +29,7 @@ class NoMoreFavoriteAction extends XotBasePanelAction {
 
     public function postHandle() {
         //$this->rows->where('auth_user_id', $this->auth_user_id);
-        $route_params = \Route::current()->parameters();
+        $route_params = Route::current()->parameters();
         [$containers,$items] = params2ContainerItem($route_params);
         $func = 'favorites';
         last($items)->$func()->where('auth_user_id', $this->auth_user_id)->delete();

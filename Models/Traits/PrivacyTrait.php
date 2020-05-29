@@ -2,6 +2,7 @@
 
 namespace Modules\Blog\Models\Traits;
 
+use Illuminate\Support\Facades\Auth;
 //use Laravel\Scout\Searchable;
 
 //----- models------
@@ -11,8 +12,7 @@ use Modules\Blog\Models\Privacy;
 
 //------ traits ---
 
-trait PrivacyTrait
-{
+trait PrivacyTrait {
     /* --- da fare
     public function privacy(){
         try {
@@ -24,8 +24,7 @@ trait PrivacyTrait
         }
     }
     */
-    public function privacies()
-    {
+    public function privacies() {
         /*
         $related = Privacy::class;
         $pivot = $related.'Morph';
@@ -37,10 +36,10 @@ trait PrivacyTrait
                     ->wherePivot('auth_user_id', $auth_user_id)
                     ->withTimestamps();
                 */
-        return $this->morphRelated(Privacy::class)->wherePivot('auth_user_id', \Auth::id());
+        return $this->morphRelated(Privacy::class)->wherePivot('auth_user_id', Auth::id());
     }
-    public function privacies_vecia()
-    { // controllare con linkedtrait
+
+    public function privacies_vecia() { // controllare con linkedtrait
         $related = Privacy::class;
         if (is_string($related)) {
             $pivot = $related.'Morph';
@@ -61,7 +60,7 @@ trait PrivacyTrait
         //$related_table=with(new $related)->getTable();
         //return $this->morphRelated($related);
         ///*
-        $user = \Auth::user();
+        $user = Auth::user();
         $auth_user_id = is_object($user) ? $user->auth_user_id : 'NO_SET';
 
         return $this->morphToMany(
@@ -87,8 +86,7 @@ trait PrivacyTrait
     }
     */
 
-    public function getPrivaciesAttribute()
-    {
+    public function getPrivaciesAttribute() {
         return $this->getRelationValue('privacies')->keyBy('post_id');
     }
 }

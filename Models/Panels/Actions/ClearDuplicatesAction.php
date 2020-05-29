@@ -23,7 +23,7 @@ class ClearDuplicatesAction extends XotBasePanelAction {
         GROUP BY post_id,post_type
         HAVING q>1
         */
-        $lang=\App::getLocale();
+        $lang=app()->getLocale();
         $rows=Post::selectRaw('post_id,post_type,count(post_id) as q')
             ->where('lang', $lang)
             ->groupBy('post_id', 'post_type')

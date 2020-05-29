@@ -3,6 +3,10 @@
 namespace Modules\Blog\Models\Traits;
 
 use Illuminate\Database\Eloquent\Relations\Relation; // per dizionario morph
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+//use Illuminate\Support\Facades\URL;
 //use Laravel\Scout\Searchable;
 use Illuminate\Support\Str;
 //----- models------
@@ -19,7 +23,7 @@ use Modules\Xot\Services\TenantService as Tenant;
 
 trait LinkedTrait {
     public function getRouteKeyName() {
-        return \inAdmin() ? 'id' : 'guid';
+        return inAdmin() ? 'id' : 'guid';
     }
 
     //------- relationships ------------
@@ -54,12 +58,12 @@ trait LinkedTrait {
 
     public function myFavorites() {
         return $this->morphMany(Favorite::class, 'post')
-            ->where('auth_user_id', \Auth::id());
+            ->where('auth_user_id', Auth::id());
     }
 
     public function isMyFavorited() {
         return $this->favorites()
-            ->where('auth_user_id', \Auth::id())->count() > 0;
+            ->where('auth_user_id', Auth::id())->count() > 0;
     }
 
     public function getTableMorph($related, $inverse) {
@@ -156,7 +160,7 @@ trait LinkedTrait {
                 'stub' => 'morph_pivot', //con questo crea anche la migration
                 'model' => $model,
             ]);
-            ddd('Refresh Page ');
+            dddx('Refresh Page ');
         }
 
         $pivot_table = with(new $pivot())->getTable();
@@ -197,7 +201,7 @@ trait LinkedTrait {
     public function postType() {
         $post_type = collect(config('xra.model'))->search(get_class($this));
         if (false === $post_type) {
-            $post_type = snake_case(class_basename($this));
+            $post_type = Str::snake(class_basename($this));
         }
 
         return $post_type;
@@ -206,7 +210,7 @@ trait LinkedTrait {
     public function getPostTypeAttribute($value) {
         $post_type = collect(config('xra.model'))->search(get_class($this));
         if (false === $post_type) {
-            $post_type = snake_case(class_basename($this));
+            $post_type = Str::snake(class_basename($this));
         }
 
         return $post_type;
@@ -217,7 +221,7 @@ trait LinkedTrait {
             return $value;
         }
 
-        $lang = \App::getLocale();
+        $lang = App::getLocale();
 
         return $lang;
     }
@@ -246,7 +250,7 @@ trait LinkedTrait {
         }
 
         if (! isset($this->post) && '' != $this->getKey()) {
-            $this->post = $this->post()->create(['lang' => \App::getLocale()]);
+            $this->post = $this->post()->create(['lang' => App::getLocale()]);
         }
 
         if (isset($this->post)) {
@@ -321,7 +325,7 @@ trait LinkedTrait {
         $name = substr($func, strlen($str0), -strlen($str1));
         $name = Str::snake($name);
         $data = [$name => $value];
-        $data['lang'] = \App::getLocale();
+        $data['lang'] = App::getLocale();
         //$this->post->$name=$value;
         //$res=$this->post->save();
         $this->post()->updateOrCreate($data);
@@ -413,7 +417,7 @@ trait LinkedTrait {
 
     public function linkedFormFields() {
         $roots = Post::getRoots();
-        $view = 'blog::admin.partials.'.snake_case(class_basename($this));
+        $view = 'blog::admin.partials.'.Str::snake(class_basename($this));
 
         return view($view)->with('row', $this->post)->with($roots);
     }
@@ -463,7 +467,7 @@ trait LinkedTrait {
             ->first();
         if (is_object($other_lang)) {
             $up = $other_lang->replicate();
-            $up->lang = \App::getLocale();
+            $up->lang = App::getLocale();
             $up->save();
             $row = self::firstOrCreate(['post_id' => $up->post_id]);
 
@@ -503,7 +507,7 @@ trait LinkedTrait {
         $ns = Str::snake($tmp[1]);
         $pack = Str::snake($tmp[3]);
         $view = $ns.'::schema_org.list_item.'.$pack;
-        if (! \View::exists($view)) {
+        if (! view()->exists($view)) {
             ddd('not exists ['.$view.']');
         }
         $row = $this;
@@ -517,7 +521,8 @@ trait LinkedTrait {
     public function urlNextContainer($container) {
         //ddd($this->post->pivot);
         //ddd($this->post);
-        $params = \Route::current()->parameters();
+        //$params = \Route::current()->parameters();
+        $params = Route::current()->parameters();
         list($containers, $items) = params2ContainerItem($params);
         $container_n = collect($containers)->search($this->post_type);
         $act = 'index';

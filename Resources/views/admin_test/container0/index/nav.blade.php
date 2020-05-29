@@ -1,7 +1,7 @@
 <ul class="nav nav-tabs">
 @foreach(config('xra.model') as $k => $v)
 	@php
-		$params['lang']=\App::getLocale();
+		$params['lang']=app()->getLocale();
 		$params['container0']=$k;
 	@endphp
 	<li class="nav-item {{ $container0->guid==$k?'active':'' }}" role="presentation" >

@@ -12,4 +12,9 @@ abstract class XotBaseModel extends Model {
     use Updater;
     use Searchable;
     use LinkedTrait;
+    //-------------
+    /*
+    protected $lang;
+    protected $post;
+    */
 }

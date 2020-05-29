@@ -10,7 +10,7 @@ $factory->define(Post::class, function (Faker $faker) {
         'guid' => $faker->slug,
         'subtitle' => $faker->sentence,
         'txt' => $faker->paragraph,
-        'lang' => \App::getLocale(),
+        'lang' => app()->getLocale(),
         //'user_id' => factory('App\User')->create()->id,
     ];
 });

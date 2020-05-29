@@ -2,6 +2,7 @@
 
 namespace Modules\Blog\Models\Traits;
 
+use Illuminate\Support\Facades\Auth;
 //use Laravel\Scout\Searchable;
 
 //----- models------
@@ -12,6 +13,13 @@ use Modules\Xot\Services\PanelService as Panel;
 //------ traits ---
 
 trait RatingTrait {
+    /*
+    protected $myRatings;
+    protected $ratings_avg;
+    protected $ratings;
+    protected $ratings_count;
+    protected $title;
+    */
     //----- relationship -----
     /*
     public function ratings(){
@@ -56,7 +64,7 @@ trait RatingTrait {
 
     public function ratingObjectives() {
         $related = Rating::class;
-        $user_id = \Auth::id();
+        $user_id = Auth::id();
 
         return $this->hasMany($related, 'related_type', 'post_type')
 
@@ -102,7 +110,7 @@ trait RatingTrait {
         $related = Rating::class;
 
         return $this->morphRelated($related)
-            ->wherePivot('auth_user_id', \Auth::id());
+            ->wherePivot('auth_user_id', Auth::id());
         //*/
     }
 

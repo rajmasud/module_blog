@@ -3,6 +3,7 @@
 namespace Modules\Blog\Models\Panels;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 //--- Services --
 
 use Modules\Xot\Models\Panels\XotBasePanel;
@@ -174,7 +175,7 @@ class FavoritePanel extends XotBasePanel {
      */
     public function actions(Request $request = null) {
         return [
-            new Actions\Favorite\NoMoreFavoriteAction(\Auth::id()),
+            new Actions\Favorite\NoMoreFavoriteAction(Auth::id()),
         ];
     }
 }

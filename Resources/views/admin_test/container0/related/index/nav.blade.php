@@ -7,7 +7,7 @@
 	</li>
 	@foreach(config('xra.model') as $k => $v)
 	@php
-		$params['lang']=\App::getLocale();
+		$params['lang']=app()->getLocale();
 		$params['container1']=$k;
 	@endphp
 	<li role="presentation">

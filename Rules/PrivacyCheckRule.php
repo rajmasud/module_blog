@@ -91,7 +91,8 @@ class PrivacyCheckRule implements Rule, ImplicitRule {
         //$fullnames = request()->get('fullname');
         $key_required = substr($attribute, 0, -strlen($this->field_name)).''.$this->field_name_required;
         //ddd($key_required);
-        $data = (\Request::all());
+        //$data = (\Request::all()); //phpstan
+        $data = (request()->all()); //phpstan
         $value_required = Arr::get($data, $key_required);
         $value = (int) $value;
         //ddd($data);

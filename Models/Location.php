@@ -8,8 +8,7 @@ use Modules\Xot\Services\ImportService;
 
 //--- traits
 
-class Location extends BaseModelLang
-{
+class Location extends BaseModelLang {
     //use \Staudenmeir\EloquentHasManyDeep\HasRelationships;
     //https://github.com/staudenmeir/eloquent-has-many-deep#morphedbymany
     public $table = 'import_items'; //<name pack>_items
@@ -35,6 +34,7 @@ class Location extends BaseModelLang
     ];
 
     //-------- relationships ----------------------
+    /*
     public function restaurantProviders()
     {
         $rows = $this->hasManyThrough(
@@ -48,45 +48,48 @@ class Location extends BaseModelLang
 
         return $rows;
     }
-
+    */
+    /*
     public function restaurants()
     {
         $related_table = with(new Restaurant())->getTable();
         $post_table = with(new Post())->getTable();
 
         return $this->hasMany(Restaurant::class, 'locality', 'locality')
-           //*
+
             ->join($post_table, $post_table.'.post_id', '=', $related_table.'.post_id')
             ->where($post_table.'.lang', $this->lang)
             ->where($post_table.'.post_type', 'restaurant')
-            //*/
+
             ->with(['cuisineCats', 'post']);
     }
-
+    */
+    /*
     public function cuisineCats()
     {
         $related_table = with(new CuisineCat())->getTable();
         $post_table = with(new Post())->getTable();
 
         return $this->hasManyDeepFromRelations($this->restaurants(), (new Restaurant())->cuisineCats())
-            //*
+
             ->join($post_table, $post_table.'.post_id', '=', $related_table.'.post_id')
             ->where($post_table.'.lang', $this->lang)
             ->where($post_table.'.post_type', 'cuisineCat')
             ->groupBy($post_table.'.guid')
-            //*/
+
             ->with(['post']);
     }
+    */
 
     //-------- mutators ------
-
+    /*
     public function getFoodEnginesAttribute($value)
     {
         return self::$food_engines;
     }
+    */
 
-    public function getImageSrcAttribute($value)
-    {
+    public function getImageSrcAttribute($value) {
         if ('' == $value) {
             $ris = ImportService::pixabay(['q' => $this->locality.' '.$this->country]);
             if (\is_object($ris)) {
@@ -97,11 +100,10 @@ class Location extends BaseModelLang
         return $value;
     }
 
-    public function getUrlAttribute($value)
-    {
+    public function getUrlAttribute($value) {
         if (! $this->post) {
             $post = Post::firstOrCreate(
-                ['guid' => $this->guid, 'type' => $this->post_type, 'lang' => \App::getLocale()],
+                ['guid' => $this->guid, 'type' => $this->post_type, 'lang' => app()->getLocale()],
                 ['title' => $this->title]
             );
             $post->title = $this->title;

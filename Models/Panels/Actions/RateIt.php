@@ -3,9 +3,9 @@
 namespace Modules\Blog\Models\Panels\Actions;
 
 //-------- services --------
-use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
+use Illuminate\Support\Facades\Session;
 use Modules\Theme\Services\ThemeService;
-
+use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
 
 //-------- bases -----------
 
@@ -16,6 +16,7 @@ class RateIt extends XotBasePanelAction {
     //public $onContainer = false;
     public $onItem = true; //onlyContainer
     public $icon = '<span class="font-white"><i class="fa fa-star"></i> Vota !</span>';
+
     //*
     public function btn($params = []) {
         extract($params);
@@ -24,12 +25,13 @@ class RateIt extends XotBasePanelAction {
         $title = 'Vota '.$this->row->title;
 
         $ratings = $row->ratings;
-        $parz=[];
-        $parz['rating_avg']=round($ratings->avg('pivot.rating'), 2);
-        $parz['rating_count']=$ratings->count('pivot.rating');
-        $parz['rating_url']=$url;
-        $parz['title']=$title;
+        $parz = [];
+        $parz['rating_avg'] = round($ratings->avg('pivot.rating'), 2);
+        $parz['rating_count'] = $ratings->count('pivot.rating');
+        $parz['rating_url'] = $url;
+        $parz['title'] = $title;
         $view = 'blog::actions.rate.btn';
+
         return view($view)->with($parz);
 
         /*
@@ -54,11 +56,11 @@ class RateIt extends XotBasePanelAction {
         </button>';
         */
     }
+
     //*/
 
     //-- Perform the action on the given models.
     public function handle() {
-
         $view = 'blog::actions.rate';
 
         return ThemeService::view($view)
@@ -69,16 +71,15 @@ class RateIt extends XotBasePanelAction {
     //end handle
 
     public function postHandle() {
-
-        $panel= $this->updateRow(['row'=>$this->row]);
-        $swal=[
-            'icon'=> 'success',
-            'title'=> 'Grazie di aver votato',
+        $panel = $this->updateRow(['row' => $this->row]);
+        $swal = [
+            'icon' => 'success',
+            'title' => 'Grazie di aver votato',
             //'text'=> 'clicca su back per torn!',
         ];
-        \Session::flash('swal', $swal);
+        Session::flash('swal', $swal);
         $this->setRow($panel->row);
+
         return $this->handle();
     }
-
 }

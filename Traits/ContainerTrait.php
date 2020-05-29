@@ -29,7 +29,7 @@ trait ContainerTrait {
         //echo '<h3>['.$post_type.']</h3>';
         $model = config('xra.model.'.$post_type);
         if ('' == $model) {
-            //$row = Post::where('lang', \App::getLocale())->where('guid', $post_type)->first();
+            //$row = Post::where('lang', app()->getLocale())->where('guid', $post_type)->first();
             //$model = config('xra.model.'.$row->post_type);
             //if ('' == $model) {
             die('<hr/>settare modello['.$post_type.'] in config/xra<hr/>'.'['.__LINE__.']['.__FILE__.']');

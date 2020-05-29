@@ -14,6 +14,9 @@ class ArtisanAction extends XotBasePanelAction {
     public $onItem = true; //onlyContainer
     public $icon = '<i class="far fa-file-excel fa-1x"></i>';
 
+    protected $cmd;
+    protected $cmd_params;
+
     public function __construct($cmd, $cmd_params = []) {
         $this->cmd = $cmd;
         $this->cmd_params = $cmd_params;

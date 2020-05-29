@@ -25,4 +25,10 @@ abstract class BaseModelLang extends Model {
         //'password'
     ];
     public $timestamps = true;
+    //-----------
+    /*
+    protected $id;
+    protected $post;
+    protected $lang;
+    */
 }

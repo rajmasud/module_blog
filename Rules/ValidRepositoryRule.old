@@ -2,7 +2,6 @@
 
 namespace Modules\Blog\Rules;
 
-use App\Source;
 use Illuminate\Contracts\Validation\Rule;
 
 class ValidRepositoryRule implements Rule {
