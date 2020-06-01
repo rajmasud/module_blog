@@ -69,9 +69,9 @@ class CreateProfilesTable extends XotBaseMigration {
                 }
 
                 if ($this->hasColumn('post_id')) {
-                    $table->dropPrimary('post_id');
+                    //$table->dropPrimary('post_id');
                     $table->renameColumn('post_id', 'id');
-                    $table->primary('id');
+                    //$table->primary('id');
                 }
             }
         );
