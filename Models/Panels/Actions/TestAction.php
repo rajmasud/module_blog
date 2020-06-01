@@ -24,6 +24,22 @@ class TestAction extends XotBasePanelAction {
     }
 
     public function handle() {
+        return $this->handleRestaurant();
+    }
+
+    public function handleProfile() {
+        $data = factory(\Modules\Food\Models\Profile::class)->raw();
+        $url = Route('container0.store', ['lang' => \App::getLocale(), 'container0' => 'profile']);
+        //dd($url);
+
+        $response = $this->httpClient->request('POST', $url, [
+            'form_params' => $data,
+        ]);
+        $body = (string) $response->getBody();
+        die($body);
+    }
+
+    public function handleRestaurant() {
         $data = factory(\Modules\Food\Models\Restaurant::class)->raw();
         $url = route('container0.store',
             [
