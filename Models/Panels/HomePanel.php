@@ -184,6 +184,7 @@ class HomePanel extends XotBasePanel {
         return [
             new Actions\ArtisanAction(request()->input('cmd')),
             new \Modules\Blog\Models\Panels\Actions\RateIt(),
+            new Actions\TestAction(),
         ];
     }
 
