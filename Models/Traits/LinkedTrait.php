@@ -469,10 +469,10 @@ trait LinkedTrait {
             $up = $other_lang->replicate();
             $up->lang = App::getLocale();
             $up->save();
-            $row = self::firstOrCreate(['post_id' => $up->post_id]);
+            //$row = self::firstOrCreate(['post_id' => $up->post_id]);
             //$row = $this->firstOrCreate(['post_id' => $up->post_id]);
 
-            return $row;
+            //return $row;
         }
     }
 
