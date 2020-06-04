@@ -1,25 +1,20 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Modules\Blog\Models\Page as MyModel;
-
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
-class CreatePagesTable extends XotBaseMigration
-{
-    public function getTable()
-    {
+class CreatePagesTable extends XotBaseMigration {
+    public function getTable() {
         return with(new MyModel())->getTable();
     }
 
-    public function up()
-    {
+    public function up() {
         if (! Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
                 //$table->increments('id');
-                $table->increments('post_id'); //->primary();
+                $table->increments('id'); //->primary();
                 $table->datetime('published_at')->nullable();
                 $table->timestamps();
             });
@@ -58,8 +53,7 @@ class CreatePagesTable extends XotBaseMigration
         });
     }
 
-    public function down()
-    {
+    public function down() {
         Schema::dropIfExists($this->getTable());
     }
 }

@@ -1,16 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
 //----- models -----
 use Modules\Xot\Database\Migrations\XotBaseMigration;
 
 class CreateImagesTable extends XotBaseMigration {
-
-
-    //'post_type','post_id','src','src_out','width','height','auth_user_id','note'
-
     public function up() {
         //-- CREATE --
         if (! $this->tableExists()) {
@@ -42,6 +36,4 @@ class CreateImagesTable extends XotBaseMigration {
             }
         );
     }
-
-
 }
