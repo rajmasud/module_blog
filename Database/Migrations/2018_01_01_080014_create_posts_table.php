@@ -111,6 +111,11 @@ class CreatePostsTable extends XotBaseMigration {
                 if (! Schema::hasColumn($this->getTable(), 'post_type')) {
                     $table->string('post_type', 40)->index()->nullable();
                 }
+
+                if (! Schema::hasColumn($this->getTable(), 'views')) {
+                    $table->integer('views')->nullable(); //contatore di visualizzazioni
+                }
+
                 //------- CHANGE INDEX-------
                 $schema_builder = Schema::getConnection()
                 ->getDoctrineSchemaManager()
