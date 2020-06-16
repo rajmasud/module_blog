@@ -57,16 +57,18 @@ trait LinkedTrait {
         return $this->morphMany(Favorite::class, 'post');
     }
 
+    /* -- messo in hasprofileTrait
     public function user() {
         return $this->hasOne(User::class, 'auth_user_id', 'auth_user_id');
     }
 
     public function profile() {
+        dddx('i');
         $class = Tenant::model('profile');
 
         return $this->hasOne($class, 'auth_user_id', 'auth_user_id');
     }
-
+    */
     public function myFavorites() {
         return $this->morphMany(Favorite::class, 'post')
             ->where('auth_user_id', Auth::id());

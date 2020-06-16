@@ -28,6 +28,10 @@ class Profile extends BaseModelLang {
         return $this->hasOne(User::class, 'auth_user_id', 'auth_user_id');
     }
 
+    public function articles() {
+        return $this->hasMany(Article::class, 'auth_user_id', 'auth_user_id');
+    }
+
     //---- mutators ---
     /*  ------------------ utilizza quello di HasProfileTrait
     public function getFullNameAttribute($value) {
