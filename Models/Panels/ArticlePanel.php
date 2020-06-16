@@ -78,6 +78,12 @@ class ArticlePanel extends XotBasePanel {
                 'except' => ['index'],
                 'col_bs_size' => 12,
             ],
+            (object) [
+                'type' => 'SelectMultipleRelationship',
+                //'name' => 'post[subtitle]'
+                'name' => 'categories',
+                'col_bs_size' => 12,
+            ],
 
             /*
             (object) [
