@@ -5,6 +5,7 @@ namespace Modules\Blog\Models;
 use Carbon\Carbon;
 //----- traits ----
 use Modules\Blog\Models\Traits\RatingTrait;
+use Modules\LU\Models\Traits\HasProfileTrait;
 
 //------services---------
 
@@ -12,6 +13,7 @@ use Modules\Blog\Models\Traits\RatingTrait;
 
 class Article extends BaseModelLang {
     use RatingTrait;
+    use HasProfileTrait;
 
     protected $fillable = [
         'id', 'pos', 'article_type', 'published_at',
@@ -27,6 +29,18 @@ class Article extends BaseModelLang {
 
     public function articles() {
         return $this->hasMany(Article::class, 'parent_id', 'id');
+    }
+
+    public function categories() {
+        return $this->morphRelated(Category::class, true);
+    }
+
+    public function images() {
+        return $this->morphMany(Image::class, 'post');
+    }
+
+    public function tags() {
+        return $this->morphRelated(Tag::class, true);
     }
 
     //---------- mututars -----------

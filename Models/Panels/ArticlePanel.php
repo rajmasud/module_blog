@@ -65,12 +65,20 @@ class ArticlePanel extends XotBasePanel {
                 'col_bs_size' => 12,
             ],
             (object) [
+                'type' => 'Image',
+                //'name' => 'post[subtitle]'
+                'name' => 'post.image_src',
+                //'except' => ['index'],
+                'col_bs_size' => 12,
+            ],
+            (object) [
                 'type' => 'Wysiwyg',
                 //'name' => 'post[subtitle]'
                 'name' => 'post.txt',
                 'except' => ['index'],
                 'col_bs_size' => 12,
             ],
+
             /*
             (object) [
             'type' => 'String',
@@ -86,6 +94,7 @@ class ArticlePanel extends XotBasePanel {
             'col_bs_size' => 6,
             ],
              */
+            /*
             (object) [
                 'type' => 'Rating',
                 'name' => 'myRatings',
@@ -98,6 +107,7 @@ class ArticlePanel extends XotBasePanel {
                 'except' => ['edit', 'create'],
                 'col_bs_size' => 12,
             ],
+            */
         ];
     }
 
