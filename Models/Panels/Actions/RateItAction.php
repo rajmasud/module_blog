@@ -9,7 +9,7 @@ use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
 
 //-------- bases -----------
 
-class RateIt extends XotBasePanelAction {
+class RateItAction extends XotBasePanelAction {
     public $name = 'rate'; //name for calling Action
     //public $rows;
     //public $row;

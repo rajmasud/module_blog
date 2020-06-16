@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 use Modules\Blog\Models\Favorite;
 use Modules\Blog\Models\Image;
 use Modules\Blog\Models\Post;
+use Modules\LU\Models\User;
 //----- services -----
 use Modules\Xot\Services\PanelService as Panel;
 use Modules\Xot\Services\RouteService;
@@ -54,6 +55,16 @@ trait LinkedTrait {
 
     public function favorites() {
         return $this->morphMany(Favorite::class, 'post');
+    }
+
+    public function user() {
+        return $this->hasOne(User::class, 'auth_user_id', 'auth_user_id');
+    }
+
+    public function profile() {
+        $class = Tenant::model('profile');
+
+        return $this->hasOne($class, 'auth_user_id', 'auth_user_id');
     }
 
     public function myFavorites() {
@@ -205,6 +216,15 @@ trait LinkedTrait {
         }
 
         return $post_type;
+    }
+
+    public function getUserHandleAttribute($value) {
+        $user = $this->user;
+        if (is_object($user)) {
+            return $user->handle;
+        }
+
+        return 'john doe';
     }
 
     public function getPostTypeAttribute($value) {

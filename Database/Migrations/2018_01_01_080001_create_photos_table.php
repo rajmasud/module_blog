@@ -28,6 +28,9 @@ class CreatePhotosTable extends XotBaseMigration {
             if (Schema::hasColumn($this->getTable(), 'post_id')) {
                 $table->renameColumn('post_id', 'id');
             }
+            if (! Schema::hasColumn($this->getTable(), 'auth_user_id')) {
+                $table->integer('auth_user_id')->nullable()->after('id');
+            }
         });
     }
 

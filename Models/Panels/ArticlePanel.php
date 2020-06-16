@@ -150,8 +150,8 @@ class ArticlePanel extends XotBasePanel {
      */
     public function actions() {
         return [
-            new Actions\RateIt(),
-            new Actions\ChangePosAction(),
+            new Actions\RateItAction(),
+            //new Actions\ChangePosAction(),
         ];
     }
 }

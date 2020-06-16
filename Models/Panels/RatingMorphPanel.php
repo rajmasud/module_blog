@@ -178,7 +178,7 @@ class RatingMorphPanel extends XotBasePanel {
      */
     public function actions() {
         return [
-            new Actions\RateIt(),
+            new Actions\RateItAction(),
         ];
     }
 }

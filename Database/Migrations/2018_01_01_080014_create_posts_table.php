@@ -116,6 +116,10 @@ class CreatePostsTable extends XotBaseMigration {
                     $table->integer('views')->nullable(); //contatore di visualizzazioni
                 }
 
+                if (! Schema::hasColumn($this->getTable(), 'auth_user_id')) {
+                    $table->integer('auth_user_id')->nullable()->after('id');
+                }
+
                 //------- CHANGE INDEX-------
                 $schema_builder = Schema::getConnection()
                 ->getDoctrineSchemaManager()
