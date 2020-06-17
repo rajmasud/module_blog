@@ -47,6 +47,10 @@ class CreateArticlesTable extends XotBaseMigration {
                 if (! Schema::hasColumn($this->getTable(), 'auth_user_id')) {
                     $table->integer('auth_user_id')->nullable();
                 }
+
+                if (! Schema::hasColumn($this->getTable(), 'is_featured')) {
+                    $table->boolean('is_featured')->nullable();
+                }
             }
         );
     }

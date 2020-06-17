@@ -2,6 +2,7 @@
 
 namespace Modules\Blog\Models\Panels;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 //--- Services --
 
@@ -48,6 +49,33 @@ class TagPanel extends XotBasePanel {
      */
     public function optionLabel($row) {
         return $row->title;
+    }
+
+    public function setLabel($label) {
+        $model = $this->row;
+        $res = $model::whereHas('post',
+            function (Builder $query) use ($label) {
+                $query->where('title', 'like', $label);
+            }
+        )->first();
+        if (is_object($res)) {
+            return $res;
+        }
+        $me = $model->create();
+        // dddx([$me, $me->getKey()]);
+        $post = $model->post()->create(
+            [
+                //'post_id' => $me->getKey(),
+                'title' => $label,
+                'lang' => \App::getLocale(),
+            ]
+        );
+        if (null == $post->post_id) {
+            $post->post_id = $me->getKey();
+            $post->save();
+        }
+
+        return $me;
     }
 
     /**

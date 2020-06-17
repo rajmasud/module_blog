@@ -41,7 +41,7 @@ trait LinkedTrait {
         }
 
         return $this->morphOne(Post::class, 'post')//, null, 'id')
-                ->where('lang', $this->lang);
+                ->where('lang', \App::getLocale());
     }
 
     public function postLang($lang) {
