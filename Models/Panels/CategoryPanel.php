@@ -43,17 +43,10 @@ class CategoryPanel extends XotBasePanel {
     }
 
     /**
-     * on select the option id.
-     */
-    public function optionId($row) {
-        return $row->area_id;
-    }
-
-    /**
      * on select the option label.
      */
     public function optionLabel($row) {
-        return $row->area_define_name;
+        return $row->title;
     }
 
     /**
