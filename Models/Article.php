@@ -48,6 +48,11 @@ class Article extends BaseModelLang {
         if ('' != $value) {
             return $value;
         }
+
+        if (null == $this->getKey()) {
+            return null;
+        }
+
         $value = 0;
         $this->parent_id = $value;
         $this->save();
