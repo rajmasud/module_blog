@@ -13,8 +13,7 @@ class CreatePagesTable extends XotBaseMigration {
     public function up() {
         if (! Schema::hasTable($this->getTable())) {
             Schema::create($this->getTable(), function (Blueprint $table) {
-                //$table->increments('id');
-                $table->increments('id'); //->primary();
+                $table->increments('id');
                 $table->datetime('published_at')->nullable();
                 $table->timestamps();
             });
@@ -45,7 +44,7 @@ class CreatePagesTable extends XotBaseMigration {
                 $table->boolean('is_modal')->nullable();
             }
             if (! Schema::hasColumn($this->getTable(), 'status')) {
-                $table->integer('status')->nullable()->after('post_id');
+                $table->integer('status')->nullable();
             }
             if (Schema::hasColumn($this->getTable(), 'post_id')) {
                 $table->renameColumn('post_id', 'id');

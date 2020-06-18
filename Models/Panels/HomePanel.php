@@ -141,7 +141,7 @@ class HomePanel extends XotBasePanel {
     public function tabs() {
         $tabs_name = ['widget'];
 
-        return [];
+        return $tabs_name;
     }
 
     /**

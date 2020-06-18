@@ -200,6 +200,24 @@ class ProfilePanel extends XotBasePanel {
      * @return array
      */
     public function actions(Request $request = null) {
-        return [];
+        return [
+            new \Modules\Blog\Models\Panels\Actions\PersonalInfoAction(),
+        ];
+    }
+
+    // avatar esiste solo in profile, non esiste l'avatar di un articolo
+    public function avatar($size = 100) {
+        $user = $this->row->user;
+        if (! is_object($user)) {
+            if (isset($this->row->auth_user_id)) {
+                $this->row->user()->create();
+            }
+            //dddx($this->row);
+            return null;
+        }
+        $email = \md5(\mb_strtolower(\trim($user->email)));
+        $default = \urlencode('https://tracker.moodle.org/secure/attachment/30912/f3.png');
+
+        return "https://www.gravatar.com/avatar/$email?d=$default&s=$size";
     }
 }

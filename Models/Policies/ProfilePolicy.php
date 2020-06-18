@@ -2,25 +2,25 @@
 
 namespace Modules\Blog\Models\Policies;
 
-use Modules\Xot\Models\Policies\XotBasePolicy;
 use Modules\Xot\Contracts\UserContract as User;
+use Modules\Xot\Models\Policies\XotBasePolicy;
 
-class ProfilePolicy extends XotBasePolicy
-{
-
+class ProfilePolicy extends XotBasePolicy {
     /**
-     * caso particalare
+     * caso particalare.
      */
-    public function create(?User $user, $post)
-    {
+    public function create(?User $user, $post) {
         return true;
     }
 
     /**
-     * caso particalare
+     * caso particalare.
      */
-    public function store(?User $user, $post)
-    {
+    public function store(?User $user, $post) {
+        return true;
+    }
+
+    public function personalInfo(User $user, $post) {
         return true;
     }
 }
