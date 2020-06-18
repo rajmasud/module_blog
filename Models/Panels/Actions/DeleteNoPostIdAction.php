@@ -15,7 +15,7 @@ class DeleteNoPostIdAction extends XotBasePanelAction {
     public $icon = '<i class="fas fa-heart-broken"></i>';
 
     public function handle() {
-        $rows = Post::where('post_id', '')->delete();
+        $rows = Post::whereNull('post_id')->delete();
 
         return '<h3>+Fatto</h3>';
     }
