@@ -41,6 +41,10 @@ class CreateArticleMorphTable extends XotBaseMigration {
             if (! Schema::hasColumn($this->getTable(), 'title')) {
                 $table->string('title');
             }
+
+            if (! Schema::hasColumn($this->getTable(), 'value')) {
+                $table->string('value');
+            }
         });
     }
 
