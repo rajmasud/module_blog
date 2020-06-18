@@ -33,6 +33,10 @@ class CreateArticleMorphTable extends XotBaseMigration {
             if (Schema::hasColumn($this->getTable(), 'related_id')) {
                 $table->renameColumn('related_id', 'article_id');
             }
+
+            if (! Schema::hasColumn($this->getTable(), 'article_id')) {
+                $table->integer('article_id');
+            }
         });
     }
 
