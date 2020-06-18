@@ -9,7 +9,7 @@ class PostPolicy extends XotBasePolicy {
         return true;
     }
 
-    public function clearDuplicatesAction($user, $post) {
+    public function clearDuplicates($user, $post) {
         return true;
     }
 }
