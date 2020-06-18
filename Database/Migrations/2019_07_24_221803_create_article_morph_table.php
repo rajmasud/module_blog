@@ -31,7 +31,7 @@ class CreateArticleMorphTable extends XotBaseMigration {
         //----- update -----
         Schema::table($this->getTable(), function (Blueprint $table) {
             if (Schema::hasColumn($this->getTable(), 'related_id')) {
-                $table->renameColumn('related_id', 'article_id');
+                $table->dropColumn('related_id');
             }
 
             if (! Schema::hasColumn($this->getTable(), 'article_id')) {
