@@ -45,7 +45,6 @@ class ArticlePanel extends XotBasePanel {
             ],
             (object) [
                 'type' => 'Integer',
-                'sub_type' => '',
                 'name' => 'pos',
                 'col_bs_size' => 6,
                 //'rules'=>'unique'
