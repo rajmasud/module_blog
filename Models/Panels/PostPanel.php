@@ -240,6 +240,7 @@ class PostPanel extends XotBasePanel {
     public function actions(Request $request = null) {
         return [
             new Actions\ClearDuplicatesAction(),
+            new Actions\DeleteNoPostIdAction(),
         ];
     }
 }
