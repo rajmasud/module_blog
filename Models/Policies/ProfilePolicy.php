@@ -23,4 +23,8 @@ class ProfilePolicy extends XotBasePolicy {
     public function personalInfo(User $user, $post) {
         return true;
     }
+
+    public function userSecurity(User $user, $post) {
+        return true;
+    }
 }

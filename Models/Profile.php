@@ -4,6 +4,7 @@ namespace Modules\Blog\Models;
 
 //--------- models --------
 use Modules\Blog\Models\Traits\PrivacyTrait;
+use Modules\Geo\Models\Traits\GeoTrait;
 use Modules\LU\Models\Traits\HasProfileTrait;
 //--- TRAITS ---
 use Modules\LU\Models\User;
@@ -15,6 +16,7 @@ use Modules\LU\Models\User;
 class Profile extends BaseModelLang {
     use PrivacyTrait; // da mettere anche in restaurant owner
     use HasProfileTrait;
+    use GeoTrait;
     /**
      * se non metto $connection  quando faccio la relazione con lu, prende la connection di lu.
      *

@@ -202,6 +202,7 @@ class ProfilePanel extends XotBasePanel {
     public function actions(Request $request = null) {
         return [
             new \Modules\Blog\Models\Panels\Actions\PersonalInfoAction(),
+            new \Modules\Blog\Models\Panels\Actions\UserSecurityAction(),
         ];
     }
 

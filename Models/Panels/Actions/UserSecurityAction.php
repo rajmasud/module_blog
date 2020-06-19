@@ -10,7 +10,7 @@ use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
 
 //-------- bases -----------
 
-class PersonalInfoAction extends XotBasePanelAction {
+class UserSecurityAction extends XotBasePanelAction {
     public $onContainer = false; //onlyContainer
     public $onItem = true; //onlyContainer
     public $icon = '<i class="far fa-file-excel fa-1x"></i>';
@@ -20,15 +20,6 @@ class PersonalInfoAction extends XotBasePanelAction {
 
         return ThemeService::view($view)
             ->with('row', $this->row);
-    }
-
-    public function postHandle() {
-        $data = request()->all();
-        //dddx($data);
-        $profile = $this->row;
-        $profile->update($data);
-
-        return $this->handle();
     }
 
     //end handle
