@@ -22,7 +22,7 @@ class Profile extends BaseModelLang {
      *
      **/
     protected $connection = 'mysql'; // this will use the specified database conneciton
-    protected $fillable = ['id', 'auth_user_id', 'phone'];
+    protected $fillable = ['id', 'auth_user_id', 'phone', 'email', 'bio'];
 
     //------- RELATIONSHIP ----------
     public function user() {

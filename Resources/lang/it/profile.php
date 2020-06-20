@@ -15,5 +15,8 @@ return [
         'phone_label' => 'Telefono',
         'phone_placeholder' => 'Inserisci il tuo telefono',
         'phone_help' => '',
+        'bio_label' => 'Biografia',
+        'bio_placeholder' => 'Scrivi qualcosa per farti conoscere',
+        'bio_help' => 'Inserisci una tua piccola descrizione',
     ],
 ];
