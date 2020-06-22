@@ -24,6 +24,15 @@ class PersonalInfoAction extends XotBasePanelAction {
 
     public function postHandle() {
         $data = request()->all();
+
+        \Validator::make($data, [
+            //'name' => '',
+            //'surname' => '',
+            'email' => 'required|email|unique:users',
+            'phone' => 'integer',
+            'bio' => 'max:200',
+        ])->validate();
+
         //dddx($data);
         $profile = $this->row;
         $profile->update($data);

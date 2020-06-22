@@ -18,5 +18,12 @@ return [
         'bio_label' => 'Biografia',
         'bio_placeholder' => 'Scrivi qualcosa per farti conoscere',
         'bio_help' => 'Inserisci una tua piccola descrizione',
+
+        'passwd_label' => 'Password',
+        'passwd_placeholder' => 'Password',
+        'passwd_help' => 'la tua segretissima password',
+        'passwd_confirmation_label' => 'Ripeti Password',
+        'passwd_confirmation_placeholder' => 'Ripeti Password',
+        'passwd_confirmation_help' => 'ripeti la tua segretissima password',
     ],
 ];

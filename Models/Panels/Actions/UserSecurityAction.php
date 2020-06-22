@@ -22,5 +22,20 @@ class UserSecurityAction extends XotBasePanelAction {
             ->with('row', $this->row);
     }
 
+    public function postHandle() {
+        $data = request()->all();
+
+        \Validator::make($data, [
+            'passwd' => 'required|confirmed|min:6',
+        ])->validate();
+
+        //dddx($data['passwd']);
+        $profile = $this->row;
+        $user = $profile->user;
+        $user->update(['passwd' => $data['passwd']]);
+
+        return $this->handle();
+    }
+
     //end handle
 }

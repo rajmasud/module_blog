@@ -25,11 +25,6 @@ class Profile extends BaseModelLang {
     protected $fillable = ['id', 'auth_user_id', 'phone', 'email', 'bio'];
 
     //------- RELATIONSHIP ----------
-    public function user() {
-        //return $this->belongsTo(User::class, 'auth_user_id', 'auth_user_id');
-        return $this->hasOne(User::class, 'auth_user_id', 'auth_user_id');
-    }
-
     public function articles() {
         return $this->hasMany(Article::class, 'auth_user_id', 'auth_user_id');
     }
