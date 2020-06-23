@@ -209,11 +209,6 @@ trait LinkedTrait {
         ;
     }
 
-    public function widgetsPostType() {
-        return $this->hasMany(Widget::class, 'post_type', 'post_type');
-        //->whereNull('post_id');
-    }
-
     //------- mutators -------------
 
     public function postType() {

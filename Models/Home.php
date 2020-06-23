@@ -5,10 +5,10 @@ namespace Modules\Blog\Models;
 use Modules\Blog\Models\Traits\RatingTrait;
 //------services---------
 //--- TRAITS ---
-use Modules\Xot\Models\Traits\HomeTrait;
+use Modules\Xot\Models\Traits\WidgetTrait;
 
 class Home extends BaseModelLang {
-    use HomeTrait;
+    use WidgetTrait;
     use RatingTrait;
     protected $fillable = ['id', 'article_type', 'icon_src'];
 
