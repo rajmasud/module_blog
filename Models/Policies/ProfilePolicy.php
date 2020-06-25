@@ -13,6 +13,10 @@ class ProfilePolicy extends XotBasePolicy {
         return true;
     }
 
+    public function edit(User $user, $post) {
+        return false;
+    }
+
     /**
      * caso particalare.
      */
