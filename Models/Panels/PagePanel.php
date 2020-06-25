@@ -39,7 +39,7 @@ class PagePanel extends XotBasePanel {
      * @var array
      */
     public static function with() {
-        return [];
+        return ['post'];
     }
 
     /**
