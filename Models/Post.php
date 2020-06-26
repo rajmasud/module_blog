@@ -49,6 +49,7 @@ class Post extends Model {
     ];
 
     use Updater;
+
     /*
     public function getRouteKeyName() {
         return in_admin() ? 'guid' : 'post_id';
@@ -87,10 +88,10 @@ class Post extends Model {
         if ('' != $value) {
             return $value;
         }
-        if(isset($this->attributes['post_type']) && $this->attributes['post_id']){
+        if (isset($this->attributes['post_type']) && $this->attributes['post_id']) {
             $value = $this->attributes['post_type'].' '.$this->attributes['post_id'];
-        }else{
-            $value=$this->post_type.' '.$this->post_id;
+        } else {
+            $value = $this->post_type.' '.$this->post_id;
         }
         $this->title = $value;
         $this->save();
@@ -102,6 +103,7 @@ class Post extends Model {
         if ('' != $value && false === strpos($value, ' ')) {
             return $value;
         }
+        //dddx($this->title);
         $value = $this->title;
         if ('' == $value) {
             $value = $this->attributes['post_type'].' '.$this->attributes['post_id'];

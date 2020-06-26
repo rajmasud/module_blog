@@ -224,6 +224,7 @@ class ProfilePanel extends XotBasePanel {
     }
 
     //uguale a profilepanel di food, e forse a tutti gli altri profilepanel che verranno, inserire in xotbasepanel?
+    //...forse non serve perchè dovrebbe loggarsi dopo aver cliccato la conferma dell'email...
     public function storeCallback($params) {
         extract($params);
         /*

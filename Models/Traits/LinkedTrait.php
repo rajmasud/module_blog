@@ -271,9 +271,18 @@ trait LinkedTrait {
             return $this->pivot->$name; //.'#PIVOT';
         }
 
+        //questo if mi crea la doppia riga in profile quando mi registro!!!!
+        \Debugbar::warning(! isset($this->post) && '' != $this->getKey());
+        \Debugbar::warning('$this->post: '.$this->post);
+        \Debugbar::warning('$this->getKey(): '.$this->getKey());
+        /*
         if (! isset($this->post) && '' != $this->getKey()) {
             $this->post = $this->post()->create(['lang' => App::getLocale()]);
         }
+        */
+        //se commento questo if sembra che non produca più la doppia riga in posts
+        //provato con creazione profilo, articolo, ristorante
+        //...la domanda sorge spontanea: perchè è stato messo questo if???
 
         if (isset($this->post)) {
             return $this->post->$name; //.'#NO-PIVOT';
