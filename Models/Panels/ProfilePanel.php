@@ -5,6 +5,7 @@ namespace Modules\Blog\Models\Panels;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 //--- Services --
+use Modules\Food\Events\StoreProfileEvent;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
 class ProfilePanel extends XotBasePanel {
@@ -220,5 +221,40 @@ class ProfilePanel extends XotBasePanel {
         $default = \urlencode('https://tracker.moodle.org/secure/attachment/30912/f3.png');
 
         return "https://www.gravatar.com/avatar/$email?d=$default&s=$size";
+    }
+
+    //uguale a profilepanel di food, e forse a tutti gli altri profilepanel che verranno, inserire in xotbasepanel?
+    public function storeCallback($params) {
+        extract($params);
+        /*
+        * metto apposto il titolo della pagina del profilo
+        *
+        **/
+        if (is_object($row->post)) {
+            $row->post->title = $row->user->handle;
+            $row->post->save();
+        } else {
+            $row->post()->create(
+                [
+                    'title' => $row->user->handle,
+                    'guid' => Str::slug($row->user->handle),
+                    'lang' => app()->getLocale(),
+                ]
+                );
+        }
+        $user = $row->user;
+
+        $res = event(new StoreProfileEvent($user));
+        //$this->generateUUIDVerificationToken($user);
+        \Auth::guard()->login($user, true);
+        //$this->guard()->login($user); ???
+        \Session::flash('swal', [
+            'type' => 'success',
+            'title' => trans('food::profile.store_success.title'),
+            'text' => trans('food::profile.store_success.text'),
+            'footer' => trans('food::profile.store_success.footer'),
+        ]);
+        //ddd($user);ddd($row);
+        return $row;
     }
 }
