@@ -272,9 +272,9 @@ trait LinkedTrait {
         }
 
         //questo if mi crea la doppia riga in profile quando mi registro!!!!
-        \Debugbar::warning(! isset($this->post) && '' != $this->getKey());
-        \Debugbar::warning('$this->post: '.$this->post);
-        \Debugbar::warning('$this->getKey(): '.$this->getKey());
+        //\Debugbar::warning(! isset($this->post) && '' != $this->getKey());
+        //\Debugbar::warning('$this->post: '.$this->post);
+        //\Debugbar::warning('$this->getKey(): '.$this->getKey());
         /*
         if (! isset($this->post) && '' != $this->getKey()) {
             $this->post = $this->post()->create(['lang' => App::getLocale()]);
