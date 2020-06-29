@@ -17,7 +17,7 @@ class Article extends BaseModelLang {
 
     protected $fillable = [
         'id', 'pos', 'article_type', 'published_at',
-        'parent_id', 'parent_type', 'is_featured',
+        'parent_id', 'parent_type', 'is_featured', 'auth_user_id',
     ];
     protected $appends = ['title'];
     /* https://itnext.io/7-things-you-need-to-know-to-get-the-most-out-of-your-laravel-model-4f915acbb47c */
