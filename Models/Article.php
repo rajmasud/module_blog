@@ -43,6 +43,10 @@ class Article extends BaseModelLang {
         return $this->morphRelated(Tag::class, true);
     }
 
+    public function comments() {
+        return $this->morphMany(Comment::class, 'post');
+    }
+
     //---------- mututars -----------
     public function getParentIdAttribute($value) {
         if ('' != $value) {
