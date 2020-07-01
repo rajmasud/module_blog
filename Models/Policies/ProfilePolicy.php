@@ -9,6 +9,10 @@ class ProfilePolicy extends XotBasePolicy {
     /**
      * caso particalare.
      */
+    public function index($user, $post) {
+        return false;
+    }
+
     public function create(?User $user, $post) {
         return true;
     }
