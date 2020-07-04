@@ -71,13 +71,6 @@ class ArticlePanel extends XotBasePanel {
                 'col_bs_size' => 12,
             ],
             (object) [
-                'type' => 'TextareaSummerNote',
-                //'name' => 'post[subtitle]'
-                'name' => 'post.txt',
-                'except' => ['index'],
-                'col_bs_size' => 12,
-            ],
-            (object) [
                 'type' => 'Wysiwyg',
                 //'name' => 'post[subtitle]'
                 'name' => 'post.txt',
