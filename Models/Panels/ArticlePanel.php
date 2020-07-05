@@ -98,13 +98,13 @@ class ArticlePanel extends XotBasePanel {
                 //'col_bs_size' => 12,
             ],
 
+            /*
             (object) [
                 'type' => 'RadioAnimatedSwitch',
                 //'name' => 'post[subtitle]'
                 'name' => 'is_featured',
                 //'col_bs_size' => 12,
             ],
-            /*
             */
             /*
             (object) [
