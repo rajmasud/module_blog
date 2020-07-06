@@ -5,7 +5,7 @@ namespace Modules\Blog\Models\Panels;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 //--- Services --
-use Modules\Food\Events\StoreProfileEvent;
+use Modules\Blog\Events\StoreProfileEvent;
 use Modules\Xot\Models\Panels\XotBasePanel;
 
 class ProfilePanel extends XotBasePanel {
@@ -223,27 +223,26 @@ class ProfilePanel extends XotBasePanel {
         return "https://www.gravatar.com/avatar/$email?d=$default&s=$size";
     }
 
-    //uguale a profilepanel di food, e forse a tutti gli altri profilepanel che verranno, inserire in xotbasepanel?
-    //...forse non serve perchè dovrebbe loggarsi dopo aver cliccato la conferma dell'email...
     public function storeCallback($params) {
         extract($params);
         /*
         * metto apposto il titolo della pagina del profilo
         *
         **/
-        if (is_object($row->post)) {
-            $row->post->title = $row->user->handle;
-            $row->post->save();
-        } else {
-            $row->post()->create(
-                [
-                    'title' => $row->user->handle,
-                    'guid' => Str::slug($row->user->handle),
-                    'lang' => app()->getLocale(),
-                ]
-                );
-        }
         $user = $row->user;
+
+        $post_data = [
+            'title' => $row->user->handle,
+            'guid' => Str::slug($row->user->handle),
+            'auth_user_id' => $user->auth_user_id,
+            'lang' => app()->getLocale(),
+        ];
+
+        if (is_object($row->post)) {
+            $row->post->update($post_data);
+        } else {
+            $row->post()->create($post_data);
+        }
 
         $res = event(new StoreProfileEvent($user));
         //$this->generateUUIDVerificationToken($user);
