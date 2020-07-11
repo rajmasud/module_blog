@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Food\Events;
+namespace Modules\Blog\Events;
 
 use Illuminate\Queue\SerializesModels;
 
