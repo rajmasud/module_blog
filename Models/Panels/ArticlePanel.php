@@ -25,7 +25,7 @@ class ArticlePanel extends XotBasePanel {
 
     public function search() {
         return [
-            'post.title', 'post.subtitle', 'post.txt',
+            'post.title', 'post.subtitle',
         ];
     }
 
