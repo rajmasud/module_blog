@@ -13,7 +13,9 @@ class Location extends BaseModelLang {
     //https://github.com/staudenmeir/eloquent-has-many-deep#morphedbymany
     public $table = 'import_items'; //<name pack>_items
 
-    protected $fillable = ['id', 'latitude', 'longitude', 'address1', 'address2', 'address3', 'city', 'zip_code', 'country', 'state', 'phone', 'display_phone', 'price', 'is_closed', 'review_count']; //, 'yelp_url', 'rating'
+    protected $fillable = ['id', 'latitude', 'longitude', 'address1', 'address2',
+        'address3', 'city', 'zip_code', 'country', 'state', 'phone', 'display_phone', 'price',
+        'is_closed', 'review_count', ]; //, 'yelp_url', 'rating'
     /*
     public static $food_engines = [
             'justeat', 'sgnamit', 'googleplace', 'foodracers',
