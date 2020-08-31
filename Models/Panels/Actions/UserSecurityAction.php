@@ -5,6 +5,7 @@ namespace Modules\Blog\Models\Panels\Actions;
 //-------- models -----------
 
 //-------- services --------
+use Illuminate\Support\Facades\Session;
 use Modules\Theme\Services\ThemeService;
 use Modules\Xot\Models\Panels\Actions\XotBasePanelAction;
 
@@ -33,6 +34,12 @@ class UserSecurityAction extends XotBasePanelAction {
         $profile = $this->row;
         $user = $profile->user;
         $user->update(['passwd' => $data['passwd']]);
+
+        $swal = [
+            'icon' => 'success',
+            'title' => 'Aggiornamento riuscito',
+        ];
+        Session::flash('swal', $swal);
 
         return $this->handle();
     }
