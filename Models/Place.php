@@ -53,4 +53,6 @@ class Place extends BaseModelLang
     {
         return $this->route.', '.$this->street_number.', '.$this->locality.', '.$this->administrative_area_level_2.', '.$this->country;
     }
+
+
 }

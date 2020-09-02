@@ -31,6 +31,8 @@ class Profile extends BaseModelLang {
         return $this->hasMany(Article::class, 'auth_user_id', 'auth_user_id');
     }
 
+
+
     //---- mutators ---
     /*  ------------------ utilizza quello di HasProfileTrait
     public function getFullNameAttribute($value) {
