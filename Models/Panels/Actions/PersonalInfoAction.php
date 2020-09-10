@@ -40,7 +40,11 @@ class PersonalInfoAction extends XotBasePanelAction {
         //dddx($data);
         $profile = $this->row;
         $profile->update($data);
-        $profile->user->update(['handle' => $data['handle']]);
+        $profile->user->update([
+            'handle' => $data['handle'],
+            'first_name' => $data['firstname'],
+            'last_name' => $data['surname'],
+        ]);
 
         $swal = [
             'icon' => 'success',
