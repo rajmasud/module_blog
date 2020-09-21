@@ -1,0 +1,13 @@
+<?php
+
+namespace Modules\Blog\Listeners;
+
+use Modules\Blog\Events\PostWasCreated;
+
+class NotifyUsersOfANewPost {
+    public function __construct() {
+    }
+
+    public function handle(PostWasCreated $event) {
+    }
+}
