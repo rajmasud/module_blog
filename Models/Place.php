@@ -54,5 +54,12 @@ class Place extends BaseModelLang
         return $this->route.', '.$this->street_number.', '.$this->locality.', '.$this->administrative_area_level_2.', '.$this->country;
     }
 
+<<<<<<< HEAD
+=======
+    public function linked(){
+        return $this->morphTo('post');
+    }
+
+>>>>>>> 7a7a8991f184c1fcdee349f443c2273b4f981c3d
 
 }

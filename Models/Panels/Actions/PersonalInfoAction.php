@@ -17,11 +17,21 @@ class PersonalInfoAction extends XotBasePanelAction {
     public $icon = '<i class="far fa-file-excel fa-1x"></i>';
 
     public function handle() {
+<<<<<<< HEAD
         $view = 'pub_theme::profile.'.$this->getName();
         //dddx(get_defined_vars());
 
         return ThemeService::view($view)
             ->with('row', $this->row);
+=======
+        /*$view = 'pub_theme::profile.'.$this->getName();*/
+        //dddx(get_defined_vars());
+
+        /*return ThemeService::view($view)
+            ->with('row', $this->row);*/
+
+            return $this->panel->view();
+>>>>>>> 7a7a8991f184c1fcdee349f443c2273b4f981c3d
     }
 
     public function postHandle() {
