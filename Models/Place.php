@@ -7,8 +7,7 @@ use Modules\Xot\Services\ImportService;
 
 //------ models --------
 
-class Place extends BaseModelLang
-{
+class Place extends BaseModelLang {
     protected $fillable = ['id', 'post_id', 'post_type',
         //---- address_components----
         'premise', 'locality', 'postal_town',
@@ -30,12 +29,11 @@ class Place extends BaseModelLang
         'point_of_interest', 'political', 'campground',
     ];
 
-    protected $appends =['value'];
+    protected $appends = ['value'];
 
     //----- mutators -----
 
-    public function setFormattedAddressAttribute($value)
-    {
+    public function setFormattedAddressAttribute($value) {
         if (isset($this->attributes['formatted_address'])) {
             $address = $this->attributes['formatted_address'];
         } else {
@@ -49,17 +47,11 @@ class Place extends BaseModelLang
         }
     }
 
-    public function getValueAttribute($value)
-    {
+    public function getValueAttribute($value) {
         return $this->route.', '.$this->street_number.', '.$this->locality.', '.$this->administrative_area_level_2.', '.$this->country;
     }
 
-<<<<<<< HEAD
-=======
-    public function linked(){
+    public function linked() {
         return $this->morphTo('post');
     }
-
->>>>>>> 7a7a8991f184c1fcdee349f443c2273b4f981c3d
-
 }
