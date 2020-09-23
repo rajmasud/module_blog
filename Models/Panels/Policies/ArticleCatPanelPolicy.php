@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Blog\Models\PanelsPolicies;
+namespace Modules\Blog\Models\Panels\Policies;
 
 use Modules\Xot\Models\Policies\XotBasePolicy;
 
