@@ -3,9 +3,9 @@
 namespace Modules\Blog\Models\Panels\Policies;
 
 use Modules\Xot\Contracts\UserContract as User;
-use Modules\Xot\Models\Policies\XotBasePolicy;
+use Modules\Xot\Models\Panels\Policies\XotBasePanelPolicy;
 
-class ProfilePanelPolicy extends XotBasePolicy {
+class ProfilePanelPolicy extends XotBasePanelPolicy {
     /**
      * caso particalare.
      */

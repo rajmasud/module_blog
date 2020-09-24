@@ -2,9 +2,9 @@
 
 namespace Modules\Blog\Models\Panels\Policies;
 
-use Modules\Xot\Models\Policies\XotBasePolicy;
+use Modules\Xot\Models\Panels\Policies\XotBasePanelPolicy;
 
-class MyRatingPanelPolicy extends XotBasePolicy {
+class MyRatingPanelPolicy extends XotBasePanelPolicy {
     public function create($user, $panel) {
         return false;
     }

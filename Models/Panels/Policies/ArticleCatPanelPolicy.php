@@ -2,7 +2,7 @@
 
 namespace Modules\Blog\Models\Panels\Policies;
 
-use Modules\Xot\Models\Policies\XotBasePolicy;
+use Modules\Xot\Models\Panels\Policies\XotBasePanelPolicy;
 
-class ArticleCatPanelPolicy extends XotBasePolicy {
+class ArticleCatPanelPolicy extends XotBasePanelPolicy {
 }
