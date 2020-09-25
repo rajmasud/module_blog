@@ -17,10 +17,14 @@ class UserSecurityAction extends XotBasePanelAction {
     public $icon = '<i class="far fa-file-excel fa-1x"></i>';
 
     public function handle() {
+        return $this->panel->view();
+
+        /*
         $view = 'pub_theme::profile.'.$this->getName();
 
         return ThemeService::view($view)
-            ->with('row', $this->row);
+        ->with('row', $this->row);
+        */
     }
 
     public function postHandle() {
